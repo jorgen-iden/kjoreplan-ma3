@@ -1,0 +1,84 @@
+/** All user-facing text. Add en.ts with the same keys to support English. */
+export const no = {
+  appTitle: 'Kjøreplan → grandMA3',
+  appIntro:
+    'Gjør en kjøreplan (PDF) om til en makro som bygger én sekvens med én tom, navngitt cue per punkt. Alt skjer i nettleseren – ingen filer forlater maskinen din.',
+
+  step1: '1. Last opp kjøreplan',
+  dropHint: 'Dra en PDF hit, eller',
+  chooseFile: 'velg fil',
+  orPaste: 'Eller lim inn tekst (for eksempel fra en e-post eller et regneark):',
+  pastePlaceholder: '17:30 Dørene åpner\n17:45 Velkommen\n18:00 Artist 1: …',
+  useText: 'Bruk teksten',
+  reading: 'Leser PDF …',
+  pdfError: 'Klarte ikke å lese PDF-en: ',
+  noTextLayer:
+    'Fant ingen tekst i PDF-en. Den er trolig skannet (et bilde). Kopier teksten manuelt og lim den inn i tekstfeltet over.',
+  noRows: 'Fant ingen punkter. Sjekk kolonnevalget under, eller lim inn teksten i stedet.',
+  linesMode:
+    'Fant ingen kolonneoverskrifter, så punktene er tolket linje for linje. Sjekk resultatet nøye.',
+
+  step2: '2. Sjekk kolonnene',
+  columnsIntro: 'Kolonner som ble funnet. Velg hvilke som brukes til nummer, tid og tittel; resten ignoreres.',
+  colNumber: 'Nummer (#)',
+  colStart: 'Klokkeslett',
+  colDuration: 'Varighet',
+  colTitle: 'Tittel',
+  notUsed: '– ikke brukt –',
+  applyColumns: 'Bruk kolonnevalg',
+  applyColumnsWarning: 'Dette erstatter endringene du har gjort i tabellen under.',
+
+  step3: '3. Se over og rediger',
+  reviewIntro: 'Én rad per cue. PDF-tolkning blir aldri perfekt – se over før du laster ned.',
+  thCue: 'Cue',
+  thSrc: '#',
+  thName: 'Navn',
+  thTime: 'Tid',
+  thNote: 'Notat',
+  thActions: '',
+  moveUp: 'Flytt opp',
+  moveDown: 'Flytt ned',
+  remove: 'Slett',
+  split: 'Del opp i under-cuer',
+  addRow: '+ Legg til rad',
+  truncatedWarning: (max: number) => `Navnet kuttes til ${max} tegn på konsollen.`,
+  emptyName: 'Mangler navn',
+  numberingFellBack:
+    '#-kolonnen kan ikke brukes som cue-nummer (mangler, ugyldig eller ikke stigende). Bruker løpende nummer 1, 2, 3 …',
+  cueCount: (n: number) => `${n} cuer`,
+
+  step4: '4. Innstillinger',
+  settingsIntro: 'Alle har fornuftige standardverdier, så du kan hoppe rett videre.',
+  sequence: 'Sekvensnummer',
+  sequenceHelp: 'Finnes sekvensen fra før, spør konsollen om merge/overwrite – eller cuene blandes inn.',
+  sequenceInvalid: 'Sekvensnummer må være et heltall fra 1 og oppover.',
+  numbering: 'Cue-nummerering',
+  numberingFollow: 'Følg kjøreplanens #',
+  numberingRunning: 'Løpende 1, 2, 3 …',
+  sequenceName: 'Sekvensnavn',
+  maVersion: 'MA-versjon',
+  nameFormat: 'Cue-navn',
+  nameTitle: 'Kun tittel',
+  nameTimeTitle: 'Klokkeslett + tittel',
+  includeNotes: 'Legg resten av tittelen, starttid og varighet i cuens Note-felt',
+  clearFirst: 'Tøm programmeren først (ClearAll) – anbefales, så cuene blir tomme',
+
+  step5: '5. Last ned',
+  download: 'Last ned ZIP',
+  unverified:
+    'Merk: XML-formatet er ikke verifisert mot en ekte eksport fra grandMA3 ennå. Test i grandMA3 onPC før bruk på en forestilling.',
+  importTitle: 'Slik importerer du på konsollen',
+  importSteps: (menu: string, fileName: string, seq: number) => [
+    'Pakk ut ZIP-en på roten av minnepinnen (mappen grandMA3 skal ligge øverst).',
+    'Sett minnepinnen i konsollen.',
+    `Åpne ${menu}, velg Macros og minnepinnen som kilde.`,
+    `Importer «${fileName}» til en ledig plass i Macros-poolen.`,
+    `Kjør makroen én gang. Den bygger sekvens ${seq}.`,
+  ],
+  cmdTitle: 'Reserve: kommandolinje',
+  cmdHelp: 'Feiler importen, kan du lime inn denne linjen rett i kommandolinjen.',
+  copy: 'Kopier',
+  copied: 'Kopiert!',
+};
+
+export type Strings = typeof no;
