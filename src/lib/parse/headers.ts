@@ -5,10 +5,10 @@ type KnownRole = Exclude<Role, 'other'>;
 /** Header words per role, lower case. Norwegian and English, as seen in real run sheets. */
 const KEYWORDS: Record<KnownRole, string[]> = {
   number: ['#', 'nr', 'no', 'nummer', 'num', 'cue', 'pkt'],
-  start: ['start', 'starttid', 'start time', 'tid', 'tid fra', 'fra', 'from', 'time', 'kl', 'klokke', 'klokken', 'klokkeslett', 'klokkeslag', 'tidspunkt', 'begin'],
-  end: ['slutt', 'sluttid', 'tid til', 'til', 'to', 'end', 'end time', 'stopp', 'ferdig'],
-  duration: ['duration', 'varighet', 'dur', 'durata', 'lengde', 'length', 'tidsbruk'],
-  title: ['title', 'tittel', 'program', 'programpost', 'innhold', 'beskrivelse', 'description', 'item', 'hva', 'punkt', 'event', 'aktivitet', 'agenda', 'stage', 'scene', 'what', 'segment', 'innslag', 'programpunkt', 'hendelse'],
+  start: ['start', 'starttid', 'start time', 'tid', 'tid fra', 'fra', 'from', 'time', 'kl', 'klokke', 'klokken', 'klokkeslett', 'klokkeslag', 'tidspunkt', 'tidspunkt start', 'start tid', 'klokka', 'kl.slett', 'kl slett', 'kl.', 'begin'],
+  end: ['slutt', 'sluttid', 'tid til', 'til', 'to', 'end', 'end time', 'stopp', 'ferdig', 'tidspunkt slutt', 'slutt tid'],
+  duration: ['duration', 'varighet', 'dur', 'durata', 'lengde', 'length', 'tidsbruk', 'tidsbruk(min)', 'tidsbruk (min)', 'min', 'minutter', 'minutes'],
+  title: ['title', 'tittel', 'program', 'programpost', 'innhold', 'beskrivelse', 'description', 'item', 'hva', 'punkt', 'event', 'aktivitet', 'agenda', 'stage', 'scene', 'what', 'segment', 'innslag', 'programpunkt', 'hendelse', 'anledning', 'song', 'sang', 'låt', 'kva'],
 };
 
 function normalize(s: string): string {
@@ -20,6 +20,14 @@ export function headerRole(text: string): KnownRole | null {
   const n = normalize(text);
   for (const role of Object.keys(KEYWORDS) as KnownRole[]) {
     if (KEYWORDS[role].includes(n)) return role;
+  }
+  // Combined headers like "Hendelse / beskrivelse" or "Tid & sted": the first known part wins.
+  const parts = n.split(/\s*[/&,+]\s*/).filter(Boolean);
+  if (parts.length > 1) {
+    for (const part of parts) {
+      const role = headerRole(part);
+      if (role) return role;
+    }
   }
   return null;
 }

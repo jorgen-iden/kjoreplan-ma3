@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Cuesetter – gjør kjøreplaner om til cuelister i grandMA3",
-    "description": "Last opp kjøreplanen som PDF og få en makro som bygger en navngitt cueliste på grandMA3-konsollen. Kjører i nettleseren – filene forlater aldri maskinen din.",
+    "description": "Last opp kjøreplanen som PDF, Word eller Excel og få en makro som bygger en navngitt cueliste på grandMA3-konsollen. Kjører i nettleseren – filene forlater aldri maskinen din.",
     "appTitle": "Konverter – Cuesetter",
-    "appDescription": "Gjør en kjøreplan-PDF om til en grandMA3-makro: sjekk kolonner, se over cuene, last ned og importer på konsollen.",
+    "appDescription": "Gjør en kjøreplan (PDF, Word eller Excel) om til en grandMA3-makro: sjekk kolonner, se over cuene, last ned og importer på konsollen.",
     "notFoundTitle": "Fant ikke siden – Cuesetter"
   },
   "nav": {
@@ -17,7 +17,7 @@
   "home": {
     "kicker": "For grandMA3-operatører",
     "title": "Fra kjøreplan til cueliste på ett minutt",
-    "lead": "Last opp PDF-en du fikk fra produksjonen. Få én tom, navngitt cue per punkt, i riktig rekkefølge, klar til import på konsollen.",
+    "lead": "Last opp kjøreplanen du fikk fra produksjonen – PDF, Word eller Excel. Få én tom, navngitt cue per punkt, i riktig rekkefølge, klar til import på konsollen.",
     "cta": "Prøv nå",
     "privacy": "Kjører i nettleseren. Kjøreplanen forlater aldri maskinen din.",
     "disclaimer": "Ikke tilknyttet MA Lighting. grandMA3 er et varemerke for MA Lighting Technology GmbH.",
@@ -25,11 +25,11 @@
     "steps": {
       "upload": {
         "title": "Last opp kjøreplanen",
-        "text": "Slipp inn PDF-en fra produksjonen, eller lim inn teksten. Kolonner som #, Start og Tittel finnes automatisk."
+        "text": "Slipp inn PDF-, Word- eller Excel-filen fra produksjonen, eller lim inn teksten. Kolonner som #, Start og Tittel finnes automatisk."
       },
       "review": {
         "title": "Se over cuene",
-        "text": "Én rad per cue, i riktig rekkefølge. Rediger navn, del en settliste opp i under-cuer og rett det PDF-en tolket feil."
+        "text": "Én rad per cue, i riktig rekkefølge. Rediger navn, del en settliste opp i under-cuer og rett det som ble lest feil."
       },
       "console": {
         "title": "Importer på konsollen",
@@ -49,8 +49,8 @@
   },
   "upload": {
     "title": "Last opp en kjøreplan",
-    "lead": "En PDF eksportert fra planleggingssystemet fungerer best. Alt leses i nettleseren.",
-    "dropHint": "Slipp en PDF her",
+    "lead": "PDF, Word (.docx) eller Excel (.xlsx). Alt leses i nettleseren.",
+    "dropHint": "Slipp en PDF-, Word- eller Excel-fil her",
     "or": "eller",
     "chooseFile": "velg en fil",
     "trySample": "Prøv med en eksempel-kjøreplan",
@@ -58,7 +58,7 @@
     "pasteLead": "Nyttig for skannede PDF-er, eller en liste fra en e-post eller et regneark.",
     "pastePlaceholder": "17:30 Dørene åpner\n17:45 Velkommen\n18:00 Artist 1: …",
     "useText": "Bruk teksten",
-    "reading": "Leser PDF …",
+    "reading": "Leser kjøreplanen …",
     "pdfError": "Klarte ikke å lese PDF-en: {error}",
     "noTextLayer": "Fant ingen tekst i PDF-en. Den er trolig skannet (et bilde). Kopier teksten manuelt og lim den inn under.",
     "noRows": "Fant ingen punkter. Sjekk kolonnene, eller lim inn teksten i stedet.",
@@ -66,9 +66,12 @@
     "sampleError": "Klarte ikke å laste eksempel-kjøreplanen. Sjekk nettforbindelsen og prøv igjen.",
     "retry": "Prøv igjen",
     "readingLead": "Finner kolonner og rader …",
-    "notPdf": "Filen er ikke en PDF. Velg en PDF, eller lim inn teksten i stedet.",
     "tooLarge": "Filen er større enn {max} MB. Er det virkelig en kjøreplan?",
-    "tooLong": "Teksten er for lang ({count} av maks {max} tegn)."
+    "tooLong": "Teksten er for lang ({count} av maks {max} tegn).",
+    "oldFormat": "Dette er en gammel Word- eller Excel-fil (.doc eller .xls). Åpne den og lagre som .docx eller .xlsx, eller eksporter som PDF, og prøv igjen.",
+    "unsupported": "Denne filtypen kan ikke leses. Bruk en PDF-, Word- (.docx) eller Excel-fil (.xlsx), eller lim inn teksten under.",
+    "noTable": "Fant ingen tabell med punkter i filen. Sjekk at den inneholder kjøreplanen, eller lim inn teksten under.",
+    "unreadable": "Klarte ikke å åpne filen. Den kan være skadet eller passordbeskyttet. Lagre en ny kopi, eller lim inn teksten under."
   },
   "columns": {
     "title": "Sjekk kolonnene",
@@ -81,7 +84,11 @@
     "notUsed": "Ikke brukt",
     "preview": "Første rader",
     "confirmReset": "Endrer du kolonnene, erstattes endringene du har gjort i cuelisten. Fortsette?",
-    "continue": "Gå videre til gjennomgang →"
+    "continue": "Gå videre til gjennomgang →",
+    "sheet": "Ark",
+    "table": "Tabell",
+    "tableN": "Tabell {n}",
+    "rows": "{count, plural, one {# rad} other {# rader}}"
   },
   "review": {
     "lead": "{cues, plural, one {# cue} other {# cuer}} fra {items, plural, one {# punkt} other {# punkter}}. Sjekk navn og numre før du laster ned.",
@@ -108,7 +115,10 @@
     "emptyTitle": "Ingen cuer ennå",
     "emptyLead": "Legg til en cue for hånd, eller start på nytt med en annen kjøreplan.",
     "untitled": "Kjøreplan uten navn",
-    "numbersFilled": "{count, plural, one {# cue} other {# cuer}} manglet # i kjøreplanen og fikk et nummer mellom naboene (for eksempel 28.5). Resten beholder sitt #."
+    "numbersFilled": "{count, plural, one {# cue} other {# cuer}} manglet # i kjøreplanen og fikk et nummer mellom naboene (for eksempel 28.5). Resten beholder sitt #.",
+    "undo": "Angre",
+    "deleted": "Slettet «{name}».",
+    "deletedUntitled": "Slettet en cue."
   },
   "settings": {
     "title": "Innstillinger",

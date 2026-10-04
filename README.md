@@ -31,6 +31,7 @@ Appen kjører på **Vercel** med domenet **cuesetter.com**.
 3. I produksjon brukes `https://cuesetter.com` som adresse i delingslenker, sitemap og SEO. `NEXT_PUBLIC_SITE_URL` kan overstyre den, for eksempel for et testdomene.
 
 4. **Analytics:** Vercel Web Analytics er lagt inn (`<Analytics />` i `src/app/[locale]/layout.tsx`). Slå det på under prosjektets *Analytics*-fane. Det bruker ikke informasjonskapsler og sender bare sideadresser, aldri innholdet i kjøreplaner.
+5. **Speed Insights:** `<SpeedInsights />` ligger ved siden av. Slå det på under prosjektets *Speed Insights*-fane for å se Core Web Vitals fra ekte besøk.
 
 Merk: Vercels gratisplan (Hobby) er kun for ikke-kommersiell bruk. Oppgrader til Pro før du tar betalt.
 
@@ -106,7 +107,7 @@ Legg `navn.pdf` og `navn.expected.json` i `fixtures/`, eller i `fixtures/private
 { "rows": [ { "number": "1", "start": "17:30", "name": "Dørene åpner" } ] }
 ```
 
-Hjertebank-filen fra briefen er ikke lagt inn ennå. Til da dekker `tests/pdf-parse.test.ts` samme oppsett med en syntetisk PDF (24 punkter, gjentatt header, topp-/bunntekst, metadata, flerlinjede titler, Lyd/Kommentar-kolonner, rad delt over sideskift).
+`tests/pdf-parse.test.ts` dekker oppsettet fra briefen med en syntetisk PDF med oppdiktede navn (24 punkter, gjentatt header, topp-/bunntekst, metadata, flerlinjede titler, Lyd/Kommentar-kolonner, rad delt over sideskift). `npm run sample` lager den samme PDF-en som eksempelfil i appen (`public/sample-run-sheet.pdf`).
 
 ## Verifisering
 

@@ -1,16 +1,21 @@
 import { describe, expect, it } from 'vitest';
 import { DEFAULT_SETTINGS, parseStoredSettings } from '../src/lib/settings';
-import { checkPastedText, checkPdfFile, isValidSequence, MAX_PDF_BYTES, MAX_TEXT_CHARS } from '../src/lib/validation';
+import { checkPastedText, checkRunSheetFile, fileKind, isValidSequence, MAX_FILE_BYTES, MAX_TEXT_CHARS } from '../src/lib/validation';
 
 describe('file and text validation', () => {
-  it('accepts PDFs by type or extension', () => {
-    expect(checkPdfFile({ name: 'a.pdf', size: 1000, type: '' })).toBeNull();
-    expect(checkPdfFile({ name: 'a', size: 1000, type: 'application/pdf' })).toBeNull();
+  it('accepts PDF, Word and Excel files by extension or type', () => {
+    expect(checkRunSheetFile({ name: 'a.pdf', size: 1000, type: '' })).toBeNull();
+    expect(checkRunSheetFile({ name: 'a', size: 1000, type: 'application/pdf' })).toBeNull();
+    expect(checkRunSheetFile({ name: 'Plan.DOCX', size: 1000, type: '' })).toBeNull();
+    expect(checkRunSheetFile({ name: 'plan.xlsx', size: 1000, type: '' })).toBeNull();
+    expect(fileKind({ name: 'plan.xlsx', type: '' })).toBe('xlsx');
   });
 
-  it('rejects other files and files that are too large', () => {
-    expect(checkPdfFile({ name: 'a.docx', size: 1000, type: 'application/msword' })).toBe('notPdf');
-    expect(checkPdfFile({ name: 'a.pdf', size: MAX_PDF_BYTES + 1, type: 'application/pdf' })).toBe('tooLarge');
+  it('explains old Office files, rejects other files and files that are too large', () => {
+    expect(checkRunSheetFile({ name: 'a.doc', size: 1000, type: 'application/msword' })).toBe('oldFormat');
+    expect(checkRunSheetFile({ name: 'a.xls', size: 1000, type: '' })).toBe('oldFormat');
+    expect(checkRunSheetFile({ name: 'a.png', size: 1000, type: 'image/png' })).toBe('unsupported');
+    expect(checkRunSheetFile({ name: 'a.pdf', size: MAX_FILE_BYTES + 1, type: 'application/pdf' })).toBe('tooLarge');
   });
 
   it('rejects empty and very long pasted text', () => {

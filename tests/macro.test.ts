@@ -95,7 +95,7 @@ describe('sanitizing', () => {
   });
 
   it('slugifies file names', () => {
-    expect(slugify('Hjertebank 2026 – Bjørnafjorden')).toBe('hjertebank-2026-bjornafjorden');
+    expect(slugify('Høstgalla 2026 – Strandhallen')).toBe('hostgalla-2026-strandhallen');
     expect(slugify('Ærlig talt på Ås!')).toBe('aerlig-talt-pa-as');
     expect(slugify('***')).toBe('kjoreplan');
   });

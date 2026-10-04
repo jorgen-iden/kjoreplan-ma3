@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import type { Mapping } from '@/lib/cues';
+import type { Source } from '@/lib/import';
 import type { ParsedTable } from '@/lib/parse';
 import { Button, Card, PageHeader } from '@/components/ui';
 
@@ -12,14 +13,23 @@ const ROLES = [
   ['title', 'titleCol'],
 ] as const;
 
+const SELECT =
+  'min-h-11 rounded-lg border border-line bg-paper px-3 text-ink transition-colors hover:border-muted focus:border-accent focus:outline-none';
+
 export function ColumnsStep({
   table,
+  sources,
+  sourceIndex,
+  onSource,
   mapping,
   edited,
   onMapping,
   onNext,
 }: {
   table: ParsedTable;
+  sources: Source[];
+  sourceIndex: number;
+  onSource: (index: number) => void;
   mapping: Mapping;
   edited: boolean;
   onMapping: (mapping: Mapping) => void;
@@ -49,6 +59,22 @@ export function ColumnsStep({
 
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
         <Card as="section" className="p-6">
+          {sources.length > 1 && (
+            <label className="mb-6 flex flex-col gap-1.5 border-b border-line-soft pb-6">
+              <span className="text-sm font-semibold">{t(sources[0].kind === 'xlsx' ? 'sheet' : 'table')}</span>
+              <select
+                value={sourceIndex}
+                onChange={(e) => onSource(Number(e.target.value))}
+                className={SELECT}
+              >
+                {sources.map((s, i) => (
+                  <option key={i} value={i}>
+                    {s.kind === 'xlsx' ? s.name : t('tableN', { n: s.name })} · {t('rows', { count: s.table.rows.length })}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
           <h2 className="mb-4 text-sm font-semibold text-muted">{t('found')}</h2>
           <div className="flex flex-col gap-4">
             {ROLES.map(([key, label]) => (
@@ -57,7 +83,7 @@ export function ColumnsStep({
                 <select
                   value={mapping[key] ?? ''}
                   onChange={(e) => change(key, e.target.value)}
-                  className="min-h-11 rounded-lg border border-line bg-paper px-3 text-ink transition-colors hover:border-muted focus:border-accent focus:outline-none"
+                  className={SELECT}
                 >
                   <option value="">{t('notUsed')}</option>
                   {table.columns.map((c, i) => (

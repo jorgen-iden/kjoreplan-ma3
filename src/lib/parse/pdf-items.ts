@@ -10,9 +10,21 @@ interface PdfTextRun {
 export interface PdfDocumentLike {
   numPages: number;
   getPage(n: number): Promise<{
-    getViewport(params: { scale: number }): { width: number; height: number };
+    getViewport(params: { scale: number }): { width: number; height: number; transform: number[] };
     getTextContent(): Promise<{ items: ReadonlyArray<PdfTextRun | object> }>;
   }>;
+}
+
+/** 2D affine matrix product m × t, both as [a, b, c, d, e, f] (same as pdf.js Util.transform). */
+function multiply(m: number[], t: number[]): number[] {
+  return [
+    m[0] * t[0] + m[2] * t[1],
+    m[1] * t[0] + m[3] * t[1],
+    m[0] * t[2] + m[2] * t[3],
+    m[1] * t[2] + m[3] * t[3],
+    m[0] * t[4] + m[2] * t[5] + m[4],
+    m[1] * t[4] + m[3] * t[5] + m[5],
+  ];
 }
 
 const isTextRun = (item: PdfTextRun | object): item is PdfTextRun => 'str' in item;
@@ -28,9 +40,11 @@ export async function documentTextItems(doc: PdfDocumentLike): Promise<{ items: 
     const content = await page.getTextContent();
     for (const raw of content.items) {
       if (!isTextRun(raw)) continue;
-      const [, , c, d, e, f] = raw.transform;
-      const height = raw.height || Math.hypot(c, d);
-      items.push({ str: raw.str, x: e, y: viewport.height - f, width: raw.width, height, page: n });
+      // Map text space to the page as displayed. The viewport transform includes the page's
+      // rotation, so landscape pages (/Rotate 90) come out with rows as rows. y is from the top.
+      const [, , c, d, e, f] = multiply(viewport.transform, raw.transform);
+      const height = Math.hypot(c, d) || raw.height;
+      items.push({ str: raw.str, x: e, y: f, width: raw.width, height, page: n });
     }
   }
   return { items, pages };

@@ -4,7 +4,7 @@ import { parseTextItems, type ParsedTable } from '../src/lib/parse';
 import { extract } from './helpers/extract';
 import { makeRunSheetPdf, ROWS } from './helpers/runsheet';
 
-describe('PDF run sheet (synthetic Hjertebank layout)', () => {
+describe('PDF run sheet (synthetic planning-system layout)', () => {
   let table: ParsedTable;
   let cues: Cue[];
 
@@ -22,7 +22,7 @@ describe('PDF run sheet (synthetic Hjertebank layout)', () => {
   });
 
   it('takes the sequence name from the largest heading on page 1', () => {
-    expect(table.title).toBe('Hjertebank 2026 - Bjørnafjorden');
+    expect(table.title).toBe('Høstgalla 2026 - Strandhallen');
   });
 
   it('gives 24 rows with the right # and start time', () => {
@@ -37,15 +37,15 @@ describe('PDF run sheet (synthetic Hjertebank layout)', () => {
   });
 
   it('keeps Lyd and Kommentar out of the titles', () => {
-    expect(cues[4].name).toBe('Samtale med Tarjei');
+    expect(cues[4].name).toBe('Samtale med Nils Nilsen');
     const all = cues.map((c) => `${c.name}\n${c.note}`).join('\n');
-    expect(all).not.toMatch(/HH1|UT TARJEI|Boge|Playback|Lys ned/);
+    expect(all).not.toMatch(/HH1|UT NILS|Inn fra venstre|Playback|Lys ned/);
   });
 
   it('drops running header/footer, repeated headers and metadata', () => {
     const all = cues.map((c) => `${c.name}\n${c.note}`).join('\n');
     expect(all).not.toMatch(/Page \d|When:|Printed:|By:|Kommentar|Duration/);
-    expect(all.match(/Hjertebank/g)).toBeNull();
+    expect(all.match(/Høstgalla/g)).toBeNull();
   });
 
   it('merges a row split across a page break', () => {
