@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import { CueLight } from '@/components/ui';
 import { LocaleSwitcher } from './LocaleSwitcher';
 
 export function SiteHeader() {
@@ -15,7 +16,7 @@ export function SiteHeader() {
     <header className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-5 sm:px-8">
       <Link href="/" className="flex items-baseline gap-1.5 text-ink no-underline">
         <span className="text-2xl font-extrabold tracking-tight">Cuesetter</span>
-        <span className="inline-block size-2 rounded-full bg-accent" aria-hidden="true" />
+        <CueLight />
       </Link>
       <nav className="flex flex-wrap items-center gap-5 text-sm">
         <Link href="/app" className="rounded font-semibold text-ink no-underline transition-colors hover:text-accent">

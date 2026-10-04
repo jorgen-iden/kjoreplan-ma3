@@ -8,3 +8,4 @@ export { Spinner } from './Spinner';
 export { LINK_PRIMARY, LINK_SECONDARY, StatusScreen } from './StatusScreen';
 export { PageSkeleton } from './PageSkeleton';
 export { InteractiveGlow } from './InteractiveGlow';
+export { CueLight, cueGo } from './CueLight';

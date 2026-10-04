@@ -9,7 +9,7 @@ import { slugify } from '@/lib/ma3/sanitize';
 import { buildZip, MACRO_DIR } from '@/lib/ma3/zip';
 import type { Settings } from '@/lib/settings';
 import { isValidSequence } from '@/lib/validation';
-import { Button, Card, Notice, PageHeader } from '@/components/ui';
+import { Button, Card, cueGo, Notice, PageHeader } from '@/components/ui';
 
 export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings }) {
   const t = useTranslations('export');
@@ -42,6 +42,7 @@ export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings
       a.download = `${fileSlug}.zip`;
       a.click();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
+      cueGo();
     } catch {
       setDownloadFailed(true);
     } finally {
@@ -53,6 +54,7 @@ export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings
     try {
       await navigator.clipboard.writeText(cmdLine);
       setCopy('copied');
+      cueGo();
       setTimeout(() => setCopy('idle'), 1500);
     } catch {
       // Clipboard blocked (permissions, insecure context): select the text so the user can copy it.
