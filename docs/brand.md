@@ -46,7 +46,8 @@ Sann og generisk: ingen navn og ingen enkeltpersoner. Ikke pynt den med påstand
   1. Leser PDF, Word og Excel – slik kjøreplanen kommer.
   2. Filene forlater aldri maskinen.
   3. Cuenumrene følger kjøreplanen – også under-cuer og punkter uten nummer.
-  4. Laget av bransjen, for bransjen.
+
+  «Laget av bransjen, for bransjen» er overskriften på historien, ikke et eget bevis. Hvert budskap står én gang på forsiden: formatene i undertittelen, personvernet i bevis 2, bransjen i historien.
 
 ## Personlighet: erfaren kollega på intercom
 
@@ -75,6 +76,7 @@ Alt vi sier om oss selv skal kunne dokumenteres. Sjekk listen før ny tekst publ
 | Filene forlater aldri maskinen | All lesing skjer i nettleseren. Endres hvis lagring i skyen innføres – da må teksten skille mellom gratis og lagrede kjøreplaner. |
 | Leser PDF, Word og Excel | .pdf med tekstlag, .docx, .xlsx. Ikke skannede PDF-er eller gamle .doc/.xls. |
 | Laget av bransjen | Eieren jobber i bransjen. Si aldri «laget av en lysoperatør». |
+| «Derfor bruker operatører det» | Operatører har brukt verktøyet på egne kjøreplaner. |
 | Sitater og kundelogoer | Bare ekte, med samtykke. Ingen oppdiktede brukere. |
 
 ## Visuell identitet
@@ -85,5 +87,6 @@ Alt vi sier om oss selv skal kunne dokumenteres. Sjekk listen før ny tekst publ
 - **Design-tokens:** retning B «Studio» i `src/app/globals.css` – varmt papir, blekk-tekst, én blå aksent. Mørk modus følger systemet.
 - **Cue-lyset:** prikken i logoen (øverst til venstre i merket, foran tre cuelinjer) er et cue-lys, som lampen inspisienten tenner for operatøren. Den puster rolig i «standby», og blinker «GO» når en makro lastes ned (`<LogoMark />` i `src/components/ui/Logo.tsx`). Bruk den sparsomt: ett cue-lys per skjerm.
 - **Mono-tall:** cuenumre og klokkeslett settes alltid i mono, som på konsollskjermen.
-- **Hero-bilde:** delt visning, kjøreplanen til venstre og cuelisten til høyre, der rader flytter seg over.
+- **Hero-bilde:** delt visning, kjøreplanen til venstre og cuelisten til høyre, der rader flytter seg over. Når listen er ferdig, viser konsollen GO og cue-lyset i logoen blinker.
+- **Ikke SaaS-kort:** lister settes som cuelister (mono-nummer, én rad per punkt, linjer mellom), og steg som en sekvens (Cue 1, 2, 3). Ingen generiske ikoner.
 - **Bilder:** ekte skjermbilder fra appen og onPC. Ingen stockfoto av konserter.

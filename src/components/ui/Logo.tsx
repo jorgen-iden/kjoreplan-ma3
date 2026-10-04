@@ -16,9 +16,13 @@ export function cueGo() {
  */
 export function LogoMark({ size = 28, className = '' }: { size?: number; className?: string }) {
   const [go, setGo] = useState(0);
+  const [flashing, setFlashing] = useState(false);
 
   useEffect(() => {
-    const onGo = () => setGo((n) => n + 1);
+    const onGo = () => {
+      setGo((n) => n + 1);
+      setFlashing(true);
+    };
     window.addEventListener(CUE_GO_EVENT, onGo);
     return () => window.removeEventListener(CUE_GO_EVENT, onGo);
   }, []);
@@ -32,7 +36,9 @@ export function LogoMark({ size = 28, className = '' }: { size?: number; classNa
         cx="9"
         cy="10"
         r="2.6"
-        className={`origin-center fill-on-accent [transform-box:fill-box] ${go ? 'animate-cue-go' : 'animate-cue-standby'}`}
+        // After the GO flash the light goes back to standby.
+        onAnimationEnd={() => setFlashing(false)}
+        className={`origin-center fill-on-accent [transform-box:fill-box] ${flashing ? 'animate-cue-go' : 'animate-cue-standby'}`}
       />
       <rect x="14" y="8.5" width="11" height="3" rx="1.5" className="fill-on-accent" />
       <rect x="14" y="14.5" width="8" height="3" rx="1.5" className="fill-on-accent" opacity="0.55" />

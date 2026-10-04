@@ -27,7 +27,7 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ loc
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ fontSize: 76, fontWeight: 800, lineHeight: 1.05, letterSpacing: -2, maxWidth: 980 }}>{t('title')}</div>
-          <div style={{ fontSize: 30, color: '#5d636b', maxWidth: 900 }}>{t('privacy')}</div>
+          <div style={{ fontSize: 30, color: '#5d636b', maxWidth: 900 }}>{t('tagline')}</div>
         </div>
         <div style={{ display: 'flex', gap: 12 }}>
           {['PDF · Word · Excel', 'Cues', 'grandMA3'].map((s, i) => (

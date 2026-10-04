@@ -20,13 +20,12 @@
     "title": "From run sheet to cue list in a minute",
     "lead": "Upload the run sheet you got from production – PDF, Word or Excel. Get one empty, named cue per item, in the right order, ready to import on the console.",
     "cta": "Try it now",
-    "privacy": "Runs in your browser. Your run sheet never leaves your computer.",
     "disclaimer": "Not affiliated with MA Lighting. grandMA3 is a trademark of MA Lighting Technology GmbH.",
     "stepsTitle": "How it works",
     "steps": {
       "upload": {
         "title": "Upload the run sheet",
-        "text": "Drop the PDF, Word or Excel file from production, or paste the text. Columns like #, Start and Title are found automatically."
+        "text": "Drop in the file from production, or paste the text. Columns like #, Start and Title are found automatically."
       },
       "review": {
         "title": "Check the cues",
@@ -37,7 +36,7 @@
         "text": "Download a macro, import it on grandMA3 and run it once. Your sequence is built with named, empty cues."
       }
     },
-    "ctaSub": "Free to try. No account needed.",
+    "ctaSub": "Free to try. No account, no upload.",
     "demo": {
       "file": "run-sheet.pdf",
       "sequence": "Sequence 101",
@@ -47,7 +46,6 @@
         "title": "Title",
         "extra": "Notes"
       },
-      "caption": "Your run sheet in, a named cue list out. Columns you don’t need are left behind.",
       "rows": [
         {
           "n": "1",
@@ -91,13 +89,14 @@
           ],
           "extra": ""
         }
-      ]
+      ],
+      "go": "GO"
     },
     "proofsTitle": "Why operators use it",
     "proofs": {
       "formats": {
         "title": "Reads the run sheet as it arrives",
-        "text": "PDF, Word or Excel, straight from production. No reformatting, no copying into a template."
+        "text": "Messy tables, merged cells and several sheets are fine. No reformatting, no copying into a template."
       },
       "private": {
         "title": "Your files never leave your computer",
@@ -106,20 +105,17 @@
       "numbers": {
         "title": "Cue numbers follow the run sheet",
         "text": "Item 12 becomes cue 12 on the console. A set list splits into sub-cues (12.1, 12.2) in one click, and items without a number fit in between their neighbours."
-      },
-      "industry": {
-        "title": "Made by the industry, for the industry",
-        "text": "We know how long it takes to type a long run sheet into grandMA3. CueSetter does it for you, so you can spend the time on the lighting."
       }
     },
-    "storyTitle": "Why CueSetter exists",
+    "storyTitle": "Made by the industry, for the industry",
     "story": [
       "CueSetter started backstage. Before every show the same thing happened: the run sheet arrived as a PDF, often late, and every item had to be typed into the console by hand while the lighting waited.",
-      "We work in the industry and have seen it happen again and again. So we built the tool that does the job in a minute, so the time goes to the lighting."
+      "We work in the industry and have seen it again and again. Now it takes a minute, and the time goes to the lighting."
     ],
-    "storySign": "Made by the industry, for the industry.",
     "tagline": "Run sheet in. Cue list out.",
-    "finalLead": "Try it with your next run sheet, or with our sample."
+    "finalLead": "Try it with your next run sheet, or see how it works with our sample.",
+    "ctaSample": "Try the sample run sheet",
+    "cueLabel": "Cue {n}"
   },
   "steps": {
     "upload": "Upload",

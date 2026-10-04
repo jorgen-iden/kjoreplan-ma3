@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { cueGo } from '@/components/ui';
 
 export interface DemoRow {
   /** Number in the run sheet. */
@@ -16,7 +17,7 @@ export interface HeroDemoLabels {
   file: string;
   sequence: string;
   columns: { n: string; time: string; title: string; extra: string };
-  caption: string;
+  go: string;
 }
 
 const STEP_MS = 650;
@@ -46,6 +47,8 @@ export function HeroDemo({ rows, labels }: { rows: DemoRow[]; labels: HeroDemoLa
     const tick = () => {
       n = n >= cues.length ? 0 : n + 1;
       setShown(n);
+      // The list is complete: the cue light in the logo flashes GO, as on the export step.
+      if (n === cues.length) cueGo();
       timer = setTimeout(tick, n >= cues.length ? HOLD_MS : n === 0 ? 500 : STEP_MS);
     };
     timer = setTimeout(tick, 900);
@@ -55,12 +58,12 @@ export function HeroDemo({ rows, labels }: { rows: DemoRow[]; labels: HeroDemoLa
   const active = shown > 0 && shown <= cues.length ? cues[shown - 1].source : -1;
 
   return (
-    <figure className="m-0">
+    <div>
       <div className="grid overflow-hidden rounded-2xl border border-line shadow-xl sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         {/* The run sheet, as it arrives from production. */}
         <div className="bg-card p-4 text-xs sm:p-5" aria-hidden="true">
           <p className="mb-3 font-mono text-[11px] text-muted">{labels.file}</p>
-          <div className="grid grid-cols-[1.25rem_2.75rem_minmax(0,1fr)_4.5rem] gap-x-2 border-b border-line pb-1.5 font-bold">
+          <div className="grid grid-cols-[1.25rem_2.75rem_minmax(0,1fr)_4rem] gap-x-2 border-b border-line pb-1.5 font-bold">
             <span>{labels.columns.n}</span>
             <span>{labels.columns.time}</span>
             <span>{labels.columns.title}</span>
@@ -69,7 +72,7 @@ export function HeroDemo({ rows, labels }: { rows: DemoRow[]; labels: HeroDemoLa
           {rows.map((r, i) => (
             <div
               key={i}
-              className={`grid grid-cols-[1.25rem_2.75rem_minmax(0,1fr)_4.5rem] gap-x-2 border-b border-line-soft py-1.5 transition-colors duration-300 ${
+              className={`grid grid-cols-[1.25rem_2.75rem_minmax(0,1fr)_4rem] gap-x-2 border-b border-line-soft py-1.5 transition-colors duration-300 ${
                 active === i ? 'bg-accent-soft' : ''
               }`}
             >
@@ -85,7 +88,13 @@ export function HeroDemo({ rows, labels }: { rows: DemoRow[]; labels: HeroDemoLa
         <div className="flex min-h-72 flex-col bg-console p-4 text-console-ink sm:p-5" aria-hidden="true">
           <p className="mb-3 flex items-center justify-between font-mono text-[11px] text-console-muted">
             <span>{labels.sequence}</span>
-            <span className="tabular-nums">{Math.min(shown, cues.length)}/{cues.length}</span>
+            {shown >= cues.length ? (
+              <span key="go" className="animate-pop-in rounded bg-console-accent px-1.5 font-semibold text-console">{labels.go}</span>
+            ) : (
+              <span className="tabular-nums">
+                {shown}/{cues.length}
+              </span>
+            )}
           </p>
           <ol className="flex flex-col">
             {cues.slice(0, shown).map((c) => (
@@ -94,14 +103,13 @@ export function HeroDemo({ rows, labels }: { rows: DemoRow[]; labels: HeroDemoLa
                 className="grid animate-cue-row-in grid-cols-[2.75rem_minmax(0,1fr)_2.75rem] items-center gap-x-2 border-b border-console-line py-1.5 text-sm"
               >
                 <span className={`font-mono font-semibold ${c.sub ? 'pl-2 text-console-muted' : 'text-console-accent'}`}>{c.number}</span>
-                <span className={`truncate ${c.sub ? 'pl-3 text-console-muted' : ''}`}>{c.name}</span>
+                <span className={`leading-snug ${c.sub ? 'pl-3 text-console-muted' : ''}`}>{c.name}</span>
                 <span className="text-right font-mono text-xs text-console-muted">{c.time}</span>
               </li>
             ))}
           </ol>
         </div>
       </div>
-      <figcaption className="mt-3 text-sm text-muted">{labels.caption}</figcaption>
-    </figure>
+    </div>
   );
 }
