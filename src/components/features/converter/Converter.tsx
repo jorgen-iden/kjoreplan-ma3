@@ -109,7 +109,7 @@ export function Converter() {
     <main id="main" className="mx-auto max-w-6xl px-5 pb-16 pt-2 sm:px-8">
       <Stepper step={state.step} reachable={(s) => s === 0 || hasWork} onGoto={goto} onReset={hasWork ? reset : undefined} />
 
-      <div key={state.step} className="animate-fade-in-up">
+      <div key={state.step} className="animate-entry">
         {state.step === 0 && (
           <UploadStep
             busy={state.busy}
