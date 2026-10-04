@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest';
-import { defaultMapping, rowsToCues, splitIntoSubCues, type Cue } from '../src/cues';
-import { parseTextItems, type ParsedTable } from '../src/parse';
+import { defaultMapping, rowsToCues, splitIntoSubCues, type Cue } from '../src/lib/cues';
+import { parseTextItems, type ParsedTable } from '../src/lib/parse';
 import { extract } from './helpers/extract';
 import { makeRunSheetPdf, ROWS } from './helpers/runsheet';
 

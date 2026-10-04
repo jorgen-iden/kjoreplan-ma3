@@ -1,0 +1,38 @@
+import { ensureTitleColumn, guessHeader, keyColumns, startsRow } from './headers';
+import { parseLines } from './lines';
+import type { ParsedTable } from './types';
+
+/**
+ * Parse pasted text. Tab-separated text with a header row (e.g. copied from a spreadsheet)
+ * is read column by column; anything else uses the line-based fallback.
+ */
+export function parsePastedText(text: string): ParsedTable {
+  const lines = text.replace(/\r\n?/g, '\n').split('\n');
+  const tabbed = lines.filter((l) => l.includes('\t'));
+  if (tabbed.length >= 2) {
+    const headerIndex = lines.findIndex((l, i) => i < 10 && l.includes('\t') && guessHeader(splitTabs(l)));
+    if (headerIndex >= 0) {
+      const names = splitTabs(lines[headerIndex]);
+      const roles = guessHeader(names)!;
+      const keys = keyColumns(roles);
+      const rows: string[][] = [];
+      for (const line of lines.slice(headerIndex + 1)) {
+        if (!line.trim()) continue;
+        const cells = names.map((_, i) => splitTabs(line)[i] ?? '');
+        if (cells.join('\t') === names.join('\t')) continue; // repeated header
+        if (startsRow(cells, keys) || !rows.length) rows.push(cells);
+        else
+          cells.forEach((c, i) => {
+            if (c) rows[rows.length - 1][i] = rows[rows.length - 1][i] ? `${rows[rows.length - 1][i]}\n${c}` : c;
+          });
+      }
+      const columns = ensureTitleColumn(names.map((name, i) => ({ name, guess: roles[i] })), rows);
+      return { mode: 'columns', columns, rows };
+    }
+  }
+  return parseLines(lines.map((l) => l.replace(/\t/g, ' ')));
+}
+
+function splitTabs(line: string): string[] {
+  return line.split('\t').map((c) => c.replace(/\s+/g, ' ').trim());
+}
