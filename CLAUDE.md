@@ -7,6 +7,7 @@ Web-app (Next.js 16, App Router, next-intl, Tailwind v4) som gjør kjøreplaner 
 - Kjernen i `src/lib/` er rene funksjoner med tester i `tests/`. Endringer der skal ha tester.
 - Alle tekster i grensesnittet ligger i `messages/<språk>.json` (engelsk først, så norsk). Ingen hardkodet tekst i komponenter.
 - Farger, fonter og avstander kommer fra tokenene i `src/app/globals.css` (`@theme`). Ingen tilfeldige hex-verdier i komponenter.
+- Bevegelse kommer fra tokenene i `globals.css`: `ease-out-quint` (standard for alle overganger), `ease-out-back` (litt sprett), `animate-fade-in-up`, `animate-pop-in` og `animate-soft-pulse`. Prosjektet bruker Tailwind v4, så temaet ligger i `@theme` i CSS, ikke i en `tailwind.config.ts`. Bruk `backwards` (ikke `forwards`) på animasjoner med `transform`, ellers forskyves elementer med `position: fixed` inni.
 - Kjør `npm test`, `npm run typecheck` og `npm run build` før commit.
 - Formatet på MA-makroen er verifisert i grandMA3 onPC 2.5.1.0. Endringer i `src/lib/ma3/` må testes i onPC før de regnes som ferdige.
 

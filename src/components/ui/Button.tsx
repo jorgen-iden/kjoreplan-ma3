@@ -5,7 +5,7 @@ type Variant = 'primary' | 'secondary' | 'ghost' | 'accent-soft';
 type Size = 'sm' | 'md' | 'lg';
 
 const BASE =
-  'inline-flex items-center justify-center gap-2 transition duration-150 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100';
+  'inline-flex items-center justify-center gap-2 transition duration-200 ease-out-quint active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100';
 
 const VARIANTS: Record<Variant, string> = {
   primary: 'bg-accent font-bold text-on-accent hover:bg-accent-strong',
