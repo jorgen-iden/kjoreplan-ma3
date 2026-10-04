@@ -12,7 +12,8 @@
     "account": "Konto",
     "language": "Språk",
     "openApp": "Åpne appen",
-    "skip": "Hopp til innhold"
+    "skip": "Hopp til innhold",
+    "theme": "Bytt mellom lys og mørk modus"
   },
   "home": {
     "kicker": "For grandMA3-operatører",
@@ -35,7 +36,90 @@
         "title": "Importer på konsollen",
         "text": "Last ned en makro, importer den på grandMA3 og kjør den én gang. Sekvensen bygges med navngitte, tomme cuer."
       }
-    }
+    },
+    "ctaSub": "Gratis å prøve. Ingen konto.",
+    "demo": {
+      "file": "kjoreplan.pdf",
+      "sequence": "Sekvens 101",
+      "columns": {
+        "n": "#",
+        "time": "Start",
+        "title": "Tittel",
+        "extra": "Lyd"
+      },
+      "caption": "Kjøreplanen inn, en navngitt cueliste ut. Kolonner du ikke trenger, blir liggende igjen.",
+      "rows": [
+        {
+          "n": "1",
+          "time": "17:30",
+          "title": [
+            "Dørene åpner"
+          ],
+          "extra": ""
+        },
+        {
+          "n": "2",
+          "time": "18:00",
+          "title": [
+            "Velkommen ved programleder"
+          ],
+          "extra": "HH1"
+        },
+        {
+          "n": "3",
+          "time": "18:07",
+          "title": [
+            "Fjordbyen Brass",
+            "Marsj",
+            "Hymne"
+          ],
+          "extra": "Playback"
+        },
+        {
+          "n": "4",
+          "time": "18:25",
+          "title": [
+            "Samtale med Nils Nilsen"
+          ],
+          "extra": "HH1 + HH2"
+        },
+        {
+          "n": "5",
+          "time": "18:40",
+          "title": [
+            "Pause"
+          ],
+          "extra": ""
+        }
+      ]
+    },
+    "proofsTitle": "Derfor bruker operatører det",
+    "proofs": {
+      "formats": {
+        "title": "Leser kjøreplanen slik den kommer",
+        "text": "PDF, Word eller Excel, rett fra produksjonen. Ingen omformatering, ingen kopiering inn i en mal."
+      },
+      "private": {
+        "title": "Filene forlater aldri maskinen",
+        "text": "Alt leses i nettleseren. Ingenting lastes opp, så du kan bruke det på konfidensielle produksjoner."
+      },
+      "tested": {
+        "title": "Testet i grandMA3 onPC 2.5.1",
+        "text": "Makroen er verifisert i konsollprogrammet. Vi sier hvilke versjoner som er testet, og ikke mer."
+      },
+      "industry": {
+        "title": "Laget i bransjen, for operatører",
+        "text": "Laget av folk som jobber med forestillinger, og testet på ekte kjøreplaner."
+      }
+    },
+    "storyTitle": "Hvorfor Cuesetter finnes",
+    "story": [
+      "Cuesetter startet backstage. En venn av oss kjører lys på grandMA3, og før hver forestilling skjedde det samme: kjøreplanen kom på PDF, ofte sent, og hvert punkt måtte tastes inn i konsollen for hånd mens lyset ventet.",
+      "Vi jobber selv i bransjen, men ikke ved lysbordet. Så vi bygde verktøyet vi skulle ønske vennen vår hadde, og testet det på ekte kjøreplaner."
+    ],
+    "storySign": "Laget i bransjen, for operatører.",
+    "tagline": "Kjøreplan inn. Cueliste ut.",
+    "finalLead": "Prøv med din neste kjøreplan, eller med eksempelet vårt."
   },
   "steps": {
     "upload": "Last opp",

@@ -12,7 +12,8 @@
     "account": "Account",
     "language": "Language",
     "openApp": "Open the app",
-    "skip": "Skip to content"
+    "skip": "Skip to content",
+    "theme": "Switch between light and dark mode"
   },
   "home": {
     "kicker": "For grandMA3 operators",
@@ -35,7 +36,90 @@
         "title": "Import on the console",
         "text": "Download a macro, import it on grandMA3 and run it once. Your sequence is built with named, empty cues."
       }
-    }
+    },
+    "ctaSub": "Free to try. No account needed.",
+    "demo": {
+      "file": "run-sheet.pdf",
+      "sequence": "Sequence 101",
+      "columns": {
+        "n": "#",
+        "time": "Start",
+        "title": "Title",
+        "extra": "Sound"
+      },
+      "caption": "Your run sheet in, a named cue list out. Columns you don’t need are left behind.",
+      "rows": [
+        {
+          "n": "1",
+          "time": "17:30",
+          "title": [
+            "Doors open"
+          ],
+          "extra": ""
+        },
+        {
+          "n": "2",
+          "time": "18:00",
+          "title": [
+            "Welcome by the host"
+          ],
+          "extra": "HH1"
+        },
+        {
+          "n": "3",
+          "time": "18:07",
+          "title": [
+            "Fjordbyen Brass",
+            "March",
+            "Hymn"
+          ],
+          "extra": "Playback"
+        },
+        {
+          "n": "4",
+          "time": "18:25",
+          "title": [
+            "Talk with Nils Nilsen"
+          ],
+          "extra": "HH1 + HH2"
+        },
+        {
+          "n": "5",
+          "time": "18:40",
+          "title": [
+            "Interval"
+          ],
+          "extra": ""
+        }
+      ]
+    },
+    "proofsTitle": "Why operators use it",
+    "proofs": {
+      "formats": {
+        "title": "Reads the run sheet as it arrives",
+        "text": "PDF, Word or Excel, straight from production. No reformatting, no copying into a template."
+      },
+      "private": {
+        "title": "Your files never leave your computer",
+        "text": "Everything is read in your browser. Nothing is uploaded, so you can use it with confidential shows."
+      },
+      "tested": {
+        "title": "Tested on grandMA3 onPC 2.5.1",
+        "text": "The macro is verified on the console software. We say which versions are tested, and nothing more."
+      },
+      "industry": {
+        "title": "Built in the industry, for operators",
+        "text": "Made by people who work on shows, and tested on real run sheets."
+      }
+    },
+    "storyTitle": "Why Cuesetter exists",
+    "story": [
+      "Cuesetter started backstage. A friend of ours runs lights on grandMA3, and before every show the same thing happened: the run sheet arrived as a PDF, often late, and every item had to be typed into the console by hand while the lighting waited.",
+      "We work in the industry too, just not behind the desk. So we built the tool we wished our friend had, and tested it on real run sheets."
+    ],
+    "storySign": "Built in the industry, for operators.",
+    "tagline": "Run sheet in. Cue list out.",
+    "finalLead": "Try it with your next run sheet, or with our sample."
   },
   "steps": {
     "upload": "Upload",

@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { CueLight } from '@/components/ui';
 import { LocaleSwitcher } from './LocaleSwitcher';
+import { ThemeToggle } from './ThemeToggle';
 
 export function SiteHeader() {
   const t = useTranslations('nav');
@@ -22,6 +23,7 @@ export function SiteHeader() {
         <Link href="/app" className="rounded font-semibold text-ink no-underline transition-colors hover:text-accent">
           {t('newRunSheet')}
         </Link>
+        <ThemeToggle label={t('theme')} />
         <LocaleSwitcher label={t('language')} />
       </nav>
     </header>
