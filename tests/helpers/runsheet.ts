@@ -1,8 +1,7 @@
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 
 /**
- * A synthetic run sheet shaped like the "Hjertebank 2026 – Bjørnafjorden" export described in the
- * brief: columns # · Start · Duration · Title · Lyd · Kommentar, header repeated on every page,
+ * A synthetic run sheet shaped like the planning-system export described in the brief: columns # · Start · Duration · Title · Lyd · Kommentar, header repeated on every page,
  * running header/footer, metadata block, multi-line title cells, duplicate and long titles,
  * and a row split across a page break. Used until the real file is added to fixtures/.
  */
@@ -15,6 +14,9 @@ export interface SheetRow {
   kommentar: string[];
 }
 
+/** A made-up event: the sample must not name real people or places. */
+export const TITLE = 'Høstgalla 2026 - Strandhallen';
+
 const setlist = ['SETTLISTE BEKREFTET', 'Fly høyt', 'Vinterland', 'Ingen andre', 'Hjem igjen', 'Nordlys', 'Bølger & sand', 'Siste dans'];
 
 export const ROWS: SheetRow[] = Array.from({ length: 24 }, (_, i) => {
@@ -24,25 +26,25 @@ export const ROWS: SheetRow[] = Array.from({ length: 24 }, (_, i) => {
   const titles: Record<number, string[]> = {
     1: ['Dørene åpner'],
     2: ['Velkommen ved programleder'],
-    5: ['Samtale med Tarjei'],
+    5: ['Samtale med Nils Nilsen'],
     11: ['Artist 1: Grim Spencer', 'Låt 1', 'Låt 2', 'Låt 3'],
     13: ['Prisutdeling «Årets ildsjel»', 'Vinner: Kari Nordmann', 'Vinner: Ola Nordmann'],
     15: ['Pause'],
-    16: ['Artist 2: "Bjørnafjorden Brass"', 'Marsj', 'Hymne'],
+    16: ['Artist 2: "Fjordbyen Brass"', 'Marsj', 'Hymne'],
     18: ['Innslag fra kommunen', 'Ordfører'],
     20: ['Pause'],
     21: ['Hilsen fra Sophie & Co', 'Video 1', 'Video 2'],
     22: ['Allsang – «Ja, vi elsker»', 'Alle reiser seg'],
     23: ['Konsert: Hovedartist', ...setlist],
-    24: ['Takk for i kveld og vel hjem – vi sees neste år igjen på Os'],
+    24: ['Takk for i kveld og vel hjem – vi sees neste år igjen i Strandhallen'],
   };
   return {
     n,
     start,
     duration: n === 1 ? '00:00:00' : '00:07:00',
     title: titles[n] ?? [`Programpunkt ${n}`],
-    lyd: n === 5 ? ['HH1 + HH2', 'UT TARJEI'] : n % 4 === 0 ? ['Playback'] : [],
-    kommentar: n === 5 ? ['Boge inn fra venstre'] : n % 3 === 0 ? ['Lys ned'] : [],
+    lyd: n === 5 ? ['HH1 + HH2', 'UT NILS'] : n % 4 === 0 ? ['Playback'] : [],
+    kommentar: n === 5 ? ['Inn fra venstre'] : n % 3 === 0 ? ['Lys ned'] : [],
   };
 });
 
@@ -64,10 +66,10 @@ export async function makeRunSheetPdf(rows: SheetRow[] = ROWS): Promise<Uint8Arr
     page.drawText(s, { x, y: H - yTop, size, font: f, color: rgb(0, 0, 0) });
 
   const pageTop = (first: boolean) => {
-    text('Hjertebank 2026 - Bjørnafjorden', 40, 40, 8);
+    text(TITLE, 40, 40, 8);
     y = 60;
     if (first) {
-      text('Hjertebank 2026 - Bjørnafjorden', 40, y + 14, 18, bold);
+      text(TITLE, 40, y + 14, 18, bold);
       y += 30;
       text('When: 12.09.2026 17:30', 40, y, 9);
       text('Printed: 01.09.2026', 40, y + LINE, 9);

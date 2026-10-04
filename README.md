@@ -107,7 +107,7 @@ Legg `navn.pdf` og `navn.expected.json` i `fixtures/`, eller i `fixtures/private
 { "rows": [ { "number": "1", "start": "17:30", "name": "Dørene åpner" } ] }
 ```
 
-Hjertebank-filen fra briefen er ikke lagt inn ennå. Til da dekker `tests/pdf-parse.test.ts` samme oppsett med en syntetisk PDF (24 punkter, gjentatt header, topp-/bunntekst, metadata, flerlinjede titler, Lyd/Kommentar-kolonner, rad delt over sideskift).
+`tests/pdf-parse.test.ts` dekker oppsettet fra briefen med en syntetisk PDF med oppdiktede navn (24 punkter, gjentatt header, topp-/bunntekst, metadata, flerlinjede titler, Lyd/Kommentar-kolonner, rad delt over sideskift). `npm run sample` lager den samme PDF-en som eksempelfil i appen (`public/sample-run-sheet.pdf`).
 
 ## Verifisering
 
