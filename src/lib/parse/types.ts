@@ -14,7 +14,7 @@ export interface PageInfo {
   height: number;
 }
 
-export type Role = 'number' | 'start' | 'duration' | 'title' | 'other';
+export type Role = 'number' | 'start' | 'end' | 'duration' | 'title' | 'other';
 
 export interface Column {
   name: string;

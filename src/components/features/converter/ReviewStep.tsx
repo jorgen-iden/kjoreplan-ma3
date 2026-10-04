@@ -85,6 +85,7 @@ export function ReviewStep({
       <div className="mb-5 flex flex-col gap-3 empty:hidden">
         {linesMode && <Notice kind="warn">{tUpload('linesMode')}</Notice>}
         {prepared.numberingFellBack && <Notice kind="warn">{t('numberingFellBack')}</Notice>}
+        {prepared.numbersFilled > 0 && <Notice kind="info">{t('numbersFilled', { count: prepared.numbersFilled })}</Notice>}
         {truncated > 0 && <Notice kind="warn">{t('truncatedSummary', { count: truncated, max: MAX_NAME_LENGTH })}</Notice>}
       </div>
 

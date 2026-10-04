@@ -16,7 +16,7 @@ export const ROW_GRID =
   'grid grid-cols-[1.5rem_3rem_minmax(0,1fr)_auto] items-start gap-x-2 gap-y-1 md:grid-cols-[1.75rem_4rem_minmax(0,1fr)_5rem_minmax(0,0.9fr)_7rem]';
 
 const FIELD =
-  'w-full rounded-md border border-transparent bg-transparent px-2 py-1.5 text-ink transition-colors duration-150 placeholder:text-muted hover:border-line focus:border-accent focus:bg-card focus:outline-none aria-[invalid=true]:border-danger';
+  'w-full rounded-md border border-transparent bg-transparent px-2 py-1.5 text-ink transition-colors duration-150 placeholder:text-muted md:placeholder:text-transparent hover:border-line focus:border-accent focus:bg-card focus:outline-none aria-[invalid=true]:border-danger';
 
 const TIME_RE = /^\d{1,2}[:.]\d{2}$/;
 

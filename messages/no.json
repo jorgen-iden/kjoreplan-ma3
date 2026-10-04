@@ -107,7 +107,8 @@
     "timeInvalid": "Bruk TT:MM, for eksempel 18:30",
     "emptyTitle": "Ingen cuer ennå",
     "emptyLead": "Legg til en cue for hånd, eller start på nytt med en annen kjøreplan.",
-    "untitled": "Kjøreplan uten navn"
+    "untitled": "Kjøreplan uten navn",
+    "numbersFilled": "{count, plural, one {# cue} other {# cuer}} manglet # i kjøreplanen og fikk et nummer mellom naboene (for eksempel 28.5). Resten beholder sitt #."
   },
   "settings": {
     "title": "Innstillinger",

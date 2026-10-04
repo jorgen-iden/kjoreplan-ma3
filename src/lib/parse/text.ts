@@ -1,4 +1,4 @@
-import { guessHeader, NUMBER_RE, TIME_RE } from './headers';
+import { ensureTitleColumn, guessHeader, keyColumns, startsRow } from './headers';
 import { parseLines } from './lines';
 import type { ParsedTable } from './types';
 
@@ -14,24 +14,20 @@ export function parsePastedText(text: string): ParsedTable {
     if (headerIndex >= 0) {
       const names = splitTabs(lines[headerIndex]);
       const roles = guessHeader(names)!;
-      const numberCol = roles.indexOf('number');
-      const startCol = roles.indexOf('start');
+      const keys = keyColumns(roles);
       const rows: string[][] = [];
       for (const line of lines.slice(headerIndex + 1)) {
         if (!line.trim()) continue;
         const cells = names.map((_, i) => splitTabs(line)[i] ?? '');
         if (cells.join('\t') === names.join('\t')) continue; // repeated header
-        const startsRow =
-          (numberCol >= 0 && NUMBER_RE.test(cells[numberCol])) ||
-          (startCol >= 0 && TIME_RE.test(cells[startCol])) ||
-          (numberCol < 0 && startCol < 0);
-        if (startsRow || !rows.length) rows.push(cells);
+        if (startsRow(cells, keys) || !rows.length) rows.push(cells);
         else
           cells.forEach((c, i) => {
             if (c) rows[rows.length - 1][i] = rows[rows.length - 1][i] ? `${rows[rows.length - 1][i]}\n${c}` : c;
           });
       }
-      return { mode: 'columns', columns: names.map((name, i) => ({ name, guess: roles[i] })), rows };
+      const columns = ensureTitleColumn(names.map((name, i) => ({ name, guess: roles[i] })), rows);
+      return { mode: 'columns', columns, rows };
     }
   }
   return parseLines(lines.map((l) => l.replace(/\t/g, ' ')));

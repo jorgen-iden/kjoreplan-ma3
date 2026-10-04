@@ -1,4 +1,4 @@
-import { guessHeader, NUMBER_RE, TIME_RE } from './headers';
+import { ensureTitleColumn, guessHeader, keyColumns, startsRow } from './headers';
 import { parseLines } from './lines';
 import type { Column, PageInfo, ParsedTable, Role, TextItem } from './types';
 
@@ -98,21 +98,22 @@ export function parseTextItems(items: TextItem[], pages: PageInfo[]): ParsedTabl
     return { ...result, title };
   }
 
-  // Column i owns x in [bounds[i], bounds[i+1]). Cell text is usually left aligned under its
-  // header, so the boundary sits a little left of the next header's start.
+  // Column i owns x in [bounds[i], bounds[i+1]). Cell text often starts a little left of its
+  // header (seen in real run sheets), so the boundary sits a third into a narrow gap between two
+  // headers. In a wide gap the previous column's long text runs far to the right, so there the
+  // boundary stays at most 8pt in front of the next header.
   const { cells, roles } = header;
   const bounds = cells.map((c, i) => {
     if (i === 0) return -Infinity;
     const gap = Math.max(0, c.x - cells[i - 1].right);
-    return c.x - Math.min(gap * 0.4, 8);
+    return Math.max(cells[i - 1].right + gap * 0.35, c.x - 8);
   });
   const columnOf = (x: number) => {
     let col = 0;
     for (let i = 0; i < bounds.length; i++) if (x >= bounds[i] - 0.5) col = i;
     return col;
   };
-  const numberCol = roles.indexOf('number');
-  const startCol = roles.indexOf('start');
+  const keys = keyColumns(roles);
 
   // On pages that repeat the header row, everything above it is page header / metadata.
   const headerYByPage = new Map<number, number>();
@@ -131,17 +132,16 @@ export function parseTextItems(items: TextItem[], pages: PageInfo[]): ParsedTabl
   const rows: string[][] = [];
   for (const line of body) {
     const lineCells: string[] = cells.map(() => '');
+    const lastRight: number[] = cells.map(() => -Infinity);
     for (const it of line.items) {
       const c = columnOf(it.x);
-      lineCells[c] = lineCells[c] ? `${lineCells[c]} ${it.str.trim()}` : it.str.trim();
+      // Runs that touch belong to the same word (PDFs sometimes split "K" + "onferansier").
+      const touching = it.x - lastRight[c] <= 0.15 * it.height;
+      lineCells[c] = lineCells[c] ? `${lineCells[c]}${touching ? '' : ' '}${it.str.trim()}` : it.str.trim();
+      lastRight[c] = it.x + it.width;
     }
     const cleaned = lineCells.map((c) => c.replace(/\s+/g, ' ').trim());
-    const startsRow =
-      (numberCol >= 0 && NUMBER_RE.test(cleaned[numberCol])) ||
-      (startCol >= 0 && TIME_RE.test(cleaned[startCol])) ||
-      (numberCol < 0 && startCol < 0);
-
-    if (startsRow) {
+    if (startsRow(cleaned, keys)) {
       rows.push(cleaned);
     } else if (rows.length) {
       const row = rows[rows.length - 1];
@@ -151,7 +151,7 @@ export function parseTextItems(items: TextItem[], pages: PageInfo[]): ParsedTabl
     }
   }
 
-  const columns: Column[] = cells.map((c, i) => ({ name: c.text, guess: roles[i] }));
+  const columns: Column[] = ensureTitleColumn(cells.map((c, i) => ({ name: c.text, guess: roles[i] })), rows);
   return { mode: 'columns', title, columns, rows };
 }
 

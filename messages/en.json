@@ -107,7 +107,8 @@
     "timeInvalid": "Use HH:MM, for example 18:30",
     "emptyTitle": "No cues yet",
     "emptyLead": "Add a cue by hand, or start over with another run sheet.",
-    "untitled": "Untitled run sheet"
+    "untitled": "Untitled run sheet",
+    "numbersFilled": "{count, plural, one {# cue had} other {# cues had}} no # in the run sheet and got a number between its neighbours (for example 28.5). The rest keep their #."
   },
   "settings": {
     "title": "Settings",

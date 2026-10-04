@@ -1,3 +1,4 @@
+import { labelledDurationIn, startTimeIn, trailingNumberIn } from './parse/headers';
 import type { ParsedTable, Role } from './parse/types';
 
 /** Which column holds what. null = not used. */
@@ -44,6 +45,9 @@ export function stripBullet(line: string): string {
   return line.trim().replace(/^[-–—•*·]\s*/, '').trim();
 }
 
+const NUMBER_LINE = /^\d+(?:\.\d+)?$/;
+const LEADING_NUMBER = /^(\d+)\s+(\S.*)$/;
+
 function splitLines(s: string): string[] {
   return s.split('\n').map((l) => l.trim()).filter(Boolean);
 }
@@ -52,16 +56,38 @@ function splitLines(s: string): string[] {
 export function rowsToCues(table: ParsedTable, mapping: Mapping): Cue[] {
   const cell = (row: string[], col: number | null) => (col === null ? '' : (row[col] ?? '').trim());
   const cues: Cue[] = [];
+  let lastNumber = 0;
   for (const row of table.rows) {
-    const lines = splitLines(cell(row, mapping.title));
-    const time = formatTime(splitLines(cell(row, mapping.start))[0] ?? '');
-    if (!lines.length && !time) continue;
+    let lines = splitLines(cell(row, mapping.title));
+    const startCell = cell(row, mapping.start);
+    const time = formatTime(startTimeIn(startCell) ?? '');
+    let srcNumber = splitLines(cell(row, mapping.number))[0] ?? '';
+    // Without a number column, layouts put the item number in other places:
+    if (!srcNumber) {
+      const leading = lines.length ? LEADING_NUMBER.exec(lines[0]) : null;
+      if (lines.length && NUMBER_LINE.test(lines[0])) {
+        // on its own line at the top of the title cell,
+        srcNumber = lines[0];
+        lines = lines.slice(1);
+      } else if (trailingNumberIn(startCell)) {
+        // after the start time ("Start 9:30:00 1"),
+        srcNumber = trailingNumberIn(startCell)!;
+      } else if (leading && Number(leading[1]) === lastNumber + 1) {
+        // or in front of the title ("20 Heine intro"), only when it is the next number, so a title
+        // like "2 x marimba" is left alone.
+        srcNumber = leading[1];
+        lines = [leading[2], ...lines.slice(1)];
+      }
+    }
+    if (NUMBER_LINE.test(srcNumber)) lastNumber = Math.floor(Number(srcNumber));
+    // Rows with neither a name nor a number are end markers or stray lines, not items.
+    if (!lines.length && !srcNumber) continue;
     cues.push({
       id: newId(),
-      srcNumber: splitLines(cell(row, mapping.number))[0] ?? '',
+      srcNumber,
       name: lines[0] ?? '',
       time,
-      duration: splitLines(cell(row, mapping.duration))[0] ?? '',
+      duration: splitLines(cell(row, mapping.duration))[0] ?? labelledDurationIn(startCell) ?? '',
       note: lines.slice(1).join('\n'),
     });
   }
@@ -95,6 +121,8 @@ export interface Numbering {
   numbers: Map<string, string>;
   /** True when 'follow' was asked for but the # column could not be used. */
   fellBack: boolean;
+  /** Cues without a # that got a number between their neighbours. */
+  filled: number;
 }
 
 /**
@@ -104,12 +132,52 @@ export interface Numbering {
  */
 export function computeNumbers(cues: Cue[], mode: NumberingMode): Numbering {
   if (mode === 'follow') {
-    const result = tryNumbers(cues, (c) => c.srcNumber.trim().replace(',', '.'));
-    if (result) return { numbers: result, fellBack: false };
+    const filled = fillMissingNumbers(cues);
+    const result = filled && tryNumbers(cues, (c) => filled.numbers.get(c.id)!);
+    if (filled && result) return { numbers: result, fellBack: false, filled: filled.count };
   }
   let n = 0;
   const running = tryNumbers(cues, () => String(++n))!;
-  return { numbers: running, fellBack: mode === 'follow' };
+  return { numbers: running, fellBack: mode === 'follow', filled: 0 };
+}
+
+const validSrc = (c: Cue): number | null => {
+  const s = c.srcNumber.trim().replace(',', '.');
+  return CUE_NUMBER_RE.test(s) && Number(s) > 0 ? Number(s) : null;
+};
+
+const formatNumber = (n: number) => String(Math.round(n * 1000) / 1000);
+
+/**
+ * Top-level cues keep their # from the run sheet. Cues without one get a number between their
+ * neighbours (1 → 2 → 3 when there is room, otherwise 28 → 28.5 → 29; several in a row are spread evenly), so one missing # doesn't throw
+ * away the numbering of the whole list. Null when the run sheet has no usable numbers at all.
+ */
+function fillMissingNumbers(cues: Cue[]): { numbers: Map<string, string>; count: number } | null {
+  const tops = cues.filter((c) => !c.parentId);
+  const values = tops.map(validSrc);
+  if (!values.some((v) => v !== null)) return null;
+  const numbers = new Map<string, string>();
+  let count = 0;
+  for (let i = 0; i < tops.length; ) {
+    if (values[i] !== null) {
+      numbers.set(tops[i].id, formatNumber(values[i]!));
+      i++;
+      continue;
+    }
+    let end = i;
+    while (end < tops.length && values[end] === null) end++;
+    const lo = i > 0 ? values[i - 1]! : 0;
+    const hi = end < tops.length ? values[end]! : Infinity;
+    const run = end - i;
+    // Whole numbers when they fit (1, _, 3 → 2), otherwise evenly spaced decimals (28, _, 29 → 28.5).
+    const wholeFits = Number.isInteger(lo) && hi - lo - 1 >= run;
+    const step = wholeFits ? 1 : Math.min(0.5, (hi - lo) / (run + 1));
+    for (let k = 0; k < run; k++) numbers.set(tops[i + k].id, formatNumber(lo + step * (k + 1)));
+    count += run;
+    i = end;
+  }
+  return { numbers, count };
 }
 
 function tryNumbers(cues: Cue[], topNumber: (c: Cue) => string): Map<string, string> | null {

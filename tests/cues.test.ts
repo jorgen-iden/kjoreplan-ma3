@@ -19,8 +19,26 @@ describe('computeNumbers', () => {
     expect(fellBack).toBe(false);
   });
 
-  it('falls back to running numbers when # is missing or not increasing', () => {
-    for (const src of [['1', '', '3'], ['1', '3', '2'], ['1', '1'], ['a', 'b']]) {
+  it('gives cues without a # a number between their neighbours', () => {
+    const cases: [string[], string[]][] = [
+      [['1', '', '3'], ['1', '2', '3']],
+      [['28', '', '29'], ['28', '28.5', '29']],
+      [['28', '', '', '29'], ['28', '28.333', '28.667', '29']],
+      [['32', '', ''], ['32', '33', '34']],
+      [['10', '', '20'], ['10', '11', '20']],
+      [['', '1'], ['0.5', '1']],
+    ];
+    for (const [src, want] of cases) {
+      const cues = src.map((s) => cue(s));
+      const { numbers, fellBack, filled } = computeNumbers(cues, 'follow');
+      expect(fellBack).toBe(false);
+      expect(filled).toBe(src.filter((s) => !s).length);
+      expect(cues.map((c) => numbers.get(c.id))).toEqual(want);
+    }
+  });
+
+  it('falls back to running numbers when # is missing everywhere or not increasing', () => {
+    for (const src of [['', '', ''], ['1', '3', '2'], ['1', '1'], ['a', 'b']]) {
       const cues = src.map((s) => cue(s));
       const { numbers, fellBack } = computeNumbers(cues, 'follow');
       expect(fellBack).toBe(true);

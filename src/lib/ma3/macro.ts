@@ -26,6 +26,8 @@ export interface PreparedCues {
   cues: MacroCue[];
   /** 'follow' numbering was asked for but the # column could not be used. */
   numberingFellBack: boolean;
+  /** Cues without a # that got an in-between number. */
+  numbersFilled: number;
 }
 
 /** Words used in the Note field, in the user's language. */
@@ -38,7 +40,7 @@ const DEFAULT_LABELS: NoteLabels = { start: 'Start', duration: 'Duration' };
 
 /** Work out the number, label and note each cue will get on the console. */
 export function prepareCues(cues: Cue[], s: MacroSettings, labels: NoteLabels = DEFAULT_LABELS): PreparedCues {
-  const { numbers, fellBack } = computeNumbers(cues, s.numbering);
+  const { numbers, fellBack, filled } = computeNumbers(cues, s.numbering);
   const prepared = cues.map((c) => {
     const base = s.nameFormat === 'time-title' && c.time ? `${c.time} ${c.name}` : c.name;
     const label = sanitizeText(base);
@@ -52,7 +54,7 @@ export function prepareCues(cues: Cue[], s: MacroSettings, labels: NoteLabels = 
     const note = sanitizeText([head, body].filter(Boolean).join(' / '), MAX_NOTE_LENGTH).value;
     return { id: c.id, number: numbers.get(c.id)!, label: label.value, note, truncated: label.truncated };
   });
-  return { cues: prepared, numberingFellBack: fellBack };
+  return { cues: prepared, numberingFellBack: fellBack, numbersFilled: filled };
 }
 
 /** The MA command lines, in order. Verified in grandMA3 onPC 2.5.1.0. */

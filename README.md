@@ -78,9 +78,21 @@ fixtures/             eksempelfiler
 
 Tolkningen er kolonnebasert: header-raden (`#`, `Start`, `Duration`, `Title` …) gir kolonnegrensene, som brukes på alle sider. En ny rad starter når #- eller Start-kolonnen har en verdi; andre linjer fortsetter raden over, også over sideskift. Gjentatte header-rader, topp-/bunntekst som gjentas på flere sider, sidetall og metadata over header-raden filtreres bort. Uten header-rad brukes linjebasert tolkning. Skannede PDF-er uten tekstlag gir en melding om å bruke tekstfeltet (OCR er utenfor v1).
 
+### Testet mot ekte kjøreplaner
+
+Tolkeren er testet mot fire ekte PDF-er i tre ulike oppsett:
+
+| Oppsett | Kjennetegn |
+|---|---|
+| Tabell med «Tid fra / Tid til / Hva / Lokasjon / Merknad» | rader med bare sluttid, datokolonne, flere linjer i én rad |
+| Blokker med «Start / Varighet / Slutt» | punktnummer etter starttiden, tittel på linjen under |
+| Minuttplan med «NR / KL / DURATA / STAGE / TEKNIKK» | tittelkolonnen har et uvanlig navn, tekst starter til venstre for overskriften, enkelte rader mangler nummer |
+
+Testene i `tests/real-layouts.test.ts` etterligner disse oppsettene uten å inneholde kundedata.
+
 ### Ekte eksempelfiler
 
-Legg `navn.pdf` og `navn.expected.json` i `fixtures/`, så testes de automatisk (`tests/fixtures.test.ts`):
+Legg `navn.pdf` og `navn.expected.json` i `fixtures/`, eller i `fixtures/private/` for kundedokumenter (git ignorerer den mappen), så testes de automatisk (`tests/fixtures.test.ts`). `npm run fixture:expect -- fixtures/private/*.pdf` lager fasit-filene ut fra dagens tolking. Sjekk dem for hånd før du stoler på dem.
 
 ```json
 { "rows": [ { "number": "1", "start": "17:30", "name": "Dørene åpner" } ] }

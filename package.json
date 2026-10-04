@@ -10,7 +10,8 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "sample": "tsx scripts/make-sample-pdf.ts",
-    "postinstall": "node scripts/copy-pdf-worker.mjs"
+    "postinstall": "node scripts/copy-pdf-worker.mjs",
+    "fixture:expect": "tsx scripts/fixture-expect.ts"
   },
   "dependencies": {
     "jszip": "^3.10.2",
