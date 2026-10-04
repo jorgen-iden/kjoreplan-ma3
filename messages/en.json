@@ -45,7 +45,7 @@
         "n": "#",
         "time": "Start",
         "title": "Title",
-        "extra": "Sound"
+        "extra": "Notes"
       },
       "caption": "Your run sheet in, a named cue list out. Columns you don’t need are left behind.",
       "rows": [
@@ -63,7 +63,7 @@
           "title": [
             "Welcome by the host"
           ],
-          "extra": "HH1"
+          "extra": "Lectern"
         },
         {
           "n": "3",
@@ -73,7 +73,7 @@
             "March",
             "Hymn"
           ],
-          "extra": "Playback"
+          "extra": "Enters stage left"
         },
         {
           "n": "4",
@@ -81,7 +81,7 @@
           "title": [
             "Talk with Nils Nilsen"
           ],
-          "extra": "HH1 + HH2"
+          "extra": "Two chairs"
         },
         {
           "n": "5",

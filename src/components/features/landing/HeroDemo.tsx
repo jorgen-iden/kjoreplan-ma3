@@ -8,7 +8,7 @@ export interface DemoRow {
   time: string;
   /** Title lines: the first becomes the cue, the rest become sub-cues. */
   title: string[];
-  /** A column Cuesetter ignores (sound notes), shown greyed out. */
+  /** A column Cuesetter ignores (production notes), shown greyed out. */
   extra: string;
 }
 
@@ -60,7 +60,7 @@ export function HeroDemo({ rows, labels }: { rows: DemoRow[]; labels: HeroDemoLa
         {/* The run sheet, as it arrives from production. */}
         <div className="bg-card p-4 text-xs sm:p-5" aria-hidden="true">
           <p className="mb-3 font-mono text-[11px] text-muted">{labels.file}</p>
-          <div className="grid grid-cols-[1.25rem_2.75rem_minmax(0,1fr)_3.5rem] gap-x-2 border-b border-line pb-1.5 font-bold">
+          <div className="grid grid-cols-[1.25rem_2.75rem_minmax(0,1fr)_4.5rem] gap-x-2 border-b border-line pb-1.5 font-bold">
             <span>{labels.columns.n}</span>
             <span>{labels.columns.time}</span>
             <span>{labels.columns.title}</span>
@@ -69,7 +69,7 @@ export function HeroDemo({ rows, labels }: { rows: DemoRow[]; labels: HeroDemoLa
           {rows.map((r, i) => (
             <div
               key={i}
-              className={`grid grid-cols-[1.25rem_2.75rem_minmax(0,1fr)_3.5rem] gap-x-2 border-b border-line-soft py-1.5 transition-colors duration-300 ${
+              className={`grid grid-cols-[1.25rem_2.75rem_minmax(0,1fr)_4.5rem] gap-x-2 border-b border-line-soft py-1.5 transition-colors duration-300 ${
                 active === i ? 'bg-accent-soft' : ''
               }`}
             >

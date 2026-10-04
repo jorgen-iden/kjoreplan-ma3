@@ -45,7 +45,7 @@
         "n": "#",
         "time": "Start",
         "title": "Tittel",
-        "extra": "Lyd"
+        "extra": "Notater"
       },
       "caption": "Kjøreplanen inn, en navngitt cueliste ut. Kolonner du ikke trenger, blir liggende igjen.",
       "rows": [
@@ -63,7 +63,7 @@
           "title": [
             "Velkommen ved programleder"
           ],
-          "extra": "HH1"
+          "extra": "Talerstol"
         },
         {
           "n": "3",
@@ -73,7 +73,7 @@
             "Marsj",
             "Hymne"
           ],
-          "extra": "Playback"
+          "extra": "Inn fra venstre"
         },
         {
           "n": "4",
@@ -81,7 +81,7 @@
           "title": [
             "Samtale med Nils Nilsen"
           ],
-          "extra": "HH1 + HH2"
+          "extra": "To stoler"
         },
         {
           "n": "5",
