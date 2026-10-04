@@ -57,6 +57,8 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
                 sequence: t('demo.sequence'),
                 columns: { n: t('demo.columns.n'), time: t('demo.columns.time'), title: t('demo.columns.title'), extra: t('demo.columns.extra') },
                 go: t('demo.go'),
+                from: t('demo.from'),
+                to: t('demo.to'),
               }}
             />
           </div>
