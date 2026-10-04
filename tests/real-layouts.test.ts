@@ -116,6 +116,31 @@ describe('Wide gap after the title column', () => {
   });
 });
 
+describe('Overlapping headers, duration and title in one run, side notes (banquet schedule)', () => {
+  const H: Cell[] = [[38, 'Tidspunkt start'], [97, 'Tidspunkt Slutt'], [186, 'Tidsbruk(min)'], [242, 'Anledning']];
+  const { table, cues } = cuesOf([
+    H,
+    [[67, '19:20'], [157, '20:00'], [227, '40 Musikk + apértif'], [502, 'BBB = Big Business Band']],
+    [[67, '20:10'], [157, '20:18'], [227, '8 Sjenking av hvitvin'], [502, 'God kommunikasjon']],
+    [[67, '21:00'], [157, '21:12'], [210, '60 min']],
+    [[157, '22:59'], [237, 'Bankett ferdig']],
+  ]);
+
+  it('keeps overlapping headers apart and recognises them', () => {
+    expect(table.columns.slice(0, 4).map((c) => c.guess)).toEqual(['start', 'end', 'duration', 'title']);
+  });
+
+  it('splits "40 Musikk" into duration and title, keeps "60 min" whole and side notes out of titles', () => {
+    expect(cues.map((c) => [c.time, c.duration, c.name])).toEqual([
+      ['19:20', '40', 'Musikk + apértif'],
+      ['20:10', '8', 'Sjenking av hvitvin'],
+      ['21:00', '60 min', ''],
+      ['', '', 'Bankett ferdig'],
+    ].filter((r) => r[2] !== ''));
+    expect(cues.map((c) => c.name).join(' ')).not.toMatch(/BBB|kommunikasjon/);
+  });
+});
+
 describe('ensureTitleColumn', () => {
   it('picks the wordiest unrecognised column when no title header was found', () => {
     const cols = ensureTitleColumn(

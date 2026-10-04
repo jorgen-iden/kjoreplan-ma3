@@ -1,4 +1,4 @@
-import { ensureTitleColumn, guessHeader, keyColumns, startsRow } from './headers';
+import { ensureTitleColumn, guessHeader, headerRole, keyColumns, startsRow } from './headers';
 import { parseLines } from './lines';
 import type { Column, PageInfo, ParsedTable, Role, TextItem } from './types';
 
@@ -17,6 +17,13 @@ interface HeaderCell {
 
 const PAGE_NUMBER_RE = /^(?:page|side|s\.)?\s*\d+\s*(?:of|av|\/)\s*\d+$/i;
 const METADATA_RE = /^(?:when|printed|by|date|dato|utskrevet|skrevet ut|av|tid)\s*:/i;
+/** Text starting this far (pt) right of the last header's start is a side note, not table content. */
+const SIDE_NOTE_DISTANCE = 220;
+/** Columns where a leading number may be split off from following text. */
+const SPLITTABLE = new Set<Role>(['duration', 'number']);
+const LEADING_NUMBER = /^(\d+(?:[.,]\d+)?)\s+(\S.*)$/;
+/** "60 min", "5 sek", "2 timer": a number with its unit is one value, not a number plus a title. */
+const UNIT_AFTER_NUMBER = /^\d+(?:[.,]\d+)?\s*(?:min|minutter|minutes|mins?|m|sek|sekunder|sec|s|t|timer|time|hours?|h)\.?$/i;
 /** Fraction of the page height at the top and bottom treated as header/footer zone. */
 const MARGIN = 0.1;
 
@@ -57,8 +64,12 @@ function headerCells(line: Line): HeaderCell[] {
   const cells: HeaderCell[] = [];
   for (const it of line.items) {
     const last = cells[cells.length - 1];
-    if (last && it.x - last.right < 0.6 * it.height) {
-      last.text = `${last.text} ${it.str.trim()}`;
+    const text = it.str.trim();
+    // Close runs are one header ("Start" "time"), unless both are known headers on their own:
+    // tight layouts overlap neighbouring headers ("Tidspunkt start" | "Tidspunkt Slutt").
+    const separate = last && headerRole(last.text) !== null && headerRole(text) !== null && headerRole(`${last.text} ${text}`) === null;
+    if (last && !separate && it.x - last.right < 0.6 * it.height) {
+      last.text = `${last.text} ${text}`;
       last.right = it.x + it.width;
     } else {
       cells.push({ text: it.str.trim(), x: it.x, right: it.x + it.width });
@@ -129,16 +140,42 @@ export function parseTextItems(items: TextItem[], pages: PageInfo[]): ParsedTabl
     return l.page >= firstHeaderPage;
   });
 
+  // Text that starts far to the right of the last header is not part of the table (a legend or
+  // side notes). It goes into an extra, unnamed column so it never ends up in the titles.
+  const lastHeader = cells[cells.length - 1];
+  const sideX = lastHeader.x + SIDE_NOTE_DISTANCE;
+  const SIDE = cells.length;
+  let hasSide = false;
+
   const rows: string[][] = [];
   for (const line of body) {
-    const lineCells: string[] = cells.map(() => '');
-    const lastRight: number[] = cells.map(() => -Infinity);
-    for (const it of line.items) {
-      const c = columnOf(it.x);
+    const lineCells: string[] = [...cells.map(() => ''), ''];
+    const lastRight: number[] = [...cells.map(() => -Infinity), -Infinity];
+    const add = (c: number, text: string, x: number, right: number, height: number) => {
       // Runs that touch belong to the same word (PDFs sometimes split "K" + "onferansier").
-      const touching = it.x - lastRight[c] <= 0.15 * it.height;
-      lineCells[c] = lineCells[c] ? `${lineCells[c]}${touching ? '' : ' '}${it.str.trim()}` : it.str.trim();
-      lastRight[c] = it.x + it.width;
+      const touching = x - lastRight[c] <= 0.15 * height;
+      lineCells[c] = lineCells[c] ? `${lineCells[c]}${touching ? '' : ' '}${text}` : text;
+      lastRight[c] = right;
+    };
+    for (const it of line.items) {
+      const text = it.str.trim();
+      let c = columnOf(it.x);
+      if (c === cells.length - 1 && it.x > sideX) {
+        c = SIDE;
+        hasSide = true;
+      }
+      // Plain text (no digits) can't be a number or duration: it belongs to the next column.
+      if (SPLITTABLE.has(roles[c]) && c + 1 < cells.length && !/\d/.test(text)) c += 1;
+      // A number run together with the next column's text ("40 Musikk + apértif" under a
+      // duration header) is split: the number stays, the text moves to the next column.
+      const split =
+        SPLITTABLE.has(roles[c]) && c + 1 < cells.length && !UNIT_AFTER_NUMBER.test(text) ? LEADING_NUMBER.exec(text) : null;
+      if (split) {
+        add(c, split[1], it.x, it.x, it.height);
+        add(c + 1, split[2], it.x, it.x + it.width, it.height);
+      } else {
+        add(c, text, it.x, it.x + it.width, it.height);
+      }
     }
     const cleaned = lineCells.map((c) => c.replace(/\s+/g, ' ').trim());
     if (startsRow(cleaned, keys)) {
@@ -150,8 +187,11 @@ export function parseTextItems(items: TextItem[], pages: PageInfo[]): ParsedTabl
       });
     }
   }
+  if (!hasSide) rows.forEach((r) => r.pop());
 
-  const columns: Column[] = ensureTitleColumn(cells.map((c, i) => ({ name: c.text, guess: roles[i] })), rows);
+  const named: Column[] = cells.map((c, i) => ({ name: c.text, guess: roles[i] }));
+  if (hasSide) named.push({ name: '', guess: 'other' });
+  const columns = ensureTitleColumn(named, rows);
   return { mode: 'columns', title, columns, rows };
 }
 
