@@ -4,7 +4,7 @@ Gjør en kjøreplan (PDF eller innlimt tekst) om til en makro for grandMA3. Makr
 
 Alt kjører i nettleseren. Ingen backend, ingen innlogging, og ingen filer forlater maskinen.
 
-> **Status:** ZIP-importen er testet i grandMA3 onPC 2.5.1.0: makroen importeres, bygger sekvensen med riktige cue-numre og navn, og æ/ø/å vises riktig. Under-cuer, Note-feltet og andre MA-versjoner er **ikke testet** ennå. Se [Verifisering](#verifisering).
+> **Status:** ZIP-importen er testet i grandMA3 onPC 2.5.1.0: makroen importeres, bygger sekvensen med riktige cue-numre og navn, og æ/ø/å vises riktig. Under-cuer og Note-feltet virker også. Andre MA-versjoner er **ikke testet** ennå. Se [Verifisering](#verifisering).
 
 ## Kom i gang
 
@@ -41,7 +41,7 @@ Makroen inneholder:
 ClearAll
 Store Sequence 101 Cue 1
 Label Sequence 101 Cue 1 "Velkommen"
-Set Sequence 101 Cue 1 Property "Note" "Start 17:30 / …"     (hvis notat er på – syntaks ikke verifisert)
+Set Sequence 101 Cue 1 Property "Note" "Start 17:30 / …"     (hvis notat er på)
 …
 Label Sequence 101 "Kjøreplan dag 1"
 ```
@@ -92,8 +92,8 @@ grandMA3 sitt XML-format er ikke offentlig dokumentert. Strukturen i `src/ma3/ma
 | Import av ZIP/makro i onPC 2.5.1.0 (fil med `DataVersion="2.3.0.0"`) | ✅ Virker |
 | Sekvens, cue-numre og cue-navn | ✅ Virker |
 | æ, ø, å i navn | ✅ Virker |
-| Under-cuer (23.1, 23.2 …) | Ikke testet |
-| Note-feltet (`Set … Property "Note"`) | Ikke testet |
+| Under-cuer (23.1, 23.2 …) | ✅ Virker |
+| Note-feltet (`Set … Property "Note"`) | ✅ Virker |
 | Andre MA-versjoner og `DataVersion`-verdier i `ma-versions.json` | Ikke testet |
 
 For å verifisere trengs en referanseeksport fra grandMA3 onPC i versjonen som brukes: en makro laget for hånd med `ClearAll`, `Store` av en vanlig cue og en under-cue (13.1), `Label` med «æøå», og en kommando som setter cuens Note-felt, eksportert til `macros`-mappen. Generatoren tilpasses deretter den eksakte strukturen (attributter, rekkefølge, `DataVersion`, Note-syntaks).

@@ -42,10 +42,7 @@ export function prepareCues(cues: Cue[], s: MacroSettings): PreparedCues {
   return { cues: prepared, numberingFellBack: fellBack };
 }
 
-/**
- * The MA command lines, in order. The syntax for the Note property is NOT verified yet
- * (see README: Verifisering).
- */
+/** The MA command lines, in order. Verified in grandMA3 onPC 2.5.1.0. */
 export function buildCommands(cues: MacroCue[], s: MacroSettings): string[] {
   const seq = `Sequence ${s.sequence}`;
   const cmds: string[] = [];
