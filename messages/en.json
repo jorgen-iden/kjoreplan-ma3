@@ -116,14 +116,7 @@
     "ctaSample": "Try the sample run sheet",
     "cueLabel": "Cue {n}",
     "visuals": {
-      "files": [
-        "run-sheet.pdf",
-        "programme.docx",
-        "plan.xlsx"
-      ],
       "sequence": "Sequence 101",
-      "uploaded": "Uploaded",
-      "local": "Read in your browser",
       "filledTag": "filled in",
       "numbers": [
         {
@@ -149,7 +142,9 @@
           "n": "13",
           "name": "Interval"
         }
-      ]
+      ],
+      "machine": "Your computer",
+      "noUpload": "No upload, no server"
     },
     "proofsKicker": "Why",
     "stepsKicker": "How it works",

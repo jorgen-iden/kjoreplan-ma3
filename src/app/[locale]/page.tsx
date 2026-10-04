@@ -23,8 +23,8 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
   const t = useTranslations('home');
 
   const visuals = {
-    formats: <FormatsVisual files={t.raw('visuals.files') as string[]} sequence={t('visuals.sequence')} />,
-    private: <PrivacyVisual uploaded={t('visuals.uploaded')} local={t('visuals.local')} />,
+    formats: <FormatsVisual sequence={t('visuals.sequence')} />,
+    private: <PrivacyVisual machine={t('visuals.machine')} noUpload={t('visuals.noUpload')} />,
     numbers: <NumbersVisual rows={t.raw('visuals.numbers') as NumberRow[]} filledTag={t('visuals.filledTag')} />,
   };
 

@@ -116,14 +116,7 @@
     "ctaSample": "Prøv med eksempel-kjøreplanen",
     "cueLabel": "Cue {n}",
     "visuals": {
-      "files": [
-        "kjoreplan.pdf",
-        "program.docx",
-        "plan.xlsx"
-      ],
       "sequence": "Sekvens 101",
-      "uploaded": "Lastet opp",
-      "local": "Lest i nettleseren",
       "filledTag": "fylt inn",
       "numbers": [
         {
@@ -149,7 +142,9 @@
           "n": "13",
           "name": "Pause"
         }
-      ]
+      ],
+      "machine": "Din maskin",
+      "noUpload": "Ingen opplasting, ingen server"
     },
     "proofsKicker": "Hvorfor",
     "stepsKicker": "Slik virker det",

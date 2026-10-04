@@ -26,6 +26,10 @@
   --color-console-ink: #e6e9ed;
   --color-console-muted: #9aa3ae;
   --color-console-accent: #8ea2ff;
+  /* File type colours, as operating systems label them. Only used on file icons. */
+  --color-file-pdf: #e5484d;
+  --color-file-docx: #3e7bfa;
+  --color-file-xlsx: #22a861;
   --font-sans: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
@@ -43,6 +47,7 @@
   /* The cue light in the logo mark: a slow breath on standby, a flash on GO. */
   --animate-cue-standby: cue-standby 3.2s ease-in-out infinite;
   --animate-cue-go: cue-go 900ms var(--ease-out-quint);
+  --animate-dash-flow: dash-flow 1.2s linear infinite;
   --animate-cue-row-in: cue-row-in 420ms var(--ease-out-quint) backwards;
 
   @keyframes fade-in-up {
@@ -79,6 +84,12 @@
     }
     100% {
       transform: scale(1);
+    }
+  }
+  /* Dashes that run along a line, like data moving. */
+  @keyframes dash-flow {
+    to {
+      stroke-dashoffset: -16;
     }
   }
   @keyframes cue-row-in {
