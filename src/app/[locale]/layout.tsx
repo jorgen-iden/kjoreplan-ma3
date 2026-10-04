@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import { JetBrains_Mono, Schibsted_Grotesk } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
@@ -58,6 +59,8 @@ export default async function LocaleLayout({
     <html lang={locale === 'no' ? 'nb' : locale} className={`${sans.variable} ${mono.variable}`}>
       <body className="min-h-screen">
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        {/* Cookieless page-view counting (Vercel Web Analytics). Only page addresses are sent, never run sheet content. */}
+        <Analytics />
       </body>
     </html>
   );
