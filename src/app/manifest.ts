@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Cuesetter',
-    short_name: 'Cuesetter',
+    name: 'CueSetter',
+    short_name: 'CueSetter',
     description: 'Turn run sheets into grandMA3 cue lists.',
     start_url: '/app',
     display: 'standalone',

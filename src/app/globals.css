@@ -19,6 +19,17 @@
   --color-warn-soft: #fff8ec;
   --color-danger: #a11b1b;
   --color-danger-soft: #fdecec;
+  /* The console screen in the front page demo: dark in both light and dark mode, like a real desk. */
+  --color-console: #0f1216;
+  --color-console-raised: #181c22;
+  --color-console-line: #262b33;
+  --color-console-ink: #e6e9ed;
+  --color-console-muted: #9aa3ae;
+  --color-console-accent: #8ea2ff;
+  /* File type colours, as operating systems label them. Only used on file icons. */
+  --color-file-pdf: #e5484d;
+  --color-file-docx: #3e7bfa;
+  --color-file-xlsx: #22a861;
   --font-sans: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
@@ -33,6 +44,11 @@
   --animate-fade-in-up: fade-in-up 0.5s var(--ease-out-quint) backwards;
   --animate-pop-in: pop-in 160ms var(--ease-out-back) backwards;
   --animate-soft-pulse: soft-pulse 2s ease-in-out infinite;
+  /* The cue light in the logo mark: a slow breath on standby, a flash on GO. */
+  --animate-cue-standby: cue-standby 3.2s ease-in-out infinite;
+  --animate-cue-go: cue-go 900ms var(--ease-out-quint);
+  --animate-dash-flow: dash-flow 1.2s linear infinite;
+  --animate-cue-row-in: cue-row-in 420ms var(--ease-out-quint) backwards;
 
   @keyframes fade-in-up {
     0% {
@@ -50,6 +66,38 @@
       transform: scale(0.96);
     }
   }
+  @keyframes cue-standby {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.45;
+    }
+  }
+  @keyframes cue-go {
+    0% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(1.55);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  /* Dashes that run along a line, like data moving. */
+  @keyframes dash-flow {
+    to {
+      stroke-dashoffset: -16;
+    }
+  }
+  @keyframes cue-row-in {
+    0% {
+      opacity: 0;
+      transform: translateX(-12px);
+    }
+  }
   @keyframes soft-pulse {
     0%,
     100% {
@@ -63,8 +111,9 @@
   }
 }
 
+/* Dark mode follows the system unless the theme button has chosen (data-theme on <html>). */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --color-paper: #121316;
     --color-card: #1b1d21;
     --color-ink: #eceae4;
@@ -85,8 +134,46 @@
   }
 }
 
+:root[data-theme='dark'] {
+  --color-paper: #121316;
+  --color-card: #1b1d21;
+  --color-ink: #eceae4;
+  --color-subtle: #c9c6be;
+  --color-muted: #a3a29c;
+  --color-line: #31333a;
+  --color-line-soft: #26282e;
+  --color-chip: #2a2c32;
+  --color-accent: #8ea2ff;
+  --color-accent-strong: #b4c1ff;
+  --color-accent-soft: #232947;
+  --color-accent-line: #3b4686;
+  --color-on-accent: #0d1330;
+  --color-warn: #f2c47a;
+  --color-warn-soft: #2e2618;
+  --color-danger: #f3a3a3;
+  --color-danger-soft: #3a1d1d;
+}
+
 html {
   color-scheme: light dark;
+}
+html[data-theme='light'] {
+  color-scheme: light;
+}
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+/* dark: means the dark theme is showing, whether from the system or from the theme button. */
+@custom-variant dark {
+  &:where([data-theme='dark'], [data-theme='dark'] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme='light']) *) {
+      @slot;
+    }
+  }
 }
 
 body {
@@ -130,6 +217,8 @@ body {
   *::before,
   *::after {
     animation-duration: 1ms !important;
+    /* Without this, looping animations (cue light, pulses) would flicker at 1ms per cycle. */
+    animation-iteration-count: 1 !important;
     transition-duration: 1ms !important;
   }
 }

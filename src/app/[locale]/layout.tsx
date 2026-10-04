@@ -7,6 +7,7 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import { alternates, ogImages, SITE_NAME, SITE_URL } from '@/lib/site';
+import { THEME_INIT_SCRIPT } from '@/lib/theme';
 import '../globals.css';
 
 // Fonts are downloaded at build time and served from our own domain.
@@ -57,7 +58,11 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale === 'no' ? 'nb' : locale} className={`${sans.variable} ${mono.variable}`}>
+    // suppressHydrationWarning: the theme script may set data-theme on <html> before React loads.
+    <html lang={locale === 'no' ? 'nb' : locale} className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
       <body className="min-h-screen">
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
         {/* Cookieless page-view counting (Vercel Web Analytics). Only page addresses are sent, never run sheet content. */}

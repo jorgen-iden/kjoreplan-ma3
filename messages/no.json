@@ -1,10 +1,10 @@
 {
   "meta": {
-    "title": "Cuesetter – gjør kjøreplaner om til cuelister i grandMA3",
+    "title": "CueSetter – gjør kjøreplaner om til cuelister i grandMA3",
     "description": "Last opp kjøreplanen som PDF, Word eller Excel og få en makro som bygger en navngitt cueliste på grandMA3-konsollen. Kjører i nettleseren – filene forlater aldri maskinen din.",
-    "appTitle": "Konverter – Cuesetter",
+    "appTitle": "Konverter – CueSetter",
     "appDescription": "Gjør en kjøreplan (PDF, Word eller Excel) om til en grandMA3-makro: sjekk kolonner, se over cuene, last ned og importer på konsollen.",
-    "notFoundTitle": "Fant ikke siden – Cuesetter"
+    "notFoundTitle": "Fant ikke siden – CueSetter"
   },
   "nav": {
     "newRunSheet": "Ny kjøreplan",
@@ -12,20 +12,20 @@
     "account": "Konto",
     "language": "Språk",
     "openApp": "Åpne appen",
-    "skip": "Hopp til innhold"
+    "skip": "Hopp til innhold",
+    "theme": "Bytt mellom lys og mørk modus"
   },
   "home": {
     "kicker": "For grandMA3-operatører",
     "title": "Fra kjøreplan til cueliste på ett minutt",
     "lead": "Last opp kjøreplanen du fikk fra produksjonen – PDF, Word eller Excel. Få én tom, navngitt cue per punkt, i riktig rekkefølge, klar til import på konsollen.",
     "cta": "Prøv nå",
-    "privacy": "Kjører i nettleseren. Kjøreplanen forlater aldri maskinen din.",
     "disclaimer": "Ikke tilknyttet MA Lighting. grandMA3 er et varemerke for MA Lighting Technology GmbH.",
-    "stepsTitle": "Slik virker det",
+    "stepsTitle": "Tre cuer, og sekvensen står",
     "steps": {
       "upload": {
         "title": "Last opp kjøreplanen",
-        "text": "Slipp inn PDF-, Word- eller Excel-filen fra produksjonen, eller lim inn teksten. Kolonner som #, Start og Tittel finnes automatisk."
+        "text": "Slipp inn filen fra produksjonen, eller lim inn teksten. Kolonner som #, Start og Tittel finnes automatisk."
       },
       "review": {
         "title": "Se over cuene",
@@ -35,7 +35,121 @@
         "title": "Importer på konsollen",
         "text": "Last ned en makro, importer den på grandMA3 og kjør den én gang. Sekvensen bygges med navngitte, tomme cuer."
       }
-    }
+    },
+    "ctaSub": "Gratis å prøve. Ingen konto.",
+    "demo": {
+      "file": "kjoreplan.pdf",
+      "sequence": "Sekvens 101",
+      "columns": {
+        "n": "#",
+        "time": "Start",
+        "title": "Tittel",
+        "extra": "Notater"
+      },
+      "rows": [
+        {
+          "n": "1",
+          "time": "17:30",
+          "title": [
+            "Dørene åpner"
+          ],
+          "extra": ""
+        },
+        {
+          "n": "2",
+          "time": "18:00",
+          "title": [
+            "Velkommen ved programleder"
+          ],
+          "extra": "Talerstol"
+        },
+        {
+          "n": "3",
+          "time": "18:07",
+          "title": [
+            "Fjordbyen Brass",
+            "Marsj",
+            "Hymne"
+          ],
+          "extra": "Inn fra venstre"
+        },
+        {
+          "n": "4",
+          "time": "18:25",
+          "title": [
+            "Samtale med Nils Nilsen"
+          ],
+          "extra": "To stoler"
+        },
+        {
+          "n": "5",
+          "time": "18:40",
+          "title": [
+            "Pause"
+          ],
+          "extra": ""
+        }
+      ],
+      "go": "GO"
+    },
+    "proofsTitle": "Derfor bruker operatører det",
+    "proofs": {
+      "formats": {
+        "title": "Leser kjøreplanen slik den kommer",
+        "text": "Rotete tabeller, sammenslåtte celler og flere ark går fint. Ingen omformatering, ingen kopiering inn i en mal."
+      },
+      "private": {
+        "title": "Filene forlater aldri maskinen",
+        "text": "Alt leses i nettleseren. Ingenting lastes opp, så du kan bruke det på konfidensielle produksjoner."
+      },
+      "numbers": {
+        "title": "Cuenumrene følger kjøreplanen",
+        "text": "Punkt 12 blir cue 12 på konsollen. En settliste deles i under-cuer (12.1, 12.2) med ett klikk, og punkter uten nummer får plass mellom naboene."
+      }
+    },
+    "story": [
+      "CueSetter startet backstage. Før hver forestilling kom kjøreplanen på PDF, ofte sent. Vi jobber selv i bransjen og har sett det igjen og igjen.",
+      "Nå tar det ett minutt, og tiden går til lyset."
+    ],
+    "tagline": "Kjøreplan inn. Cueliste ut.",
+    "finalLead": "Prøv med din neste kjøreplan, eller se hvordan det virker med eksempelet vårt.",
+    "ctaSample": "Prøv med eksempel-kjøreplanen",
+    "cueLabel": "Cue {n}",
+    "visuals": {
+      "sequence": "Sekvens 101",
+      "filledTag": "fylt inn",
+      "numbers": [
+        {
+          "n": "12",
+          "name": "Konsert"
+        },
+        {
+          "n": "12.1",
+          "name": "Låt 1",
+          "sub": true
+        },
+        {
+          "n": "12.2",
+          "name": "Låt 2",
+          "sub": true
+        },
+        {
+          "n": "12.5",
+          "name": "Takk til artisten",
+          "filled": true
+        },
+        {
+          "n": "13",
+          "name": "Pause"
+        }
+      ],
+      "machine": "Din maskin",
+      "noUpload": "Ingen opplasting, ingen server"
+    },
+    "proofsKicker": "Hvorfor",
+    "stepsKicker": "Slik virker det",
+    "storyKicker": "Laget av bransjen, for bransjen",
+    "storyQuote": "Hvert punkt måtte tastes inn i konsollen for hånd, mens lyset ventet."
   },
   "steps": {
     "upload": "Last opp",

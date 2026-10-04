@@ -1,6 +1,6 @@
-# Kjøreplan → grandMA3 (Cuesetter)
+# Kjøreplan → grandMA3 (CueSetter)
 
-Web-app (Next.js 16, App Router, next-intl, Tailwind v4) som gjør kjøreplaner (PDF/tekst) om til grandMA3-makroer. Se README.md for oppsett og kodeoversikt.
+Web-app (Next.js 16, App Router, next-intl, Tailwind v4) som gjør kjøreplaner (PDF, Word, Excel eller tekst) om til grandMA3-makroer. Se README.md for oppsett og kodeoversikt.
 
 ## Arbeidsregler for prosjektet
 
@@ -39,8 +39,11 @@ Store oppgaver kan fordeles på underagenter (Agent-verktøyet) per rolle. Plane
 
 ### Merkevare og salg (gjeldende grunnlag)
 
-- **Posisjonering:** verktøyet for lysoperatører som gjør kjøreplanen fra produksjonen om til en navngitt cueliste i grandMA3 på ett minutt. Laget av en operatør, for operatører.
-- **Tone of voice:** rolig, presis og kollegial, som en erfaren operatør på intercom. Korte setninger, konsollens egne ord (cue, sekvens, makro), ingen salgsfloskler eller utropstegn. Feilmeldinger forklarer hva som skjedde og hva du gjør nå.
+Hele plattformen ligger i `docs/brand.md` (posisjonering, historien, budskap, ordliste, visuell identitet). Les den før du skriver tekst eller designer flater. Kortversjonen:
+
+- **Posisjonering:** verktøyet for lysoperatører som gjør kjøreplanen fra produksjonen (PDF, Word, Excel) om til en navngitt cueliste i grandMA3 på ett minutt. Laget av bransjen, for bransjen.
+- **Påstander må være sanne:** si aldri «laget av en lysoperatør», og bruk ingen oppdiktede brukere eller sitater. Se tabellen «Påstander» i `docs/brand.md`.
+- **Tone of voice:** rolig, presis og kollegial, som en erfaren operatør på intercom. Korte setninger, konsollens egne ord (cue, sekvens, makro), ingen salgsfloskler eller utropstegn. Feilmeldinger forklarer hva som skjedde og hva du gjør nå. Ikke kall produktet «AI».
 - **Fortellingen:** Kjøreplanen kommer alltid sent og endrer seg. Å taste den inn i lysbordet stjeler tid fra det som faktisk betyr noe: lyset.
 - **Prismodell:** Gratis prøving (eksempelfil, gjennomgang og kommandolinje), Pro $5/mnd for ZIP-nedlasting og lagrede kjøreplaner, eventuelt et rimeligere årsabonnement. Team/venue og «Kontakt oss» vurderes senere.
 - **Oppgraderingsøyeblikk:** når brukeren har sett sin egen kjøreplan som cueliste og trykker «Last ned». Verdien er bevist før betalingen.
@@ -53,6 +56,7 @@ Store oppgaver kan fordeles på underagenter (Agent-verktøyet) per rolle. Plane
 - `src/components/layout/` – delte skall (SiteHeader, LocaleSwitcher)
 - `src/components/features/<feature>/` – funksjonsspesifikke komponenter (f.eks. `converter/`)
 - `src/lib/` – ren logikk uten UI, med tester (`validation.ts` samler Zod-skjemaene)
+- `docs/` – merkevareplattformen (`brand.md`) og annen dokumentasjon som styrer arbeidet
 
 ## Kvalitetsstandard (gjelder all planlegging, koding og refaktorering)
 

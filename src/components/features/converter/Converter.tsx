@@ -28,8 +28,11 @@ export function Converter() {
     void preloadPdf();
     dispatch({ type: 'settings', patch: loadSettings() });
     settingsLoaded.current = true;
-    // A reload loses the run sheet, so drop a stale ?step= from the URL.
+    // ?sample=1 (from the front page) opens the sample run sheet straight away.
+    const wantsSample = new URLSearchParams(window.location.search).get('sample') === '1';
+    // A reload loses the run sheet, so drop a stale ?step= (or ?sample=) from the URL.
     window.history.replaceState({ step: 0 }, '', window.location.pathname);
+    if (wantsSample) void openSample();
   }, []);
 
   useEffect(() => {
