@@ -2,26 +2,39 @@ import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
 import { HeroDemo, type DemoRow } from '@/components/features/landing/HeroDemo';
+import { FormatsVisual, NumbersVisual, PrivacyVisual, type NumberRow } from '@/components/features/landing/ProofVisuals';
+import { Reveal } from '@/components/features/landing/Reveal';
 import { SiteHeader } from '@/components/layout/SiteHeader';
-import { LINK_PRIMARY, LINK_SECONDARY } from '@/components/ui';
+import { Card, LINK_PRIMARY } from '@/components/ui';
 import { Link } from '@/i18n/navigation';
 
 const STEPS = ['upload', 'review', 'console'] as const;
 // The order is part of the brand platform (docs/brand.md): what it reads, privacy, what it does.
 const PROOFS = ['formats', 'private', 'numbers'] as const;
 
-/** Section headings share one style. */
-const H2 = 'text-2xl font-extrabold tracking-tight sm:text-3xl';
+const CONTAINER = 'mx-auto max-w-6xl px-5 sm:px-8';
+const KICKER = 'mb-3 font-mono text-sm font-semibold text-accent';
+const H2 = 'text-3xl font-extrabold tracking-tight sm:text-4xl';
+// Each step's fader fills a little after the one before it.
+const FADER_DELAYS = ['delay-200', 'delay-500', 'delay-800'];
 
 export default function Home({ params }: { params: Promise<{ locale: string }> }) {
   setRequestLocale(use(params).locale);
   const t = useTranslations('home');
 
+  const visuals = {
+    formats: <FormatsVisual files={t.raw('visuals.files') as string[]} sequence={t('visuals.sequence')} />,
+    private: <PrivacyVisual uploaded={t('visuals.uploaded')} local={t('visuals.local')} />,
+    numbers: <NumbersVisual rows={t.raw('visuals.numbers') as NumberRow[]} filledTag={t('visuals.filledTag')} />,
+  };
+
   return (
     <>
       <SiteHeader />
-      <main id="main" className="mx-auto max-w-6xl px-5 pb-24 pt-10 sm:px-8 sm:pt-16">
-        <section className="grid items-center gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+      {/* overflow-x-clip: the glows reach past the edges, but must never cause sideways scrolling. */}
+      <main id="main" className="overflow-x-clip pb-24">
+        {/* Hero */}
+        <section className={`${CONTAINER} grid items-center gap-12 pt-10 sm:pt-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]`}>
           <div>
             <p className="animate-entry mb-4 font-semibold text-accent">{t('kicker')}</p>
             <h1 className="animate-entry animate-delay-100 text-4xl font-extrabold leading-tight tracking-tight sm:text-6xl">{t('title')}</h1>
@@ -33,7 +46,9 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
               <span className="text-sm text-muted">{t('ctaSub')}</span>
             </div>
           </div>
-          <div className="animate-entry animate-delay-300">
+          <div className="animate-entry animate-delay-300 relative">
+            {/* A soft stage light behind the demo, for depth. */}
+            <div aria-hidden="true" className="pointer-events-none absolute -inset-10 -z-10 rounded-full bg-accent/15 blur-3xl" />
             <HeroDemo
               rows={t.raw('demo.rows') as DemoRow[]}
               labels={{
@@ -46,67 +61,87 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
           </div>
         </section>
 
-        {/* Set as a cue list, not as feature cards: numbers in mono, one row per point. */}
-        <section aria-labelledby="proofs-title" className="mt-24 sm:mt-32">
-          <h2 id="proofs-title" className={`${H2} mb-8`}>
-            {t('proofsTitle')}
-          </h2>
-          <ol className="border-t border-line">
-            {PROOFS.map((p, i) => (
-              <li key={p} className="grid gap-x-8 gap-y-2 border-b border-line py-6 sm:grid-cols-[3rem_minmax(0,2fr)_minmax(0,3fr)] sm:py-8">
-                <span className="font-mono text-lg font-semibold text-accent">{i + 1}</span>
-                <h3 className="text-xl font-bold">{t(`proofs.${p}.title`)}</h3>
-                <p className="text-muted">{t(`proofs.${p}.text`)}</p>
+        {/* Proofs: each one shows the product in a small console picture. */}
+        <Reveal as="section" className={`${CONTAINER} mt-28 sm:mt-40`}>
+          <p className={KICKER}>{t('proofsKicker')}</p>
+          <h2 className={`${H2} mb-10 max-w-2xl`}>{t('proofsTitle')}</h2>
+          <ul className="grid gap-5 md:grid-cols-3">
+            {PROOFS.map((p) => (
+              <li key={p}>
+                <Card as="article" glow className="flex h-full flex-col p-3">
+                  {visuals[p]}
+                  <div className="px-3 pb-4 pt-6">
+                    <h3 className="mb-2 text-lg font-bold">{t(`proofs.${p}.title`)}</h3>
+                    <p className="text-sm leading-relaxed text-muted">{t(`proofs.${p}.text`)}</p>
+                  </div>
+                </Card>
               </li>
             ))}
-          </ol>
+          </ul>
+        </Reveal>
+
+        {/* Steps: a full-width console band, three cues with faders that run in order. */}
+        <section aria-labelledby="how-title" className="mt-28 bg-console py-20 text-console-ink sm:mt-40 sm:py-28 dark:border-y dark:border-console-line dark:bg-console-raised [background-image:radial-gradient(var(--color-console-line)_1px,transparent_1px)] [background-size:22px_22px]">
+          <Reveal className={CONTAINER}>
+            <p className="mb-3 font-mono text-sm font-semibold text-console-accent">{t('stepsKicker')}</p>
+            <h2 id="how-title" className={`${H2} mb-14 max-w-2xl`}>
+              {t('stepsTitle')}
+            </h2>
+            <ol className="grid gap-12 md:grid-cols-3 md:gap-8">
+              {STEPS.map((step, i) => (
+                <li key={step}>
+                  <div className="mb-5 flex items-center justify-between font-mono text-sm">
+                    <span className="font-semibold text-console-accent">{t('cueLabel', { n: i + 1 })}</span>
+                    <span className="text-console-muted">GO</span>
+                  </div>
+                  <div className="h-1 overflow-hidden rounded-full bg-console-line">
+                    <div className={`h-full origin-left scale-x-0 rounded-full bg-console-accent transition-transform duration-700 ease-out-quint group-data-[shown]:scale-x-100 ${FADER_DELAYS[i]}`} />
+                  </div>
+                  <h3 className="mt-6 mb-2 text-xl font-bold">{t(`steps.${step}.title`)}</h3>
+                  <p className="text-console-muted">{t(`steps.${step}.text`)}</p>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
         </section>
 
-        {/* Three steps as a sequence: a line runs through them like cues on a timeline. */}
-        <section aria-labelledby="how-title" className="mt-24 sm:mt-32">
-          <h2 id="how-title" className={`${H2} mb-8`}>
-            {t('stepsTitle')}
-          </h2>
-          <ol className="grid gap-10 md:grid-cols-3 md:gap-8">
-            {STEPS.map((step, i) => (
-              <li key={step} className="border-t-2 border-accent pt-5">
-                <span className="font-mono text-sm font-semibold text-accent">{t('cueLabel', { n: i + 1 })}</span>
-                <h3 className="mt-2 mb-2 text-xl font-bold">{t(`steps.${step}.title`)}</h3>
-                <p className="text-muted">{t(`steps.${step}.text`)}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section aria-labelledby="story-title" className="mt-24 grid gap-6 sm:mt-32 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-x-8">
-          <h2 id="story-title" className={H2}>
-            {t('storyTitle')}
-          </h2>
-          <div className="max-w-2xl">
+        {/* Story: one big line carries it, the rest is small. */}
+        <Reveal as="section" className={`${CONTAINER} mt-28 sm:mt-40`}>
+          <p className={KICKER}>{t('storyKicker')}</p>
+          <blockquote className="max-w-4xl text-3xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+            «{t('storyQuote')}»
+          </blockquote>
+          <div className="mt-8 max-w-2xl space-y-3 text-lg text-muted">
             {(t.raw('story') as string[]).map((p, i) => (
-              <p key={i} className="mb-4 text-lg leading-relaxed text-subtle">
-                {p}
-              </p>
+              <p key={i}>{p}</p>
             ))}
           </div>
-        </section>
+        </Reveal>
 
-        <section aria-labelledby="final-title" className="mt-24 rounded-3xl bg-console px-6 py-14 text-center text-console-ink sm:mt-32 dark:border dark:border-console-line">
-          <h2 id="final-title" className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-            {t('tagline')}
-          </h2>
-          <p className="mt-4 text-console-muted">{t('finalLead')}</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link href="/app" className={LINK_PRIMARY}>
-              {t('cta')} →
-            </Link>
-            <Link href={{ pathname: '/app', query: { sample: '1' } }} className={LINK_SECONDARY}>
-              {t('ctaSample')}
-            </Link>
+        {/* Closing: the brand blue, the tagline and two ways in. */}
+        <Reveal as="section" className={`${CONTAINER} mt-28 sm:mt-40`}>
+          <div className="relative overflow-hidden rounded-3xl bg-accent px-6 py-16 text-center text-on-accent sm:py-20">
+            <div aria-hidden="true" className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-white/20 blur-3xl" />
+            <h2 className="relative text-4xl font-extrabold tracking-tight sm:text-5xl">{t('tagline')}</h2>
+            <p className="relative mt-4 opacity-80">{t('finalLead')}</p>
+            <div className="relative mt-9 flex flex-wrap justify-center gap-3">
+              <Link
+                href="/app"
+                className="inline-flex min-h-13 items-center justify-center rounded-xl bg-on-accent px-6 font-bold text-accent no-underline transition duration-300 ease-out-back hover:scale-105 active:scale-95"
+              >
+                {t('cta')} →
+              </Link>
+              <Link
+                href={{ pathname: '/app', query: { sample: '1' } }}
+                className="inline-flex min-h-13 items-center justify-center rounded-xl border border-on-accent/40 px-6 font-semibold text-on-accent no-underline transition duration-150 hover:border-on-accent hover:bg-on-accent/10 active:scale-[0.98]"
+              >
+                {t('ctaSample')}
+              </Link>
+            </div>
           </div>
-        </section>
+        </Reveal>
 
-        <p className="mt-16 text-xs text-muted">{t('disclaimer')}</p>
+        <p className={`${CONTAINER} mt-16 text-xs text-muted`}>{t('disclaimer')}</p>
       </main>
     </>
   );

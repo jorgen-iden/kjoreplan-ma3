@@ -21,7 +21,7 @@
     "lead": "Upload the run sheet you got from production – PDF, Word or Excel. Get one empty, named cue per item, in the right order, ready to import on the console.",
     "cta": "Try it now",
     "disclaimer": "Not affiliated with MA Lighting. grandMA3 is a trademark of MA Lighting Technology GmbH.",
-    "stepsTitle": "How it works",
+    "stepsTitle": "Three cues, and the sequence is built",
     "steps": {
       "upload": {
         "title": "Upload the run sheet",
@@ -107,15 +107,54 @@
         "text": "Item 12 becomes cue 12 on the console. A set list splits into sub-cues (12.1, 12.2) in one click, and items without a number fit in between their neighbours."
       }
     },
-    "storyTitle": "Made by the industry, for the industry",
     "story": [
-      "CueSetter started backstage. Before every show the same thing happened: the run sheet arrived as a PDF, often late, and every item had to be typed into the console by hand while the lighting waited.",
-      "We work in the industry and have seen it again and again. Now it takes a minute, and the time goes to the lighting."
+      "CueSetter started backstage. Before every show the run sheet arrived as a PDF, often late. We work in the industry and have seen it again and again.",
+      "Now it takes a minute, and the time goes to the lighting."
     ],
     "tagline": "Run sheet in. Cue list out.",
     "finalLead": "Try it with your next run sheet, or see how it works with our sample.",
     "ctaSample": "Try the sample run sheet",
-    "cueLabel": "Cue {n}"
+    "cueLabel": "Cue {n}",
+    "visuals": {
+      "files": [
+        "run-sheet.pdf",
+        "programme.docx",
+        "plan.xlsx"
+      ],
+      "sequence": "Sequence 101",
+      "uploaded": "Uploaded",
+      "local": "Read in your browser",
+      "filledTag": "filled in",
+      "numbers": [
+        {
+          "n": "12",
+          "name": "Concert"
+        },
+        {
+          "n": "12.1",
+          "name": "Song 1",
+          "sub": true
+        },
+        {
+          "n": "12.2",
+          "name": "Song 2",
+          "sub": true
+        },
+        {
+          "n": "12.5",
+          "name": "Thanks to the artist",
+          "filled": true
+        },
+        {
+          "n": "13",
+          "name": "Interval"
+        }
+      ]
+    },
+    "proofsKicker": "Why",
+    "stepsKicker": "How it works",
+    "storyKicker": "Made by the industry, for the industry",
+    "storyQuote": "Every item had to be typed into the console by hand, while the lighting waited."
   },
   "steps": {
     "upload": "Upload",

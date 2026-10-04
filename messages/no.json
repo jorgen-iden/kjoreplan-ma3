@@ -21,7 +21,7 @@
     "lead": "Last opp kjøreplanen du fikk fra produksjonen – PDF, Word eller Excel. Få én tom, navngitt cue per punkt, i riktig rekkefølge, klar til import på konsollen.",
     "cta": "Prøv nå",
     "disclaimer": "Ikke tilknyttet MA Lighting. grandMA3 er et varemerke for MA Lighting Technology GmbH.",
-    "stepsTitle": "Slik virker det",
+    "stepsTitle": "Tre cuer, og sekvensen står",
     "steps": {
       "upload": {
         "title": "Last opp kjøreplanen",
@@ -107,15 +107,54 @@
         "text": "Punkt 12 blir cue 12 på konsollen. En settliste deles i under-cuer (12.1, 12.2) med ett klikk, og punkter uten nummer får plass mellom naboene."
       }
     },
-    "storyTitle": "Laget av bransjen, for bransjen",
     "story": [
-      "CueSetter startet backstage. Før hver forestilling skjedde det samme: kjøreplanen kom på PDF, ofte sent, og hvert punkt måtte tastes inn i konsollen for hånd mens lyset ventet.",
-      "Vi jobber selv i bransjen og har sett det igjen og igjen. Nå tar det ett minutt, og tiden går til lyset."
+      "CueSetter startet backstage. Før hver forestilling kom kjøreplanen på PDF, ofte sent. Vi jobber selv i bransjen og har sett det igjen og igjen.",
+      "Nå tar det ett minutt, og tiden går til lyset."
     ],
     "tagline": "Kjøreplan inn. Cueliste ut.",
     "finalLead": "Prøv med din neste kjøreplan, eller se hvordan det virker med eksempelet vårt.",
     "ctaSample": "Prøv med eksempel-kjøreplanen",
-    "cueLabel": "Cue {n}"
+    "cueLabel": "Cue {n}",
+    "visuals": {
+      "files": [
+        "kjoreplan.pdf",
+        "program.docx",
+        "plan.xlsx"
+      ],
+      "sequence": "Sekvens 101",
+      "uploaded": "Lastet opp",
+      "local": "Lest i nettleseren",
+      "filledTag": "fylt inn",
+      "numbers": [
+        {
+          "n": "12",
+          "name": "Konsert"
+        },
+        {
+          "n": "12.1",
+          "name": "Låt 1",
+          "sub": true
+        },
+        {
+          "n": "12.2",
+          "name": "Låt 2",
+          "sub": true
+        },
+        {
+          "n": "12.5",
+          "name": "Takk til artisten",
+          "filled": true
+        },
+        {
+          "n": "13",
+          "name": "Pause"
+        }
+      ]
+    },
+    "proofsKicker": "Hvorfor",
+    "stepsKicker": "Slik virker det",
+    "storyKicker": "Laget av bransjen, for bransjen",
+    "storyQuote": "Hvert punkt måtte tastes inn i konsollen for hånd, mens lyset ventet."
   },
   "steps": {
     "upload": "Last opp",

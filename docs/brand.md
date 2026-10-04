@@ -88,5 +88,6 @@ Alt vi sier om oss selv skal kunne dokumenteres. Sjekk listen før ny tekst publ
 - **Cue-lyset:** prikken i logoen (øverst til venstre i merket, foran tre cuelinjer) er et cue-lys, som lampen inspisienten tenner for operatøren. Den puster rolig i «standby», og blinker «GO» når en makro lastes ned (`<LogoMark />` i `src/components/ui/Logo.tsx`). Bruk den sparsomt: ett cue-lys per skjerm.
 - **Mono-tall:** cuenumre og klokkeslett settes alltid i mono, som på konsollskjermen.
 - **Hero-bilde:** delt visning, kjøreplanen til venstre og cuelisten til høyre, der rader flytter seg over. Når listen er ferdig, viser konsollen GO og cue-lyset i logoen blinker.
-- **Ikke SaaS-kort:** lister settes som cuelister (mono-nummer, én rad per punkt, linjer mellom), og steg som en sekvens (Cue 1, 2, 3). Ingen generiske ikoner.
+- **Vis produktet, ikke ikoner:** bevis illustreres med små konsollbilder (filer inn i en sekvens, «Lastet opp 0 B», en mini-cueliste med 12.5 «fylt inn»). Ingen generiske ikoner.
+- **Rytme:** lys flate → mørkt konsollbånd over hele bredden med prikkerutenett (stegene som Cue 1–3 med fadere) → stort sitat → blå avslutning. Mono-etiketter over hver seksjon.
 - **Bilder:** ekte skjermbilder fra appen og onPC. Ingen stockfoto av konserter.
