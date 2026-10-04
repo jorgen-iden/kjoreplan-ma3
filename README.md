@@ -30,6 +30,8 @@ Appen kjører på **Vercel** med domenet **cuesetter.com**.
 2. Legg til domenene `cuesetter.com` og `www.cuesetter.com` under *Settings → Domains*, og legg inn DNS-postene Vercel viser hos domeneregistraren.
 3. I produksjon brukes `https://cuesetter.com` som adresse i delingslenker, sitemap og SEO. `NEXT_PUBLIC_SITE_URL` kan overstyre den, for eksempel for et testdomene.
 
+4. **Analytics:** Vercel Web Analytics er lagt inn (`<Analytics />` i `src/app/[locale]/layout.tsx`). Slå det på under prosjektets *Analytics*-fane. Det bruker ikke informasjonskapsler og sender bare sideadresser, aldri innholdet i kjøreplaner.
+
 Merk: Vercels gratisplan (Hobby) er kun for ikke-kommersiell bruk. Oppgrader til Pro før du tar betalt.
 
 ## Slik virker det
