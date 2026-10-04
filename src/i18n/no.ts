@@ -66,7 +66,7 @@ export const no = {
   step5: '5. Last ned',
   download: 'Last ned ZIP',
   unverified:
-    'Merk: XML-formatet er ikke verifisert mot en ekte eksport fra grandMA3 ennå. Test i grandMA3 onPC før bruk på en forestilling.',
+    'Importen er testet i grandMA3 onPC 2.5.1.0. Note-feltet og andre versjoner er ikke testet ennå – prøv i onPC før bruk på en forestilling.',
   importTitle: 'Slik importerer du på konsollen',
   importSteps: (menu: string, fileName: string, seq: number) => [
     'Pakk ut ZIP-en på roten av minnepinnen (mappen grandMA3 skal ligge øverst).',
