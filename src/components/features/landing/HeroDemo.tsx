@@ -18,6 +18,9 @@ export interface HeroDemoLabels {
   sequence: string;
   columns: { n: string; time: string; title: string; extra: string };
   go: string;
+  /** Captions above the two panes: where it comes from and where it ends up. */
+  from: string;
+  to: string;
 }
 
 const STEP_MS = 650;
@@ -59,6 +62,18 @@ export function HeroDemo({ rows, labels }: { rows: DemoRow[]; labels: HeroDemoLa
 
   return (
     <div>
+      <div className="mb-3 hidden grid-cols-2 gap-4 text-sm font-semibold sm:grid" aria-hidden="true">
+        <span className="text-muted">{labels.from}</span>
+        <span className="text-accent">{labels.to}</span>
+      </div>
+      <div className="relative">
+      {/* The arrow on the seam: run sheet → grandMA3. */}
+      <span
+        aria-hidden="true"
+        className="absolute left-1/2 top-7 z-10 hidden size-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-accent text-lg font-bold text-on-accent shadow-lg ring-4 ring-paper sm:grid"
+      >
+        →
+      </span>
       <div className="grid overflow-hidden rounded-2xl border border-line shadow-xl sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         {/* The run sheet, as it arrives from production. */}
         <div className="bg-card p-4 text-xs sm:p-5" aria-hidden="true">
@@ -85,7 +100,7 @@ export function HeroDemo({ rows, labels }: { rows: DemoRow[]; labels: HeroDemoLa
         </div>
 
         {/* The sequence on the console. */}
-        <div className="flex min-h-72 flex-col bg-console p-4 text-console-ink sm:p-5" aria-hidden="true">
+        <div className="flex min-h-72 flex-col bg-console p-4 text-console-ink sm:p-5 sm:pl-10" aria-hidden="true">
           <p className="mb-3 flex items-center justify-between font-mono text-[11px] text-console-muted">
             <span>{labels.sequence}</span>
             {shown >= cues.length ? (
@@ -109,6 +124,7 @@ export function HeroDemo({ rows, labels }: { rows: DemoRow[]; labels: HeroDemoLa
             ))}
           </ol>
         </div>
+      </div>
       </div>
     </div>
   );

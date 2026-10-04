@@ -17,8 +17,8 @@
   },
   "home": {
     "kicker": "For grandMA3-operatører",
-    "title": "Fra kjøreplan til cueliste på ett minutt",
-    "lead": "Last opp kjøreplanen du fikk fra produksjonen – PDF, Word eller Excel. Få én tom, navngitt cue per punkt, i riktig rekkefølge, klar til import på konsollen.",
+    "title": "Fra kjøreplan til cueliste i grandMA3",
+    "lead": "Last opp kjøreplanen du fikk fra produksjonen – PDF, Word eller Excel. På ett minutt har du en makro som bygger cuelisten på konsollen: én navngitt cue per punkt, i riktig rekkefølge.",
     "cta": "Prøv nå",
     "disclaimer": "Ikke tilknyttet MA Lighting. grandMA3 er et varemerke for MA Lighting Technology GmbH.",
     "stepsTitle": "Tre cuer, og sekvensen står",
@@ -90,7 +90,9 @@
           "extra": ""
         }
       ],
-      "go": "GO"
+      "go": "GO",
+      "from": "Kjøreplanen fra produksjonen",
+      "to": "Cuelisten i grandMA3"
     },
     "proofsTitle": "Derfor bruker operatører det",
     "proofs": {

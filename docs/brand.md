@@ -40,7 +40,7 @@ Sann og generisk: ingen navn og ingen enkeltpersoner. Ikke pynt den med påstand
 
 ## Budskap
 
-- **Overskrift (forsiden):** «Fra kjøreplan til cueliste på ett minutt» / «From run sheet to cue list in a minute».
+- **Overskrift (forsiden):** «Fra kjøreplan til cueliste i grandMA3» / «From run sheet to cue list in grandMA3». «Ett minutt» står i undertittelen.
 - **Tagline (logo, OG-bilder, sosiale profiler):** «Kjøreplan inn. Cueliste ut.» / «Run sheet in. Cue list out.»
 - **Bevis, i denne rekkefølgen:**
   1. Leser PDF, Word og Excel – slik kjøreplanen kommer.

@@ -17,8 +17,8 @@
   },
   "home": {
     "kicker": "For grandMA3 operators",
-    "title": "From run sheet to cue list in a minute",
-    "lead": "Upload the run sheet you got from production – PDF, Word or Excel. Get one empty, named cue per item, in the right order, ready to import on the console.",
+    "title": "From run sheet to cue list in grandMA3",
+    "lead": "Upload the run sheet you got from production – PDF, Word or Excel. In a minute you have a macro that builds the cue list on the console: one named cue per item, in the right order.",
     "cta": "Try it now",
     "disclaimer": "Not affiliated with MA Lighting. grandMA3 is a trademark of MA Lighting Technology GmbH.",
     "stepsTitle": "Three cues, and the sequence is built",
@@ -90,7 +90,9 @@
           "extra": ""
         }
       ],
-      "go": "GO"
+      "go": "GO",
+      "from": "The run sheet from production",
+      "to": "The cue list in grandMA3"
     },
     "proofsTitle": "Why operators use it",
     "proofs": {
