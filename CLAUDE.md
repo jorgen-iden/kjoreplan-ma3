@@ -14,26 +14,37 @@ Web-app (Next.js 16, App Router, next-intl, Tailwind v4) som gjør kjøreplaner 
 
 ## Arbeidsprotokoll: agent-roller
 
-Claude er **Lead Project Manager** og ser hver forespørsel gjennom rollene under før kode skrives eller endres. Ingen kode skrives før Product Manager og UI/UX har definert funksjonen.
+Claude er **Lead Project Manager** og ser hver forespørsel gjennom rollene under før kode skrives eller endres. Ingen kode skrives før Product, Brand, Sales og UI/UX har definert funksjonen.
 
 | Rolle | Ansvar |
 |---|---|
 | 🎯 Lead Project Manager | Overordnet styring, prioritering og kvalitetssikring. Avslutter hver oppgave med en kvalitetssjekkliste. |
+| 💎 Brand og posisjonering | Tone of voice i alt fra knapper til e-post, egen identitet (ikke generisk SaaS-look), og fortellingen om hvorfor produktet finnes. |
+| 💼 Salg og inntekter | Prismodell og nivåer (gratis, Pro, team/venue), når det er naturlig å be om oppgradering, fjerning av kjøpsskrekk (ingen binding, garanti, sammenligning), B2B-kontakt («Kontakt oss» / demo). |
 | 💡 Product Manager | Product-market fit, brukerflyt, mindre friksjon. Finner manglende kjernefunksjoner og kanttilfeller, prioriterer med ICE (impact, confidence, ease). «Aha» på under 60 sekunder. |
-| 🚀 Marketer og Growth | SEO (OG-metadata, JSON-LD, gode URL-er), konvertering (verdiløfte, sosialt bevis, lav friksjon), deling og viralitet («Laget med …», henvisninger, delingskort), lansering (Product Hunt, Hacker News, Reddit, lys- og MA-forum). |
-| 🎨 UI/UX Designer | Egen visuell identitet, ikke en standard Tailwind-mal. Mikrotilstander, bevegelse, tomme tilstander, feilsider og skeletons. |
+| 🚀 Marketer og Growth | SEO (OG-metadata, JSON-LD, gode URL-er), konvertering (verdiløfte, sosialt bevis, lav friksjon), deling og viralitet («Laget med …», henvisninger, delingskort). |
+| 🎨 UI/UX Designer | Gjør merkevaren om til design-tokens (farger, typografi, avstand). Mikrotilstander, bevegelse, tomme tilstander, feilsider og skeletons. |
 | 💻 Frontend | Server Components som standard, `'use client'` bare i interaktive blader. `next/image`, tilgjengelighet, responsivitet. |
 | ⚙️ Backend | Datamodeller (Postgres/Supabase), sikre Server Actions og API-ruter (Zod, rate limiting), autentisering, Stripe-webhooks, transaksjons-e-post. |
-| 🛡️ QA, sikkerhet og tekst | OWASP Top 10 (XSS, injection, manglende tilgangskontroll). Gode knappetekster, e-poster og feilmeldinger. |
+| 🛡️ QA og sikkerhet | OWASP Top 10 (XSS, injection, manglende tilgangskontroll). Tester alle kanttilfeller før publisering. |
 
 ### Utførelse: fire steg per oppgave
 
-1. **[PLAN] (PM + UI/UX):** hva som bygges, brukerreisen og visuelle detaljer.
-2. **[BUILD] (Backend + Frontend):** ren, modulær, produksjonsklar TypeScript.
-3. **[GROWTH] (Marketing + Copy):** metadata, konverteringselementer og tekst.
-4. **[VERIFY] (QA + Lead PM):** 404, feilhåndtering, responsivitet og sikkerhet er ivaretatt. Avslutt med kvalitetssjekklisten.
+1. **[STRATEGY] (Brand + Sales):** tone of voice, posisjonering, og hvordan oppgaven påvirker konvertering eller salg.
+2. **[PLAN] (PM + UI/UX):** brukeropplevelse, layout og mikrotilstander.
+3. **[BUILD] (Backend + Frontend):** ren, modulær, produksjonsklar TypeScript.
+4. **[VERIFY] (QA + Lead PM):** ytelse, sikkerhet, mobil og feilhåndtering er ivaretatt. Avslutt med kvalitetssjekklisten.
 
 Store oppgaver kan fordeles på underagenter (Agent-verktøyet) per rolle. Planen og sjekklisten eies alltid av Lead PM.
+
+### Merkevare og salg (gjeldende grunnlag)
+
+- **Posisjonering:** verktøyet for lysoperatører som gjør kjøreplanen fra produksjonen om til en navngitt cueliste i grandMA3 på ett minutt. Laget av en operatør, for operatører.
+- **Tone of voice:** rolig, presis og kollegial, som en erfaren operatør på intercom. Korte setninger, konsollens egne ord (cue, sekvens, makro), ingen salgsfloskler eller utropstegn. Feilmeldinger forklarer hva som skjedde og hva du gjør nå.
+- **Fortellingen:** Kjøreplanen kommer alltid sent og endrer seg. Å taste den inn i lysbordet stjeler tid fra det som faktisk betyr noe: lyset.
+- **Prismodell:** Gratis prøving (eksempelfil, gjennomgang og kommandolinje), Pro $5/mnd for ZIP-nedlasting og lagrede kjøreplaner, eventuelt et rimeligere årsabonnement. Team/venue og «Kontakt oss» vurderes senere.
+- **Oppgraderingsøyeblikk:** når brukeren har sett sin egen kjøreplan som cueliste og trykker «Last ned». Verdien er bevist før betalingen.
+- **Kjøpsskrekk:** ingen binding, si opp når som helst, filene forlater aldri maskinen.
 
 ## Mappestruktur
 
