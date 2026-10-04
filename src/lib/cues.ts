@@ -260,6 +260,18 @@ export function moveCueBefore(cues: Cue[], id: string, targetId: string | null):
   return [...rest.slice(0, ts), ...block, ...rest.slice(ts)];
 }
 
+/**
+ * Move a top-level cue (with its sub-cues) right before or right after the block containing
+ * `targetId`. Used while dragging, so the list can show where the cue will land.
+ */
+export function moveCueNextTo(cues: Cue[], id: string, targetId: string, side: 'before' | 'after'): Cue[] {
+  if (side === 'before') return moveCueBefore(cues, id, targetId);
+  const t = cues.findIndex((c) => c.id === targetId);
+  if (t < 0) return cues;
+  const [, end] = blockRange(cues, blockStart(cues, t));
+  return moveCueBefore(cues, id, cues[end]?.id ?? null);
+}
+
 /** Remove a cue; removing a top-level cue also removes its sub-cues. */
 export function removeCue(cues: Cue[], id: string): Cue[] {
   return cues.filter((c) => c.id !== id && c.parentId !== id);

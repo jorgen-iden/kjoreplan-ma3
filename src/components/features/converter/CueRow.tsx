@@ -24,22 +24,20 @@ export interface CueRowProps {
   cue: Cue;
   prepared: MacroCue;
   dragging: boolean;
-  dropTarget: boolean;
   onChange: (id: string, patch: Partial<Cue>) => void;
   onSplit: (id: string) => void;
   onMove: (id: string, dir: -1 | 1) => void;
   onRemove: (id: string) => void;
   onDragStart: (id: string) => void;
   onDragEnd: () => void;
-  onDragOver: (id: string) => void;
-  onDrop: (id: string) => void;
+  /** The pointer is over this row while a cue is dragged: its y position and the row's box. */
+  onDragOver: (id: string, y: number, box: DOMRect) => void;
 }
 
 export const CueRow = memo(function CueRow({
   cue,
   prepared,
   dragging,
-  dropTarget,
   onChange,
   onSplit,
   onMove,
@@ -47,7 +45,6 @@ export const CueRow = memo(function CueRow({
   onDragStart,
   onDragEnd,
   onDragOver,
-  onDrop,
 }: CueRowProps) {
   const t = useTranslations('review');
   const isSub = Boolean(cue.parentId);
@@ -58,9 +55,12 @@ export const CueRow = memo(function CueRow({
 
   return (
     <li
+      data-flip-id={id}
       draggable={armed}
       onDragStart={(e) => {
         e.dataTransfer.effectAllowed = 'move';
+        // Firefox only starts a drag that carries data. A private type keeps it out of text fields.
+        e.dataTransfer.setData('application/x-cuesetter-cue', id);
         onDragStart(id);
       }}
       onDragEnd={() => {
@@ -69,15 +69,12 @@ export const CueRow = memo(function CueRow({
       }}
       onDragOver={(e) => {
         e.preventDefault();
-        onDragOver(id);
+        e.dataTransfer.dropEffect = 'move';
+        onDragOver(id, e.clientY, e.currentTarget.getBoundingClientRect());
       }}
-      onDrop={(e) => {
-        e.preventDefault();
-        onDrop(id);
-      }}
-      className={`${ROW_GRID} border-b border-line-soft px-3 py-3 transition-[opacity,background-color,box-shadow] duration-150 md:px-4 md:py-2 ${
-        prepared.truncated ? 'bg-warn-soft' : isSub ? '' : 'hover:bg-paper/60'
-      } ${dragging ? 'opacity-40' : ''} ${dropTarget ? 'shadow-[inset_0_2px_0_var(--color-accent)]' : ''}`}
+      className={`${ROW_GRID} border-b border-line-soft px-3 py-3 transition-[opacity,background-color] duration-150 md:px-4 md:py-2 ${
+        dragging ? 'bg-accent-soft opacity-60' : prepared.truncated ? 'bg-warn-soft' : isSub ? '' : 'hover:bg-paper/60'
+      }`}
     >
       <span className="flex h-9 items-center justify-center">
         {!isSub && (

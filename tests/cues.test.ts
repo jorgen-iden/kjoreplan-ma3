@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { computeNumbers, formatTime, moveCue, moveCueBefore, newId, removeCue, splitIntoSubCues, type Cue } from '../src/lib/cues';
+import { computeNumbers, formatTime, moveCue, moveCueBefore, moveCueNextTo, newId, removeCue, splitIntoSubCues, type Cue } from '../src/lib/cues';
 
 const cue = (srcNumber: string, name = 'x', note = ''): Cue => ({ id: newId(), srcNumber, name, time: '', duration: '', note });
 
@@ -110,6 +110,16 @@ describe('moving cues', () => {
     const cues = setup();
     expect(names(moveCueBefore(cues, cues[4].id, cues[3].id))).toEqual(['A', 'C', 'B', 'x', 'y']);
     expect(names(moveCueBefore(cues, cues[0].id, null))).toEqual(['B', 'x', 'y', 'C', 'A']);
+  });
+
+  it('places a dragged block before or after another block', () => {
+    const cues = setup();
+    // A, B (x, y), C
+    expect(names(moveCueNextTo(cues, cues[0].id, cues[1].id, 'after'))).toEqual(['B', 'x', 'y', 'A', 'C']);
+    expect(names(moveCueNextTo(cues, cues[0].id, cues[3].id, 'after'))).toEqual(['B', 'x', 'y', 'A', 'C']);
+    expect(names(moveCueNextTo(cues, cues[0].id, cues[4].id, 'after'))).toEqual(['B', 'x', 'y', 'C', 'A']);
+    expect(names(moveCueNextTo(cues, cues[4].id, cues[0].id, 'before'))).toEqual(['C', 'A', 'B', 'x', 'y']);
+    expect(moveCueNextTo(cues, cues[1].id, cues[0].id, 'after')).toBe(cues);
   });
 
   it('removes a cue with its sub-cues', () => {
