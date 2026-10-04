@@ -10,7 +10,8 @@ export const DEFAULT_SETTINGS: Settings = {
   sequenceName: '',
   numbering: 'follow',
   nameFormat: 'title',
-  includeNotes: true,
+  noteTime: true,
+  noteText: true,
   clearFirst: true,
   maVersion: DEFAULT_MA_VERSION.id,
 };

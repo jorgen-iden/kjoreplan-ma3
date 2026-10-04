@@ -60,7 +60,8 @@ export const no = {
   nameFormat: 'Cue-navn',
   nameTitle: 'Kun tittel',
   nameTimeTitle: 'Klokkeslett + tittel',
-  includeNotes: 'Legg resten av tittelen, starttid og varighet i cuens Note-felt',
+  noteTime: 'Note-felt: ta med starttid og varighet',
+  noteText: 'Note-felt: ta med resten av tittelen (låtliste, detaljer)',
   clearFirst: 'Tøm programmeren først (ClearAll) – anbefales, så cuene blir tomme',
 
   step5: '5. Last ned',

@@ -32,7 +32,7 @@ npm run sample     # skriver fixtures/eksempel-kjoreplan.pdf (syntetisk kjørepl
 1. **Last opp** PDF (dra og slipp eller filvelger), eller lim inn tekst.
 2. **Sjekk kolonnene:** verktøyet viser kolonnene det fant og hvilke som brukes til nummer, tid og tittel.
 3. **Se over og rediger** cuene: rediger, slett, legg til, flytt, og del flerlinjede rader opp i under-cuer (13 → 13.1, 13.2 …; over ni linjer gir 13.01, 13.02 … så 13.10 aldri kolliderer med 13.1).
-4. **Innstillinger:** sekvensnummer, cue-nummerering, sekvensnavn, MA-versjon, navneformat, notat og ClearAll. Siste valg huskes i `localStorage`.
+4. **Innstillinger:** sekvensnummer, cue-nummerering, sekvensnavn, MA-versjon, navneformat, hva som legges i Note-feltet (starttid/varighet og/eller resten av tittelen) og ClearAll. Siste valg huskes i `localStorage`.
 5. **Last ned** en ZIP med `grandMA3/gma3_library/datapools/macros/<navn>.xml`, pluss importinstruks og kommandolinje-reserve.
 
 Makroen inneholder:
@@ -41,7 +41,7 @@ Makroen inneholder:
 ClearAll
 Store Sequence 101 Cue 1
 Label Sequence 101 Cue 1 "Velkommen"
-Set Sequence 101 Cue 1 Property "Note" "Start 17:30 / …"     (hvis notat er på)
+Set Sequence 101 Cue 1 Property "Note" "Start 17:30 / …"     (hvis noe skal i Note-feltet)
 …
 Label Sequence 101 "Kjøreplan dag 1"
 ```

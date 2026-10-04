@@ -45,6 +45,12 @@ describe('computeNumbers', () => {
     expect(numbers.get(cues[11].id)).toBe('13.11');
   });
 
+  it('strips list markers from sub-cue names', () => {
+    let cues = [cue('1', 'Konsert', '- Lost in the Woods\n• Nordlys\n– Siste dans')];
+    cues = splitIntoSubCues(cues, cues[0].id);
+    expect(cues.slice(1).map((c) => c.name)).toEqual(['Lost in the Woods', 'Nordlys', 'Siste dans']);
+  });
+
   it('keeps sub-cues under their parent in running mode', () => {
     let cues = [cue('10'), cue('20', 'K', 'A\nB')];
     cues = splitIntoSubCues(cues, cues[1].id);

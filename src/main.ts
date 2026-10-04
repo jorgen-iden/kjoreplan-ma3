@@ -380,13 +380,26 @@ function renderSettings() {
       { class: 'check' },
       h('input', {
         type: 'checkbox',
-        checked: s.includeNotes,
+        checked: s.noteTime,
         onchange: (e: Event) => {
-          s.includeNotes = (e.target as HTMLInputElement).checked;
+          s.noteTime = (e.target as HTMLInputElement).checked;
           changed();
         },
       }),
-      t.includeNotes,
+      t.noteTime,
+    ),
+    h(
+      'label',
+      { class: 'check' },
+      h('input', {
+        type: 'checkbox',
+        checked: s.noteText,
+        onchange: (e: Event) => {
+          s.noteText = (e.target as HTMLInputElement).checked;
+          changed();
+        },
+      }),
+      t.noteText,
     ),
     h(
       'label',

@@ -39,6 +39,11 @@ export function formatTime(raw: string): string {
   return m ? `${m[1].padStart(2, '0')}:${m[2]}` : raw.trim();
 }
 
+/** Remove a leading list marker such as "- ", "• " or "– " from a line. */
+export function stripBullet(line: string): string {
+  return line.trim().replace(/^[-–—•*·]\s*/, '').trim();
+}
+
 function splitLines(s: string): string[] {
   return s.split('\n').map((l) => l.trim()).filter(Boolean);
 }
@@ -68,7 +73,7 @@ export function splitIntoSubCues(cues: Cue[], id: string): Cue[] {
   const i = cues.findIndex((c) => c.id === id);
   if (i < 0) return cues;
   const parent = cues[i];
-  const subs: Cue[] = splitLines(parent.note).map((line) => ({
+  const subs: Cue[] = splitLines(parent.note).map(stripBullet).filter(Boolean).map((line) => ({
     id: newId(),
     srcNumber: '',
     name: line,

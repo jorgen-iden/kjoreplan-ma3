@@ -1,4 +1,4 @@
-import { computeNumbers, type Cue, type NumberingMode } from '../cues';
+import { computeNumbers, stripBullet, type Cue, type NumberingMode } from '../cues';
 import { escapeXml, MAX_NOTE_LENGTH, sanitizeText } from './sanitize';
 
 export interface MacroSettings {
@@ -6,7 +6,10 @@ export interface MacroSettings {
   sequenceName: string;
   numbering: NumberingMode;
   nameFormat: 'title' | 'time-title';
-  includeNotes: boolean;
+  /** Put start time and duration in the cue's Note field. */
+  noteTime: boolean;
+  /** Put the rest of the title cell in the cue's Note field. */
+  noteText: boolean;
   clearFirst: boolean;
 }
 
@@ -32,10 +35,12 @@ export function prepareCues(cues: Cue[], s: MacroSettings): PreparedCues {
     const base = s.nameFormat === 'time-title' && c.time ? `${c.time} ${c.name}` : c.name;
     const label = sanitizeText(base);
     const noteParts: string[] = [];
-    if (c.time) noteParts.push(`Start ${c.time}`);
-    if (c.duration && !/^0{1,2}[:.]00(?:[:.]00)?$/.test(c.duration)) noteParts.push(`Varighet ${c.duration}`);
+    if (s.noteTime && c.time) noteParts.push(`Start ${c.time}`);
+    if (s.noteTime && c.duration && !/^0{1,2}[:.]00(?:[:.]00)?$/.test(c.duration)) {
+      noteParts.push(`Varighet ${c.duration}`);
+    }
     const head = noteParts.join(', ');
-    const body = c.note.split('\n').map((l) => l.trim()).filter(Boolean).join(' / ');
+    const body = s.noteText ? c.note.split('\n').map(stripBullet).filter(Boolean).join(' / ') : '';
     const note = sanitizeText([head, body].filter(Boolean).join(' / '), MAX_NOTE_LENGTH).value;
     return { id: c.id, number: numbers.get(c.id)!, label: label.value, note, truncated: label.truncated };
   });
@@ -50,7 +55,7 @@ export function buildCommands(cues: MacroCue[], s: MacroSettings): string[] {
   for (const c of cues) {
     cmds.push(`Store ${seq} Cue ${c.number}`);
     if (c.label) cmds.push(`Label ${seq} Cue ${c.number} "${c.label}"`);
-    if (s.includeNotes && c.note) cmds.push(`Set ${seq} Cue ${c.number} Property "Note" "${c.note}"`);
+    if (c.note) cmds.push(`Set ${seq} Cue ${c.number} Property "Note" "${c.note}"`);
   }
   const seqName = sanitizeText(s.sequenceName).value;
   if (seqName) cmds.push(`Label ${seq} "${seqName}"`);

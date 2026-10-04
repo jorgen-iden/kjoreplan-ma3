@@ -8,7 +8,8 @@ const settings: MacroSettings = {
   sequenceName: 'Kjøreplan dag 1',
   numbering: 'follow',
   nameFormat: 'title',
-  includeNotes: false,
+  noteTime: false,
+  noteText: false,
   clearFirst: true,
 };
 const cue = (srcNumber: string, name: string, extra: Partial<Cue> = {}): Cue => ({
@@ -40,7 +41,7 @@ describe('buildCommands', () => {
   });
 
   it('adds a Note command with start, duration and the rest of the title', () => {
-    const s = { ...settings, includeNotes: true };
+    const s = { ...settings, noteTime: true, noteText: true };
     const { cues } = prepareCues([cue('1', 'Konsert', { time: '20:00', duration: '00:30:00', note: 'Låt 1\nLåt 2' })], s);
     expect(buildCommands(cues, s)).toContain(
       'Set Sequence 101 Cue 1 Property "Note" "Start 20:00, Varighet 00:30:00 / Låt 1 / Låt 2"',
@@ -48,9 +49,28 @@ describe('buildCommands', () => {
   });
 
   it('skips a zero duration in the note', () => {
-    const s = { ...settings, includeNotes: true };
+    const s = { ...settings, noteTime: true, noteText: true };
     const { cues } = prepareCues([cue('1', 'A', { time: '17:30', duration: '00:00:00' })], s);
     expect(cues[0].note).toBe('Start 17:30');
+  });
+});
+
+describe('note options', () => {
+  const c = () => cue('1', 'Konsert', { time: '18:39', duration: '00:05:00', note: 'Artist 1: Nils\n- Lost in the Woods' });
+
+  it('can include only the rest of the title, without list markers', () => {
+    const s = { ...settings, noteTime: false, noteText: true };
+    expect(prepareCues([c()], s).cues[0].note).toBe('Artist 1: Nils / Lost in the Woods');
+  });
+
+  it('can include only start and duration', () => {
+    const s = { ...settings, noteTime: true, noteText: false };
+    expect(prepareCues([c()], s).cues[0].note).toBe('Start 18:39, Varighet 00:05:00');
+  });
+
+  it('skips the Note command when both are off', () => {
+    const cmds = buildCommands(prepareCues([c()], settings).cues, settings);
+    expect(cmds.some((x) => x.includes('Note'))).toBe(false);
   });
 });
 
