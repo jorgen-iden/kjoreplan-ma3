@@ -36,7 +36,7 @@ Sann og generisk: ingen navn og ingen enkeltpersoner. Ikke pynt den med påstand
 **English:**
 > Cuesetter started backstage. Before every show the same thing happened: the run sheet arrived as a PDF, often late, and every item had to be typed into the console by hand while the lighting waited. We work in the industry and have seen it happen again and again. So we built the tool that does the job in a minute, so the time goes to the lighting.
 
-**Signaturlinje:** «Laget i bransjen, for operatører.» / «Built in the industry, for operators.»
+**Signaturlinje:** «Laget av bransjen, for bransjen.» / «Made by the industry, for the industry.»
 
 ## Budskap
 
@@ -46,7 +46,7 @@ Sann og generisk: ingen navn og ingen enkeltpersoner. Ikke pynt den med påstand
   1. Leser PDF, Word og Excel – slik kjøreplanen kommer.
   2. Filene forlater aldri maskinen.
   3. Testet i grandMA3 onPC 2.5.1.
-  4. Laget i bransjen, for operatører.
+  4. Laget av bransjen, for bransjen.
 
 ## Personlighet: erfaren kollega på intercom
 
@@ -73,7 +73,7 @@ Alt vi sier om oss selv skal kunne dokumenteres. Sjekk listen før ny tekst publ
 | Testet i grandMA3 onPC 2.5.1 | Verifisert import og kjøring av makroen. Nye versjoner legges til først når de er testet. |
 | Filene forlater aldri maskinen | All lesing skjer i nettleseren. Endres hvis lagring i skyen innføres – da må teksten skille mellom gratis og lagrede kjøreplaner. |
 | Leser PDF, Word og Excel | .pdf med tekstlag, .docx, .xlsx. Ikke skannede PDF-er eller gamle .doc/.xls. |
-| Laget i bransjen | Eieren jobber i bransjen. Si aldri «laget av en lysoperatør». |
+| Laget av bransjen | Eieren jobber i bransjen. Si aldri «laget av en lysoperatør». |
 | Sitater og kundelogoer | Bare ekte, med samtykke. Ingen oppdiktede brukere. |
 
 ## Visuell identitet

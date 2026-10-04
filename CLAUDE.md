@@ -41,7 +41,7 @@ Store oppgaver kan fordeles på underagenter (Agent-verktøyet) per rolle. Plane
 
 Hele plattformen ligger i `docs/brand.md` (posisjonering, historien, budskap, ordliste, visuell identitet). Les den før du skriver tekst eller designer flater. Kortversjonen:
 
-- **Posisjonering:** verktøyet for lysoperatører som gjør kjøreplanen fra produksjonen (PDF, Word, Excel) om til en navngitt cueliste i grandMA3 på ett minutt. Laget i bransjen, for operatører.
+- **Posisjonering:** verktøyet for lysoperatører som gjør kjøreplanen fra produksjonen (PDF, Word, Excel) om til en navngitt cueliste i grandMA3 på ett minutt. Laget av bransjen, for bransjen.
 - **Påstander må være sanne:** si aldri «laget av en lysoperatør», og bruk ingen oppdiktede brukere eller sitater. Se tabellen «Påstander» i `docs/brand.md`.
 - **Tone of voice:** rolig, presis og kollegial, som en erfaren operatør på intercom. Korte setninger, konsollens egne ord (cue, sekvens, makro), ingen salgsfloskler eller utropstegn. Feilmeldinger forklarer hva som skjedde og hva du gjør nå. Ikke kall produktet «AI».
 - **Fortellingen:** Kjøreplanen kommer alltid sent og endrer seg. Å taste den inn i lysbordet stjeler tid fra det som faktisk betyr noe: lyset.

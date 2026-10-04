@@ -108,7 +108,7 @@
         "text": "Makroen er verifisert i konsollprogrammet. Vi sier hvilke versjoner som er testet, og ikke mer."
       },
       "industry": {
-        "title": "Laget i bransjen, for operatører",
+        "title": "Laget av bransjen, for bransjen",
         "text": "Laget av folk som jobber med forestillinger, for dem som står ved lysbordet."
       }
     },
@@ -117,7 +117,7 @@
       "Cuesetter startet backstage. Før hver forestilling skjedde det samme: kjøreplanen kom på PDF, ofte sent, og hvert punkt måtte tastes inn i konsollen for hånd mens lyset ventet.",
       "Vi jobber selv i bransjen og har sett det skje igjen og igjen. Så vi bygde verktøyet som gjør jobben på ett minutt, slik at tiden går til lyset."
     ],
-    "storySign": "Laget i bransjen, for operatører.",
+    "storySign": "Laget av bransjen, for bransjen.",
     "tagline": "Kjøreplan inn. Cueliste ut.",
     "finalLead": "Prøv med din neste kjøreplan, eller med eksempelet vårt."
   },
