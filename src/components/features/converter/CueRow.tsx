@@ -9,11 +9,12 @@ import { Button } from '@/components/ui';
 import { RowMenu } from './RowMenu';
 
 /**
- * Column layout shared by the header and every row. On phones a row wraps: handle, number and name
- * on the first line, time and row buttons below the name, then the note. From md up it is one line per cue.
+ * Column layout shared by the header and every row. On phones a row is two lines: number and name,
+ * then time, note and row buttons under the name. The drag handle is hidden there (touch screens
+ * don't drag rows; the ⋯ menu moves them). From md up it is one line per cue. From md up it is one line per cue.
  */
 export const ROW_GRID =
-  'grid grid-cols-[1.5rem_3rem_minmax(0,1fr)_auto] items-start gap-x-2 gap-y-1 md:grid-cols-[1.75rem_4rem_minmax(0,1fr)_5rem_minmax(0,0.9fr)_9.5rem]';
+  'grid grid-cols-[2.75rem_4.5rem_minmax(0,1fr)_auto] items-start gap-x-1.5 gap-y-0.5 md:gap-x-2 md:gap-y-1 md:grid-cols-[1.75rem_4rem_minmax(0,1fr)_5rem_minmax(0,0.9fr)_9.5rem]';
 
 const FIELD =
   'w-full rounded-md border border-transparent bg-transparent px-2 py-1.5 text-ink transition-colors duration-150 placeholder:text-muted md:placeholder:text-transparent hover:border-line focus:border-accent focus:bg-card focus:outline-none aria-[invalid=true]:border-danger';
@@ -72,11 +73,11 @@ export const CueRow = memo(function CueRow({
         e.dataTransfer.dropEffect = 'move';
         onDragOver(id, e.clientY, e.currentTarget.getBoundingClientRect());
       }}
-      className={`${ROW_GRID} border-b border-line-soft px-3 py-3 transition-[opacity,background-color] duration-150 md:px-4 md:py-2 ${
+      className={`${ROW_GRID} border-b border-line-soft px-3 py-2.5 transition-[opacity,background-color] duration-150 md:px-4 md:py-2 ${
         dragging ? 'bg-accent-soft opacity-60' : prepared.truncated ? 'bg-warn-soft' : isSub ? '' : 'hover:bg-paper/60'
       }`}
     >
-      <span className="flex h-9 items-center justify-center">
+      <span className="hidden h-9 items-center justify-center md:flex">
         {!isSub && (
           <span
             role="img"
@@ -100,7 +101,7 @@ export const CueRow = memo(function CueRow({
 
       <span className={`flex h-9 items-center font-mono text-sm font-semibold ${isSub ? 'pl-3 text-muted' : 'text-ink'}`}>{prepared.number}</span>
 
-      <span className={`col-span-2 flex min-w-0 flex-col md:col-span-1 ${isSub ? 'md:pl-5' : ''}`}>
+      <span className={`col-span-3 flex min-w-0 flex-col md:col-span-1 ${isSub ? 'md:pl-5' : ''}`}>
         <input
           aria-label={`${t('name')} ${prepared.number}`}
           value={cue.name}
@@ -112,7 +113,7 @@ export const CueRow = memo(function CueRow({
         {prepared.truncated && <span className="px-2 text-xs text-warn">{t('truncated', { max: MAX_NAME_LENGTH })}</span>}
       </span>
 
-      <span className="col-start-3 order-5 flex flex-col md:order-none md:col-start-auto">
+      <span className="col-start-2 flex flex-col md:col-start-auto">
         <input
           aria-label={`${t('time')} ${prepared.number}`}
           placeholder={t('time')}
@@ -125,7 +126,8 @@ export const CueRow = memo(function CueRow({
         {timeInvalid && <span className="px-2 text-xs text-danger">{t('timeInvalid')}</span>}
       </span>
 
-      <span className="col-span-2 col-start-3 order-6 md:order-none md:col-span-1 md:col-start-auto">
+      {/* Phones: an empty note sits beside the time; a written one gets its own line under it. */}
+      <span className={`min-w-0 ${cue.note ? 'order-last col-span-3 col-start-2 md:order-none md:col-span-1 md:col-start-auto' : ''}`}>
         <textarea
           aria-label={`${t('note')} ${prepared.number}`}
           placeholder={t('note')}
@@ -136,7 +138,7 @@ export const CueRow = memo(function CueRow({
         />
       </span>
 
-      <span className="order-5 flex h-9 items-center justify-end gap-1.5 md:order-none">
+      <span className="col-start-4 flex h-9 items-center justify-end gap-1.5 md:col-start-auto">
         {!isSub && cue.note.trim() && (
           <Button variant="accent-soft" size="sm" title={t('splitHint')} onClick={() => onSplit(id)}>
             {t('split')}

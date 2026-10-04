@@ -14,12 +14,12 @@ export function SiteHeader() {
     >
       {t('skip')}
     </a>
-    <header className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-5 sm:px-8">
+    <header className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-4 sm:gap-4 sm:px-8 sm:py-5">
       <Link href="/" aria-label="CueSetter" className="rounded-lg text-ink no-underline">
         <Logo />
       </Link>
-      <nav className="flex flex-wrap items-center gap-5 text-sm">
-        <Link href="/app" className="rounded font-semibold text-ink no-underline transition-colors hover:text-accent">
+      <nav className="flex items-center gap-2 text-sm sm:gap-5">
+        <Link href="/app" className="hidden rounded font-semibold text-ink no-underline transition-colors hover:text-accent sm:inline">
           {t('newRunSheet')}
         </Link>
         <ThemeToggle label={t('theme')} />

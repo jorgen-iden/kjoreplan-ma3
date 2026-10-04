@@ -161,7 +161,9 @@
     "export": "Eksporter",
     "label": "Steg",
     "back": "Tilbake",
-    "startOver": "Start på nytt"
+    "startOver": "Start på nytt",
+    "progress": "Steg {n} av {total}",
+    "nextTo": "{step} →"
   },
   "upload": {
     "title": "Last opp en kjøreplan",
@@ -187,7 +189,8 @@
     "oldFormat": "Dette er en gammel Word- eller Excel-fil (.doc eller .xls). Åpne den og lagre som .docx eller .xlsx, eller eksporter som PDF, og prøv igjen.",
     "unsupported": "Denne filtypen kan ikke leses. Bruk en PDF-, Word- (.docx) eller Excel-fil (.xlsx), eller lim inn teksten under.",
     "noTable": "Fant ingen tabell med punkter i filen. Sjekk at den inneholder kjøreplanen, eller lim inn teksten under.",
-    "unreadable": "Klarte ikke å åpne filen. Den kan være skadet eller passordbeskyttet. Lagre en ny kopi, eller lim inn teksten under."
+    "unreadable": "Klarte ikke å åpne filen. Den kan være skadet eller passordbeskyttet. Lagre en ny kopi, eller lim inn teksten under.",
+    "chooseFileButton": "Velg en fil"
   },
   "columns": {
     "title": "Sjekk kolonnene",
