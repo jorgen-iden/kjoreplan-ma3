@@ -2,8 +2,8 @@
 // Expected JSON: { "rows": [{ "number": "1", "start": "17:33", "name": "…" }, …] }
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { defaultMapping, rowsToCues } from '../src/cues';
-import { parseTextItems } from '../src/parse';
+import { defaultMapping, rowsToCues } from '../src/lib/cues';
+import { parseTextItems } from '../src/lib/parse';
 import { extract } from './helpers/extract';
 
 const dir = new URL('../fixtures/', import.meta.url);

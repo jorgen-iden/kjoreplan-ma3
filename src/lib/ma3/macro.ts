@@ -28,16 +28,24 @@ export interface PreparedCues {
   numberingFellBack: boolean;
 }
 
+/** Words used in the Note field, in the user's language. */
+export interface NoteLabels {
+  start: string;
+  duration: string;
+}
+
+const DEFAULT_LABELS: NoteLabels = { start: 'Start', duration: 'Duration' };
+
 /** Work out the number, label and note each cue will get on the console. */
-export function prepareCues(cues: Cue[], s: MacroSettings): PreparedCues {
+export function prepareCues(cues: Cue[], s: MacroSettings, labels: NoteLabels = DEFAULT_LABELS): PreparedCues {
   const { numbers, fellBack } = computeNumbers(cues, s.numbering);
   const prepared = cues.map((c) => {
     const base = s.nameFormat === 'time-title' && c.time ? `${c.time} ${c.name}` : c.name;
     const label = sanitizeText(base);
     const noteParts: string[] = [];
-    if (s.noteTime && c.time) noteParts.push(`Start ${c.time}`);
+    if (s.noteTime && c.time) noteParts.push(`${labels.start} ${c.time}`);
     if (s.noteTime && c.duration && !/^0{1,2}[:.]00(?:[:.]00)?$/.test(c.duration)) {
-      noteParts.push(`Varighet ${c.duration}`);
+      noteParts.push(`${labels.duration} ${c.duration}`);
     }
     const head = noteParts.join(', ');
     const body = s.noteText ? c.note.split('\n').map(stripBullet).filter(Boolean).join(' / ') : '';

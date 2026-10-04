@@ -8,24 +8,23 @@ Alt kjører i nettleseren. Ingen backend, ingen innlogging, og ingen filer forla
 
 ## Kom i gang
 
-Krever Node 20 eller nyere.
+Krever Node 20.9 eller nyere.
 
 ```sh
-npm install
-npm run dev        # utviklingsserver på http://localhost:5173
+npm install        # kopierer også pdf.js-workeren til public/
+npm run dev        # utviklingsserver på http://localhost:3000
 npm test           # enhetstester (vitest)
-npm run build      # typesjekk + statisk bygg til dist/
-npm run preview    # server dist/ lokalt
-npm run sample     # skriver fixtures/eksempel-kjoreplan.pdf (syntetisk kjøreplan til manuell testing)
+npm run typecheck  # TypeScript
+npm run build      # produksjonsbygg
+npm start          # kjør produksjonsbygget
+npm run sample     # skriver fixtures/eksempel-kjoreplan.pdf (syntetisk kjøreplan)
 ```
+
+Engelsk ligger på `/` og `/app`, norsk på `/no` og `/no/app`.
 
 ## Deploy
 
-`npm run build` gir en ren statisk side i `dist/` med relative stier (`base: './'`), så den kan legges hvor som helst:
-
-- **Netlify:** build command `npm run build`, publish directory `dist`.
-- **Vercel:** framework «Vite», output `dist`.
-- **GitHub Pages:** bygg og publiser `dist/`, for eksempel med `actions/upload-pages-artifact` + `actions/deploy-pages`.
+Prosjektet er en Next.js-app og er laget for **Vercel**: importer repoet, og standardinnstillingene fungerer. (Kommersiell bruk krever Vercel Pro.)
 
 ## Slik virker det
 
@@ -50,24 +49,27 @@ Label Sequence 101 "Kjøreplan dag 1"
 
 ```
 src/
-  parse/            PDF/tekst → tabell (rene funksjoner)
-    table.ts        kolonnebasert tolking av posisjonert PDF-tekst
-    lines.ts        linjebasert reserve når ingen header-rad finnes
-    text.ts         innlimt tekst (tabulator-separert eller linjer)
-    headers.ts      gjenkjenning av kolonneoverskrifter
-    pdf.ts          pdf.js-oppsett i nettleseren
-    pdf-items.ts    tekstuttrekk med x/y fra pdf.js
-  cues.ts           tabell → cuer, under-cuer, cue-nummerering
-  ma3/
-    sanitize.ts     rensing av navn, XML-escape, filnavn
-    macro.ts        kommandoer, makro-XML, kommandolinje (rene funksjoner)
-    zip.ts          ZIP med mappestruktur
-  config/ma-versions.json   MA-versjoner (legg til nye her)
-  i18n/no.ts        alle tekster i grensesnittet
-  main.ts           UI (vanilla TypeScript)
-tests/              vitest; tests/helpers/runsheet.ts lager en syntetisk test-PDF
-fixtures/           eksempelfiler
+  app/[locale]/       sider (forside og /app), per språk
+  components/
+    converter/        stegene i konverteren (Upload, Columns, Review, Settings, Export)
+    SiteHeader.tsx    topptekst med språkvelger
+  i18n/               språkoppsett (next-intl)
+  lib/                kjernen – rene funksjoner med tester, uavhengig av UI
+    parse/            PDF/tekst → tabell (pdf.js-uttrekk, kolonnebasert tolking, linjereserve)
+    cues.ts           tabell → cuer, under-cuer, nummerering, flytting
+    ma3/              navnerensing, makro-XML, kommandolinje, ZIP
+    config/ma-versions.json   MA-versjoner (legg til nye her)
+  proxy.ts            språkruting
+messages/             tekster per språk (en.json, no.json)
+tests/                vitest
+fixtures/             eksempelfiler
 ```
+
+### Nytt språk
+
+1. Legg språkkoden i `src/i18n/routing.ts`.
+2. Kopier `messages/en.json` til `messages/<kode>.json` og oversett.
+3. Legg navnet i `src/components/LocaleSwitcher.tsx`.
 
 ### PDF-tolkning
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { computeNumbers, formatTime, newId, splitIntoSubCues, type Cue } from '../src/cues';
+import { computeNumbers, formatTime, moveCue, moveCueBefore, newId, removeCue, splitIntoSubCues, type Cue } from '../src/lib/cues';
 
 const cue = (srcNumber: string, name = 'x', note = ''): Cue => ({ id: newId(), srcNumber, name, time: '', duration: '', note });
 
@@ -56,5 +56,46 @@ describe('computeNumbers', () => {
     cues = splitIntoSubCues(cues, cues[1].id);
     const { numbers } = computeNumbers(cues, 'running');
     expect(cues.map((c) => numbers.get(c.id))).toEqual(['1', '2', '2.1', '2.2']);
+  });
+});
+
+describe('moving cues', () => {
+  const setup = () => {
+    let cues = [cue('1', 'A'), cue('2', 'B', 'x\ny'), cue('3', 'C')];
+    cues = splitIntoSubCues(cues, cues[1].id);
+    return cues; // A, B, B.x, B.y, C
+  };
+  const names = (cs: Cue[]) => cs.map((c) => c.name);
+
+  it('moves a top-level cue together with its sub-cues', () => {
+    const cues = setup();
+    expect(names(moveCue(cues, cues[1].id, -1))).toEqual(['B', 'x', 'y', 'A', 'C']);
+    expect(names(moveCue(cues, cues[1].id, 1))).toEqual(['A', 'C', 'B', 'x', 'y']);
+    expect(names(moveCue(cues, cues[0].id, 1))).toEqual(['B', 'x', 'y', 'A', 'C']);
+    expect(names(moveCue(cues, cues[4].id, -1))).toEqual(['A', 'C', 'B', 'x', 'y']);
+  });
+
+  it('keeps sub-cues within their parent', () => {
+    const cues = setup();
+    expect(names(moveCue(cues, cues[3].id, -1))).toEqual(['A', 'B', 'y', 'x', 'C']);
+    expect(moveCue(cues, cues[2].id, -1)).toBe(cues);
+    expect(moveCue(cues, cues[3].id, 1)).toBe(cues);
+  });
+
+  it('does nothing at the edges', () => {
+    const cues = setup();
+    expect(moveCue(cues, cues[0].id, -1)).toBe(cues);
+    expect(moveCue(cues, cues[4].id, 1)).toBe(cues);
+  });
+
+  it('drops a block before another block, or at the end', () => {
+    const cues = setup();
+    expect(names(moveCueBefore(cues, cues[4].id, cues[3].id))).toEqual(['A', 'C', 'B', 'x', 'y']);
+    expect(names(moveCueBefore(cues, cues[0].id, null))).toEqual(['B', 'x', 'y', 'C', 'A']);
+  });
+
+  it('removes a cue with its sub-cues', () => {
+    const cues = setup();
+    expect(names(removeCue(cues, cues[1].id))).toEqual(['A', 'C']);
   });
 });

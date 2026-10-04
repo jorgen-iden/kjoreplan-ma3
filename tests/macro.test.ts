@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { newId, type Cue } from '../src/cues';
-import { buildCommandLine, buildCommands, buildMacroXml, prepareCues, type MacroSettings } from '../src/ma3/macro';
-import { escapeXml, sanitizeText, slugify } from '../src/ma3/sanitize';
+import { newId, type Cue } from '../src/lib/cues';
+import { buildCommandLine, buildCommands, buildMacroXml, prepareCues, type MacroSettings } from '../src/lib/ma3/macro';
+import { escapeXml, sanitizeText, slugify } from '../src/lib/ma3/sanitize';
 
 const settings: MacroSettings = {
   sequence: 101,
@@ -44,7 +44,7 @@ describe('buildCommands', () => {
     const s = { ...settings, noteTime: true, noteText: true };
     const { cues } = prepareCues([cue('1', 'Konsert', { time: '20:00', duration: '00:30:00', note: 'Låt 1\nLåt 2' })], s);
     expect(buildCommands(cues, s)).toContain(
-      'Set Sequence 101 Cue 1 Property "Note" "Start 20:00, Varighet 00:30:00 / Låt 1 / Låt 2"',
+      'Set Sequence 101 Cue 1 Property "Note" "Start 20:00, Duration 00:30:00 / Låt 1 / Låt 2"',
     );
   });
 
@@ -65,7 +65,8 @@ describe('note options', () => {
 
   it('can include only start and duration', () => {
     const s = { ...settings, noteTime: true, noteText: false };
-    expect(prepareCues([c()], s).cues[0].note).toBe('Start 18:39, Varighet 00:05:00');
+    expect(prepareCues([c()], s).cues[0].note).toBe('Start 18:39, Duration 00:05:00');
+    expect(prepareCues([c()], s, { start: 'Start', duration: 'Varighet' }).cues[0].note).toBe('Start 18:39, Varighet 00:05:00');
   });
 
   it('skips the Note command when both are off', () => {

@@ -135,3 +135,64 @@ function tryNumbers(cues: Cue[], topNumber: (c: Cue) => string): Map<string, str
   }
   return numbers;
 }
+
+/** Index range [start, end) of a top-level cue and its sub-cues. */
+function blockRange(cues: Cue[], start: number): [number, number] {
+  let end = start + 1;
+  while (end < cues.length && cues[end].parentId === cues[start].id) end++;
+  return [start, end];
+}
+
+/** Start index of the top-level block that contains index i. */
+function blockStart(cues: Cue[], i: number): number {
+  while (i > 0 && cues[i].parentId) i--;
+  return i;
+}
+
+/**
+ * Move a cue one step up or down. A top-level cue moves together with its sub-cues, past the
+ * neighbouring block; a sub-cue only swaps with its siblings.
+ */
+export function moveCue(cues: Cue[], id: string, dir: -1 | 1): Cue[] {
+  const i = cues.findIndex((c) => c.id === id);
+  if (i < 0) return cues;
+  const cue = cues[i];
+  if (cue.parentId) {
+    const j = i + dir;
+    if (j < 0 || j >= cues.length || cues[j].parentId !== cue.parentId) return cues;
+    const next = [...cues];
+    [next[i], next[j]] = [next[j], next[i]];
+    return next;
+  }
+  const [s, e] = blockRange(cues, i);
+  if (dir === -1) {
+    if (s === 0) return cues;
+    const ps = blockStart(cues, s - 1);
+    return [...cues.slice(0, ps), ...cues.slice(s, e), ...cues.slice(ps, s), ...cues.slice(e)];
+  }
+  if (e >= cues.length) return cues;
+  const [, ne] = blockRange(cues, e);
+  return [...cues.slice(0, s), ...cues.slice(e, ne), ...cues.slice(s, e), ...cues.slice(ne)];
+}
+
+/**
+ * Move a top-level cue (with its sub-cues) so it lands right before the block containing
+ * `targetId`, or at the end when `targetId` is null. Used for drag and drop.
+ */
+export function moveCueBefore(cues: Cue[], id: string, targetId: string | null): Cue[] {
+  const i = cues.findIndex((c) => c.id === id);
+  if (i < 0 || cues[i].parentId) return cues;
+  const [s, e] = blockRange(cues, i);
+  const block = cues.slice(s, e);
+  const rest = [...cues.slice(0, s), ...cues.slice(e)];
+  if (targetId === null) return [...rest, ...block];
+  const t = rest.findIndex((c) => c.id === targetId);
+  if (t < 0) return cues;
+  const ts = blockStart(rest, t);
+  return [...rest.slice(0, ts), ...block, ...rest.slice(ts)];
+}
+
+/** Remove a cue; removing a top-level cue also removes its sub-cues. */
+export function removeCue(cues: Cue[], id: string): Cue[] {
+  return cues.filter((c) => c.id !== id && c.parentId !== id);
+}

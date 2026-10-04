@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { defaultMapping, rowsToCues } from '../src/cues';
-import { parsePastedText, parseTextItems } from '../src/parse';
-import type { TextItem } from '../src/parse';
+import { defaultMapping, rowsToCues } from '../src/lib/cues';
+import { parsePastedText, parseTextItems } from '../src/lib/parse';
+import type { TextItem } from '../src/lib/parse';
 
 const cuesOf = (text: string) => {
   const t = parsePastedText(text);
