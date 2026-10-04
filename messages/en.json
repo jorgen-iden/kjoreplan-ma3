@@ -1,14 +1,18 @@
 {
   "meta": {
     "title": "Cuesetter – turn run sheets into grandMA3 cue lists",
-    "description": "Upload a run sheet PDF and get a macro that builds a named cue list on your grandMA3 console. Runs in your browser – your files never leave your computer."
+    "description": "Upload a run sheet PDF and get a macro that builds a named cue list on your grandMA3 console. Runs in your browser – your files never leave your computer.",
+    "appTitle": "Converter – Cuesetter",
+    "appDescription": "Convert a run sheet PDF to a grandMA3 macro: check columns, review cues, download and import on the console.",
+    "notFoundTitle": "Page not found – Cuesetter"
   },
   "nav": {
     "newRunSheet": "New run sheet",
     "history": "History",
     "account": "Account",
     "language": "Language",
-    "openApp": "Open the app"
+    "openApp": "Open the app",
+    "skip": "Skip to content"
   },
   "home": {
     "kicker": "For grandMA3 operators",
@@ -43,7 +47,10 @@
     "pdfError": "Could not read the PDF: {error}",
     "noTextLayer": "No text found in this PDF. It is probably scanned (an image). Copy the text manually and paste it below.",
     "noRows": "No items found. Check the columns, or paste the text instead.",
-    "linesMode": "No column headers found, so items were read line by line. Check the result carefully."
+    "linesMode": "No column headers found, so items were read line by line. Check the result carefully.",
+    "sampleError": "Couldn’t load the sample run sheet. Check your connection and try again.",
+    "retry": "Try again",
+    "readingLead": "Finding columns and rows …"
   },
   "columns": {
     "title": "Check the columns",
@@ -78,7 +85,11 @@
     "truncated": "Will be shortened to {max} characters",
     "emptyName": "Missing name",
     "numberingFellBack": "The # column can’t be used as cue numbers (missing, invalid or not increasing), so cues are numbered 1, 2, 3 …",
-    "truncatedSummary": "{count, plural, one {# name} other {# names}} will be shortened to {max} characters on the console."
+    "truncatedSummary": "{count, plural, one {# name} other {# names}} will be shortened to {max} characters on the console.",
+    "timeInvalid": "Use HH:MM, for example 18:30",
+    "emptyTitle": "No cues yet",
+    "emptyLead": "Add a cue by hand, or start over with another run sheet.",
+    "untitled": "Untitled run sheet"
   },
   "settings": {
     "title": "Settings",
@@ -102,7 +113,8 @@
     "safetyGroup": "Safety",
     "clearFirst": "Clear the programmer first (ClearAll)",
     "clearFirstHelp": "Recommended. Makes sure the cues are stored empty.",
-    "continue": "Continue to export →"
+    "continue": "Continue to export →",
+    "sequenceNameEmpty": "Without a name the macro is called “Run sheet”."
   },
   "export": {
     "title": "Ready to export",
@@ -118,10 +130,23 @@
     "cmdTitle": "Backup: command line",
     "cmdLead": "If the import fails, paste this straight into the command line.",
     "copy": "Copy",
-    "copied": "Copied!"
+    "copied": "Copied!",
+    "preparing": "Preparing …",
+    "copyFailed": "Couldn’t copy automatically. Select the text and copy it by hand.",
+    "downloadError": "Couldn’t create the file. Try again."
   },
   "note": {
     "start": "Start",
     "duration": "Duration"
+  },
+  "errors": {
+    "notFoundCode": "404",
+    "notFoundTitle": "This page doesn’t exist",
+    "notFoundLead": "The link may be old or mistyped.",
+    "backHome": "Back to the front page",
+    "openApp": "Open the converter",
+    "errorTitle": "Something went wrong",
+    "errorLead": "The page hit an unexpected error. Your files never left your computer.",
+    "retry": "Try again"
   }
 }

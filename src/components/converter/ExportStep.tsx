@@ -1,61 +1,94 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useId, useMemo, useRef, useState } from 'react';
 import { findVersion } from '@/lib/config/versions';
 import type { Cue } from '@/lib/cues';
 import { buildCommandLine, buildCommands, buildMacroXml, prepareCues } from '@/lib/ma3/macro';
 import { slugify } from '@/lib/ma3/sanitize';
 import { buildZip, MACRO_DIR } from '@/lib/ma3/zip';
 import type { Settings } from '@/lib/settings';
-import { Card, Notice, PrimaryButton, SecondaryButton, StepHeader } from './ui';
+import { Button, Card, Notice, PageHeader } from '../ui';
 
 export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings }) {
   const t = useTranslations('export');
   const tNote = useTranslations('note');
-  const [copied, setCopied] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+  const [downloadFailed, setDownloadFailed] = useState(false);
+  const [copy, setCopy] = useState<'idle' | 'copied' | 'failed'>('idle');
+  const cmdRef = useRef<HTMLTextAreaElement>(null);
+  const cmdId = useId();
 
   const version = findVersion(settings.maVersion);
   const macroName = settings.sequenceName.trim() || 'Run sheet';
   const fileSlug = slugify(macroName);
-  const commands = buildCommands(prepareCues(cues, settings, { start: tNote('start'), duration: tNote('duration') }).cues, settings);
+  const commands = useMemo(
+    () => buildCommands(prepareCues(cues, settings, { start: tNote('start'), duration: tNote('duration') }).cues, settings),
+    [cues, settings, tNote],
+  );
   const cmdLine = buildCommandLine(commands);
 
   const download = async () => {
-    const blob = await buildZip(fileSlug, buildMacroXml(macroName, commands, version.dataVersion));
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${fileSlug}.zip`;
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    setDownloading(true);
+    setDownloadFailed(false);
+    try {
+      const blob = await buildZip(fileSlug, buildMacroXml(macroName, commands, version.dataVersion));
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${fileSlug}.zip`;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } catch {
+      setDownloadFailed(true);
+    } finally {
+      setDownloading(false);
+    }
   };
 
-  const copy = async () => {
-    await navigator.clipboard.writeText(cmdLine);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1500);
+  const copyCommands = async () => {
+    try {
+      await navigator.clipboard.writeText(cmdLine);
+      setCopy('copied');
+      setTimeout(() => setCopy('idle'), 1500);
+    } catch {
+      // Clipboard blocked (permissions, insecure context): select the text so the user can copy it.
+      cmdRef.current?.select();
+      setCopy('failed');
+    }
   };
 
   return (
-    <section>
-      <StepHeader
-        title={t('title')}
+    <section aria-labelledby="export-title">
+      <PageHeader
+        title={<span id="export-title">{t('title')}</span>}
         lead={t('lead', { sequence: settings.sequence, cues: cues.length, version: version.label })}
       />
 
       <Card className="flex flex-col items-start gap-4 p-6 sm:p-8">
-        <PrimaryButton onClick={() => void download()} className="min-h-14 px-8 text-lg">
-          {t('download')}
-        </PrimaryButton>
-        <p className="font-mono text-xs text-muted">
+        <Button variant="primary" size="lg" loading={downloading} onClick={() => void download()} className="min-h-14 px-8 text-lg">
+          {downloading ? t('preparing') : t('download')}
+        </Button>
+        <p className="break-all font-mono text-xs text-muted">
           {MACRO_DIR}/{fileSlug}.xml
         </p>
+        {downloadFailed && (
+          <Notice
+            kind="error"
+            action={
+              <Button size="sm" onClick={() => void download()}>
+                {t('download')}
+              </Button>
+            }
+          >
+            {t('downloadError')}
+          </Notice>
+        )}
         <Notice kind="info">{t('verified')}</Notice>
       </Card>
 
       <div className="mt-5 grid gap-5 md:grid-cols-2">
-        <Card className="p-6">
+        <Card as="section" className="p-6">
           <h2 className="mb-4 text-lg font-bold">{t('howTitle')}</h2>
           <ol className="flex list-decimal flex-col gap-2 pl-5 text-subtle marker:font-semibold marker:text-accent">
             <li>{t('how1')}</li>
@@ -66,21 +99,26 @@ export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings
           </ol>
         </Card>
 
-        <Card className="flex flex-col p-6">
+        <Card as="section" className="flex flex-col p-6">
           <h2 className="text-lg font-bold">{t('cmdTitle')}</h2>
           <p className="mb-3 mt-1 text-sm text-muted">{t('cmdLead')}</p>
-          <label className="flex flex-1 flex-col">
-            <span className="sr-only">{t('cmdTitle')}</span>
-            <textarea
-              readOnly
-              value={cmdLine}
-              rows={5}
-              className="flex-1 resize-y rounded-xl border border-line bg-paper p-3 font-mono text-xs text-subtle"
-            />
+          <label htmlFor={cmdId} className="sr-only">
+            {t('cmdTitle')}
           </label>
-          <SecondaryButton onClick={() => void copy()} className="mt-3 self-start">
-            {copied ? t('copied') : t('copy')}
-          </SecondaryButton>
+          <textarea
+            id={cmdId}
+            ref={cmdRef}
+            readOnly
+            value={cmdLine}
+            rows={5}
+            className="flex-1 resize-y rounded-xl border border-line bg-paper p-3 font-mono text-xs text-subtle focus:border-accent focus:outline-none"
+          />
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <Button onClick={() => void copyCommands()} aria-live="polite">
+              {copy === 'copied' ? t('copied') : t('copy')}
+            </Button>
+            {copy === 'failed' && <p className="text-sm text-danger">{t('copyFailed')}</p>}
+          </div>
         </Card>
       </div>
     </section>

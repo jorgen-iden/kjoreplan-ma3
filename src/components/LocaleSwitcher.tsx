@@ -16,7 +16,7 @@ export function LocaleSwitcher({ label }: { label: string }) {
       <select
         value={locale}
         onChange={(e) => router.replace(pathname, { locale: e.target.value as Locale })}
-        className="rounded-lg border border-line bg-card px-2 py-1.5 text-sm text-ink"
+        className="min-h-9 rounded-lg border border-line bg-card px-2 text-sm text-ink transition-colors hover:border-muted"
       >
         {routing.locales.map((l) => (
           <option key={l} value={l}>

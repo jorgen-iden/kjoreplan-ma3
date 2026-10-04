@@ -1,9 +1,10 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { JetBrains_Mono, Schibsted_Grotesk } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { routing } from '@/i18n/routing';
+import { routing, type Locale } from '@/i18n/routing';
+import { alternates, ogImages, SITE_NAME, SITE_URL } from '@/lib/site';
 import '../globals.css';
 
 // Fonts are downloaded at build time and served from our own domain.
@@ -17,8 +18,30 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'meta' });
-  return { title: t('title'), description: t('description') };
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: t('title'),
+    description: t('description'),
+    applicationName: SITE_NAME,
+    alternates: alternates(locale as Locale, '/'),
+    openGraph: {
+      type: 'website',
+      siteName: SITE_NAME,
+      title: t('title'),
+      description: t('description'),
+      locale: locale === 'no' ? 'nb_NO' : 'en_US',
+      images: ogImages(locale as Locale),
+    },
+    twitter: { card: 'summary_large_image', title: t('title'), description: t('description') },
+  };
 }
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f6f5f1' },
+    { media: '(prefers-color-scheme: dark)', color: '#121316' },
+  ],
+};
 
 export default async function LocaleLayout({
   children,

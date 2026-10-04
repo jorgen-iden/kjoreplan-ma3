@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import type { Mapping } from '@/lib/cues';
 import type { ParsedTable } from '@/lib/parse';
-import { Card, PrimaryButton, StepHeader } from './ui';
+import { Button, Card, PageHeader } from '../ui';
 
 const ROLES = [
   ['number', 'number'],
@@ -36,11 +36,19 @@ export function ColumnsStep({
   const preview = table.rows.slice(0, 5);
 
   return (
-    <section>
-      <StepHeader title={t('title')} lead={t('lead')} action={<PrimaryButton onClick={onNext}>{t('continue')}</PrimaryButton>} />
+    <section aria-label={t('title')}>
+      <PageHeader
+        title={t('title')}
+        lead={t('lead')}
+        action={
+          <Button variant="primary" size="lg" onClick={onNext}>
+            {t('continue')}
+          </Button>
+        }
+      />
 
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
-        <Card className="p-6">
+        <Card as="section" className="p-6">
           <h2 className="mb-4 text-sm font-semibold text-muted">{t('found')}</h2>
           <div className="flex flex-col gap-4">
             {ROLES.map(([key, label]) => (
@@ -49,7 +57,7 @@ export function ColumnsStep({
                 <select
                   value={mapping[key] ?? ''}
                   onChange={(e) => change(key, e.target.value)}
-                  className="min-h-11 rounded-lg border border-line bg-paper px-3 text-ink"
+                  className="min-h-11 rounded-lg border border-line bg-paper px-3 text-ink transition-colors hover:border-muted focus:border-accent focus:outline-none"
                 >
                   <option value="">{t('notUsed')}</option>
                   {table.columns.map((c, i) => (
@@ -63,7 +71,7 @@ export function ColumnsStep({
           </div>
         </Card>
 
-        <Card className="overflow-hidden">
+        <Card as="section" className="overflow-hidden">
           <h2 className="border-b border-line-soft px-6 py-4 text-sm font-semibold text-muted">{t('preview')}</h2>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[560px] border-collapse text-left text-sm">

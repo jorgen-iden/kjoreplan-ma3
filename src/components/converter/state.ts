@@ -8,7 +8,7 @@ export type Step = 0 | 1 | 2 | 3 | 4;
 /** A message shown in the upload step, as a translation key under "upload". */
 export interface Notice {
   kind: 'info' | 'warn' | 'error';
-  key: 'reading' | 'pdfError' | 'noTextLayer' | 'noRows' | 'linesMode';
+  key: 'pdfError' | 'noTextLayer' | 'noRows' | 'linesMode' | 'sampleError';
   values?: Record<string, string>;
 }
 
@@ -20,6 +20,8 @@ export interface State {
   /** The user has edited the cue list since it was derived from the table. */
   edited: boolean;
   notice: Notice | null;
+  /** A PDF is being read. */
+  busy: boolean;
   settings: Settings;
 }
 
@@ -40,20 +42,21 @@ export const initialState: State = {
   cues: [],
   edited: false,
   notice: null,
+  busy: false,
   settings: DEFAULT_SETTINGS,
 };
 
 export function reducer(state: State, action: Action): State {
   switch (action.type) {
     case 'busy':
-      return { ...state, notice: { kind: 'info', key: 'reading' } };
+      return { ...state, busy: true, notice: null };
     case 'error':
-      return { ...state, notice: action.notice };
+      return { ...state, busy: false, notice: action.notice };
     case 'loaded': {
       const mapping = defaultMapping(action.table);
       const cues = rowsToCues(action.table, mapping);
       if (!cues.length) {
-        return { ...state, notice: { kind: 'warn', key: 'noRows' } };
+        return { ...state, busy: false, notice: { kind: 'warn', key: 'noRows' } };
       }
       return {
         ...state,
@@ -61,6 +64,7 @@ export function reducer(state: State, action: Action): State {
         mapping,
         cues,
         edited: false,
+        busy: false,
         notice: action.table.mode === 'lines' ? { kind: 'warn', key: 'linesMode' } : null,
         settings: { ...state.settings, sequenceName: action.table.title ?? '' },
         // Line-based results have nothing to map, so skip straight to review.

@@ -1,103 +1,148 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
+import { Button, Card, Notice, PageHeader, Skeleton, Spinner } from '../ui';
 import type { Notice as NoticeData } from './state';
-import { Card, Notice, SecondaryButton, StepHeader } from './ui';
 
 export function UploadStep({
+  busy,
   notice,
-  onPdf,
+  onFile,
+  onSample,
   onText,
 }: {
+  busy: boolean;
   notice: NoticeData | null;
-  onPdf: (data: ArrayBuffer, fileName: string) => void;
+  onFile: (file: File) => void;
+  onSample: () => void;
   onText: (text: string) => void;
 }) {
   const t = useTranslations('upload');
   const input = useRef<HTMLInputElement>(null);
   const [over, setOver] = useState(false);
   const [text, setText] = useState('');
-
-  const openFile = async (file: File | undefined) => {
-    if (file) onPdf(await file.arrayBuffer(), file.name);
-  };
-  const openSample = async () => {
-    const res = await fetch('/sample-run-sheet.pdf');
-    onPdf(await res.arrayBuffer(), 'sample-run-sheet.pdf');
-  };
+  const pasteId = useId();
 
   return (
-    <section>
-      <StepHeader title={t('title')} lead={t('lead')} />
+    <section aria-labelledby="upload-title">
+      <PageHeader title={<span id="upload-title">{t('title')}</span>} lead={t('lead')} />
 
-      {notice && (
+      {notice && !busy && (
         <div className="mb-5">
-          <Notice kind={notice.kind}>{t(notice.key, notice.values)}</Notice>
+          <Notice
+            kind={notice.kind}
+            action={
+              notice.key === 'sampleError' ? (
+                <Button size="sm" onClick={onSample}>
+                  {t('retry')}
+                </Button>
+              ) : undefined
+            }
+          >
+            {t(notice.key, notice.values)}
+          </Notice>
         </div>
       )}
 
       <div className="grid gap-5 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
-        <div
-          onDragOver={(e) => {
-            e.preventDefault();
-            setOver(true);
-          }}
-          onDragLeave={() => setOver(false)}
-          onDrop={(e) => {
-            e.preventDefault();
-            setOver(false);
-            void openFile(e.dataTransfer.files[0]);
-          }}
-          className={`flex min-h-[320px] flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed px-6 py-12 text-center transition-colors ${
-            over ? 'border-accent bg-accent-soft' : 'border-line bg-card'
-          }`}
-        >
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-accent" aria-hidden="true">
-            <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
-            <path d="M14 3v6h6M12 18v-6M9 15l3-3 3 3" />
-          </svg>
-          <p className="text-xl font-bold">{t('dropHint')}</p>
-          <p className="text-muted">
-            {t('or')}{' '}
-            <button
-              type="button"
-              onClick={() => input.current?.click()}
-              className="font-semibold text-accent underline underline-offset-4 hover:text-accent-strong"
-            >
-              {t('chooseFile')}
-            </button>
-          </p>
-          <input
-            ref={input}
-            type="file"
-            accept="application/pdf,.pdf"
-            className="hidden"
-            onChange={(e) => void openFile(e.target.files?.[0])}
-          />
-          <SecondaryButton onClick={() => void openSample()} className="mt-4">
-            {t('trySample')}
-          </SecondaryButton>
-        </div>
+        {busy ? (
+          <ReadingSkeleton title={t('reading')} lead={t('readingLead')} />
+        ) : (
+          <div
+            onDragOver={(e) => {
+              e.preventDefault();
+              setOver(true);
+            }}
+            onDragLeave={() => setOver(false)}
+            onDrop={(e) => {
+              e.preventDefault();
+              setOver(false);
+              const file = e.dataTransfer.files[0];
+              if (file) onFile(file);
+            }}
+            className={`flex min-h-80 flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed px-6 py-12 text-center transition-colors duration-150 ${
+              over ? 'border-accent bg-accent-soft' : 'border-line bg-card'
+            }`}
+          >
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className={`text-accent transition-transform duration-150 ${over ? '-translate-y-1' : ''}`} aria-hidden="true">
+              <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+              <path d="M14 3v6h6M12 18v-6M9 15l3-3 3 3" />
+            </svg>
+            <p className="text-xl font-bold">{t('dropHint')}</p>
+            <p className="text-muted">
+              {t('or')}{' '}
+              <button
+                type="button"
+                onClick={() => input.current?.click()}
+                className="rounded font-semibold text-accent underline underline-offset-4 transition-colors hover:text-accent-strong"
+              >
+                {t('chooseFile')}
+              </button>
+            </p>
+            <input
+              ref={input}
+              type="file"
+              accept="application/pdf,.pdf"
+              className="sr-only"
+              tabIndex={-1}
+              aria-hidden="true"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) onFile(file);
+                e.target.value = '';
+              }}
+            />
+            <Button onClick={onSample} className="mt-4">
+              {t('trySample')}
+            </Button>
+          </div>
+        )}
 
-        <Card className="flex flex-col p-6">
+        <Card as="section" className="flex flex-col p-6">
           <h2 className="text-lg font-bold">{t('pasteTitle')}</h2>
           <p className="mt-1 text-sm text-muted">{t('pasteLead')}</p>
-          <label className="mt-4 flex flex-1 flex-col">
-            <span className="sr-only">{t('pasteTitle')}</span>
-            <textarea
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              placeholder={t('pastePlaceholder')}
-              rows={8}
-              className="min-h-[160px] flex-1 resize-y rounded-xl border border-line bg-paper p-3 font-mono text-sm text-ink placeholder:text-muted"
-            />
+          <label htmlFor={pasteId} className="sr-only">
+            {t('pasteTitle')}
           </label>
-          <SecondaryButton onClick={() => onText(text)} disabled={!text.trim()} className="mt-4 self-start disabled:opacity-50">
+          <textarea
+            id={pasteId}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder={t('pastePlaceholder')}
+            rows={8}
+            disabled={busy}
+            className="mt-4 min-h-40 flex-1 resize-y rounded-xl border border-line bg-paper p-3 font-mono text-sm text-ink transition-colors placeholder:text-muted hover:border-muted focus:border-accent focus:outline-none"
+          />
+          <Button onClick={() => onText(text)} disabled={busy || !text.trim()} className="mt-4 self-start">
             {t('useText')}
-          </SecondaryButton>
+          </Button>
         </Card>
       </div>
     </section>
+  );
+}
+
+/** Shown while a PDF is read: the shape of the table that is about to appear. */
+function ReadingSkeleton({ title, lead }: { title: string; lead: string }) {
+  return (
+    <div role="status" aria-live="polite" className="flex min-h-80 flex-col gap-5 rounded-2xl border border-line bg-card p-6">
+      <div className="flex items-center gap-3">
+        <Spinner className="size-5 text-accent" />
+        <div>
+          <p className="font-bold">{title}</p>
+          <p className="text-sm text-muted">{lead}</p>
+        </div>
+      </div>
+      <div className="flex flex-col gap-3">
+        {[0, 1, 2, 3, 4, 5].map((i) => (
+          <div key={i} className="grid grid-cols-[3rem_4rem_minmax(0,1fr)] gap-4">
+            <Skeleton className="h-4" />
+            <Skeleton className="h-4" />
+            <Skeleton className={`h-4 ${i % 2 ? 'w-2/3' : 'w-5/6'}`} />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
