@@ -2,8 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
-import { LINK_SECONDARY, StatusScreen } from '@/components/StatusScreen';
-import { Button } from '@/components/ui';
+import { Button, LINK_SECONDARY, StatusScreen } from '@/components/ui';
 import { Link } from '@/i18n/navigation';
 
 /** Error boundary for every page: shows a retry instead of a blank screen. */

@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
-import { SiteHeader } from '@/components/SiteHeader';
-import { LINK_PRIMARY, LINK_SECONDARY, StatusScreen } from '@/components/StatusScreen';
+import { SiteHeader } from '@/components/layout/SiteHeader';
+import { LINK_PRIMARY, LINK_SECONDARY, StatusScreen } from '@/components/ui';
 import { Link } from '@/i18n/navigation';
 
 export default function NotFound() {

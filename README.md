@@ -51,13 +51,16 @@ Label Sequence 101 "Kjøreplan dag 1"
 src/
   app/[locale]/       sider (forside og /app), per språk
   components/
-    converter/        stegene i konverteren (Upload, Columns, Review, Settings, Export)
-    SiteHeader.tsx    topptekst med språkvelger
+    ui/               designsystemet: Button, Card, Notice, EmptyState, Skeleton …
+    layout/           topptekst og språkvelger
+    features/converter/  stegene i konverteren (Upload, Columns, Review, Settings, Export)
   i18n/               språkoppsett (next-intl)
   lib/                kjernen – rene funksjoner med tester, uavhengig av UI
     parse/            PDF/tekst → tabell (pdf.js-uttrekk, kolonnebasert tolking, linjereserve)
     cues.ts           tabell → cuer, under-cuer, nummerering, flytting
     ma3/              navnerensing, makro-XML, kommandolinje, ZIP
+    validation.ts     Zod-skjemaer: filer, innlimt tekst, sekvensnummer
+    settings.ts       innstillinger, validert når de leses fra nettleseren
     config/ma-versions.json   MA-versjoner (legg til nye her)
   proxy.ts            språkruting
 messages/             tekster per språk (en.json, no.json)
@@ -69,7 +72,7 @@ fixtures/             eksempelfiler
 
 1. Legg språkkoden i `src/i18n/routing.ts`.
 2. Kopier `messages/en.json` til `messages/<kode>.json` og oversett.
-3. Legg navnet i `src/components/LocaleSwitcher.tsx`.
+3. Legg navnet i `src/components/layout/LocaleSwitcher.tsx`.
 
 ### PDF-tolkning
 

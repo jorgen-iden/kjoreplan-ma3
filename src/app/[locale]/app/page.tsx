@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
-import { SiteHeader } from '@/components/SiteHeader';
-import { Converter } from '@/components/converter/Converter';
+import { SiteHeader } from '@/components/layout/SiteHeader';
+import { Converter } from '@/components/features/converter/Converter';
 import type { Locale } from '@/i18n/routing';
 import { alternates, ogImages } from '@/lib/site';
 

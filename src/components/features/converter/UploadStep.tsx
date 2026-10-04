@@ -2,7 +2,8 @@
 
 import { useTranslations } from 'next-intl';
 import { useId, useRef, useState } from 'react';
-import { Button, Card, Notice, PageHeader, Skeleton, Spinner } from '../ui';
+import { Button, Card, Notice, PageHeader, Skeleton, Spinner } from '@/components/ui';
+import { checkPastedText, MAX_TEXT_CHARS } from '@/lib/validation';
 import type { Notice as NoticeData } from './state';
 
 export function UploadStep({
@@ -23,6 +24,8 @@ export function UploadStep({
   const [over, setOver] = useState(false);
   const [text, setText] = useState('');
   const pasteId = useId();
+  const textProblem = checkPastedText(text);
+  const tooLong = textProblem === 'tooLong';
 
   return (
     <section aria-labelledby="upload-title">
@@ -112,9 +115,16 @@ export function UploadStep({
             placeholder={t('pastePlaceholder')}
             rows={8}
             disabled={busy}
-            className="mt-4 min-h-40 flex-1 resize-y rounded-xl border border-line bg-paper p-3 font-mono text-sm text-ink transition-colors placeholder:text-muted hover:border-muted focus:border-accent focus:outline-none"
+            aria-invalid={tooLong || undefined}
+            aria-describedby={tooLong ? `${pasteId}-error` : undefined}
+            className="mt-4 min-h-40 flex-1 resize-y rounded-xl border border-line bg-paper p-3 font-mono text-sm text-ink transition-colors placeholder:text-muted hover:border-muted focus:border-accent focus:outline-none aria-[invalid=true]:border-danger"
           />
-          <Button onClick={() => onText(text)} disabled={busy || !text.trim()} className="mt-4 self-start">
+          {tooLong && (
+            <p id={`${pasteId}-error`} role="alert" className="mt-2 text-sm text-danger">
+              {t('tooLong', { count: text.length, max: MAX_TEXT_CHARS })}
+            </p>
+          )}
+          <Button onClick={() => onText(text)} disabled={busy || textProblem !== null} className="mt-4 self-start">
             {t('useText')}
           </Button>
         </Card>

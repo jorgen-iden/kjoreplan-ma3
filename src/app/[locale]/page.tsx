@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
-import { SiteHeader } from '@/components/SiteHeader';
-import { LINK_PRIMARY } from '@/components/StatusScreen';
+import { SiteHeader } from '@/components/layout/SiteHeader';
+import { LINK_PRIMARY } from '@/components/ui';
 import { Link } from '@/i18n/navigation';
 
 // Placeholder front page. The real landing page comes in phase 2.

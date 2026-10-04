@@ -10,6 +10,14 @@ Web-app (Next.js 16, App Router, next-intl, Tailwind v4) som gjør kjøreplaner 
 - Kjør `npm test`, `npm run typecheck` og `npm run build` før commit.
 - Formatet på MA-makroen er verifisert i grandMA3 onPC 2.5.1.0. Endringer i `src/lib/ma3/` må testes i onPC før de regnes som ferdige.
 
+## Mappestruktur
+
+- `src/app/` – ruter og Next.js-konvensjonsfiler (`layout`, `page`, `loading`, `error`, `not-found`, metadata-filer)
+- `src/components/ui/` – gjenbrukbare byggeklosser i designsystemet (Button, Card, Notice, EmptyState, Skeleton …)
+- `src/components/layout/` – delte skall (SiteHeader, LocaleSwitcher)
+- `src/components/features/<feature>/` – funksjonsspesifikke komponenter (f.eks. `converter/`)
+- `src/lib/` – ren logikk uten UI, med tester (`validation.ts` samler Zod-skjemaene)
+
 ## Kvalitetsstandard (gjelder all planlegging, koding og refaktorering)
 
 Opptre som senior fullstack-utvikler og UI/UX-designer. Før en oppgave eller komponent markeres som ferdig, sjekk relevante punkter:
@@ -40,3 +48,30 @@ Opptre som senior fullstack-utvikler og UI/UX-designer. Før en oppgave eller ko
 ### 5. Kodekvalitet og arkitektur
 - **Modulering:** gjenbrukbare komponenter med ett ansvar hver.
 - **Sikkerhet:** saniter brukerinput, hold sensitiv logikk i backend/API-ruter, og beskytt innloggede ruter (route guards).
+
+## Next.js-standard (senior Next.js-utvikler og UI/UX-designer)
+
+### 1. App Router-konvensjoner
+- **Rutefiler:** bruk alltid konvensjonsfilene i `app/`: `not-found.tsx` (gjennomført 404), `error.tsx` med `'use client'` og «Prøv på nytt», `loading.tsx` med skeleton, og `layout.tsx` for delte skall uten unødvendig re-rendering.
+  - Fallgruve: en `loading.tsx` over en rute som kaller `notFound()` gjør at 404 sendes med status 200 (streaming). Legg derfor `loading.tsx` bare på ruter som trenger den (i dag `[locale]/app/`), ikke på `[locale]/`.
+- **Server vs. Client Components:** Server Components er standard. `'use client'` kun når komponenten trenger state, hooks eller event listeners.
+- **Bilder:** alltid `next/image`, aldri `<img>`.
+
+### 2. UI, UX og visuell ytelse
+- **Styling:** Tailwind med tokenene i `globals.css`, responsivt med `sm:`/`md:`/`lg:`. Unngå hardkodede pikselverdier.
+- **Tilstander:** alle knapper og interaktive elementer har `hover:`, `focus-visible:`, `active:`, `disabled:` og loading.
+- **Tomme tilstander:** bruk `EmptyState` for tomme lister, tabeller og søk.
+- **Tilgjengelighet:** semantisk HTML, synlig fokus og riktige ARIA-attributter.
+
+### 3. Skjemaer, validering og sikkerhet
+- **Skjemaer:** Server Actions med Zod-validering. Skjemaer som går til serveren valideres på nytt der.
+- **Tilbakemelding:** valideringsfeil i sanntid under feltet, og innsendingsknapper deaktiveres under lasting.
+- **Sikkerhet:** beskytt private ruter i `src/proxy.ts` (Next 16 sitt navn på middleware) eller direkte i Server Components. Sensitiv logikk ligger på serveren. Data fra nettleseren (localStorage, URL, skjema) er ikke til å stole på og valideres.
+
+### 4. SEO og metadata
+- **Metadata API:** `metadata` eller `generateMetadata()` per rute.
+- **Ikoner og OG:** favicon, app-ikoner og Open Graph (`og:title`, `og:image`) på rotnivå.
+
+### 5. Kodekvalitet
+- **Typing:** streng TypeScript, aldri `any`.
+- **Struktur:** rene komponenter i `components/ui/` og `components/features/`.

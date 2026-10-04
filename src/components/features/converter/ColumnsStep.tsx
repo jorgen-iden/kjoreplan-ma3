@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import type { Mapping } from '@/lib/cues';
 import type { ParsedTable } from '@/lib/parse';
-import { Button, Card, PageHeader } from '../ui';
+import { Button, Card, PageHeader } from '@/components/ui';
 
 const ROLES = [
   ['number', 'number'],

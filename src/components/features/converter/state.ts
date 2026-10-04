@@ -8,7 +8,7 @@ export type Step = 0 | 1 | 2 | 3 | 4;
 /** A message shown in the upload step, as a translation key under "upload". */
 export interface Notice {
   kind: 'info' | 'warn' | 'error';
-  key: 'pdfError' | 'noTextLayer' | 'noRows' | 'linesMode' | 'sampleError';
+  key: 'pdfError' | 'noTextLayer' | 'noRows' | 'linesMode' | 'sampleError' | 'notPdf' | 'tooLarge';
   values?: Record<string, string>;
 }
 

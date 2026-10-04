@@ -5,7 +5,7 @@ import { memo, useState } from 'react';
 import type { Cue } from '@/lib/cues';
 import type { MacroCue } from '@/lib/ma3/macro';
 import { MAX_NAME_LENGTH } from '@/lib/ma3/sanitize';
-import { Button } from '../ui';
+import { Button } from '@/components/ui';
 import { RowMenu } from './RowMenu';
 
 /**

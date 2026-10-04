@@ -6,7 +6,7 @@ import { moveCue, moveCueBefore, newId, removeCue, splitIntoSubCues, type Cue } 
 import { prepareCues } from '@/lib/ma3/macro';
 import { MAX_NAME_LENGTH } from '@/lib/ma3/sanitize';
 import type { Settings } from '@/lib/settings';
-import { Button, Notice, PageHeader } from '../ui';
+import { Button, EmptyState, Notice, PageHeader } from '@/components/ui';
 import { CueRow, ROW_GRID } from './CueRow';
 
 const blankCue = (): Cue => ({ id: newId(), srcNumber: '', name: '', time: '', duration: '', note: '' });
@@ -127,19 +127,5 @@ export function ReviewStep({
         )}
       </div>
     </section>
-  );
-}
-
-function EmptyState({ title, lead, children }: { title: string; lead: string; children: React.ReactNode }) {
-  return (
-    <div className="flex flex-col items-center px-6 py-16 text-center">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mb-4 text-muted" aria-hidden="true">
-        <rect x="3" y="4" width="18" height="16" rx="2" />
-        <path d="M7 9h10M7 13h6" />
-      </svg>
-      <h2 className="text-xl font-bold">{title}</h2>
-      <p className="mt-1 max-w-sm text-muted">{lead}</p>
-      <div className="mt-6 flex flex-wrap justify-center gap-3">{children}</div>
-    </div>
   );
 }

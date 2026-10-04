@@ -50,7 +50,10 @@
     "linesMode": "No column headers found, so items were read line by line. Check the result carefully.",
     "sampleError": "Couldn’t load the sample run sheet. Check your connection and try again.",
     "retry": "Try again",
-    "readingLead": "Finding columns and rows …"
+    "readingLead": "Finding columns and rows …",
+    "notPdf": "That file isn’t a PDF. Choose a PDF, or paste the text instead.",
+    "tooLarge": "The file is larger than {max} MB. Is it really a run sheet?",
+    "tooLong": "The text is too long ({count} of max {max} characters)."
   },
   "columns": {
     "title": "Check the columns",
@@ -97,7 +100,7 @@
     "sequenceGroup": "Sequence",
     "sequence": "Sequence number",
     "sequenceHelp": "If the sequence already exists, the console asks to merge or overwrite.",
-    "sequenceInvalid": "Use a whole number from 1 and up.",
+    "sequenceInvalid": "Use a whole number from 1 to 99999.",
     "sequenceName": "Sequence name",
     "numbering": "Cue numbers",
     "numberingFollow": "Follow the run sheet’s #",
@@ -148,5 +151,8 @@
     "errorTitle": "Something went wrong",
     "errorLead": "The page hit an unexpected error. Your files never left your computer.",
     "retry": "Try again"
+  },
+  "common": {
+    "loading": "Loading …"
   }
 }

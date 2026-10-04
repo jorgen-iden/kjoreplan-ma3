@@ -50,7 +50,10 @@
     "linesMode": "Fant ingen kolonneoverskrifter, så punktene er lest linje for linje. Sjekk resultatet nøye.",
     "sampleError": "Klarte ikke å laste eksempel-kjøreplanen. Sjekk nettforbindelsen og prøv igjen.",
     "retry": "Prøv igjen",
-    "readingLead": "Finner kolonner og rader …"
+    "readingLead": "Finner kolonner og rader …",
+    "notPdf": "Filen er ikke en PDF. Velg en PDF, eller lim inn teksten i stedet.",
+    "tooLarge": "Filen er større enn {max} MB. Er det virkelig en kjøreplan?",
+    "tooLong": "Teksten er for lang ({count} av maks {max} tegn)."
   },
   "columns": {
     "title": "Sjekk kolonnene",
@@ -97,7 +100,7 @@
     "sequenceGroup": "Sekvens",
     "sequence": "Sekvensnummer",
     "sequenceHelp": "Finnes sekvensen fra før, spør konsollen om merge eller overwrite.",
-    "sequenceInvalid": "Bruk et heltall fra 1 og oppover.",
+    "sequenceInvalid": "Bruk et heltall fra 1 til 99999.",
     "sequenceName": "Sekvensnavn",
     "numbering": "Cue-nummer",
     "numberingFollow": "Følg kjøreplanens #",
@@ -148,5 +151,8 @@
     "errorTitle": "Noe gikk galt",
     "errorLead": "Siden fikk en uventet feil. Filene dine har aldri forlatt maskinen din.",
     "retry": "Prøv igjen"
+  },
+  "common": {
+    "loading": "Laster …"
   }
 }

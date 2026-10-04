@@ -1,5 +1,3 @@
-'use client';
-
 import './globals.css';
 
 // Requests that never reached a locale (rare: the proxy adds one). Plain bilingual page.

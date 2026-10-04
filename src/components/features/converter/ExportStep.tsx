@@ -8,11 +8,14 @@ import { buildCommandLine, buildCommands, buildMacroXml, prepareCues } from '@/l
 import { slugify } from '@/lib/ma3/sanitize';
 import { buildZip, MACRO_DIR } from '@/lib/ma3/zip';
 import type { Settings } from '@/lib/settings';
-import { Button, Card, Notice, PageHeader } from '../ui';
+import { isValidSequence } from '@/lib/validation';
+import { Button, Card, Notice, PageHeader } from '@/components/ui';
 
 export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings }) {
   const t = useTranslations('export');
   const tNote = useTranslations('note');
+  const tSettings = useTranslations('settings');
+  const seqValid = isValidSequence(settings.sequence);
   const [downloading, setDownloading] = useState(false);
   const [downloadFailed, setDownloadFailed] = useState(false);
   const [copy, setCopy] = useState<'idle' | 'copied' | 'failed'>('idle');
@@ -66,7 +69,8 @@ export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings
       />
 
       <Card className="flex flex-col items-start gap-4 p-6 sm:p-8">
-        <Button variant="primary" size="lg" loading={downloading} onClick={() => void download()} className="min-h-14 px-8 text-lg">
+        {!seqValid && <Notice kind="error">{tSettings('sequenceInvalid')}</Notice>}
+        <Button variant="primary" size="lg" loading={downloading} disabled={!seqValid} onClick={() => void download()} className="min-h-14 px-8 text-lg">
           {downloading ? t('preparing') : t('download')}
         </Button>
         <p className="break-all font-mono text-xs text-muted">
@@ -114,7 +118,7 @@ export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings
             className="flex-1 resize-y rounded-xl border border-line bg-paper p-3 font-mono text-xs text-subtle focus:border-accent focus:outline-none"
           />
           <div className="mt-3 flex flex-wrap items-center gap-3">
-            <Button onClick={() => void copyCommands()} aria-live="polite">
+            <Button onClick={() => void copyCommands()} disabled={!seqValid} aria-live="polite">
               {copy === 'copied' ? t('copied') : t('copy')}
             </Button>
             {copy === 'failed' && <p className="text-sm text-danger">{t('copyFailed')}</p>}

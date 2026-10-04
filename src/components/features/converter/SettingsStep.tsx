@@ -4,14 +4,12 @@ import { useTranslations } from 'next-intl';
 import { cloneElement, useId, type ReactElement, type ReactNode } from 'react';
 import { MA_VERSIONS } from '@/lib/config/versions';
 import type { Settings } from '@/lib/settings';
-import { Button, Card, PageHeader } from '../ui';
+import { isValidSequence, MAX_SEQUENCE } from '@/lib/validation';
+import { Button, Card, PageHeader } from '@/components/ui';
 
 const INPUT =
   'min-h-11 w-full rounded-lg border bg-paper px-3 text-ink transition-colors hover:border-muted focus:border-accent focus:outline-none aria-[invalid=true]:border-danger';
 
-export function isValidSequence(n: number): boolean {
-  return Number.isInteger(n) && n >= 1;
-}
 
 export function SettingsStep({
   settings: s,
@@ -44,6 +42,7 @@ export function SettingsStep({
               type="number"
               inputMode="numeric"
               min={1}
+              max={MAX_SEQUENCE}
               step={1}
               value={Number.isNaN(s.sequence) ? '' : s.sequence}
               onChange={(e) => onChange({ sequence: e.target.valueAsNumber })}

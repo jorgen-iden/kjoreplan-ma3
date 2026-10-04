@@ -5,7 +5,8 @@ import { useEffect, useReducer, useRef } from 'react';
 import { parsePastedText, parseTextItems } from '@/lib/parse';
 import { extractPdfText, preloadPdf } from '@/lib/parse/pdf';
 import { loadSettings, saveSettings } from '@/lib/settings';
-import { Button } from '../ui';
+import { checkPdfFile, MAX_PDF_BYTES } from '@/lib/validation';
+import { Button } from '@/components/ui';
 import { ColumnsStep } from './ColumnsStep';
 import { ExportStep } from './ExportStep';
 import { ReviewStep } from './ReviewStep';
@@ -85,7 +86,15 @@ export function Converter() {
     }
   }
 
-  const openFile = (f: File) => loadPdf(async () => ({ data: await f.arrayBuffer(), name: f.name }), 'pdfError');
+  const openFile = (f: File) => {
+    const problem = checkPdfFile(f);
+    if (problem) {
+      const values = problem === 'tooLarge' ? { max: String(MAX_PDF_BYTES / 1024 / 1024) } : undefined;
+      dispatch({ type: 'error', notice: { kind: 'error', key: problem, values } });
+      return;
+    }
+    void loadPdf(async () => ({ data: await f.arrayBuffer(), name: f.name }), 'pdfError');
+  };
   const openSample = () =>
     loadPdf(async () => {
       const res = await fetch('/sample-run-sheet.pdf');
