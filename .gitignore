@@ -1,6 +1,7 @@
 node_modules/
 dist/
-public/pdf.worker.min.mjs
+public/pdf.worker.mjs
+public/pdf.worker.legacy.min.mjs
 .next/
 next-env.d.ts
 *.tsbuildinfo
