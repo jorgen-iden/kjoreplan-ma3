@@ -28,13 +28,13 @@ Kjøreplanen kommer alltid sent, og den endrer seg. Hver gang sitter operatøren
 
 ## Historien
 
-Sann, og fortalt uten navn. Ikke pynt den med påstander som ikke stemmer (se «Påstander» under).
+Sann og generisk: ingen navn og ingen enkeltpersoner. Ikke pynt den med påstander som ikke stemmer (se «Påstander» under), og ikke skryt av selvfølgeligheter som at verktøyet er testet.
 
 **Norsk:**
-> Cuesetter startet backstage. En venn av oss kjører lys på grandMA3, og før hver forestilling skjedde det samme: kjøreplanen kom på PDF, ofte sent, og hvert punkt måtte tastes inn i konsollen for hånd mens lyset ventet. Vi jobber selv i bransjen, men ikke ved lysbordet. Så vi bygde verktøyet vi skulle ønske vennen vår hadde, og testet det på ekte kjøreplaner.
+> Cuesetter startet backstage. Før hver forestilling skjedde det samme: kjøreplanen kom på PDF, ofte sent, og hvert punkt måtte tastes inn i konsollen for hånd mens lyset ventet. Vi jobber selv i bransjen og har sett det skje igjen og igjen. Så vi bygde verktøyet som gjør jobben på ett minutt, slik at tiden går til lyset.
 
 **English:**
-> Cuesetter started backstage. A friend of ours runs lights on grandMA3, and before every show the same thing happened: the run sheet arrived as a PDF, often late, and every item had to be typed into the console by hand while the lighting waited. We work in the industry too, just not behind the desk. So we built the tool we wished our friend had, and tested it on real run sheets.
+> Cuesetter started backstage. Before every show the same thing happened: the run sheet arrived as a PDF, often late, and every item had to be typed into the console by hand while the lighting waited. We work in the industry and have seen it happen again and again. So we built the tool that does the job in a minute, so the time goes to the lighting.
 
 **Signaturlinje:** «Laget i bransjen, for operatører.» / «Built in the industry, for operators.»
 

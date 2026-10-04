@@ -109,13 +109,13 @@
       },
       "industry": {
         "title": "Laget i bransjen, for operatører",
-        "text": "Laget av folk som jobber med forestillinger, og testet på ekte kjøreplaner."
+        "text": "Laget av folk som jobber med forestillinger, for dem som står ved lysbordet."
       }
     },
     "storyTitle": "Hvorfor Cuesetter finnes",
     "story": [
-      "Cuesetter startet backstage. En venn av oss kjører lys på grandMA3, og før hver forestilling skjedde det samme: kjøreplanen kom på PDF, ofte sent, og hvert punkt måtte tastes inn i konsollen for hånd mens lyset ventet.",
-      "Vi jobber selv i bransjen, men ikke ved lysbordet. Så vi bygde verktøyet vi skulle ønske vennen vår hadde, og testet det på ekte kjøreplaner."
+      "Cuesetter startet backstage. Før hver forestilling skjedde det samme: kjøreplanen kom på PDF, ofte sent, og hvert punkt måtte tastes inn i konsollen for hånd mens lyset ventet.",
+      "Vi jobber selv i bransjen og har sett det skje igjen og igjen. Så vi bygde verktøyet som gjør jobben på ett minutt, slik at tiden går til lyset."
     ],
     "storySign": "Laget i bransjen, for operatører.",
     "tagline": "Kjøreplan inn. Cueliste ut.",

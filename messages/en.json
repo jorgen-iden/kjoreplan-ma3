@@ -109,13 +109,13 @@
       },
       "industry": {
         "title": "Built in the industry, for operators",
-        "text": "Made by people who work on shows, and tested on real run sheets."
+        "text": "Made by people who work on shows, for the people behind the desk."
       }
     },
     "storyTitle": "Why Cuesetter exists",
     "story": [
-      "Cuesetter started backstage. A friend of ours runs lights on grandMA3, and before every show the same thing happened: the run sheet arrived as a PDF, often late, and every item had to be typed into the console by hand while the lighting waited.",
-      "We work in the industry too, just not behind the desk. So we built the tool we wished our friend had, and tested it on real run sheets."
+      "Cuesetter started backstage. Before every show the same thing happened: the run sheet arrived as a PDF, often late, and every item had to be typed into the console by hand while the lighting waited.",
+      "We work in the industry and have seen it happen again and again. So we built the tool that does the job in a minute, so the time goes to the lighting."
     ],
     "storySign": "Built in the industry, for operators.",
     "tagline": "Run sheet in. Cue list out.",
