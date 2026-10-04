@@ -1,14 +1,32 @@
 import { z } from 'zod';
 
 /** Limits that keep the browser responsive and reject things that can't be a run sheet. */
-export const MAX_PDF_BYTES = 25 * 1024 * 1024;
+export const MAX_FILE_BYTES = 25 * 1024 * 1024;
 export const MAX_TEXT_CHARS = 200_000;
 export const MAX_SEQUENCE = 99_999;
 
-export const pdfFileSchema = z
+/** File types the converter reads. Old binary Office files are recognised so we can explain. */
+export type FileKind = 'pdf' | 'docx' | 'xlsx';
+
+const MIME: Record<string, FileKind> = {
+  'application/pdf': 'pdf',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'docx',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'xlsx',
+};
+
+/** The kind of a chosen file, from its extension first and its MIME type second. */
+export function fileKind(file: { name: string; type: string }): FileKind | 'old' | null {
+  const ext = /\.([a-z0-9]+)$/i.exec(file.name)?.[1]?.toLowerCase();
+  if (ext === 'pdf' || ext === 'docx' || ext === 'xlsx') return ext;
+  if (ext === 'doc' || ext === 'xls') return 'old';
+  return MIME[file.type] ?? null;
+}
+
+export const runSheetFileSchema = z
   .object({ name: z.string(), size: z.number(), type: z.string() })
-  .refine((f) => f.type === 'application/pdf' || /\.pdf$/i.test(f.name), { message: 'notPdf' })
-  .refine((f) => f.size <= MAX_PDF_BYTES, { message: 'tooLarge' });
+  .refine((f) => fileKind(f) !== 'old', { message: 'oldFormat' })
+  .refine((f) => fileKind(f) !== null, { message: 'unsupported' })
+  .refine((f) => f.size <= MAX_FILE_BYTES, { message: 'tooLarge' });
 
 export const pastedTextSchema = z
   .string()
@@ -17,12 +35,12 @@ export const pastedTextSchema = z
 
 export const sequenceSchema = z.number().int().min(1).max(MAX_SEQUENCE);
 
-export type FileProblem = 'notPdf' | 'tooLarge';
+export type FileProblem = 'oldFormat' | 'unsupported' | 'tooLarge';
 export type TextProblem = 'empty' | 'tooLong';
 
 /** First problem with a chosen file, or null if it can be read. */
-export function checkPdfFile(file: { name: string; size: number; type: string }): FileProblem | null {
-  const result = pdfFileSchema.safeParse(file);
+export function checkRunSheetFile(file: { name: string; size: number; type: string }): FileProblem | null {
+  const result = runSheetFileSchema.safeParse(file);
   return result.success ? null : (result.error.issues[0].message as FileProblem);
 }
 

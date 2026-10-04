@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { JetBrains_Mono, Schibsted_Grotesk } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
@@ -61,6 +62,8 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
         {/* Cookieless page-view counting (Vercel Web Analytics). Only page addresses are sent, never run sheet content. */}
         <Analytics />
+        {/* Core Web Vitals from real visits (Vercel Speed Insights). Also cookieless, no run sheet content. */}
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -31,6 +31,7 @@ Appen kjører på **Vercel** med domenet **cuesetter.com**.
 3. I produksjon brukes `https://cuesetter.com` som adresse i delingslenker, sitemap og SEO. `NEXT_PUBLIC_SITE_URL` kan overstyre den, for eksempel for et testdomene.
 
 4. **Analytics:** Vercel Web Analytics er lagt inn (`<Analytics />` i `src/app/[locale]/layout.tsx`). Slå det på under prosjektets *Analytics*-fane. Det bruker ikke informasjonskapsler og sender bare sideadresser, aldri innholdet i kjøreplaner.
+5. **Speed Insights:** `<SpeedInsights />` ligger ved siden av. Slå det på under prosjektets *Speed Insights*-fane for å se Core Web Vitals fra ekte besøk.
 
 Merk: Vercels gratisplan (Hobby) er kun for ikke-kommersiell bruk. Oppgrader til Pro før du tar betalt.
 

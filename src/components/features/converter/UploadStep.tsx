@@ -6,6 +6,15 @@ import { Button, Card, InteractiveGlow, Notice, PageHeader, Skeleton, Spinner } 
 import { checkPastedText, MAX_TEXT_CHARS } from '@/lib/validation';
 import type { Notice as NoticeData } from './state';
 
+const ACCEPT = [
+  '.pdf',
+  '.docx',
+  '.xlsx',
+  'application/pdf',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+].join(',');
+
 export function UploadStep({
   busy,
   notice,
@@ -86,7 +95,7 @@ export function UploadStep({
             <input
               ref={input}
               type="file"
-              accept="application/pdf,.pdf"
+              accept={ACCEPT}
               className="sr-only"
               tabIndex={-1}
               aria-hidden="true"
@@ -133,7 +142,7 @@ export function UploadStep({
   );
 }
 
-/** Shown while a PDF is read: the shape of the table that is about to appear. */
+/** Shown while a file is read: the shape of the table that is about to appear. */
 function ReadingSkeleton({ title, lead }: { title: string; lead: string }) {
   return (
     <div role="status" aria-live="polite" className="flex min-h-80 flex-col gap-5 rounded-2xl border border-line bg-card p-6">

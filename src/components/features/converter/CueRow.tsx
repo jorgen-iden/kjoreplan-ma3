@@ -9,11 +9,11 @@ import { Button } from '@/components/ui';
 import { RowMenu } from './RowMenu';
 
 /**
- * Column layout shared by the header and every row. On phones a row wraps: handle, number, name
- * and menu on the first line, time and note below the name. From md up it is one line per cue.
+ * Column layout shared by the header and every row. On phones a row wraps: handle, number and name
+ * on the first line, time and row buttons below the name, then the note. From md up it is one line per cue.
  */
 export const ROW_GRID =
-  'grid grid-cols-[1.5rem_3rem_minmax(0,1fr)_auto] items-start gap-x-2 gap-y-1 md:grid-cols-[1.75rem_4rem_minmax(0,1fr)_5rem_minmax(0,0.9fr)_7rem]';
+  'grid grid-cols-[1.5rem_3rem_minmax(0,1fr)_auto] items-start gap-x-2 gap-y-1 md:grid-cols-[1.75rem_4rem_minmax(0,1fr)_5rem_minmax(0,0.9fr)_9.5rem]';
 
 const FIELD =
   'w-full rounded-md border border-transparent bg-transparent px-2 py-1.5 text-ink transition-colors duration-150 placeholder:text-muted md:placeholder:text-transparent hover:border-line focus:border-accent focus:bg-card focus:outline-none aria-[invalid=true]:border-danger';
@@ -103,7 +103,7 @@ export const CueRow = memo(function CueRow({
 
       <span className={`flex h-9 items-center font-mono text-sm font-semibold ${isSub ? 'pl-3 text-muted' : 'text-ink'}`}>{prepared.number}</span>
 
-      <span className={`flex min-w-0 flex-col ${isSub ? 'md:pl-5' : ''}`}>
+      <span className={`col-span-2 flex min-w-0 flex-col md:col-span-1 ${isSub ? 'md:pl-5' : ''}`}>
         <input
           aria-label={`${t('name')} ${prepared.number}`}
           value={cue.name}
@@ -139,13 +139,24 @@ export const CueRow = memo(function CueRow({
         />
       </span>
 
-      <span className="order-4 flex h-9 items-center justify-end gap-1.5 md:order-none">
+      <span className="order-5 flex h-9 items-center justify-end gap-1.5 md:order-none">
         {!isSub && cue.note.trim() && (
           <Button variant="accent-soft" size="sm" title={t('splitHint')} onClick={() => onSplit(id)}>
             {t('split')}
           </Button>
         )}
-        <RowMenu onMove={(dir) => onMove(id, dir)} onRemove={() => onRemove(id)} />
+        <button
+          type="button"
+          aria-label={`${t('delete')} ${prepared.number}`}
+          title={t('delete')}
+          onClick={() => onRemove(id)}
+          className="grid size-8 place-items-center rounded-lg border border-line bg-card text-muted transition-colors duration-150 hover:border-danger hover:text-danger active:bg-line-soft"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3" />
+          </svg>
+        </button>
+        <RowMenu onMove={(dir) => onMove(id, dir)} />
       </span>
     </li>
   );

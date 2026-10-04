@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Cuesetter – turn run sheets into grandMA3 cue lists",
-    "description": "Upload a run sheet PDF and get a macro that builds a named cue list on your grandMA3 console. Runs in your browser – your files never leave your computer.",
+    "description": "Upload a run sheet as PDF, Word or Excel and get a macro that builds a named cue list on your grandMA3 console. Runs in your browser – your files never leave your computer.",
     "appTitle": "Converter – Cuesetter",
-    "appDescription": "Convert a run sheet PDF to a grandMA3 macro: check columns, review cues, download and import on the console.",
+    "appDescription": "Convert a run sheet (PDF, Word or Excel) to a grandMA3 macro: check columns, review cues, download and import on the console.",
     "notFoundTitle": "Page not found – Cuesetter"
   },
   "nav": {
@@ -17,7 +17,7 @@
   "home": {
     "kicker": "For grandMA3 operators",
     "title": "From run sheet to cue list in a minute",
-    "lead": "Upload the PDF you got from production. Get one empty, named cue per item, in the right order, ready to import on the console.",
+    "lead": "Upload the run sheet you got from production – PDF, Word or Excel. Get one empty, named cue per item, in the right order, ready to import on the console.",
     "cta": "Try it now",
     "privacy": "Runs in your browser. Your run sheet never leaves your computer.",
     "disclaimer": "Not affiliated with MA Lighting. grandMA3 is a trademark of MA Lighting Technology GmbH.",
@@ -25,11 +25,11 @@
     "steps": {
       "upload": {
         "title": "Upload the run sheet",
-        "text": "Drop the PDF from production, or paste the text. Columns like #, Start and Title are found automatically."
+        "text": "Drop the PDF, Word or Excel file from production, or paste the text. Columns like #, Start and Title are found automatically."
       },
       "review": {
         "title": "Check the cues",
-        "text": "One row per cue, in the right order. Edit names, split a set list into sub-cues and fix anything the PDF got wrong."
+        "text": "One row per cue, in the right order. Edit names, split a set list into sub-cues and fix anything that was read wrong."
       },
       "console": {
         "title": "Import on the console",
@@ -49,8 +49,8 @@
   },
   "upload": {
     "title": "Upload a run sheet",
-    "lead": "A PDF exported from your planning system works best. Everything is read in your browser.",
-    "dropHint": "Drop a PDF here",
+    "lead": "PDF, Word (.docx) or Excel (.xlsx). Everything is read in your browser.",
+    "dropHint": "Drop a PDF, Word or Excel file here",
     "or": "or",
     "chooseFile": "choose a file",
     "trySample": "Try with a sample run sheet",
@@ -58,7 +58,7 @@
     "pasteLead": "Useful for scanned PDFs, or a list from an email or a spreadsheet.",
     "pastePlaceholder": "17:30 Doors open\n17:45 Welcome\n18:00 Artist 1: …",
     "useText": "Use this text",
-    "reading": "Reading PDF …",
+    "reading": "Reading the run sheet …",
     "pdfError": "Could not read the PDF: {error}",
     "noTextLayer": "No text found in this PDF. It is probably scanned (an image). Copy the text manually and paste it below.",
     "noRows": "No items found. Check the columns, or paste the text instead.",
@@ -66,9 +66,12 @@
     "sampleError": "Couldn’t load the sample run sheet. Check your connection and try again.",
     "retry": "Try again",
     "readingLead": "Finding columns and rows …",
-    "notPdf": "That file isn’t a PDF. Choose a PDF, or paste the text instead.",
     "tooLarge": "The file is larger than {max} MB. Is it really a run sheet?",
-    "tooLong": "The text is too long ({count} of max {max} characters)."
+    "tooLong": "The text is too long ({count} of max {max} characters).",
+    "oldFormat": "This is an old Word or Excel file (.doc or .xls). Open it and save it as .docx or .xlsx, or export it as PDF, then try again.",
+    "unsupported": "This file type can’t be read. Use a PDF, Word (.docx) or Excel (.xlsx) file, or paste the text below.",
+    "noTable": "Found no table with run sheet items in the file. Check that it holds the plan, or paste the text below.",
+    "unreadable": "Couldn’t open the file. It may be damaged or password protected. Save a new copy, or paste the text below."
   },
   "columns": {
     "title": "Check the columns",
@@ -81,7 +84,11 @@
     "notUsed": "Not used",
     "preview": "First rows",
     "confirmReset": "Changing the columns replaces the edits you made in the cue list. Continue?",
-    "continue": "Continue to review →"
+    "continue": "Continue to review →",
+    "sheet": "Sheet",
+    "table": "Table",
+    "tableN": "Table {n}",
+    "rows": "{count, plural, one {# row} other {# rows}}"
   },
   "review": {
     "lead": "{cues, plural, one {# cue} other {# cues}} from {items, plural, one {# item} other {# items}}. Check names and numbers before you download.",
@@ -108,7 +115,10 @@
     "emptyTitle": "No cues yet",
     "emptyLead": "Add a cue by hand, or start over with another run sheet.",
     "untitled": "Untitled run sheet",
-    "numbersFilled": "{count, plural, one {# cue had} other {# cues had}} no # in the run sheet and got a number between its neighbours (for example 28.5). The rest keep their #."
+    "numbersFilled": "{count, plural, one {# cue had} other {# cues had}} no # in the run sheet and got a number between its neighbours (for example 28.5). The rest keep their #.",
+    "undo": "Undo",
+    "deleted": "Deleted “{name}”.",
+    "deletedUntitled": "Deleted a cue."
   },
   "settings": {
     "title": "Settings",

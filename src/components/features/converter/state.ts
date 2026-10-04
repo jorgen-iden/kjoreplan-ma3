@@ -1,4 +1,5 @@
 import { defaultMapping, rowsToCues, type Cue, type Mapping } from '@/lib/cues';
+import type { Source } from '@/lib/import';
 import type { ParsedTable } from '@/lib/parse';
 import { DEFAULT_SETTINGS, type Settings } from '@/lib/settings';
 
@@ -8,19 +9,32 @@ export type Step = 0 | 1 | 2 | 3 | 4;
 /** A message shown in the upload step, as a translation key under "upload". */
 export interface Notice {
   kind: 'info' | 'warn' | 'error';
-  key: 'pdfError' | 'noTextLayer' | 'noRows' | 'linesMode' | 'sampleError' | 'notPdf' | 'tooLarge';
+  key:
+    | 'pdfError'
+    | 'noTextLayer'
+    | 'noRows'
+    | 'linesMode'
+    | 'sampleError'
+    | 'tooLarge'
+    | 'oldFormat'
+    | 'unsupported'
+    | 'noTable'
+    | 'unreadable';
   values?: Record<string, string>;
 }
 
 export interface State {
   step: Step;
   table: ParsedTable | null;
+  /** Sheets or tables of an Excel/Word file to choose between (empty for PDF and text). */
+  sources: Source[];
+  sourceIndex: number;
   mapping: Mapping;
   cues: Cue[];
   /** The user has edited the cue list since it was derived from the table. */
   edited: boolean;
   notice: Notice | null;
-  /** A PDF is being read. */
+  /** A file is being read. */
   busy: boolean;
   settings: Settings;
 }
@@ -28,7 +42,8 @@ export interface State {
 export type Action =
   | { type: 'busy' }
   | { type: 'error'; notice: Notice }
-  | { type: 'loaded'; table: ParsedTable }
+  | { type: 'loaded'; table: ParsedTable; sources?: Source[] }
+  | { type: 'source'; index: number }
   | { type: 'mapping'; mapping: Mapping }
   | { type: 'cues'; cues: Cue[] }
   | { type: 'goto'; step: Step }
@@ -38,6 +53,8 @@ export type Action =
 export const initialState: State = {
   step: 0,
   table: null,
+  sources: [],
+  sourceIndex: 0,
   mapping: { number: null, start: null, duration: null, title: null },
   cues: [],
   edited: false,
@@ -53,22 +70,48 @@ export function reducer(state: State, action: Action): State {
     case 'error':
       return { ...state, busy: false, notice: action.notice };
     case 'loaded': {
-      const mapping = defaultMapping(action.table);
-      const cues = rowsToCues(action.table, mapping);
+      // A workbook can start with a cover sheet: open the first sheet or table that gives cues.
+      const sources = action.sources ?? [];
+      let sourceIndex = 0;
+      let table = action.table;
+      let mapping = defaultMapping(table);
+      let cues = rowsToCues(table, mapping);
+      for (let i = 1; !cues.length && i < sources.length; i++) {
+        sourceIndex = i;
+        table = sources[i].table;
+        mapping = defaultMapping(table);
+        cues = rowsToCues(table, mapping);
+      }
       if (!cues.length) {
         return { ...state, busy: false, notice: { kind: 'warn', key: 'noRows' } };
       }
       return {
         ...state,
-        table: action.table,
+        table,
+        sources,
+        sourceIndex,
         mapping,
         cues,
         edited: false,
         busy: false,
-        notice: action.table.mode === 'lines' ? { kind: 'warn', key: 'linesMode' } : null,
-        settings: { ...state.settings, sequenceName: action.table.title ?? '' },
+        notice: table.mode === 'lines' ? { kind: 'warn', key: 'linesMode' } : null,
+        settings: { ...state.settings, sequenceName: table.title ?? '' },
         // Line-based results have nothing to map, so skip straight to review.
-        step: action.table.mode === 'lines' ? 2 : 1,
+        step: table.mode === 'lines' ? 2 : 1,
+      };
+    }
+    case 'source': {
+      const source = state.sources[action.index];
+      if (!source) return state;
+      const mapping = defaultMapping(source.table);
+      return {
+        ...state,
+        sourceIndex: action.index,
+        table: source.table,
+        mapping,
+        cues: rowsToCues(source.table, mapping),
+        edited: false,
+        settings: { ...state.settings, sequenceName: source.table.title ?? state.settings.sequenceName },
       };
     }
     case 'mapping':

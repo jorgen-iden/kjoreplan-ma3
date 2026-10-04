@@ -38,18 +38,27 @@ export function ReviewStep({
 
   const [dragId, setDragId] = useState<string | null>(null);
   const [overId, setOverId] = useState<string | null>(null);
+  // Deleting is one click, so the last deletion can be undone until the list is changed again.
+  const [undo, setUndo] = useState<{ cues: Cue[]; name: string } | null>(null);
 
   // Rows are memoised; these handlers read the latest list through a ref so they stay stable.
   const latest = useRef({ cues, onCues, dragId });
   latest.current = { cues, onCues, dragId };
-  const apply = useCallback((fn: (cs: Cue[]) => Cue[]) => latest.current.onCues(fn(latest.current.cues)), []);
+  const apply = useCallback((fn: (cs: Cue[]) => Cue[]) => {
+    setUndo(null);
+    latest.current.onCues(fn(latest.current.cues));
+  }, []);
 
   const handlers = useMemo(
     () => ({
       onChange: (id: string, patch: Partial<Cue>) => apply((cs) => cs.map((c) => (c.id === id ? { ...c, ...patch } : c))),
       onSplit: (id: string) => apply((cs) => splitIntoSubCues(cs, id)),
       onMove: (id: string, dir: -1 | 1) => apply((cs) => moveCue(cs, id, dir)),
-      onRemove: (id: string) => apply((cs) => removeCue(cs, id)),
+      onRemove: (id: string) => {
+        const before = latest.current.cues;
+        apply((cs) => removeCue(cs, id));
+        setUndo({ cues: before, name: before.find((c) => c.id === id)?.name ?? '' });
+      },
       onDragStart: (id: string) => setDragId(id),
       onDragEnd: () => {
         setDragId(null);
@@ -68,7 +77,12 @@ export function ReviewStep({
     [apply],
   );
 
-  const addCue = () => onCues([...cues, blankCue()]);
+  const addCue = () => apply((cs) => [...cs, blankCue()]);
+  const restore = () => {
+    if (!undo) return;
+    onCues(undo.cues);
+    setUndo(null);
+  };
 
   return (
     <section aria-label={t('cue')}>
@@ -127,6 +141,21 @@ export function ReviewStep({
           </>
         )}
       </div>
+
+      {undo && (
+        <div className="fixed inset-x-4 bottom-4 z-30 mx-auto max-w-md animate-entry rounded-xl bg-card shadow-lg">
+          <Notice
+            kind="info"
+            action={
+              <Button size="sm" onClick={restore}>
+                {t('undo')}
+              </Button>
+            }
+          >
+            {undo.name ? t('deleted', { name: undo.name }) : t('deletedUntitled')}
+          </Notice>
+        </div>
+      )}
     </section>
   );
 }

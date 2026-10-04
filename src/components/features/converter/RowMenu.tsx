@@ -4,13 +4,13 @@ import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 
 const MENU_WIDTH = 176;
-const MENU_HEIGHT = 140;
+const MENU_HEIGHT = 96;
 
 /**
- * "⋯" menu for a cue row. The menu is fixed-positioned next to its button so the table's scroll
+ * "⋯" menu for a cue row (moving it; deleting has its own button on the row). The menu is fixed-positioned next to its button so the table's scroll
  * box can't clip it, and follows the button when the page scrolls.
  */
-export function RowMenu({ onMove, onRemove }: { onMove: (dir: -1 | 1) => void; onRemove: () => void }) {
+export function RowMenu({ onMove }: { onMove: (dir: -1 | 1) => void }) {
   const t = useTranslations('review');
   const [pos, setPos] = useState<{ top: number; left: number } | null>(null);
   const root = useRef<HTMLDivElement>(null);
@@ -55,10 +55,9 @@ export function RowMenu({ onMove, onRemove }: { onMove: (dir: -1 | 1) => void; o
     setPos({ top, left: Math.max(8, r.right - MENU_WIDTH) });
   };
 
-  const items: { label: string; run: () => void; danger?: boolean }[] = [
+  const items = [
     { label: t('moveUp'), run: () => onMove(-1) },
     { label: t('moveDown'), run: () => onMove(1) },
-    { label: t('delete'), run: onRemove, danger: true },
   ];
 
   return (
@@ -92,9 +91,7 @@ export function RowMenu({ onMove, onRemove }: { onMove: (dir: -1 | 1) => void; o
                 item.run();
                 setPos(null);
               }}
-              className={`block min-h-10 w-full px-4 text-left text-sm transition-colors hover:bg-line-soft focus:bg-line-soft focus:outline-none ${
-                item.danger ? 'text-danger' : 'text-ink'
-              }`}
+              className="block min-h-10 w-full px-4 text-left text-sm text-ink transition-colors hover:bg-line-soft focus:bg-line-soft focus:outline-none"
             >
               {item.label}
             </button>

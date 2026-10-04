@@ -5,7 +5,8 @@ import { useEffect, useReducer, useRef } from 'react';
 import { parsePastedText, parseTextItems } from '@/lib/parse';
 import { extractPdfText, preloadPdf } from '@/lib/parse/pdf';
 import { loadSettings, saveSettings } from '@/lib/settings';
-import { checkPdfFile, MAX_PDF_BYTES } from '@/lib/validation';
+import { ImportError, importOffice } from '@/lib/import';
+import { checkRunSheetFile, fileKind, MAX_FILE_BYTES } from '@/lib/validation';
 import { Button } from '@/components/ui';
 import { ColumnsStep } from './ColumnsStep';
 import { ExportStep } from './ExportStep';
@@ -17,6 +18,7 @@ import { UploadStep } from './UploadStep';
 
 export function Converter() {
   const t = useTranslations('steps');
+  const tc = useTranslations('columns');
   const [state, dispatch] = useReducer(reducer, initialState);
   const settingsLoaded = useRef(false);
   const hasWork = state.table !== null;
@@ -86,14 +88,26 @@ export function Converter() {
     }
   }
 
+  async function loadOffice(f: File) {
+    dispatch({ type: 'busy' });
+    try {
+      const sources = await importOffice(await f.arrayBuffer(), f.name);
+      dispatch({ type: 'loaded', table: sources[0].table, sources });
+    } catch (err) {
+      const key = err instanceof ImportError ? err.problem : 'unreadable';
+      dispatch({ type: 'error', notice: { kind: 'error', key } });
+    }
+  }
+
   const openFile = (f: File) => {
-    const problem = checkPdfFile(f);
+    const problem = checkRunSheetFile(f);
     if (problem) {
-      const values = problem === 'tooLarge' ? { max: String(MAX_PDF_BYTES / 1024 / 1024) } : undefined;
+      const values = problem === 'tooLarge' ? { max: String(MAX_FILE_BYTES / 1024 / 1024) } : undefined;
       dispatch({ type: 'error', notice: { kind: 'error', key: problem, values } });
       return;
     }
-    void loadPdf(async () => ({ data: await f.arrayBuffer(), name: f.name }), 'pdfError');
+    if (fileKind(f) === 'pdf') void loadPdf(async () => ({ data: await f.arrayBuffer(), name: f.name }), 'pdfError');
+    else void loadOffice(f);
   };
   const openSample = () =>
     loadPdf(async () => {
@@ -122,6 +136,12 @@ export function Converter() {
         {state.step === 1 && state.table && (
           <ColumnsStep
             table={state.table}
+            sources={state.sources}
+            sourceIndex={state.sourceIndex}
+            onSource={(index) => {
+              if (state.edited && !window.confirm(tc('confirmReset'))) return;
+              dispatch({ type: 'source', index });
+            }}
             mapping={state.mapping}
             edited={state.edited}
             onMapping={(mapping) => dispatch({ type: 'mapping', mapping })}
