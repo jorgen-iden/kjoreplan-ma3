@@ -24,7 +24,13 @@ Engelsk ligger på `/` og `/app`, norsk på `/no` og `/no/app`.
 
 ## Deploy
 
-Prosjektet er en Next.js-app og er laget for **Vercel**: importer repoet, og standardinnstillingene fungerer. (Kommersiell bruk krever Vercel Pro.)
+Appen kjører på **Vercel** med domenet **cuesetter.com**.
+
+1. Importer repoet i Vercel (standardinnstillingene for Next.js fungerer). Produksjon bygges fra `main`.
+2. Legg til domenene `cuesetter.com` og `www.cuesetter.com` under *Settings → Domains*, og legg inn DNS-postene Vercel viser hos domeneregistraren.
+3. I produksjon brukes `https://cuesetter.com` som adresse i delingslenker, sitemap og SEO. `NEXT_PUBLIC_SITE_URL` kan overstyre den, for eksempel for et testdomene.
+
+Merk: Vercels gratisplan (Hobby) er kun for ikke-kommersiell bruk. Oppgrader til Pro før du tar betalt.
 
 ## Slik virker det
 

@@ -1,7 +1,11 @@
 import { routing, type Locale } from '@/i18n/routing';
 
-/** Public URL of the site. Set NEXT_PUBLIC_SITE_URL in production (e.g. https://cuesetter.com). */
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+/**
+ * Public URL of the site, used for canonical links, hreflang, the sitemap and share images.
+ * NEXT_PUBLIC_SITE_URL overrides it (e.g. for a preview domain).
+ */
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? (process.env.NODE_ENV === 'production' ? 'https://cuesetter.com' : 'http://localhost:3000');
 export const SITE_NAME = 'Cuesetter';
 
 /** Path of a page in a given locale: English has no prefix, other languages do. */
