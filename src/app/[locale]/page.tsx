@@ -7,15 +7,15 @@ import { Card, LINK_PRIMARY } from '@/components/ui';
 import { Link } from '@/i18n/navigation';
 
 const STEPS = ['upload', 'review', 'console'] as const;
-// The order is part of the brand platform (docs/brand.md): what it reads, privacy, proof, origin.
-const PROOFS = ['formats', 'private', 'tested', 'industry'] as const;
+// The order is part of the brand platform (docs/brand.md): what it reads, privacy, what it does, origin.
+const PROOFS = ['formats', 'private', 'numbers', 'industry'] as const;
 // Each card enters a little after the one before it.
 const CARD_DELAYS = ['animate-delay-100', 'animate-delay-200', 'animate-delay-300', 'animate-delay-400'];
 
 const PROOF_ICONS: Record<(typeof PROOFS)[number], string> = {
   formats: 'M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6M8 13h8M8 17h5',
   private: 'M7 11V8a5 5 0 0 1 10 0v3M5 11h14v10H5zM12 15v2',
-  tested: 'M20 6 9 17l-5-5',
+  numbers: 'M5 9h14M5 15h14M10 3 8 21M16 3l-2 18',
   industry: 'M12 3v4M5.6 5.6l2.8 2.8M18.4 5.6l-2.8 2.8M8 21h8M9 17h6l1-5a4 4 0 1 0-8 0z',
 };
 

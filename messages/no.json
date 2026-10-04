@@ -1,10 +1,10 @@
 {
   "meta": {
-    "title": "Cuesetter – gjør kjøreplaner om til cuelister i grandMA3",
+    "title": "CueSetter – gjør kjøreplaner om til cuelister i grandMA3",
     "description": "Last opp kjøreplanen som PDF, Word eller Excel og få en makro som bygger en navngitt cueliste på grandMA3-konsollen. Kjører i nettleseren – filene forlater aldri maskinen din.",
-    "appTitle": "Konverter – Cuesetter",
+    "appTitle": "Konverter – CueSetter",
     "appDescription": "Gjør en kjøreplan (PDF, Word eller Excel) om til en grandMA3-makro: sjekk kolonner, se over cuene, last ned og importer på konsollen.",
-    "notFoundTitle": "Fant ikke siden – Cuesetter"
+    "notFoundTitle": "Fant ikke siden – CueSetter"
   },
   "nav": {
     "newRunSheet": "Ny kjøreplan",
@@ -103,18 +103,18 @@
         "title": "Filene forlater aldri maskinen",
         "text": "Alt leses i nettleseren. Ingenting lastes opp, så du kan bruke det på konfidensielle produksjoner."
       },
-      "tested": {
-        "title": "Testet i grandMA3 onPC 2.5.1",
-        "text": "Makroen er verifisert i konsollprogrammet. Vi sier hvilke versjoner som er testet, og ikke mer."
+      "numbers": {
+        "title": "Cuenumrene følger kjøreplanen",
+        "text": "Punkt 12 blir cue 12 på konsollen. En settliste deles i under-cuer (12.1, 12.2) med ett klikk, og punkter uten nummer får plass mellom naboene."
       },
       "industry": {
         "title": "Laget av bransjen, for bransjen",
-        "text": "Laget av folk som jobber med forestillinger, for dem som står ved lysbordet."
+        "text": "Vi kjenner sene kjøreplaner, endringer i siste liten og regneark ingen har ryddet i. CueSetter er laget for den hverdagen."
       }
     },
-    "storyTitle": "Hvorfor Cuesetter finnes",
+    "storyTitle": "Hvorfor CueSetter finnes",
     "story": [
-      "Cuesetter startet backstage. Før hver forestilling skjedde det samme: kjøreplanen kom på PDF, ofte sent, og hvert punkt måtte tastes inn i konsollen for hånd mens lyset ventet.",
+      "CueSetter startet backstage. Før hver forestilling skjedde det samme: kjøreplanen kom på PDF, ofte sent, og hvert punkt måtte tastes inn i konsollen for hånd mens lyset ventet.",
       "Vi jobber selv i bransjen og har sett det skje igjen og igjen. Så vi bygde verktøyet som gjør jobben på ett minutt, slik at tiden går til lyset."
     ],
     "storySign": "Laget av bransjen, for bransjen.",

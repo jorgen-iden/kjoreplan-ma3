@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { CueLight } from '@/components/ui';
+import { Logo } from '@/components/ui';
 import { LocaleSwitcher } from './LocaleSwitcher';
 import { ThemeToggle } from './ThemeToggle';
 
@@ -15,9 +15,8 @@ export function SiteHeader() {
       {t('skip')}
     </a>
     <header className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-5 sm:px-8">
-      <Link href="/" className="flex items-baseline gap-1.5 text-ink no-underline">
-        <span className="text-2xl font-extrabold tracking-tight">Cuesetter</span>
-        <CueLight />
+      <Link href="/" aria-label="CueSetter" className="rounded-lg text-ink no-underline">
+        <Logo />
       </Link>
       <nav className="flex flex-wrap items-center gap-5 text-sm">
         <Link href="/app" className="rounded font-semibold text-ink no-underline transition-colors hover:text-accent">

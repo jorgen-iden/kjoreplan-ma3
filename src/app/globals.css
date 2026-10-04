@@ -40,7 +40,7 @@
   --animate-fade-in-up: fade-in-up 0.5s var(--ease-out-quint) backwards;
   --animate-pop-in: pop-in 160ms var(--ease-out-back) backwards;
   --animate-soft-pulse: soft-pulse 2s ease-in-out infinite;
-  /* The cue light in the logo: a slow breath on standby, a bright flash on GO. */
+  /* The cue light in the logo mark: a slow breath on standby, a flash on GO. */
   --animate-cue-standby: cue-standby 3.2s ease-in-out infinite;
   --animate-cue-go: cue-go 900ms var(--ease-out-quint);
   --animate-cue-row-in: cue-row-in 420ms var(--ease-out-quint) backwards;
@@ -73,15 +73,12 @@
   @keyframes cue-go {
     0% {
       transform: scale(1);
-      box-shadow: 0 0 0 0 var(--color-accent);
     }
     25% {
-      transform: scale(1.6);
-      box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-accent) 25%, transparent);
+      transform: scale(1.55);
     }
     100% {
       transform: scale(1);
-      box-shadow: 0 0 0 10px transparent;
     }
   }
   @keyframes cue-row-in {

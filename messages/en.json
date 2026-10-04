@@ -1,10 +1,10 @@
 {
   "meta": {
-    "title": "Cuesetter – turn run sheets into grandMA3 cue lists",
+    "title": "CueSetter – turn run sheets into grandMA3 cue lists",
     "description": "Upload a run sheet as PDF, Word or Excel and get a macro that builds a named cue list on your grandMA3 console. Runs in your browser – your files never leave your computer.",
-    "appTitle": "Converter – Cuesetter",
+    "appTitle": "Converter – CueSetter",
     "appDescription": "Convert a run sheet (PDF, Word or Excel) to a grandMA3 macro: check columns, review cues, download and import on the console.",
-    "notFoundTitle": "Page not found – Cuesetter"
+    "notFoundTitle": "Page not found – CueSetter"
   },
   "nav": {
     "newRunSheet": "New run sheet",
@@ -103,18 +103,18 @@
         "title": "Your files never leave your computer",
         "text": "Everything is read in your browser. Nothing is uploaded, so you can use it with confidential shows."
       },
-      "tested": {
-        "title": "Tested on grandMA3 onPC 2.5.1",
-        "text": "The macro is verified on the console software. We say which versions are tested, and nothing more."
+      "numbers": {
+        "title": "Cue numbers follow the run sheet",
+        "text": "Item 12 becomes cue 12 on the console. A set list splits into sub-cues (12.1, 12.2) in one click, and items without a number fit in between their neighbours."
       },
       "industry": {
         "title": "Made by the industry, for the industry",
-        "text": "Made by people who work on shows, for the people behind the desk."
+        "text": "We know late run sheets, last-minute changes and spreadsheets nobody tidied up. CueSetter is built for that reality."
       }
     },
-    "storyTitle": "Why Cuesetter exists",
+    "storyTitle": "Why CueSetter exists",
     "story": [
-      "Cuesetter started backstage. Before every show the same thing happened: the run sheet arrived as a PDF, often late, and every item had to be typed into the console by hand while the lighting waited.",
+      "CueSetter started backstage. Before every show the same thing happened: the run sheet arrived as a PDF, often late, and every item had to be typed into the console by hand while the lighting waited.",
       "We work in the industry and have seen it happen again and again. So we built the tool that does the job in a minute, so the time goes to the lighting."
     ],
     "storySign": "Made by the industry, for the industry.",

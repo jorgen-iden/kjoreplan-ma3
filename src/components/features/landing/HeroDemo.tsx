@@ -8,7 +8,7 @@ export interface DemoRow {
   time: string;
   /** Title lines: the first becomes the cue, the rest become sub-cues. */
   title: string[];
-  /** A column Cuesetter ignores (production notes), shown greyed out. */
+  /** A column CueSetter ignores (production notes), shown greyed out. */
   extra: string;
 }
 

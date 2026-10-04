@@ -1,4 +1,4 @@
-# Kjøreplan → grandMA3 (Cuesetter)
+# Kjøreplan → grandMA3 (CueSetter)
 
 Web-app (Next.js 16, App Router, next-intl, Tailwind v4) som gjør kjøreplaner (PDF, Word, Excel eller tekst) om til grandMA3-makroer. Se README.md for oppsett og kodeoversikt.
 
