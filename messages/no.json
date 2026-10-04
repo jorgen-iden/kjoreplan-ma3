@@ -20,7 +20,22 @@
     "lead": "Last opp PDF-en du fikk fra produksjonen. Få én tom, navngitt cue per punkt, i riktig rekkefølge, klar til import på konsollen.",
     "cta": "Prøv nå",
     "privacy": "Kjører i nettleseren. Kjøreplanen forlater aldri maskinen din.",
-    "disclaimer": "Ikke tilknyttet MA Lighting. grandMA3 er et varemerke for MA Lighting Technology GmbH."
+    "disclaimer": "Ikke tilknyttet MA Lighting. grandMA3 er et varemerke for MA Lighting Technology GmbH.",
+    "stepsTitle": "Slik virker det",
+    "steps": {
+      "upload": {
+        "title": "Last opp kjøreplanen",
+        "text": "Slipp inn PDF-en fra produksjonen, eller lim inn teksten. Kolonner som #, Start og Tittel finnes automatisk."
+      },
+      "review": {
+        "title": "Se over cuene",
+        "text": "Én rad per cue, i riktig rekkefølge. Rediger navn, del en settliste opp i under-cuer og rett det PDF-en tolket feil."
+      },
+      "console": {
+        "title": "Importer på konsollen",
+        "text": "Last ned en makro, importer den på grandMA3 og kjør den én gang. Sekvensen bygges med navngitte, tomme cuer."
+      }
+    }
   },
   "steps": {
     "upload": "Last opp",

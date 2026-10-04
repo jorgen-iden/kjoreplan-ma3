@@ -14,6 +14,6 @@ export function StatusScreen({ code, title, lead, children }: { code?: string; t
 
 /** Link styled like the primary/secondary buttons. */
 export const LINK_PRIMARY =
-  'inline-flex min-h-13 items-center justify-center rounded-xl bg-accent px-6 font-bold text-on-accent no-underline transition duration-150 hover:bg-accent-strong active:scale-[0.98]';
+  'inline-flex min-h-13 items-center justify-center rounded-xl bg-accent px-6 font-bold text-on-accent no-underline transition duration-300 ease-out-back hover:scale-105 hover:bg-accent-strong active:scale-95';
 export const LINK_SECONDARY =
   'inline-flex min-h-13 items-center justify-center rounded-xl border border-line bg-card px-6 font-semibold text-subtle no-underline transition duration-150 hover:border-muted hover:text-ink active:scale-[0.98]';

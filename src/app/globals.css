@@ -120,6 +120,11 @@ body {
   animation: var(--animate-fade-in-up);
 }
 
+/* Stagger entries: animate-delay-100, animate-delay-200 … (milliseconds). */
+@utility animate-delay-* {
+  animation-delay: calc(--value(integer) * 1ms);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
