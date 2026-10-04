@@ -161,7 +161,9 @@
     "export": "Export",
     "label": "Steps",
     "back": "Back",
-    "startOver": "Start over"
+    "startOver": "Start over",
+    "progress": "Step {n} of {total}",
+    "nextTo": "{step} →"
   },
   "upload": {
     "title": "Upload a run sheet",
@@ -187,7 +189,8 @@
     "oldFormat": "This is an old Word or Excel file (.doc or .xls). Open it and save it as .docx or .xlsx, or export it as PDF, then try again.",
     "unsupported": "This file type can’t be read. Use a PDF, Word (.docx) or Excel (.xlsx) file, or paste the text below.",
     "noTable": "Found no table with run sheet items in the file. Check that it holds the plan, or paste the text below.",
-    "unreadable": "Couldn’t open the file. It may be damaged or password protected. Save a new copy, or paste the text below."
+    "unreadable": "Couldn’t open the file. It may be damaged or password protected. Save a new copy, or paste the text below.",
+    "chooseFileButton": "Choose a file"
   },
   "columns": {
     "title": "Check the columns",

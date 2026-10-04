@@ -73,7 +73,7 @@ export function UploadStep({
               const file = e.dataTransfer.files[0];
               if (file) onFile(file);
             }}
-            className={`flex min-h-80 flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed px-6 py-12 text-center transition-colors ${
+            className={`flex flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed px-6 py-8 text-center transition-colors sm:min-h-80 sm:py-12 ${
               over ? 'border-accent bg-accent-soft' : 'border-line bg-card'
             }`}
           >
@@ -81,8 +81,12 @@ export function UploadStep({
               <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
               <path d="M14 3v6h6M12 18v-6M9 15l3-3 3 3" />
             </svg>
-            <p className="text-xl font-bold">{t('dropHint')}</p>
-            <p className="text-muted">
+            {/* Phones can't drop files: one big button instead of the drop hint. */}
+            <Button variant="primary" size="lg" onClick={() => input.current?.click()} className="w-full sm:hidden">
+              {t('chooseFileButton')}
+            </Button>
+            <p className="hidden text-xl font-bold sm:block">{t('dropHint')}</p>
+            <p className="hidden text-muted sm:block">
               {t('or')}{' '}
               <button
                 type="button"
@@ -105,7 +109,7 @@ export function UploadStep({
                 e.target.value = '';
               }}
             />
-            <Button onClick={onSample} className="mt-4">
+            <Button onClick={onSample} className="w-full sm:mt-4 sm:w-auto">
               {t('trySample')}
             </Button>
           </InteractiveGlow>

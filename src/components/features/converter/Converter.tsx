@@ -6,7 +6,7 @@ import { parsePastedText, parseTextItems } from '@/lib/parse';
 import { extractPdfText, preloadPdf } from '@/lib/parse/pdf';
 import { loadSettings, saveSettings } from '@/lib/settings';
 import { ImportError, importOffice } from '@/lib/import';
-import { checkRunSheetFile, fileKind, MAX_FILE_BYTES } from '@/lib/validation';
+import { checkRunSheetFile, fileKind, isValidSequence, MAX_FILE_BYTES } from '@/lib/validation';
 import { Button } from '@/components/ui';
 import { ColumnsStep } from './ColumnsStep';
 import { ExportStep } from './ExportStep';
@@ -120,10 +120,13 @@ export function Converter() {
     }, 'sampleError');
 
   const goto = (step: Step) => dispatch({ type: 'goto', step });
+  // The next step from the current one, for the bottom bar on phones (null on the last step).
+  const canContinue = state.step === 2 ? state.cues.length > 0 : state.step === 3 ? isValidSequence(state.settings.sequence) : true;
+  const nextStep = state.step > 0 && state.step < 4 ? ((state.step + 1) as Step) : null;
   const reset = () => dispatch({ type: 'reset' });
 
   return (
-    <main id="main" className="mx-auto max-w-6xl px-5 pb-16 pt-2 sm:px-8">
+    <main id="main" className={`mx-auto max-w-6xl px-5 pt-2 sm:px-8 sm:pb-16 ${state.step > 0 ? 'pb-28' : 'pb-16'}`}>
       <Stepper step={state.step} reachable={(s) => s === 0 || hasWork} onGoto={goto} onReset={hasWork ? reset : undefined} />
 
       <div key={state.step} className="animate-entry">
@@ -170,10 +173,24 @@ export function Converter() {
       </div>
 
       {state.step > 0 && (
-        <div className="mt-10">
+        <div className="mt-10 hidden sm:block">
           <Button variant="ghost" onClick={() => goto((state.step - 1) as Step)}>
             ← {t('back')}
           </Button>
+        </div>
+      )}
+
+      {/* Phones: back and continue stay within thumb reach, however long the cue list is. */}
+      {state.step > 0 && (
+        <div className="fixed inset-x-0 bottom-0 z-30 flex items-center gap-3 border-t border-line bg-paper/90 px-5 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur sm:hidden">
+          <Button variant="ghost" onClick={() => goto((state.step - 1) as Step)}>
+            ← {t('back')}
+          </Button>
+          {nextStep !== null && (
+            <Button variant="primary" className="flex-1" disabled={!canContinue} onClick={() => goto(nextStep)}>
+              {t('nextTo', { step: t(STEPS[nextStep]) })}
+            </Button>
+          )}
         </div>
       )}
     </main>

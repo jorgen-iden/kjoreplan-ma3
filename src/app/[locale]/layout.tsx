@@ -40,6 +40,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export const viewport: Viewport = {
+  // Lets the bottom bar on phones sit above the home indicator (env(safe-area-inset-bottom)).
+  viewportFit: 'cover',
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#f6f5f1' },
     { media: '(prefers-color-scheme: dark)', color: '#121316' },
