@@ -90,4 +90,5 @@ Alt vi sier om oss selv skal kunne dokumenteres. Sjekk listen før ny tekst publ
 - **Hero-bilde:** delt visning, kjøreplanen til venstre og cuelisten til høyre, der rader flytter seg over. Når listen er ferdig, viser konsollen GO og cue-lyset i logoen blinker.
 - **Vis produktet, ikke ikoner:** bevis illustreres med små konsollbilder (filer inn i en sekvens, «Lastet opp 0 B», en mini-cueliste med 12.5 «fylt inn»). Ingen generiske ikoner.
 - **Rytme:** lys flate → mørkt konsollbånd over hele bredden med prikkerutenett (stegene som Cue 1–3 med fadere) → stort sitat → blå avslutning. Mono-etiketter over hver seksjon.
+- **Konsoll-illustrasjonen:** en tegnet konsoll i grandMA3-stil (tre skjermer, encodere, faderbanker med executor-knapper, tastatur, GO-tast) med vår cueliste på venstre skjerm. Aldri MA-logo, produktnavn på tegningen eller kopier av ekte bilder (`ConsoleIllustration.tsx`).
 - **Bilder:** ekte skjermbilder fra appen og onPC. Ingen stockfoto av konserter.

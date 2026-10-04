@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
 import { HeroDemo, type DemoRow } from '@/components/features/landing/HeroDemo';
+import { ConsoleIllustration, type ConsoleCue } from '@/components/features/landing/ConsoleIllustration';
 import { FormatsVisual, NumbersVisual, PrivacyVisual, type NumberRow } from '@/components/features/landing/ProofVisuals';
 import { Reveal } from '@/components/features/landing/Reveal';
 import { SiteHeader } from '@/components/layout/SiteHeader';
@@ -102,6 +103,14 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
                 </li>
               ))}
             </ol>
+            <div className="relative mx-auto mt-16 max-w-4xl drop-shadow-2xl sm:mt-20">
+              {/* Stage light under the desk. */}
+              <div aria-hidden="true" className="pointer-events-none absolute inset-x-10 bottom-0 top-1/3 -z-10 rounded-full bg-console-accent/25 blur-3xl" />
+              <ConsoleIllustration
+                sequence={t('demo.sequence')}
+                cues={(t.raw('demo.rows') as DemoRow[]).map((r) => ({ n: r.n, name: r.title[0] }) satisfies ConsoleCue)}
+              />
+            </div>
           </Reveal>
         </section>
 
