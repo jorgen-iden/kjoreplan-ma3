@@ -93,7 +93,7 @@ export function SettingsStep({
 
 function Group({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <Card as="section" className="p-6">
+    <Card as="section" glow className="p-6">
       <h2 className="mb-4 text-lg font-bold">{title}</h2>
       <div className="flex flex-col gap-4">{children}</div>
     </Card>

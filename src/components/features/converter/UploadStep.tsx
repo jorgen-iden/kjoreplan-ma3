@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useId, useRef, useState } from 'react';
-import { Button, Card, Notice, PageHeader, Skeleton, Spinner } from '@/components/ui';
+import { Button, Card, InteractiveGlow, Notice, PageHeader, Skeleton, Spinner } from '@/components/ui';
 import { checkPastedText, MAX_TEXT_CHARS } from '@/lib/validation';
 import type { Notice as NoticeData } from './state';
 
@@ -52,7 +52,7 @@ export function UploadStep({
         {busy ? (
           <ReadingSkeleton title={t('reading')} lead={t('readingLead')} />
         ) : (
-          <div
+          <InteractiveGlow
             onDragOver={(e) => {
               e.preventDefault();
               setOver(true);
@@ -64,7 +64,7 @@ export function UploadStep({
               const file = e.dataTransfer.files[0];
               if (file) onFile(file);
             }}
-            className={`flex min-h-80 flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed px-6 py-12 text-center transition-colors duration-150 ${
+            className={`flex min-h-80 flex-col items-center justify-center gap-4 rounded-2xl border-2 border-dashed px-6 py-12 text-center transition-colors ${
               over ? 'border-accent bg-accent-soft' : 'border-line bg-card'
             }`}
           >
@@ -99,10 +99,10 @@ export function UploadStep({
             <Button onClick={onSample} className="mt-4">
               {t('trySample')}
             </Button>
-          </div>
+          </InteractiveGlow>
         )}
 
-        <Card as="section" className="flex flex-col p-6">
+        <Card as="section" glow className="flex flex-col p-6">
           <h2 className="text-lg font-bold">{t('pasteTitle')}</h2>
           <p className="mt-1 text-sm text-muted">{t('pasteLead')}</p>
           <label htmlFor={pasteId} className="sr-only">

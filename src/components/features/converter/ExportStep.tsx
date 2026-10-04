@@ -68,7 +68,7 @@ export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings
         lead={t('lead', { sequence: settings.sequence, cues: cues.length, version: version.label })}
       />
 
-      <Card className="flex flex-col items-start gap-4 p-6 sm:p-8">
+      <Card glow className="flex flex-col items-start gap-4 p-6 sm:p-8">
         {!seqValid && <Notice kind="error">{tSettings('sequenceInvalid')}</Notice>}
         <Button variant="primary" size="lg" loading={downloading} disabled={!seqValid} onClick={() => void download()} className="min-h-14 px-8 text-lg">
           {downloading ? t('preparing') : t('download')}
