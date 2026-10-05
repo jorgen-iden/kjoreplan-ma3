@@ -6,11 +6,11 @@ import { ConsoleIllustration, type ConsoleCue } from '@/components/features/land
 import { FormatsVisual, NumbersVisual, PrivacyVisual, type NumberRow } from '@/components/features/landing/ProofVisuals';
 import { Faq } from '@/components/features/landing/Faq';
 import { Reveal } from '@/components/features/landing/Reveal';
+import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { Card, LINK_PRIMARY } from '@/components/ui';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
-import { CONTACT_EMAIL } from '@/lib/site';
 import { frontPageJsonLd, jsonLdScript, type FaqItem } from '@/lib/structured-data';
 
 const STEPS = ['upload', 'review', 'console'] as const;
@@ -168,19 +168,7 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
           </div>
         </Reveal>
 
-        <footer className={`${CONTAINER} mt-16 flex flex-col gap-2 text-xs text-muted`}>
-          <p>
-            {t.rich('contact', {
-              email: CONTACT_EMAIL,
-              mail: (chunks) => (
-                <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold text-ink underline underline-offset-2 hover:text-accent">
-                  {chunks}
-                </a>
-              ),
-            })}
-          </p>
-          <p>{t('disclaimer')}</p>
-        </footer>
+        <SiteFooter className={`${CONTAINER} mt-16`} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }} />
       </main>
     </>

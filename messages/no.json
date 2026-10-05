@@ -160,6 +160,10 @@
         "a": "PDF med tekst, Word (.docx) og Excel (.xlsx), rett fra produksjonen. Du kan også lime inn tekst. Skannede PDF-er (bilder) og gamle .doc- og .xls-filer kan ikke leses; lagre dem som .docx eller .xlsx, eller lim inn teksten."
       },
       {
+        "q": "Hva om kjøreplanen heter noe annet?",
+        "a": "Det virker likt uansett hva dokumentet heter: kjøreplan, kjøreliste, dreiebok, programplan, minuttplan eller regiplan. Det som teller er en liste med punkter med tid eller nummer, i PDF, Word, Excel eller som tekst."
+      },
+      {
         "q": "Lastes kjøreplanen opp til en server?",
         "a": "Nei. Alt leses i nettleseren på din egen maskin. Kjøreplanen sendes aldri til oss eller noen annen server, så du kan bruke det på konfidensielle produksjoner."
       },
@@ -328,5 +332,186 @@
   },
   "common": {
     "loading": "Laster …"
+  },
+  "formats": {
+    "footerLabel": "Formater for kjøreplaner",
+    "breadcrumbLabel": "Brødsmulesti",
+    "readsKicker": "Hva den leser",
+    "stepsKicker": "Tre cuer",
+    "others": "Andre formater:",
+    "excel": {
+      "linkLabel": "Excel til grandMA3",
+      "metaTitle": "Kjøreplan i Excel til cueliste i grandMA3 – CueSetter",
+      "metaDescription": "Gjør en kjøreplan i Excel (.xlsx) om til en navngitt cueliste i grandMA3. CueSetter finner overskriftsraden og kolonnene, leser alle ark og lager en makro som bygger sekvensen. Alt skjer i nettleseren.",
+      "kicker": "Excel → grandMA3",
+      "title": "Kjøreplan i Excel til cueliste i grandMA3",
+      "lead": "Last opp .xlsx-filen fra produksjonen slik den er. CueSetter finner overskriftsraden og kolonnene for nummer, tid og tittel, og gir deg en grandMA3-makro som bygger én navngitt cue per rad.",
+      "cta": "Konverter en Excel-fil",
+      "file": "kjoreplan.xlsx",
+      "readsTitle": "Dette leser CueSetter i en kjøreplan i Excel",
+      "reads": [
+        {
+          "title": "Alle arkene i arbeidsboken",
+          "text": "Ett ark per dag eller scene går fint. Velg arket du trenger; skjulte ark hoppes over. Tittelen over tabellen, eller ellers arknavnet, blir sekvensnavnet."
+        },
+        {
+          "title": "Overskriftsraden, uansett hvor den står",
+          "text": "Tittel- og inforader øverst hoppes over. Overskriftsraden kan stå hvor som helst i de første 20 radene, med overskrifter som #, Start, Tid, Varighet, Tittel eller Program."
+        },
+        {
+          "title": "Klokkeslett slik Excel viser dem",
+          "text": "Celler formatert som tid blir 18:30, ikke 0,77. Gjentatte overskriftsrader lenger ned hoppes over."
+        },
+        {
+          "title": "Punkter over flere rader",
+          "text": "En rad uten nummer eller tid hører til punktet over, så et langt punkt eller en settliste blir én cue, klar til å deles i under-cuer."
+        }
+      ],
+      "stepsTitle": "Fra Excel til konsollen",
+      "steps": [
+        {
+          "title": "Last opp .xlsx-filen",
+          "text": "Slipp filen inn i CueSetter. Har arbeidsboken flere ark med kjøreplan, velger du det som gjelder forestillingen."
+        },
+        {
+          "title": "Se over kolonner og cuer",
+          "text": "Kolonnene som ble funnet er markert. Velg en annen hvis noe er feil, og rediger navn eller del en settliste i under-cuer."
+        },
+        {
+          "title": "Importer på grandMA3",
+          "text": "Pakk ut makroen på roten av en minnepinne. I Show Creator velger du Macros og minnepinnen, importerer og kjører den én gang. Sekvensen bygges med én navngitt cue per punkt."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Hvordan får jeg en cueliste fra Excel inn i grandMA3?",
+          "a": "grandMA3 importerer makroer som XML-filer. CueSetter gjør regnearket om til en grandMA3-makro: importer den fra en minnepinne og kjør den én gang, så bygges sekvensen med én navngitt cue per punkt."
+        },
+        {
+          "q": "Kan jeg bruke .xls- eller CSV-filer?",
+          "a": "Gamle .xls-filer kan ikke leses; åpne dem i Excel og lagre som .xlsx. En CSV-fil kan også åpnes i Excel og lagres som .xlsx, eller du kan kopiere radene med overskriften og lime dem inn i CueSetter som tekst."
+        },
+        {
+          "q": "Lastes filen opp til en server?",
+          "a": "Nei. Filen leses i nettleseren på din egen maskin og sendes aldri til oss eller noen annen server."
+        }
+      ]
+    },
+    "pdf": {
+      "linkLabel": "PDF til grandMA3",
+      "metaTitle": "Kjøreplan i PDF til cueliste i grandMA3 – CueSetter",
+      "metaDescription": "Gjør en kjøreplan i PDF om til en navngitt cueliste i grandMA3. CueSetter leser tabellen i PDF-en, finner kolonnene og lager en makro som bygger sekvensen. Alt skjer i nettleseren.",
+      "kicker": "PDF → grandMA3",
+      "title": "Kjøreplan i PDF til cueliste i grandMA3",
+      "lead": "De fleste kjøreplaner kommer som PDF. Last den opp slik den er: CueSetter leser tabellen, finner kolonnene for nummer, tid og tittel, og gir deg en grandMA3-makro som bygger én navngitt cue per punkt.",
+      "cta": "Konverter en PDF",
+      "file": "kjoreplan.pdf",
+      "readsTitle": "Dette leser CueSetter i en kjøreplan i PDF",
+      "reads": [
+        {
+          "title": "Tabellen, ut fra hvor teksten står",
+          "text": "Kolonnene finnes fra overskriftsraden og hvor teksten står på siden. Du trenger ikke kopiere noe over i et regneark først."
+        },
+        {
+          "title": "Flere sider",
+          "text": "Punktene fortsetter over sideskift. En overskriftsrad som gjentas på hver side, og sidetoppen over den, hoppes over."
+        },
+        {
+          "title": "Fra hvilket som helst program",
+          "text": "Eksportert fra Word, Excel, Google Docs eller et rundown-verktøy: alle PDF-er med tekst kan leses. Tittelen øverst blir sekvensnavnet."
+        },
+        {
+          "title": "Skannede PDF-er",
+          "text": "En skanning er et bilde uten tekst å lese. Kopier teksten ut (eller kjør den gjennom OCR) og lim den inn i CueSetter i stedet."
+        }
+      ],
+      "stepsTitle": "Fra PDF til konsollen",
+      "steps": [
+        {
+          "title": "Last opp PDF-en",
+          "text": "Slipp filen inn i CueSetter, eller åpne den fra telefonen eller maskinen. Den leses i nettleseren."
+        },
+        {
+          "title": "Se over kolonner og cuer",
+          "text": "Kolonnene som ble funnet er markert. Velg en annen hvis noe er feil, og rediger navn eller del en settliste i under-cuer."
+        },
+        {
+          "title": "Importer på grandMA3",
+          "text": "Pakk ut makroen på roten av en minnepinne. I Show Creator velger du Macros og minnepinnen, importerer og kjører den én gang. Sekvensen bygges med én navngitt cue per punkt."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Hvordan får jeg en kjøreplan i PDF inn i grandMA3?",
+          "a": "grandMA3 importerer makroer som XML-filer, ikke PDF. CueSetter leser PDF-en og lager en grandMA3-makro: importer den fra en minnepinne og kjør den én gang, så bygges sekvensen med én navngitt cue per punkt."
+        },
+        {
+          "q": "Hvorfor står det at det ikke finnes tekst i PDF-en?",
+          "a": "PDF-en er trolig skannet, slik at hver side er et bilde. Be produksjonen om originalfilen (Word, Excel eller en eksportert PDF), eller kopier teksten ut og lim den inn i CueSetter."
+        },
+        {
+          "q": "Lastes filen opp til en server?",
+          "a": "Nei. Filen leses i nettleseren på din egen maskin og sendes aldri til oss eller noen annen server."
+        }
+      ]
+    },
+    "word": {
+      "linkLabel": "Word til grandMA3",
+      "metaTitle": "Kjøreplan i Word til cueliste i grandMA3 – CueSetter",
+      "metaDescription": "Gjør en kjøreplan i Word (.docx) om til en navngitt cueliste i grandMA3. CueSetter leser tabellene i dokumentet, finner kolonnene og lager en makro som bygger sekvensen. Alt skjer i nettleseren.",
+      "kicker": "Word → grandMA3",
+      "title": "Kjøreplan i Word til cueliste i grandMA3",
+      "lead": "Last opp .docx-filen fra produksjonen slik den er. CueSetter leser tabellen, finner kolonnene for nummer, tid og tittel, og gir deg en grandMA3-makro som bygger én navngitt cue per punkt.",
+      "cta": "Konverter en Word-fil",
+      "file": "kjoreplan.docx",
+      "readsTitle": "Dette leser CueSetter i en kjøreplan i Word",
+      "reads": [
+        {
+          "title": "Tabeller, også med sammenslåtte celler",
+          "text": "Kolonnene finnes fra overskriftsraden. Sammenslåtte celler og flere linjer i én celle går fint."
+        },
+        {
+          "title": "Flere tabeller",
+          "text": "Har dokumentet mer enn én tabell, for eksempel én per dag, velger du den som gjelder forestillingen."
+        },
+        {
+          "title": "Ingen tabell i det hele tatt",
+          "text": "En kjøreplan skrevet som linjer, som «18:30 Dørene åpner», leses linje for linje, på samme måte som innlimt tekst."
+        },
+        {
+          "title": "Tittelen blir sekvensnavnet",
+          "text": "Første linje over tabellen, som regel navnet på forestillingen, brukes som sekvensnavn. Du kan endre det før eksport."
+        }
+      ],
+      "stepsTitle": "Fra Word til konsollen",
+      "steps": [
+        {
+          "title": "Last opp .docx-filen",
+          "text": "Slipp filen inn i CueSetter. Har dokumentet flere tabeller, velger du den som gjelder forestillingen."
+        },
+        {
+          "title": "Se over kolonner og cuer",
+          "text": "Kolonnene som ble funnet er markert. Velg en annen hvis noe er feil, og rediger navn eller del en settliste i under-cuer."
+        },
+        {
+          "title": "Importer på grandMA3",
+          "text": "Pakk ut makroen på roten av en minnepinne. I Show Creator velger du Macros og minnepinnen, importerer og kjører den én gang. Sekvensen bygges med én navngitt cue per punkt."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Hvordan får jeg en kjøreplan i Word inn i grandMA3?",
+          "a": "grandMA3 importerer makroer som XML-filer. CueSetter leser Word-dokumentet og lager en grandMA3-makro: importer den fra en minnepinne og kjør den én gang, så bygges sekvensen med én navngitt cue per punkt."
+        },
+        {
+          "q": "Kan jeg bruke .doc-filer?",
+          "a": "Gamle .doc-filer kan ikke leses. Åpne filen i Word og lagre den som .docx, eller eksporter den som PDF, og prøv igjen."
+        },
+        {
+          "q": "Lastes filen opp til en server?",
+          "a": "Nei. Filen leses i nettleseren på din egen maskin og sendes aldri til oss eller noen annen server."
+        }
+      ]
+    }
   }
 }

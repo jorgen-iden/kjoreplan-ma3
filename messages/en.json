@@ -160,6 +160,10 @@
         "a": "PDF with text, Word (.docx) and Excel (.xlsx), straight from production. You can also paste text. Scanned PDFs (images) and old .doc and .xls files can’t be read; save them as .docx or .xlsx, or paste the text."
       },
       {
+        "q": "What if my run sheet is called something else?",
+        "a": "It works the same whatever the document is called: run sheet, running order, run of show, rundown, show flow, cue sheet or programme. What matters is a list of items with times or numbers, in PDF, Word, Excel or as text."
+      },
+      {
         "q": "Is my run sheet uploaded to a server?",
         "a": "No. Everything is read in the browser on your own computer. The run sheet is never sent to us or any other server, so you can use it for confidential productions."
       },
@@ -328,5 +332,186 @@
   },
   "common": {
     "loading": "Loading …"
+  },
+  "formats": {
+    "footerLabel": "Run sheet formats",
+    "breadcrumbLabel": "Breadcrumb",
+    "readsKicker": "What it reads",
+    "stepsKicker": "Three cues",
+    "others": "Other formats:",
+    "excel": {
+      "linkLabel": "Excel to grandMA3",
+      "metaTitle": "Excel run sheet to grandMA3 cue list – CueSetter",
+      "metaDescription": "Turn an Excel run sheet (.xlsx) into a named grandMA3 cue list. CueSetter finds the header row and columns, reads every sheet and makes a macro that builds the sequence. Runs in your browser.",
+      "kicker": "Excel → grandMA3",
+      "title": "Excel run sheet to grandMA3 cue list",
+      "lead": "Upload the .xlsx file from production as it is. CueSetter finds the header row and the columns for number, time and title, and gives you a grandMA3 macro that builds one named cue per row.",
+      "cta": "Convert an Excel file",
+      "file": "run-sheet.xlsx",
+      "readsTitle": "What CueSetter reads in an Excel run sheet",
+      "reads": [
+        {
+          "title": "Every sheet in the workbook",
+          "text": "One sheet per day or stage is fine. Pick the sheet you need; hidden sheets are skipped. The title above the table, or else the sheet name, becomes the sequence name."
+        },
+        {
+          "title": "The header row, wherever it is",
+          "text": "Title and info rows at the top are skipped. The header row can be anywhere in the first 20 rows, with headers like #, Start, Time, Duration, Title or Item."
+        },
+        {
+          "title": "Times as Excel shows them",
+          "text": "Cells formatted as time come out as 18:30, not 0.77. Repeated header rows further down are skipped."
+        },
+        {
+          "title": "Items over several rows",
+          "text": "A row without a number or time continues the item above, so a long item or a set list stays one cue, ready to split into sub-cues."
+        }
+      ],
+      "stepsTitle": "From Excel to the console",
+      "steps": [
+        {
+          "title": "Upload the .xlsx file",
+          "text": "Drop the file into CueSetter. If the workbook has several sheets with a run sheet, choose the one for the show."
+        },
+        {
+          "title": "Check the columns and cues",
+          "text": "The columns found are marked. Pick another if one is wrong, then edit names and split a set list into sub-cues."
+        },
+        {
+          "title": "Import on grandMA3",
+          "text": "Unzip the macro to the root of a USB stick. In Show Creator, choose Macros and the stick, import it and run it once. The sequence is built with one named cue per item."
+        }
+      ],
+      "faq": [
+        {
+          "q": "How do I get an Excel cue list into grandMA3?",
+          "a": "grandMA3 imports macros as XML files. CueSetter turns the spreadsheet into a grandMA3 macro: import it from a USB stick and run it once, and the sequence is built with one named cue per item."
+        },
+        {
+          "q": "Can I use .xls or CSV files?",
+          "a": "Old .xls files can’t be read; open them in Excel and save as .xlsx. A CSV file can be opened in Excel and saved as .xlsx too, or you can copy the rows with the header and paste them into CueSetter as text."
+        },
+        {
+          "q": "Is the file uploaded to a server?",
+          "a": "No. The file is read in your browser on your own computer and is never sent to us or any other server."
+        }
+      ]
+    },
+    "pdf": {
+      "linkLabel": "PDF to grandMA3",
+      "metaTitle": "PDF run sheet to grandMA3 cue list – CueSetter",
+      "metaDescription": "Turn a PDF run sheet into a named grandMA3 cue list. CueSetter reads the table in the PDF, finds the columns and makes a macro that builds the sequence. Runs in your browser.",
+      "kicker": "PDF → grandMA3",
+      "title": "PDF run sheet to grandMA3 cue list",
+      "lead": "Most run sheets arrive as a PDF. Upload it as it is: CueSetter reads the table, finds the columns for number, time and title, and gives you a grandMA3 macro that builds one named cue per item.",
+      "cta": "Convert a PDF",
+      "file": "run-sheet.pdf",
+      "readsTitle": "What CueSetter reads in a PDF run sheet",
+      "reads": [
+        {
+          "title": "The table, from where the text sits",
+          "text": "Columns are found from the header row and where the text sits on the page. No need to copy anything into a spreadsheet first."
+        },
+        {
+          "title": "Several pages",
+          "text": "Items continue across page breaks. A header row repeated on every page, and the page headers above it, are skipped."
+        },
+        {
+          "title": "From any program",
+          "text": "Exported from Word, Excel, Google Docs or a rundown tool: any PDF with text can be read. The title at the top becomes the sequence name."
+        },
+        {
+          "title": "Scanned PDFs",
+          "text": "A scan is an image with no text to read. Copy the text out of it (or run it through OCR) and paste it into CueSetter instead."
+        }
+      ],
+      "stepsTitle": "From PDF to the console",
+      "steps": [
+        {
+          "title": "Upload the PDF",
+          "text": "Drop the file into CueSetter, or open it from your phone or computer. It is read in your browser."
+        },
+        {
+          "title": "Check the columns and cues",
+          "text": "The columns found are marked. Pick another if one is wrong, then edit names and split a set list into sub-cues."
+        },
+        {
+          "title": "Import on grandMA3",
+          "text": "Unzip the macro to the root of a USB stick. In Show Creator, choose Macros and the stick, import it and run it once. The sequence is built with one named cue per item."
+        }
+      ],
+      "faq": [
+        {
+          "q": "How do I get a PDF run sheet into grandMA3?",
+          "a": "grandMA3 imports macros as XML files, not PDFs. CueSetter reads the PDF and makes a grandMA3 macro: import it from a USB stick and run it once, and the sequence is built with one named cue per item."
+        },
+        {
+          "q": "Why does it say there is no text in my PDF?",
+          "a": "The PDF is most likely scanned, which makes every page an image. Ask production for the original file (Word, Excel or an exported PDF), or copy the text out and paste it into CueSetter."
+        },
+        {
+          "q": "Is the file uploaded to a server?",
+          "a": "No. The file is read in your browser on your own computer and is never sent to us or any other server."
+        }
+      ]
+    },
+    "word": {
+      "linkLabel": "Word to grandMA3",
+      "metaTitle": "Word run sheet to grandMA3 cue list – CueSetter",
+      "metaDescription": "Turn a Word run sheet (.docx) into a named grandMA3 cue list. CueSetter reads the tables in the document, finds the columns and makes a macro that builds the sequence. Runs in your browser.",
+      "kicker": "Word → grandMA3",
+      "title": "Word run sheet to grandMA3 cue list",
+      "lead": "Upload the .docx file from production as it is. CueSetter reads the table, finds the columns for number, time and title, and gives you a grandMA3 macro that builds one named cue per item.",
+      "cta": "Convert a Word file",
+      "file": "run-sheet.docx",
+      "readsTitle": "What CueSetter reads in a Word run sheet",
+      "reads": [
+        {
+          "title": "Tables, merged cells too",
+          "text": "Columns are found from the header row. Merged cells and several lines in one cell are fine."
+        },
+        {
+          "title": "Several tables",
+          "text": "If the document has more than one table, for example one per day, choose the one for the show."
+        },
+        {
+          "title": "No table at all",
+          "text": "A run sheet written as lines, like “18:30 Doors open”, is read line by line, the same way as pasted text."
+        },
+        {
+          "title": "The title becomes the sequence name",
+          "text": "The first line above the table, usually the name of the show, is used as the sequence name. You can change it before export."
+        }
+      ],
+      "stepsTitle": "From Word to the console",
+      "steps": [
+        {
+          "title": "Upload the .docx file",
+          "text": "Drop the file into CueSetter. If the document has several tables, choose the one for the show."
+        },
+        {
+          "title": "Check the columns and cues",
+          "text": "The columns found are marked. Pick another if one is wrong, then edit names and split a set list into sub-cues."
+        },
+        {
+          "title": "Import on grandMA3",
+          "text": "Unzip the macro to the root of a USB stick. In Show Creator, choose Macros and the stick, import it and run it once. The sequence is built with one named cue per item."
+        }
+      ],
+      "faq": [
+        {
+          "q": "How do I get a Word run sheet into grandMA3?",
+          "a": "grandMA3 imports macros as XML files. CueSetter reads the Word document and makes a grandMA3 macro: import it from a USB stick and run it once, and the sequence is built with one named cue per item."
+        },
+        {
+          "q": "Can I use .doc files?",
+          "a": "Old .doc files can’t be read. Open the file in Word and save it as .docx, or export it as PDF, and try again."
+        },
+        {
+          "q": "Is the file uploaded to a server?",
+          "a": "No. The file is read in your browser on your own computer and is never sent to us or any other server."
+        }
+      ]
+    }
   }
 }

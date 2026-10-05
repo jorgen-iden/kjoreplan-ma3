@@ -51,6 +51,42 @@ export function frontPageJsonLd({ locale, name, description, faq }: { locale: Lo
   };
 }
 
+/**
+ * schema.org data for a format page (e.g. /excel-to-grandma3): the page, its place under the front
+ * page (breadcrumb) and its FAQ. The organisation and app are described on the front page.
+ */
+export function formatPageJsonLd({ locale, path, title, description, home, faq }: { locale: Locale; path: string; title: string; description: string; home: string; faq: FaqItem[] }) {
+  const url = `${SITE_URL}${localePath(locale, path)}`;
+  const homeUrl = `${SITE_URL}${localePath(locale, '/') === '/' ? '' : localePath(locale, '/')}`;
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': url,
+        url,
+        name: title,
+        description,
+        inLanguage: locale === 'no' ? 'nb' : 'en',
+        isPartOf: { '@id': `${SITE_URL}/#website` },
+        about: { '@id': `${SITE_URL}/#app` },
+        breadcrumb: {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: home, item: homeUrl },
+            { '@type': 'ListItem', position: 2, name: title, item: url },
+          ],
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${url}#faq`,
+        mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      },
+    ],
+  };
+}
+
 /** Serialises JSON-LD for a <script> tag; "<" is escaped so content can never close the tag. */
 export function jsonLdScript(data: unknown): string {
   return JSON.stringify(data).replace(/</g, '\\u003c');

@@ -1,4 +1,5 @@
 import en from '../../../messages/en.json';
+import { FORMAT_PAGES, FORMAT_SLUGS } from '@/lib/formats';
 import { CONTACT_EMAIL, SITE_URL } from '@/lib/site';
 
 // /llms.txt: a plain-text summary for AI assistants and AI search (https://llmstxt.org).
@@ -7,6 +8,10 @@ export const dynamic = 'force-static';
 
 export function GET() {
   const faq = en.home.faq.map((f) => `### ${f.q}\n\n${f.a}`).join('\n\n');
+  const formats = FORMAT_SLUGS.map((s) => {
+    const f = en.formats[FORMAT_PAGES[s].key];
+    return `- [${f.title}](${SITE_URL}/${s}): ${f.metaDescription}`;
+  }).join('\n');
   const body = `# CueSetter
 
 > ${en.meta.description}
@@ -26,6 +31,7 @@ Key facts:
 - [CueSetter (English)](${SITE_URL}/): what it does and how it works
 - [CueSetter (Norsk)](${SITE_URL}/no): the same in Norwegian
 - [Converter](${SITE_URL}/app): upload a run sheet and download the grandMA3 macro
+${formats}
 
 ## FAQ
 
