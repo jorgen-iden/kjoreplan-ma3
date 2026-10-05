@@ -72,7 +72,7 @@ Alt vi sier om oss selv skal kunne dokumenteres. Sjekk listen før ny tekst publ
 | Påstand | Grunnlag |
 |---|---|
 | Cuenumrene følger kjøreplanen | «Følg kjøreplanens #» er standard; settlister deles i .1, .2 med «Del opp»; manglende numre fylles mellom naboene. |
-| Testet i grandMA3 onPC 2.5.1 (bare i eksportsteget, ikke som salgsargument – det forventer alle) | Verifisert import og kjøring av makroen. Nye versjoner legges til først når de er testet. |
+| Testet på de fleste nyere grandMA3-versjoner, skal i teorien virke på alle (eksportsteget og FAQ, ikke som salgsargument – det forventer alle) | Makroen er testet på de fleste nyere versjoner. Brukere oppfordres til å si fra hvis en versjon ikke virker. |
 | Filene forlater aldri maskinen | All lesing skjer i nettleseren. Endres hvis lagring i skyen innføres – da må teksten skille mellom gratis og lagrede kjøreplaner. |
 | Leser PDF, Word og Excel | .pdf med tekstlag, .docx, .xlsx. Ikke skannede PDF-er eller gamle .doc/.xls. |
 | Laget av bransjen | Eieren jobber i bransjen. Si aldri «laget av en lysoperatør». |

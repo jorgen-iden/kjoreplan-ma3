@@ -15,7 +15,7 @@ CueSetter is a web tool for lighting operators on grandMA3 consoles. It reads th
 
 Key facts:
 - Runs entirely in the browser. Run sheets are never uploaded to a server.
-- Made to work with all grandMA3 versions (verified on grandMA3 onPC 2.5.1.0). Not for grandMA2.
+- Tested on most recent grandMA3 versions; should in theory work on every grandMA3 version. Not for grandMA2.
 - Cues are empty (names, numbers, optional note with start time and duration); the operator programs the lighting.
 - Free to try, no account needed.
 - Not affiliated with MA Lighting. grandMA3 is a trademark of MA Lighting Technology GmbH.

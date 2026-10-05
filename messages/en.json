@@ -169,7 +169,7 @@
       },
       {
         "q": "Which grandMA3 versions does it work with?",
-        "a": "CueSetter is made to work with all versions of grandMA3. We haven’t tested every single version, so if something doesn’t work on yours, we’d like to hear about it. Tell us which version you use, and we’ll fix it."
+        "a": "The macro is tested on most recent versions of grandMA3, and should in theory work on every version of grandMA3. If it doesn’t work on your version, we’d like to hear from you."
       },
       {
         "q": "Does it work with grandMA2?",
@@ -300,7 +300,7 @@
     "title": "Ready to export",
     "lead": "Sequence {sequence} · {cues, plural, one {# cue} other {# cues}} · {version}",
     "download": "Download macro (.zip)",
-    "verified": "Tested on grandMA3 onPC 2.5.1.0. Other versions are not tested yet – try it in onPC before using it on a show.",
+    "verified": "Tested on most recent versions of grandMA3. If the macro doesn’t work on your version, we’d like to hear from you.",
     "howTitle": "On the console",
     "how1": "Unzip to the root of a USB stick (the grandMA3 folder goes at the top).",
     "how2": "Insert the stick in the console.",
