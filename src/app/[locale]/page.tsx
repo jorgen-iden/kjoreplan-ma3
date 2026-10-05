@@ -2,10 +2,10 @@ import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
 import { HeroDemo, type DemoRow } from '@/components/features/landing/HeroDemo';
-import { ConsoleIllustration, type ConsoleCue } from '@/components/features/landing/ConsoleIllustration';
 import { FormatsVisual, NumbersVisual, PrivacyVisual, type NumberRow } from '@/components/features/landing/ProofVisuals';
 import { Faq } from '@/components/features/landing/Faq';
 import { Reveal } from '@/components/features/landing/Reveal';
+import { StepsBand } from '@/components/features/landing/StepsBand';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { Card, LINK_PRIMARY } from '@/components/ui';
@@ -20,8 +20,6 @@ const PROOFS = ['formats', 'private', 'numbers'] as const;
 const CONTAINER = 'mx-auto max-w-6xl px-5 sm:px-8';
 const KICKER = 'mb-3 font-mono text-sm font-semibold text-accent';
 const H2 = 'text-3xl font-extrabold tracking-tight sm:text-4xl';
-// Each step's fader fills a little after the one before it.
-const FADER_DELAYS = ['delay-200', 'delay-500', 'delay-800'];
 
 export default function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = use(params);
@@ -93,37 +91,15 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
         </Reveal>
 
         {/* Steps: a full-width console band, three cues with faders that run in order. */}
-        <section aria-labelledby="how-title" className="mt-28 bg-console py-20 text-console-ink sm:mt-40 sm:py-28 dark:border-y dark:border-console-line dark:bg-console-raised [background-image:radial-gradient(var(--color-console-line)_1px,transparent_1px)] [background-size:22px_22px]">
-          <Reveal className={CONTAINER}>
-            <p className="mb-3 font-mono text-sm font-semibold text-console-accent">{t('stepsKicker')}</p>
-            <h2 id="how-title" className={`${H2} mb-14 max-w-2xl`}>
-              {t('stepsTitle')}
-            </h2>
-            <ol className="grid gap-12 md:grid-cols-3 md:gap-8">
-              {STEPS.map((step, i) => (
-                <li key={step}>
-                  <div className="mb-5 flex items-center justify-between font-mono text-sm">
-                    <span className="font-semibold text-console-accent">{t('cueLabel', { n: i + 1 })}</span>
-                    <span className="text-console-muted">GO</span>
-                  </div>
-                  <div className="h-1 overflow-hidden rounded-full bg-console-line">
-                    <div className={`h-full origin-left scale-x-0 rounded-full bg-console-accent transition-transform duration-700 ease-out-quint group-data-[shown]:scale-x-100 ${FADER_DELAYS[i]}`} />
-                  </div>
-                  <h3 className="mt-6 mb-2 text-xl font-bold">{t(`steps.${step}.title`)}</h3>
-                  <p className="text-console-muted">{t(`steps.${step}.text`)}</p>
-                </li>
-              ))}
-            </ol>
-            <div className="relative mx-auto mt-16 max-w-4xl drop-shadow-2xl sm:mt-20">
-              {/* Stage light under the desk. */}
-              <div aria-hidden="true" className="pointer-events-none absolute inset-x-10 bottom-0 top-1/3 -z-10 rounded-full bg-console-accent/25 blur-3xl" />
-              <ConsoleIllustration
-                sequence={t('demo.sequence')}
-                cues={(t.raw('demo.rows') as DemoRow[]).map((r) => ({ n: r.n, name: r.title[0] }) satisfies ConsoleCue)}
-              />
-            </div>
-          </Reveal>
-        </section>
+        <StepsBand
+          id="how-title"
+          kicker={t('stepsKicker')}
+          title={t('stepsTitle')}
+          steps={STEPS.map((s) => ({ title: t(`steps.${s}.title`), text: t(`steps.${s}.text`) }))}
+          cueLabels={STEPS.map((_, i) => t('cueLabel', { n: i + 1 }))}
+          sequence={t('demo.sequence')}
+          cues={(t.raw('demo.rows') as DemoRow[]).map((r) => ({ n: r.n, name: r.title[0] }))}
+        />
 
         {/* Story: one big line carries it, the rest is small. */}
         <Reveal as="section" className={`${CONTAINER} mt-28 sm:mt-40`}>

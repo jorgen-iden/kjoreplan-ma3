@@ -337,8 +337,7 @@
     "footerLabel": "Formater for kjøreplaner",
     "breadcrumbLabel": "Brødsmulesti",
     "readsKicker": "Hva den leser",
-    "stepsKicker": "Tre cuer",
-    "others": "Andre formater:",
+    "stepsKicker": "Slik virker det",
     "excel": {
       "linkLabel": "Excel til grandMA3",
       "metaTitle": "Kjøreplan i Excel til cueliste i grandMA3 – CueSetter",
@@ -512,6 +511,25 @@
           "a": "Nei. Filen leses i nettleseren på din egen maskin og sendes aldri til oss eller noen annen server."
         }
       ]
-    }
+    },
+    "anatomy": {
+      "title": "Vårkonsert 2026",
+      "days": [
+        "Lørdag",
+        "Søndag"
+      ],
+      "linesHeading": "Etterfest",
+      "lines": [
+        "22:00 Dørene åpner",
+        "22:30 DJ"
+      ],
+      "pages": [
+        "Side 1 av 2",
+        "Side 2 av 2"
+      ],
+      "scanned": "Skannet"
+    },
+    "alsoKicker": "Og i alle formater",
+    "otherFormatsTitle": "Andre formater"
   }
 }

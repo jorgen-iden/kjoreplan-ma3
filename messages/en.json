@@ -337,8 +337,7 @@
     "footerLabel": "Run sheet formats",
     "breadcrumbLabel": "Breadcrumb",
     "readsKicker": "What it reads",
-    "stepsKicker": "Three cues",
-    "others": "Other formats:",
+    "stepsKicker": "How it works",
     "excel": {
       "linkLabel": "Excel to grandMA3",
       "metaTitle": "Excel run sheet to grandMA3 cue list – CueSetter",
@@ -512,6 +511,25 @@
           "a": "No. The file is read in your browser on your own computer and is never sent to us or any other server."
         }
       ]
-    }
+    },
+    "anatomy": {
+      "title": "Spring concert 2026",
+      "days": [
+        "Saturday",
+        "Sunday"
+      ],
+      "linesHeading": "After party",
+      "lines": [
+        "22:00 Doors open",
+        "22:30 DJ set"
+      ],
+      "pages": [
+        "Page 1 of 2",
+        "Page 2 of 2"
+      ],
+      "scanned": "Scanned"
+    },
+    "alsoKicker": "And on every format",
+    "otherFormatsTitle": "Other formats"
   }
 }

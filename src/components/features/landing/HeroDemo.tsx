@@ -21,7 +21,15 @@ export interface HeroDemoLabels {
   /** Captions above the two panes: where it comes from and where it ends up. */
   from: string;
   to: string;
+  /** Format pages: the show's name (Word title) and the page footer (PDF). */
+  docTitle?: string;
+  page?: string;
 }
+
+/** Which kind of file the run sheet pane is drawn as. Without it, a plain table. */
+export type DemoSource = 'xlsx' | 'pdf' | 'docx';
+
+const SOURCE_DOT: Record<DemoSource, string> = { xlsx: 'bg-file-xlsx', pdf: 'bg-file-pdf', docx: 'bg-file-docx' };
 
 const STEP_MS = 650;
 const HOLD_MS = 2600;
@@ -38,7 +46,7 @@ function toCues(rows: DemoRow[]) {
  * The front page's "aha" in one picture: a run sheet on the left turns into a grandMA3 cue list on
  * the right, row by row, then starts over. With reduced motion it shows the finished list.
  */
-export function HeroDemo({ rows, labels }: { rows: DemoRow[]; labels: HeroDemoLabels }) {
+export function HeroDemo({ rows, labels, source }: { rows: DemoRow[]; labels: HeroDemoLabels; source?: DemoSource }) {
   const cues = toCues(rows);
   const [shown, setShown] = useState(cues.length);
 
@@ -77,7 +85,18 @@ export function HeroDemo({ rows, labels }: { rows: DemoRow[]; labels: HeroDemoLa
       <div className="grid overflow-hidden rounded-2xl border border-line shadow-xl sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         {/* The run sheet, as it arrives from production. */}
         <div className="bg-card p-4 text-xs sm:p-5" aria-hidden="true">
-          <p className="mb-3 font-mono text-[11px] text-muted">{labels.file}</p>
+          <p className="mb-3 flex items-center gap-2 font-mono text-[11px] text-muted">
+            {source && <span className={`size-2.5 rounded-sm ${SOURCE_DOT[source]}`} />}
+            {labels.file}
+          </p>
+          {source === 'docx' && labels.docTitle && <p className="mb-2 text-sm font-extrabold tracking-tight text-file-docx">{labels.docTitle}</p>}
+          {source === 'xlsx' && (
+            <div className="mb-1 grid grid-cols-[1.25rem_2.75rem_minmax(0,1fr)_4rem] gap-x-2 rounded bg-line-soft text-center font-mono text-[10px] text-muted">
+              {['A', 'B', 'C', 'D'].map((c) => (
+                <span key={c}>{c}</span>
+              ))}
+            </div>
+          )}
           <div className="grid grid-cols-[1.25rem_2.75rem_minmax(0,1fr)_4rem] gap-x-2 border-b border-line pb-1.5 font-bold">
             <span>{labels.columns.n}</span>
             <span>{labels.columns.time}</span>
@@ -97,6 +116,7 @@ export function HeroDemo({ rows, labels }: { rows: DemoRow[]; labels: HeroDemoLa
               <span className="text-muted">{r.extra}</span>
             </div>
           ))}
+          {source === 'pdf' && labels.page && <p className="mt-3 text-right font-mono text-[10px] text-muted">{labels.page}</p>}
         </div>
 
         {/* The sequence on the console. */}
