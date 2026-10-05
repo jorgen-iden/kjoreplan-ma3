@@ -25,4 +25,4 @@ export interface Section {
 }
 
 /** The template files per language, in public/templates (made by scripts/make-templates.ts). */
-export const TEMPLATE_FILES: Record<string, string> = { en: 'run-sheet-template', no: 'kjoreplan-mal' };
+export const TEMPLATE_FILES: Record<string, string> = { en: 'run-sheet-template', no: 'kjoreplan-mal', de: 'ablaufplan-vorlage' };

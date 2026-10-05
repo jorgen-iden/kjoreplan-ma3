@@ -1,11 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import en from '../messages/en.json';
 import no from '../messages/no.json';
+import de from '../messages/de.json';
 import { FORMAT_PAGES, FORMAT_SLUGS } from '../src/lib/formats';
 import { formatPageJsonLd, frontPageJsonLd, jsonLdScript } from '../src/lib/structured-data';
 
 describe('front page JSON-LD', () => {
-  for (const [locale, m] of [['en', en], ['no', no]] as const) {
+  for (const [locale, m] of [['en', en], ['no', no], ['de', de]] as const) {
     it(`has organisation, website, app and every FAQ item (${locale})`, () => {
       const data = frontPageJsonLd({ locale, name: m.meta.title, description: m.meta.description, faq: m.home.faq });
       const types = data['@graph'].map((n) => n['@type']);
@@ -16,8 +17,9 @@ describe('front page JSON-LD', () => {
     });
   }
 
-  it('the Norwegian and English FAQ have the same number of questions', () => {
+  it('every language has the same FAQ questions, in the same order', () => {
     expect(no.home.faq.length).toBe(en.home.faq.length);
+    expect(de.home.faq.length).toBe(en.home.faq.length);
   });
 
   it('can never close the script tag it is placed in', () => {
@@ -66,4 +68,19 @@ describe('content pages', () => {
       for (const l of links) expect(PUBLIC_PAGES, l).toContain(l);
     }
   });
+});
+
+/** Same keys and list lengths all the way down (table rows may differ: each language lists its own names). */
+function shape(v: unknown, path = ''): string[] {
+  if (Array.isArray(v)) return path.endsWith('table.rows') ? [path] : [`${path}[${v.length}]`, ...v.flatMap((x, i) => shape(x, `${path}[${i}]`))];
+  if (v && typeof v === 'object') return Object.entries(v).flatMap(([k, x]) => shape(x, `${path}.${k}`));
+  return [path];
+}
+
+describe('translations', () => {
+  for (const [name, m] of [['no', no], ['de', de]] as const) {
+    it(`${name}.json has exactly the keys of en.json`, () => {
+      expect(shape(m).sort()).toEqual(shape(en).sort());
+    });
+  }
 });

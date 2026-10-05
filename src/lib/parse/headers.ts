@@ -2,13 +2,13 @@ import type { Column, Role } from './types';
 
 type KnownRole = Exclude<Role, 'other'>;
 
-/** Header words per role, lower case. Norwegian and English, as seen in real run sheets. */
+/** Header words per role, lower case. Norwegian and English, as seen in real run sheets, and German (Ablaufplan). */
 const KEYWORDS: Record<KnownRole, string[]> = {
-  number: ['#', 'nr', 'no', 'nummer', 'num', 'cue', 'pkt'],
-  start: ['start', 'starttid', 'start time', 'tid', 'tid fra', 'fra', 'from', 'time', 'kl', 'klokke', 'klokken', 'klokkeslett', 'klokkeslag', 'tidspunkt', 'tidspunkt start', 'start tid', 'klokka', 'kl.slett', 'kl slett', 'kl.', 'begin'],
-  end: ['slutt', 'sluttid', 'tid til', 'til', 'to', 'end', 'end time', 'stopp', 'ferdig', 'tidspunkt slutt', 'slutt tid'],
-  duration: ['duration', 'varighet', 'dur', 'durata', 'lengde', 'length', 'tidsbruk', 'tidsbruk(min)', 'tidsbruk (min)', 'min', 'minutter', 'minutes'],
-  title: ['title', 'tittel', 'program', 'programpost', 'innhold', 'beskrivelse', 'description', 'item', 'hva', 'punkt', 'event', 'aktivitet', 'agenda', 'stage', 'scene', 'what', 'segment', 'innslag', 'programpunkt', 'hendelse', 'anledning', 'song', 'sang', 'låt', 'kva'],
+  number: ['#', 'nr', 'no', 'nummer', 'num', 'cue', 'pkt', 'lfd. nr', 'lfd nr', 'pos'],
+  start: ['start', 'starttid', 'start time', 'tid', 'tid fra', 'fra', 'from', 'time', 'kl', 'klokke', 'klokken', 'klokkeslett', 'klokkeslag', 'tidspunkt', 'tidspunkt start', 'start tid', 'klokka', 'kl.slett', 'kl slett', 'kl.', 'begin', 'zeit', 'uhrzeit', 'beginn', 'startzeit', 'von', 'wann'],
+  end: ['slutt', 'sluttid', 'tid til', 'til', 'to', 'end', 'end time', 'stopp', 'ferdig', 'tidspunkt slutt', 'slutt tid', 'ende', 'endzeit', 'bis'],
+  duration: ['duration', 'varighet', 'dur', 'durata', 'lengde', 'length', 'tidsbruk', 'tidsbruk(min)', 'tidsbruk (min)', 'min', 'minutter', 'minutes', 'dauer', 'länge', 'dauer (min)'],
+  title: ['title', 'tittel', 'program', 'programpost', 'innhold', 'beskrivelse', 'description', 'item', 'hva', 'punkt', 'event', 'aktivitet', 'agenda', 'stage', 'scene', 'what', 'segment', 'innslag', 'programpunkt', 'hendelse', 'anledning', 'song', 'sang', 'låt', 'kva', 'titel', 'programmpunkt', 'inhalt', 'beschreibung', 'ablauf', 'programm', 'was'],
 };
 
 function normalize(s: string): string {

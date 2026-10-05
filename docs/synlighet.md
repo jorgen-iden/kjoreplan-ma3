@@ -83,7 +83,8 @@ Post selv, fra egen konto, ett sted om gangen med noen dagers mellomrom. Svar p�
 
 ## 7. Tysk (`/de`)
 
-⬜ Egen PR: hele nettstedet og appen på tysk (Ablaufplan, Regieplan). Tyskland er MA Lightings hjemmemarked.
+✅ Hele nettstedet og appen på tysk under `/de` (Ablaufplan, Regieplan), med tysk mal (`ablaufplan-vorlage`) og tyske kolonnenavn i importen (Nr., Uhrzeit, Dauer, Programmpunkt …). Tyskland er MA Lightings hjemmemarked.
+🟡 La gjerne en tysktalende i bransjen lese gjennom tekstene.
 
 ## 8. Måling av AI-synlighet 🟡
 
@@ -101,6 +102,8 @@ Første mandag i måneden: still spørsmålene under i ChatGPT (med søk), Perpl
 | 8 | Hvordan får jeg kjøreplanen inn i grandMA3? |
 | 9 | Lage cueliste fra kjøreplan |
 | 10 | Mal for kjøreplan |
+| 11 | Ablaufplan in grandMA3 importieren |
+| 12 | Vorlage Ablaufplan Veranstaltung |
 
 | Måned | ChatGPT | Perplexity | Google | Merknad |
 |---|---|---|---|---|

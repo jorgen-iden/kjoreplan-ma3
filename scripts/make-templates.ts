@@ -43,7 +43,7 @@ async function xlsx(t: Template, path: string) {
   zip.file('_rels/.rels', `${XML}<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>`);
   zip.file(
     'xl/workbook.xml',
-    `${XML}<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="${esc(t.headers[3] === 'Tittel' ? 'Kjøreplan' : 'Run sheet')}" sheetId="1" r:id="rId1"/></sheets></workbook>`,
+    `${XML}<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="${esc(t.title.split(' – ')[0])}" sheetId="1" r:id="rId1"/></sheets></workbook>`,
   );
   zip.file(
     'xl/_rels/workbook.xml.rels',

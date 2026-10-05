@@ -1,0 +1,812 @@
+{
+  "meta": {
+    "title": "CueSetter – Ablaufplan zur grandMA3-Cueliste (PDF, Word, Excel)",
+    "description": "Mach aus dem Ablaufplan der Produktion in einer Minute eine benannte Cueliste in grandMA3. Lade eine PDF-, Word- oder Excel-Datei hoch und erhalte ein Makro, das die Sequenz anlegt. Alles läuft in deinem Browser.",
+    "appTitle": "Ablaufplan in ein grandMA3-Makro umwandeln – CueSetter",
+    "appDescription": "Lade einen Ablaufplan hoch (PDF, Word oder Excel), prüfe Spalten und Cues und lade ein grandMA3-Makro herunter, das die Cueliste auf dem Pult anlegt.",
+    "notFoundTitle": "Seite nicht gefunden – CueSetter"
+  },
+  "nav": {
+    "newRunSheet": "Neuer Ablaufplan",
+    "history": "Verlauf",
+    "account": "Konto",
+    "language": "Sprache",
+    "openApp": "App öffnen",
+    "skip": "Zum Inhalt springen",
+    "theme": "Zwischen hellem und dunklem Modus wechseln"
+  },
+  "home": {
+    "kicker": "Für grandMA3-Operatoren",
+    "title": "Vom Ablaufplan zur Cueliste in grandMA3",
+    "lead": "Lade den Ablaufplan hoch, den du von der Produktion bekommen hast – PDF, Word oder Excel. In einer Minute hast du ein Makro, das die Cueliste auf dem Pult anlegt: ein benannter Cue pro Programmpunkt, in der richtigen Reihenfolge.",
+    "cta": "Jetzt ausprobieren",
+    "disclaimer": "Nicht mit MA Lighting verbunden. grandMA3 ist eine Marke der MA Lighting Technology GmbH.",
+    "stepsTitle": "Drei Cues, und die Sequenz steht",
+    "steps": {
+      "upload": {
+        "title": "Ablaufplan hochladen",
+        "text": "Leg die Datei der Produktion ab oder füge den Text ein. Spalten wie #, Start und Titel werden automatisch erkannt."
+      },
+      "review": {
+        "title": "Cues prüfen",
+        "text": "Eine Zeile pro Cue, in der richtigen Reihenfolge. Namen bearbeiten, eine Setlist in Sub-Cues aufteilen und korrigieren, was falsch gelesen wurde."
+      },
+      "console": {
+        "title": "Am Pult importieren",
+        "text": "Makro herunterladen, auf der grandMA3 importieren und einmal ausführen. Deine Sequenz wird mit benannten, leeren Cues angelegt."
+      }
+    },
+    "ctaSub": "Kostenlos testen. Kein Konto nötig.",
+    "demo": {
+      "file": "ablaufplan.pdf",
+      "sequence": "Sequenz 101",
+      "columns": {
+        "n": "#",
+        "time": "Start",
+        "title": "Titel",
+        "extra": "Notizen"
+      },
+      "rows": [
+        {
+          "n": "1",
+          "time": "17:30",
+          "title": [
+            "Einlass"
+          ],
+          "extra": ""
+        },
+        {
+          "n": "2",
+          "time": "18:00",
+          "title": [
+            "Begrüßung durch die Moderation"
+          ],
+          "extra": "Rednerpult"
+        },
+        {
+          "n": "3",
+          "time": "18:07",
+          "title": [
+            "Fjordbyen Brass",
+            "Marsch",
+            "Hymne"
+          ],
+          "extra": "Auftritt von links"
+        },
+        {
+          "n": "4",
+          "time": "18:25",
+          "title": [
+            "Gespräch mit Nils Nilsen"
+          ],
+          "extra": "Zwei Stühle"
+        },
+        {
+          "n": "5",
+          "time": "18:40",
+          "title": [
+            "Pause"
+          ],
+          "extra": ""
+        }
+      ],
+      "go": "GO",
+      "from": "Der Ablaufplan der Produktion",
+      "to": "Die Cueliste in grandMA3"
+    },
+    "proofsTitle": "Darum nutzen Operatoren es",
+    "proofs": {
+      "formats": {
+        "title": "Liest den Ablaufplan so, wie er kommt",
+        "text": "Unordentliche Tabellen, verbundene Zellen und mehrere Tabellenblätter sind kein Problem. Kein Umformatieren, kein Kopieren in eine Vorlage."
+      },
+      "private": {
+        "title": "Deine Dateien verlassen nie deinen Computer",
+        "text": "Alles wird in deinem Browser gelesen. Nichts wird hochgeladen, du kannst es also auch für vertrauliche Produktionen nutzen."
+      },
+      "numbers": {
+        "title": "Die Cue-Nummern folgen dem Ablaufplan",
+        "text": "Punkt 12 wird Cue 12 auf dem Pult. Eine Setlist wird mit einem Klick in Sub-Cues (12.1, 12.2) aufgeteilt, und Punkte ohne Nummer bekommen einen Platz zwischen ihren Nachbarn."
+      }
+    },
+    "story": [
+      "CueSetter ist hinter der Bühne entstanden. Vor jeder Show kam der Ablaufplan als PDF, oft spät. Wir arbeiten selbst in der Branche und haben das immer wieder erlebt.",
+      "Jetzt dauert es eine Minute, und die Zeit geht ins Licht."
+    ],
+    "tagline": "Ablaufplan rein. Cueliste raus.",
+    "finalLead": "Probier es mit deinem nächsten Ablaufplan oder schau dir an, wie es mit unserem Beispiel funktioniert.",
+    "ctaSample": "Beispiel-Ablaufplan testen",
+    "cueLabel": "Cue {n}",
+    "visuals": {
+      "sequence": "Sequenz 101",
+      "filledTag": "ergänzt",
+      "numbers": [
+        {
+          "n": "12",
+          "name": "Konzert"
+        },
+        {
+          "n": "12.1",
+          "name": "Song 1",
+          "sub": true
+        },
+        {
+          "n": "12.2",
+          "name": "Song 2",
+          "sub": true
+        },
+        {
+          "n": "12.5",
+          "name": "Dank an die Band",
+          "filled": true
+        },
+        {
+          "n": "13",
+          "name": "Pause"
+        }
+      ],
+      "machine": "Dein Computer",
+      "noUpload": "Kein Upload, kein Server"
+    },
+    "proofsKicker": "Warum",
+    "stepsKicker": "So funktioniert es",
+    "storyKicker": "Von der Branche, für die Branche",
+    "storyQuote": "Jeder Programmpunkt musste von Hand ins Pult getippt werden, während das Licht wartete.",
+    "faqKicker": "Fragen",
+    "faqTitle": "Häufige Fragen",
+    "contact": "Fragen oder Feedback: <mail>{email}</mail>",
+    "videoKicker": "In einer Minute gesehen",
+    "videoTitle": "Vom PDF-Ablaufplan zur grandMA3-Cueliste",
+    "videoPlay": "Demo abspielen",
+    "faq": [
+      {
+        "q": "Welche Dateien kann CueSetter lesen?",
+        "a": "PDF mit Text, Word (.docx) und Excel (.xlsx), direkt von der Produktion. Du kannst auch Text einfügen. Gescannte PDFs (Bilder) und alte .doc- und .xls-Dateien können nicht gelesen werden; speichere sie als .docx oder .xlsx oder füge den Text ein."
+      },
+      {
+        "q": "Und wenn mein Ablaufplan anders heißt?",
+        "a": "Es funktioniert gleich, egal wie das Dokument heißt: Ablaufplan, Regieplan, Ablauf, Laufplan, Sendeablauf, Drehbuch, Run Sheet oder Running Order. Entscheidend ist eine Liste von Programmpunkten mit Zeiten oder Nummern, als PDF, Word, Excel oder Text."
+      },
+      {
+        "q": "Wird mein Ablaufplan auf einen Server hochgeladen?",
+        "a": "Nein. Alles wird im Browser auf deinem eigenen Computer gelesen. Der Ablaufplan wird nie an uns oder einen anderen Server geschickt, du kannst es also auch für vertrauliche Produktionen nutzen."
+      },
+      {
+        "q": "Wie bekomme ich die Cueliste in die grandMA3?",
+        "a": "Lade das Makro als ZIP herunter und entpacke es ins Hauptverzeichnis eines USB-Sticks. Öffne am Pult den Show Creator, wähle Macros und den USB-Stick, importiere das Makro und führe es einmal aus. Es legt die Sequenz mit einem benannten Cue pro Programmpunkt an. Schlägt der Import fehl, kannst du die Befehle stattdessen in die Kommandozeile einfügen."
+      },
+      {
+        "q": "Mit welchen grandMA3-Versionen funktioniert es?",
+        "a": "Das Makro ist auf den meisten neueren Versionen von grandMA3 getestet und sollte theoretisch auf allen Versionen von grandMA3 funktionieren. Wenn es auf deiner Version nicht funktioniert, freuen wir uns über eine Nachricht an hello@cuesetter.com."
+      },
+      {
+        "q": "Was passiert mit den Cue-Nummern?",
+        "a": "Die Cue-Nummern folgen der # im Ablaufplan. Eine Setlist kann mit einem Klick in Sub-Cues (12.1, 12.2) aufgeteilt werden, und Punkte ohne Nummer bekommen eine Nummer zwischen ihren Nachbarn, zum Beispiel 12.5. Du kannst auch fortlaufend 1, 2, 3 nummerieren."
+      },
+      {
+        "q": "Was kostet es?",
+        "a": "Es ist kostenlos zu testen, ohne Konto."
+      }
+    ]
+  },
+  "steps": {
+    "upload": "Hochladen",
+    "columns": "Spalten",
+    "review": "Prüfen",
+    "settings": "Einstellungen",
+    "export": "Export",
+    "label": "Schritte",
+    "back": "Zurück",
+    "startOver": "Neu beginnen",
+    "progress": "Schritt {n} von {total}",
+    "nextTo": "{step} →"
+  },
+  "upload": {
+    "title": "Ablaufplan hochladen",
+    "lead": "PDF, Word (.docx) oder Excel (.xlsx). Alles wird in deinem Browser gelesen.",
+    "dropHint": "PDF-, Word- oder Excel-Datei hier ablegen",
+    "or": "oder",
+    "chooseFile": "Datei auswählen",
+    "trySample": "Mit einem Beispiel-Ablaufplan testen",
+    "pasteTitle": "Oder Text einfügen",
+    "pasteLead": "Praktisch für gescannte PDFs oder eine Liste aus einer E-Mail oder Tabelle.",
+    "pastePlaceholder": "17:30 Einlass\n17:45 Begrüßung\n18:00 Künstler 1: …",
+    "useText": "Diesen Text verwenden",
+    "reading": "Ablaufplan wird gelesen …",
+    "pdfError": "Die PDF konnte nicht gelesen werden: {error}",
+    "noTextLayer": "In dieser PDF wurde kein Text gefunden. Sie ist vermutlich gescannt (ein Bild). Kopiere den Text von Hand und füge ihn unten ein.",
+    "noRows": "Keine Programmpunkte gefunden. Prüfe die Spalten oder füge stattdessen den Text ein.",
+    "linesMode": "Keine Spaltenüberschriften gefunden, deshalb wurden die Punkte Zeile für Zeile gelesen. Prüfe das Ergebnis genau.",
+    "sampleError": "Der Beispiel-Ablaufplan konnte nicht geladen werden. Prüfe deine Verbindung und versuche es erneut.",
+    "retry": "Erneut versuchen",
+    "readingLead": "Spalten und Zeilen werden gesucht …",
+    "tooLarge": "Die Datei ist größer als {max} MB. Ist das wirklich ein Ablaufplan?",
+    "tooLong": "Der Text ist zu lang ({count} von max. {max} Zeichen).",
+    "oldFormat": "Das ist eine alte Word- oder Excel-Datei (.doc oder .xls). Öffne sie und speichere sie als .docx oder .xlsx, oder exportiere sie als PDF, und versuche es erneut.",
+    "unsupported": "Dieser Dateityp kann nicht gelesen werden. Verwende eine PDF-, Word- (.docx) oder Excel-Datei (.xlsx), oder füge den Text unten ein.",
+    "noTable": "In der Datei wurde keine Tabelle mit Programmpunkten gefunden. Prüfe, ob sie den Ablauf enthält, oder füge den Text unten ein.",
+    "unreadable": "Die Datei konnte nicht geöffnet werden. Sie ist vielleicht beschädigt oder passwortgeschützt. Speichere eine neue Kopie oder füge den Text unten ein.",
+    "chooseFileButton": "Datei auswählen"
+  },
+  "columns": {
+    "title": "Spalten prüfen",
+    "lead": "Das sind die gefundenen Spalten. Wähle, welche die Nummer, die Zeit und den Titel enthalten. Der Rest wird ignoriert.",
+    "found": "Gefundene Spalten",
+    "number": "Nummer (#)",
+    "start": "Startzeit",
+    "duration": "Dauer",
+    "titleCol": "Titel",
+    "notUsed": "Nicht verwendet",
+    "preview": "Erste Zeilen",
+    "confirmReset": "Wenn du die Spalten änderst, werden deine Änderungen in der Cueliste ersetzt. Fortfahren?",
+    "continue": "Weiter zur Prüfung →",
+    "sheet": "Tabellenblatt",
+    "table": "Tabelle",
+    "tableN": "Tabelle {n}",
+    "rows": "{count, plural, one {# Zeile} other {# Zeilen}}"
+  },
+  "review": {
+    "lead": "{cues, plural, one {# Cue} other {# Cues}} aus {items, plural, one {# Programmpunkt} other {# Programmpunkten}}. Prüfe Namen und Nummern vor dem Download.",
+    "continue": "Weiter zu den Einstellungen →",
+    "cue": "Cue",
+    "source": "#",
+    "name": "Name",
+    "time": "Zeit",
+    "note": "Notiz",
+    "actions": "Aktionen",
+    "split": "Aufteilen",
+    "splitHint": "Jede Notizzeile wird ein Sub-Cue",
+    "more": "Weitere Aktionen",
+    "moveUp": "Nach oben",
+    "moveDown": "Nach unten",
+    "delete": "Löschen",
+    "drag": "Ziehen zum Umsortieren",
+    "addCue": "+ Cue hinzufügen",
+    "truncated": "Wird auf {max} Zeichen gekürzt",
+    "emptyName": "Name fehlt",
+    "numberingFellBack": "Die #-Spalte kann nicht als Cue-Nummern verwendet werden (fehlt, ungültig oder nicht aufsteigend), deshalb werden die Cues 1, 2, 3 … nummeriert.",
+    "truncatedSummary": "{count, plural, one {# Name wird} other {# Namen werden}} auf dem Pult auf {max} Zeichen gekürzt.",
+    "timeInvalid": "Verwende HH:MM, zum Beispiel 18:30",
+    "emptyTitle": "Noch keine Cues",
+    "emptyLead": "Füge einen Cue von Hand hinzu oder beginne mit einem anderen Ablaufplan neu.",
+    "untitled": "Ablaufplan ohne Titel",
+    "numbersFilled": "{count, plural, one {# Cue hatte} other {# Cues hatten}} keine # im Ablaufplan und {count, plural, one {bekam} other {bekamen}} eine Nummer zwischen den Nachbarn (zum Beispiel 28.5). Die übrigen behalten ihre #.",
+    "undo": "Rückgängig",
+    "deleted": "„{name}“ gelöscht.",
+    "deletedUntitled": "Ein Cue wurde gelöscht."
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "lead": "Sinnvolle Standardwerte sind gesetzt, du kannst also direkt weitermachen.",
+    "sequenceGroup": "Sequenz",
+    "sequence": "Sequenznummer",
+    "sequenceHelp": "Gibt es die Sequenz schon, fragt das Pult, ob zusammengeführt oder überschrieben werden soll.",
+    "sequenceInvalid": "Verwende eine ganze Zahl von 1 bis 99999.",
+    "sequenceName": "Sequenzname",
+    "numbering": "Cue-Nummern",
+    "numberingFollow": "Der # im Ablaufplan folgen",
+    "numberingRunning": "Fortlaufend 1, 2, 3 …",
+    "consoleGroup": "Pult",
+    "maVersion": "grandMA3-Version",
+    "nameFormat": "Cue-Namen",
+    "nameTitle": "Nur Titel",
+    "nameTimeTitle": "Zeit + Titel",
+    "noteGroup": "Notizfeld",
+    "noteTime": "Startzeit und Dauer",
+    "noteText": "Rest des Titels (Setlist, Details)",
+    "safetyGroup": "Sicherheit",
+    "clearFirst": "Programmer zuerst leeren (ClearAll)",
+    "clearFirstHelp": "Empfohlen. Sorgt dafür, dass die Cues leer gespeichert werden.",
+    "continue": "Weiter zum Export →",
+    "sequenceNameEmpty": "Ohne Namen heißt das Makro „Run sheet“."
+  },
+  "export": {
+    "title": "Bereit zum Export",
+    "lead": "Sequenz {sequence} · {cues, plural, one {# Cue} other {# Cues}} · {version}",
+    "download": "Makro herunterladen (.zip)",
+    "verified": "Getestet auf den meisten neueren grandMA3-Versionen. Funktioniert das Makro auf deiner Version nicht, freuen wir uns über eine Nachricht an <mail>{email}</mail>.",
+    "howTitle": "Am Pult",
+    "how1": "Ins Hauptverzeichnis eines USB-Sticks entpacken (der Ordner grandMA3 liegt ganz oben).",
+    "how2": "Den Stick ins Pult stecken.",
+    "how3": "{menu} öffnen, Macros und den USB-Stick als Quelle wählen.",
+    "how4": "„{file}“ in einen freien Platz im Macros-Pool importieren.",
+    "how5": "Das Makro einmal ausführen. Es legt Sequenz {sequence} an.",
+    "cmdTitle": "Notlösung: Kommandozeile",
+    "cmdLead": "Schlägt der Import fehl, füge dies direkt in die Kommandozeile ein.",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "preparing": "Wird vorbereitet …",
+    "copyFailed": "Automatisches Kopieren hat nicht geklappt. Markiere den Text und kopiere ihn von Hand.",
+    "downloadError": "Die Datei konnte nicht erstellt werden. Versuche es erneut."
+  },
+  "note": {
+    "start": "Start",
+    "duration": "Dauer"
+  },
+  "errors": {
+    "notFoundCode": "404",
+    "notFoundTitle": "Diese Seite gibt es nicht",
+    "notFoundLead": "Der Link ist vielleicht alt oder falsch geschrieben.",
+    "backHome": "Zurück zur Startseite",
+    "openApp": "Konverter öffnen",
+    "errorTitle": "Etwas ist schiefgelaufen",
+    "errorLead": "Auf der Seite ist ein unerwarteter Fehler aufgetreten. Deine Dateien haben deinen Computer nie verlassen.",
+    "retry": "Erneut versuchen"
+  },
+  "common": {
+    "loading": "Wird geladen …"
+  },
+  "formats": {
+    "footerLabel": "Formate für Ablaufpläne",
+    "breadcrumbLabel": "Brotkrümelnavigation",
+    "readsKicker": "Was es liest",
+    "stepsKicker": "So funktioniert es",
+    "alsoKicker": "Und in jedem Format",
+    "otherFormatsTitle": "Andere Formate",
+    "anatomy": {
+      "title": "Frühjahrskonzert 2026",
+      "days": [
+        "Samstag",
+        "Sonntag"
+      ],
+      "linesHeading": "Aftershow",
+      "lines": [
+        "22:00 Einlass",
+        "22:30 DJ"
+      ],
+      "pages": [
+        "Seite 1 von 2",
+        "Seite 2 von 2"
+      ],
+      "scanned": "Gescannt"
+    },
+    "excel": {
+      "linkLabel": "Excel zu grandMA3",
+      "metaTitle": "Ablaufplan in Excel zur grandMA3-Cueliste – CueSetter",
+      "metaDescription": "Mach aus einem Ablaufplan in Excel (.xlsx) eine benannte grandMA3-Cueliste. CueSetter findet Kopfzeile und Spalten, liest alle Tabellenblätter und erstellt ein Makro, das die Sequenz anlegt. Läuft im Browser.",
+      "kicker": "Excel → grandMA3",
+      "title": "Ablaufplan in Excel zur Cueliste in grandMA3",
+      "lead": "Lade die .xlsx-Datei der Produktion so hoch, wie sie ist. CueSetter findet die Kopfzeile und die Spalten für Nummer, Zeit und Titel und gibt dir ein grandMA3-Makro, das einen benannten Cue pro Zeile anlegt.",
+      "cta": "Excel-Datei umwandeln",
+      "file": "ablaufplan.xlsx",
+      "readsTitle": "Das liest CueSetter in einem Ablaufplan in Excel",
+      "reads": [
+        {
+          "title": "Alle Tabellenblätter der Arbeitsmappe",
+          "text": "Ein Blatt pro Tag oder Bühne ist kein Problem. Wähle das Blatt, das du brauchst; ausgeblendete Blätter werden übersprungen. Der Titel über der Tabelle, sonst der Blattname, wird zum Sequenznamen."
+        },
+        {
+          "title": "Die Kopfzeile, egal wo sie steht",
+          "text": "Titel- und Infozeilen oben werden übersprungen. Die Kopfzeile kann irgendwo in den ersten 20 Zeilen stehen, mit Überschriften wie #, Start, Zeit, Dauer, Titel oder Programmpunkt."
+        },
+        {
+          "title": "Uhrzeiten so, wie Excel sie zeigt",
+          "text": "Als Uhrzeit formatierte Zellen werden zu 18:30, nicht zu 0,77. Wiederholte Kopfzeilen weiter unten werden übersprungen."
+        },
+        {
+          "title": "Programmpunkte über mehrere Zeilen",
+          "text": "Eine Zeile ohne Nummer oder Zeit gehört zum Punkt darüber. So bleibt ein langer Punkt oder eine Setlist ein Cue, bereit zum Aufteilen in Sub-Cues."
+        }
+      ],
+      "stepsTitle": "Von Excel zum Pult",
+      "steps": [
+        {
+          "title": "Die .xlsx-Datei hochladen",
+          "text": "Leg die Datei in CueSetter ab. Hat die Arbeitsmappe mehrere Blätter mit Ablaufplänen, wähle das für die Show."
+        },
+        {
+          "title": "Spalten und Cues prüfen",
+          "text": "Die gefundenen Spalten sind markiert. Wähle eine andere, wenn etwas falsch ist, und bearbeite Namen oder teile eine Setlist in Sub-Cues auf."
+        },
+        {
+          "title": "Auf der grandMA3 importieren",
+          "text": "Entpacke das Makro ins Hauptverzeichnis eines USB-Sticks. Wähle im Show Creator Macros und den Stick, importiere es und führe es einmal aus. Die Sequenz wird mit einem benannten Cue pro Programmpunkt angelegt."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wie bekomme ich eine Cueliste aus Excel in die grandMA3?",
+          "a": "grandMA3 importiert Makros als XML-Dateien. CueSetter macht aus der Tabelle ein grandMA3-Makro: Importiere es von einem USB-Stick und führe es einmal aus, dann wird die Sequenz mit einem benannten Cue pro Programmpunkt angelegt."
+        },
+        {
+          "q": "Kann ich .xls- oder CSV-Dateien verwenden?",
+          "a": "Alte .xls-Dateien können nicht gelesen werden; öffne sie in Excel und speichere sie als .xlsx. Eine CSV-Datei kannst du ebenfalls in Excel öffnen und als .xlsx speichern, oder du kopierst die Zeilen samt Kopfzeile und fügst sie als Text in CueSetter ein."
+        },
+        {
+          "q": "Wird die Datei auf einen Server hochgeladen?",
+          "a": "Nein. Die Datei wird im Browser auf deinem eigenen Computer gelesen und nie an uns oder einen anderen Server geschickt."
+        }
+      ]
+    },
+    "pdf": {
+      "linkLabel": "PDF zu grandMA3",
+      "metaTitle": "Ablaufplan als PDF zur grandMA3-Cueliste – CueSetter",
+      "metaDescription": "Mach aus einem Ablaufplan als PDF eine benannte grandMA3-Cueliste. CueSetter liest die Tabelle in der PDF, findet die Spalten und erstellt ein Makro, das die Sequenz anlegt. Läuft im Browser.",
+      "kicker": "PDF → grandMA3",
+      "title": "Ablaufplan als PDF zur Cueliste in grandMA3",
+      "lead": "Die meisten Ablaufpläne kommen als PDF. Lade sie hoch, wie sie ist: CueSetter liest die Tabelle, findet die Spalten für Nummer, Zeit und Titel und gibt dir ein grandMA3-Makro, das einen benannten Cue pro Programmpunkt anlegt.",
+      "cta": "PDF umwandeln",
+      "file": "ablaufplan.pdf",
+      "readsTitle": "Das liest CueSetter in einem Ablaufplan als PDF",
+      "reads": [
+        {
+          "title": "Die Tabelle, anhand der Textposition",
+          "text": "Die Spalten werden aus der Kopfzeile und der Position des Textes auf der Seite erkannt. Du musst nichts vorher in eine Tabelle kopieren."
+        },
+        {
+          "title": "Mehrere Seiten",
+          "text": "Programmpunkte laufen über Seitenumbrüche weiter. Eine Kopfzeile, die auf jeder Seite wiederholt wird, und die Kopfzeile der Seite darüber werden übersprungen."
+        },
+        {
+          "title": "Aus jedem Programm",
+          "text": "Exportiert aus Word, Excel, Google Docs oder einem Rundown-Tool: Jede PDF mit Text kann gelesen werden. Der Titel oben wird zum Sequenznamen."
+        },
+        {
+          "title": "Gescannte PDFs",
+          "text": "Ein Scan ist ein Bild ohne lesbaren Text. Kopiere den Text heraus (oder nutze eine Texterkennung) und füge ihn stattdessen in CueSetter ein."
+        }
+      ],
+      "stepsTitle": "Von der PDF zum Pult",
+      "steps": [
+        {
+          "title": "Die PDF hochladen",
+          "text": "Leg die Datei in CueSetter ab oder öffne sie vom Handy oder Computer. Sie wird in deinem Browser gelesen."
+        },
+        {
+          "title": "Spalten und Cues prüfen",
+          "text": "Die gefundenen Spalten sind markiert. Wähle eine andere, wenn etwas falsch ist, und bearbeite Namen oder teile eine Setlist in Sub-Cues auf."
+        },
+        {
+          "title": "Auf der grandMA3 importieren",
+          "text": "Entpacke das Makro ins Hauptverzeichnis eines USB-Sticks. Wähle im Show Creator Macros und den Stick, importiere es und führe es einmal aus. Die Sequenz wird mit einem benannten Cue pro Programmpunkt angelegt."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wie bekomme ich einen Ablaufplan als PDF in die grandMA3?",
+          "a": "grandMA3 importiert Makros als XML-Dateien, keine PDFs. CueSetter liest die PDF und erstellt ein grandMA3-Makro: Importiere es von einem USB-Stick und führe es einmal aus, dann wird die Sequenz mit einem benannten Cue pro Programmpunkt angelegt."
+        },
+        {
+          "q": "Warum heißt es, in meiner PDF gibt es keinen Text?",
+          "a": "Die PDF ist vermutlich gescannt, jede Seite ist also ein Bild. Bitte die Produktion um die Originaldatei (Word, Excel oder eine exportierte PDF), oder kopiere den Text heraus und füge ihn in CueSetter ein."
+        },
+        {
+          "q": "Wird die Datei auf einen Server hochgeladen?",
+          "a": "Nein. Die Datei wird im Browser auf deinem eigenen Computer gelesen und nie an uns oder einen anderen Server geschickt."
+        }
+      ]
+    },
+    "word": {
+      "linkLabel": "Word zu grandMA3",
+      "metaTitle": "Ablaufplan in Word zur grandMA3-Cueliste – CueSetter",
+      "metaDescription": "Mach aus einem Ablaufplan in Word (.docx) eine benannte grandMA3-Cueliste. CueSetter liest die Tabellen im Dokument, findet die Spalten und erstellt ein Makro, das die Sequenz anlegt. Läuft im Browser.",
+      "kicker": "Word → grandMA3",
+      "title": "Ablaufplan in Word zur Cueliste in grandMA3",
+      "lead": "Lade die .docx-Datei der Produktion so hoch, wie sie ist. CueSetter liest die Tabelle, findet die Spalten für Nummer, Zeit und Titel und gibt dir ein grandMA3-Makro, das einen benannten Cue pro Programmpunkt anlegt.",
+      "cta": "Word-Datei umwandeln",
+      "file": "ablaufplan.docx",
+      "readsTitle": "Das liest CueSetter in einem Ablaufplan in Word",
+      "reads": [
+        {
+          "title": "Tabellen, auch mit verbundenen Zellen",
+          "text": "Die Spalten werden aus der Kopfzeile erkannt. Verbundene Zellen und mehrere Zeilen in einer Zelle sind kein Problem."
+        },
+        {
+          "title": "Mehrere Tabellen",
+          "text": "Hat das Dokument mehr als eine Tabelle, zum Beispiel eine pro Tag, wählst du die für die Show."
+        },
+        {
+          "title": "Gar keine Tabelle",
+          "text": "Ein Ablaufplan, der als Zeilen geschrieben ist, wie „18:30 Einlass“, wird Zeile für Zeile gelesen, genau wie eingefügter Text."
+        },
+        {
+          "title": "Der Titel wird zum Sequenznamen",
+          "text": "Die erste Zeile über der Tabelle, meist der Name der Show, wird als Sequenzname verwendet. Du kannst ihn vor dem Export ändern."
+        }
+      ],
+      "stepsTitle": "Von Word zum Pult",
+      "steps": [
+        {
+          "title": "Die .docx-Datei hochladen",
+          "text": "Leg die Datei in CueSetter ab. Hat das Dokument mehrere Tabellen, wähle die für die Show."
+        },
+        {
+          "title": "Spalten und Cues prüfen",
+          "text": "Die gefundenen Spalten sind markiert. Wähle eine andere, wenn etwas falsch ist, und bearbeite Namen oder teile eine Setlist in Sub-Cues auf."
+        },
+        {
+          "title": "Auf der grandMA3 importieren",
+          "text": "Entpacke das Makro ins Hauptverzeichnis eines USB-Sticks. Wähle im Show Creator Macros und den Stick, importiere es und führe es einmal aus. Die Sequenz wird mit einem benannten Cue pro Programmpunkt angelegt."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wie bekomme ich einen Ablaufplan aus Word in die grandMA3?",
+          "a": "grandMA3 importiert Makros als XML-Dateien. CueSetter liest das Word-Dokument und erstellt ein grandMA3-Makro: Importiere es von einem USB-Stick und führe es einmal aus, dann wird die Sequenz mit einem benannten Cue pro Programmpunkt angelegt."
+        },
+        {
+          "q": "Kann ich .doc-Dateien verwenden?",
+          "a": "Alte .doc-Dateien können nicht gelesen werden. Öffne die Datei in Word und speichere sie als .docx oder exportiere sie als PDF, und versuche es erneut."
+        },
+        {
+          "q": "Wird die Datei auf einen Server hochgeladen?",
+          "a": "Nein. Die Datei wird im Browser auf deinem eigenen Computer gelesen und nie an uns oder einen anderen Server geschickt."
+        }
+      ]
+    }
+  },
+  "pages": {
+    "breadcrumbLabel": "Brotkrümelnavigation",
+    "toc": "Auf dieser Seite",
+    "cardTitle": "Ablaufplan zur grandMA3 in einer Minute",
+    "cardText": "Lade einen Ablaufplan als PDF, Word oder Excel hoch und erhalte ein Makro, das die Cueliste anlegt. Kostenlos testen.",
+    "footerLabel": "Anleitungen und Vorlagen",
+    "templatePreview": "Die Vorlage",
+    "download": {
+      "xlsx": "Excel-Vorlage",
+      "docx": "Word-Vorlage",
+      "button": "Herunterladen"
+    },
+    "template": {
+      "crumb": "Vorlage für Ablaufpläne",
+      "metaTitle": "Kostenlose Ablaufplan-Vorlage für Excel und Word – CueSetter",
+      "metaDescription": "Lade eine kostenlose Vorlage für Ablaufpläne herunter (Excel .xlsx und Word .docx) mit #, Start, Dauer, Titel und Notizen. Ohne Anmeldung. Direkt als grandMA3-Cueliste lesbar.",
+      "kicker": "Kostenlos · Excel und Word",
+      "title": "Kostenlose Vorlage für Ablaufpläne",
+      "lead": "Eine Ablaufplan-Vorlage für Excel und Word mit den Spalten, die jedes Gewerk braucht: #, Start, Dauer, Titel und Notizen. Kostenlos, ohne Anmeldung – und direkt als grandMA3-Cueliste lesbar.",
+      "linkLabel": "Ablaufplan-Vorlage",
+      "sections": [
+        {
+          "h": "Was in der Vorlage steckt",
+          "p": [
+            "Eine Zeile pro Programmpunkt, mit den Spalten, nach denen Ton, Licht, Video und Inspizienz arbeiten:"
+          ],
+          "list": [
+            "# – die Nummer, die alle auf dem Intercom ansagen",
+            "Start – die Uhrzeit",
+            "Dauer – in Minuten",
+            "Titel – was passiert; eine Setlist steht in eigenen Zeilen, ein Song pro Zeile",
+            "Notizen – für Ton, Licht, Video und Bühne"
+          ],
+          "after": [
+            "Name der Show, Datum, Ort, Inspizienz und Versionsnummer stehen oben. Sieben Beispielzeilen zeigen, wie sie ausgefüllt wird; ersetze sie durch deine Show."
+          ]
+        },
+        {
+          "h": "So füllst du sie aus",
+          "steps": [
+            "Eine Zeile pro Programmpunkt, in der richtigen Reihenfolge.",
+            "Gib jedem Punkt eine Nummer. Kommt später ein Punkt dazu, gib ihm eine Nummer dazwischen (12.5), damit alle Nummern weiter stimmen.",
+            "Schreib eine Setlist in die Titelzelle, ein Song pro Zeile unter dem Namen des Acts.",
+            "Ändere die Versionsnummer jedes Mal, wenn du einen neuen Ablaufplan verschickst.",
+            "Verschick sie, wie sie ist, oder exportiere sie als PDF."
+          ]
+        },
+        {
+          "h": "Von der Vorlage zur grandMA3",
+          "p": [
+            "Lichtoperatoren können die Datei direkt in [CueSetter](/app) ablegen. Jede Zeile wird ein benannter Cue in einer grandMA3-Sequenz, die Cue-Nummern folgen der #-Spalte, und die Songs einer Setlist lassen sich mit einem Klick in Sub-Cues aufteilen."
+          ],
+          "after": [
+            "Mehr über [Ablaufpläne in Excel](/excel-to-grandma3) und [Ablaufpläne in Word](/word-to-grandma3) in CueSetter, oder [was ein Ablaufplan ist](/what-is-a-run-sheet)."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Ist die Ablaufplan-Vorlage kostenlos?",
+          "a": "Ja. Lade sie herunter und nutze sie, wie du willst, ohne Anmeldung und ohne Konto."
+        },
+        {
+          "q": "Kann ich sie in Google Tabellen, Google Docs oder Numbers verwenden?",
+          "a": "Ja. Öffne die .xlsx-Datei in Google Tabellen oder Numbers, oder die .docx-Datei in Google Docs oder Pages. Um sie in CueSetter zu lesen, lade sie wieder als .xlsx, .docx oder PDF herunter."
+        },
+        {
+          "q": "Kann ich Spalten hinzufügen oder umbenennen?",
+          "a": "Ja. Zusätzliche Spalten sind kein Problem. Behalte die #-Spalte und eine Spalte für den Titel (Titel, Programmpunkt oder Inhalt), dann findet CueSetter sie anhand der Überschrift."
+        }
+      ]
+    },
+    "whatIs": {
+      "crumb": "Was ist ein Ablaufplan?",
+      "metaTitle": "Was ist ein Ablaufplan? Bedeutung, andere Namen und Inhalt – CueSetter",
+      "metaDescription": "Ein Ablaufplan ist der minutengenaue Plan einer Show oder Veranstaltung. Was er enthält, andere Namen (Regieplan, Laufplan, Run Sheet, Running Order) und wie daraus eine Cueliste fürs Licht wird.",
+      "kicker": "Erklärt",
+      "title": "Was ist ein Ablaufplan?",
+      "lead": "Ein Ablaufplan ist der minutengenaue Plan einer Show oder Veranstaltung: jeder Programmpunkt in Reihenfolge, mit Nummer, Startzeit, Dauer und was passiert. Die Produktion schreibt ihn, und Inspizienz, Ton, Licht und Video fahren die Show danach.",
+      "linkLabel": "Was ist ein Ablaufplan?",
+      "sections": [
+        {
+          "h": "Was in einem Ablaufplan steht",
+          "p": [
+            "Die meisten Ablaufpläne sind eine Tabelle mit einer Zeile pro Programmpunkt. Übliche Spalten sind:"
+          ],
+          "list": [
+            "# – die Nummer des Programmpunkts, die auf dem Intercom verwendet wird („Achtung Punkt 12“)",
+            "Start – die Uhrzeit, oft mit Dauer oder Ende",
+            "Titel – was passiert: eine Rede, ein Song, eine Preisverleihung, eine Pause",
+            "Notizen pro Gewerk – Ton, Licht, Video, Bühne und Moderation"
+          ],
+          "after": [
+            "Oben stehen meist Name der Show, Datum, Ort und eine Versionsnummer, weil sich der Ablaufplan bis zum Einlass ändert."
+          ]
+        },
+        {
+          "h": "Andere Namen für einen Ablaufplan",
+          "p": [
+            "Dasselbe Dokument hat je nach Land und Art der Produktion viele Namen:"
+          ],
+          "table": {
+            "head": [
+              "Name",
+              "Wo er verwendet wird"
+            ],
+            "rows": [
+              [
+                "Ablaufplan, Ablauf",
+                "Veranstaltungen, Konzerte, Firmenevents – der gängigste Begriff"
+              ],
+              [
+                "Regieplan, Regieablauf",
+                "Events und Fernsehen"
+              ],
+              [
+                "Showablauf, Programmablauf",
+                "Events und Galas"
+              ],
+              [
+                "Sendeablauf",
+                "Fernsehen und Rundfunk"
+              ],
+              [
+                "Laufplan, Minutenplan",
+                "Events und Galas"
+              ],
+              [
+                "Regiebuch, Inspizientenbuch",
+                "Theater (enthält mehr als den Ablauf)"
+              ],
+              [
+                "Veranstaltungsdrehbuch",
+                "Größere Events (auch mit Aufbau und Logistik)"
+              ],
+              [
+                "Run sheet, running order",
+                "Englisch (Großbritannien, Australien)"
+              ],
+              [
+                "Run of show (ROS), rundown",
+                "Englisch (USA, Fernsehen)"
+              ],
+              [
+                "Kjøreplan, dreiebok",
+                "Norwegisch"
+              ],
+              [
+                "Körschema",
+                "Schwedisch"
+              ],
+              [
+                "Draaiboek",
+                "Niederländisch"
+              ],
+              [
+                "Conducteur",
+                "Französisch"
+              ]
+            ]
+          },
+          "after": [
+            "Eine Setlist – die Songs eines Konzerts – ist oft Teil des Ablaufplans. Ein Dispo (Call Sheet) ist etwas anderes: Er sagt der Crew, wann sie da sein muss."
+          ]
+        },
+        {
+          "h": "Ablaufplan und Cueliste",
+          "p": [
+            "Der Ablaufplan ist der Plan für alle. Eine Cueliste ist die Version des Lichtoperators auf dem Pult: ein Cue für jeden Moment, in dem sich das Licht ändert, nummeriert und benannt, damit der Operator den Ansagen der Inspizienz folgen kann.",
+            "Auf einer grandMA3 ist die Cueliste eine Sequenz. Sie anzulegen heißt, jeden Punkt des Ablaufplans von Hand ins Pult zu tippen – oder [CueSetter](/) den Ablaufplan lesen und ein Makro erstellen zu lassen, das sie anlegt."
+          ]
+        },
+        {
+          "h": "So schreibst du einen Ablaufplan, mit dem das Lichtpult arbeiten kann",
+          "list": [
+            "Gib jedem Punkt eine Nummer und behalte die Nummern, wenn Punkte verschoben werden. Nimm 12.5 für einen Punkt, der dazwischen kommt.",
+            "Eine Zeile pro Programmpunkt, mit der Startzeit in einer eigenen Spalte.",
+            "Schreib eine Setlist in eigenen Zeilen in die Titelzelle, damit die Songs Sub-Cues werden können.",
+            "Verschick ihn als Word, Excel oder daraus exportierte PDF – nicht als gescannte Seite.",
+            "Schreib Versionsnummer und Datum oben hin."
+          ],
+          "after": [
+            "Unsere [kostenlose Ablaufplan-Vorlage](/run-sheet-template) für Excel und Word folgt diesen Regeln."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wer schreibt den Ablaufplan?",
+          "a": "Meist die Produktionsleitung oder die Inspizienz. Er wird an alle geschickt, die an der Show arbeiten, und aktualisiert, wenn sich der Plan ändert."
+        },
+        {
+          "q": "Was ist der Unterschied zwischen Ablaufplan und Cueliste?",
+          "a": "Der Ablaufplan ist der Plan für die ganze Show. Eine Cueliste ist die Version eines Gewerks auf dem eigenen Gerät – beim Licht die Sequenz von Cues auf dem Pult."
+        },
+        {
+          "q": "Was ist der Unterschied zwischen Ablaufplan und Regieplan?",
+          "a": "Oft keiner: Viele verwenden die Begriffe für dasselbe. Ein Regieplan enthält manchmal mehr Details für Regie und Technik, zum Beispiel Kameras, Einspieler und Ansagen."
+        }
+      ]
+    },
+    "importMacro": {
+      "crumb": "Makro in grandMA3 importieren",
+      "metaTitle": "Makro in grandMA3 importieren (USB-Stick und onPC) – CueSetter",
+      "metaDescription": "Schritt für Schritt: Wo die Makrodatei auf dem USB-Stick liegen muss, wie du sie mit dem Show Creator in den Macros-Pool der grandMA3 oder onPC importierst und was du tust, wenn der Import fehlschlägt.",
+      "kicker": "Anleitung · grandMA3",
+      "title": "So importierst du ein Makro in grandMA3",
+      "lead": "Leg die XML-Datei des Makros auf einem USB-Stick in grandMA3/gma3_library/datapools/macros, öffne am Pult den Show Creator, wähle Macros und den USB-Stick und importiere es in einen freien Platz im Macros-Pool. Dann führe es einmal aus.",
+      "linkLabel": "Makro in grandMA3 importieren",
+      "sections": [
+        {
+          "h": "Das brauchst du",
+          "list": [
+            "Ein grandMA3-Pult oder grandMA3 onPC auf einem Computer",
+            "Das Makro als XML-Datei",
+            "Einen USB-Stick"
+          ],
+          "after": [
+            "Makros aus [CueSetter](/app) kommen als ZIP-Datei, in der die Ordner schon richtig angelegt sind."
+          ]
+        },
+        {
+          "h": "Schritt für Schritt",
+          "steps": [
+            "Leg die XML-Datei auf dem USB-Stick in den Ordner grandMA3/gma3_library/datapools/macros. Eine ZIP aus CueSetter entpackst du ins Hauptverzeichnis des Sticks: Der Ordner grandMA3 liegt ganz oben.",
+            "Steck den Stick ins Pult oder in den Computer mit onPC.",
+            "Öffne den Show Creator über das Menü (bei grandMA3 1.9 ist es das Menü Import/Export). Wähle Macros und den USB-Stick als Quelle.",
+            "Wähle das Makro und importiere es in einen freien Platz im Macros-Pool.",
+            "Führe das Makro aus, indem du im Macros-Pool darauf tippst."
+          ]
+        },
+        {
+          "h": "Wenn der Import fehlschlägt: die Kommandozeile",
+          "p": [
+            "Ein Makro ist eine Liste von Befehlszeilen. Dasselbe Ergebnis bekommst du also, wenn du sie in die Kommandozeile tippst oder einfügst. Das sind die Befehle, die ein Makro aus CueSetter verwendet, bestätigt auf grandMA3 onPC 2.5.1:"
+          ],
+          "code": "Store Sequence 101 Cue 1\nLabel Sequence 101 Cue 1 \"Einlass\"\nSet Sequence 101 Cue 1 Property \"Note\" \"Start 18:30, Dauer 30\"\nStore Sequence 101 Cue 2\nLabel Sequence 101 Cue 2 \"Begrüßung durch die Moderation\"\nLabel Sequence 101 \"Frühjahrskonzert\"",
+          "after": [
+            "Mehrere Befehle können in einer Zeile stehen, getrennt durch Semikolons. CueSetter zeigt die ganze Zeile im Export-Schritt zum Kopieren an."
+          ]
+        },
+        {
+          "h": "So sieht eine Makrodatei aus",
+          "p": [
+            "Eine Makrodatei für grandMA3 ist XML mit einer MacroLine pro Befehl. DataVersion sagt dem Pult, für welche Softwareversion die Datei erstellt wurde:"
+          ],
+          "code": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GMA3 DataVersion=\"2.5.1.0\">\n  <Macro Name=\"Frühjahrskonzert\">\n    <MacroLine Command=\"Store Sequence 101 Cue 1\"/>\n    <MacroLine Command=\"Label Sequence 101 Cue 1 &quot;Einlass&quot;\"/>\n    <MacroLine Command=\"Label Sequence 101 &quot;Frühjahrskonzert&quot;\"/>\n  </Macro>\n</GMA3>",
+          "after": [
+            "Anführungszeichen innerhalb eines Befehls werden als &quot; geschrieben, und die Datei muss als UTF-8 gespeichert werden."
+          ]
+        },
+        {
+          "h": "Das Makro aus dem Ablaufplan erstellen",
+          "p": [
+            "Ein Makro für einen langen Ablaufplan von Hand zu schreiben dauert so lange, wie den Ablaufplan ins Pult zu tippen. [CueSetter](/app) liest den Ablaufplan – [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3) oder [Excel](/excel-to-grandma3) – und erstellt das Makro für dich, mit einem benannten Cue pro Programmpunkt und Cue-Nummern, die dem Ablaufplan folgen."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wo muss die Makrodatei auf dem USB-Stick liegen?",
+          "a": "In grandMA3/gma3_library/datapools/macros, vom Hauptverzeichnis des Sticks aus. Das Pult sucht Makros in diesem Ordner."
+        },
+        {
+          "q": "Kann ich Makros in grandMA3 onPC importieren?",
+          "a": "Ja, genauso: Steck den USB-Stick in den Computer, öffne den Show Creator, wähle Macros und den Stick und importiere."
+        },
+        {
+          "q": "Das Makro erscheint nicht im Show Creator. Was ist falsch?",
+          "a": "Meist der Ordner: Prüfe, ob die Datei in grandMA3/gma3_library/datapools/macros liegt und nicht in einem zusätzlichen Ordner vom Entpacken. Klappt es immer noch nicht, füge die Befehle stattdessen in die Kommandozeile ein."
+        }
+      ]
+    }
+  }
+}

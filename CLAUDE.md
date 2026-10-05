@@ -5,7 +5,7 @@ Web-app (Next.js 16, App Router, next-intl, Tailwind v4) som gjør kjøreplaner 
 ## Arbeidsregler for prosjektet
 
 - Kjernen i `src/lib/` er rene funksjoner med tester i `tests/`. Endringer der skal ha tester.
-- Alle tekster i grensesnittet ligger i `messages/<språk>.json` (engelsk først, så norsk). Ingen hardkodet tekst i komponenter.
+- Alle tekster i grensesnittet ligger i `messages/<språk>.json` (engelsk først, så norsk og tysk). Ingen hardkodet tekst i komponenter.
 - Farger, fonter og avstander kommer fra tokenene i `src/app/globals.css` (`@theme`). Ingen tilfeldige hex-verdier i komponenter.
 - Bevegelse kommer fra tokenene i `globals.css`: `ease-out-quint` (standard for alle overganger), `ease-out-back` (litt sprett), `animate-fade-in-up` (også som `animate-entry`, forskjøvet med `animate-delay-100`, `-200` …), `animate-pop-in` og `animate-soft-pulse`. Alle lenker, knapper, felt og SVG-er får en myk overgang og fokusring fra `@layer base`, så komponenter trenger ikke gjenta det. Prosjektet bruker Tailwind v4, så temaet ligger i `@theme` i CSS, ikke i en `tailwind.config.ts`. Bruk `backwards` (ikke `forwards`) på animasjoner med `transform`, ellers forskyves elementer med `position: fixed` inni.
 - `InteractiveGlow` (eller `<Card glow>`) gir en musefølgende glød på flater man jobber med (dropsone, innstillingskort, nedlasting). Ikke bruk den på tabeller og lange lister. Den er av på touch-enheter og ved redusert bevegelse.
