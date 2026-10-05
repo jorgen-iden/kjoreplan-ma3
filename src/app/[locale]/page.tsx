@@ -43,12 +43,13 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
       {/* overflow-x-clip: the glows reach past the edges, but must never cause sideways scrolling. */}
       <main id="main" className="overflow-x-clip pb-24">
         {/* Hero */}
+        {/* Hero text only moves (animate-rise), never fades: it is the first paint (LCP). */}
         <section className={`${CONTAINER} grid items-center gap-12 pt-10 sm:pt-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]`}>
           <div>
-            <p className="animate-entry mb-4 font-semibold text-accent">{t('kicker')}</p>
-            <h1 className="animate-entry animate-delay-100 text-4xl font-extrabold leading-tight tracking-tight sm:text-6xl">{t('title')}</h1>
-            <p className="animate-entry animate-delay-200 mt-6 text-lg text-muted">{t('lead')}</p>
-            <div className="animate-entry animate-delay-300 mt-10 flex flex-wrap items-center gap-x-5 gap-y-3">
+            <p className="animate-rise mb-4 font-semibold text-accent">{t('kicker')}</p>
+            <h1 className="animate-rise animate-delay-100 text-4xl font-extrabold leading-tight tracking-tight sm:text-6xl">{t('title')}</h1>
+            <p className="animate-rise animate-delay-200 mt-6 text-lg text-muted">{t('lead')}</p>
+            <div className="animate-rise animate-delay-300 mt-10 flex flex-wrap items-center gap-x-5 gap-y-3">
               <Link href="/app" className={LINK_PRIMARY}>
                 {t('cta')} →
               </Link>

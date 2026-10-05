@@ -21,11 +21,16 @@ export function Converter() {
   const tc = useTranslations('columns');
   const [state, dispatch] = useReducer(reducer, initialState);
   const settingsLoaded = useRef(false);
+  const stepChanged = useRef(false);
+  const firstStep = useRef(state.step);
+  if (state.step !== firstStep.current) stepChanged.current = true;
   const hasWork = state.table !== null;
 
-  // Start pdf.js now so nothing is fetched later, and restore the last used settings.
+  // Load pdf.js when the browser is idle, so it doesn't compete with the first paint; opening a
+  // PDF before that loads it on demand. Also restore the last used settings.
   useEffect(() => {
-    void preloadPdf();
+    const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 1500));
+    idle(() => void preloadPdf());
     dispatch({ type: 'settings', patch: loadSettings() });
     settingsLoaded.current = true;
     // ?sample=1 (from the front page) opens the sample run sheet straight away.
@@ -129,7 +134,8 @@ export function Converter() {
     <main id="main" className={`mx-auto max-w-6xl px-5 pt-2 sm:px-8 sm:pb-16 ${state.step > 0 ? 'pb-28' : 'pb-16'}`}>
       <Stepper step={state.step} reachable={(s) => s === 0 || hasWork} onGoto={goto} onReset={hasWork ? reset : undefined} />
 
-      <div key={state.step} className="animate-entry">
+      {/* Steps fade in when you move between them, but not on first load (that would delay LCP). */}
+      <div key={state.step} className={stepChanged.current ? 'animate-entry' : undefined}>
         {state.step === 0 && (
           <UploadStep
             busy={state.busy}
