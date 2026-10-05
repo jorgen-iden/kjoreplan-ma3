@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "CueSetter – gjør kjøreplaner om til cuelister i grandMA3",
-    "description": "Last opp kjøreplanen som PDF, Word eller Excel og få en makro som bygger en navngitt cueliste på grandMA3-konsollen. Kjører i nettleseren – filene forlater aldri maskinen din.",
-    "appTitle": "Konverter – CueSetter",
-    "appDescription": "Gjør en kjøreplan (PDF, Word eller Excel) om til en grandMA3-makro: sjekk kolonner, se over cuene, last ned og importer på konsollen.",
+    "title": "CueSetter – kjøreplan til cueliste i grandMA3 (PDF, Word, Excel)",
+    "description": "Gjør kjøreplanen fra produksjonen om til en navngitt cueliste i grandMA3 på ett minutt. Last opp PDF, Word eller Excel og få en makro som bygger sekvensen. Alt skjer i nettleseren.",
+    "appTitle": "Konverter kjøreplan til grandMA3-makro – CueSetter",
+    "appDescription": "Last opp en kjøreplan (PDF, Word eller Excel), sjekk kolonnene og cuene, og last ned en grandMA3-makro som bygger cuelisten på konsollen.",
     "notFoundTitle": "Fant ikke siden – CueSetter"
   },
   "nav": {
@@ -151,7 +151,43 @@
     "proofsKicker": "Hvorfor",
     "stepsKicker": "Slik virker det",
     "storyKicker": "Laget av bransjen, for bransjen",
-    "storyQuote": "Hvert punkt måtte tastes inn i konsollen for hånd, mens lyset ventet."
+    "storyQuote": "Hvert punkt måtte tastes inn i konsollen for hånd, mens lyset ventet.",
+    "faqKicker": "Spørsmål",
+    "faqTitle": "Vanlige spørsmål",
+    "faq": [
+      {
+        "q": "Hvilke filer kan CueSetter lese?",
+        "a": "PDF med tekst, Word (.docx) og Excel (.xlsx), rett fra produksjonen. Du kan også lime inn tekst. Skannede PDF-er (bilder) og gamle .doc- og .xls-filer kan ikke leses; lagre dem som .docx eller .xlsx, eller lim inn teksten."
+      },
+      {
+        "q": "Lastes kjøreplanen opp til en server?",
+        "a": "Nei. Alt leses i nettleseren på din egen maskin. Kjøreplanen sendes aldri til oss eller noen annen server, så du kan bruke det på konfidensielle produksjoner."
+      },
+      {
+        "q": "Hvordan får jeg cuelisten inn i grandMA3?",
+        "a": "Last ned makroen som ZIP og pakk den ut på roten av en minnepinne. På konsollen åpner du Show Creator, velger Macros og minnepinnen, importerer makroen og kjører den én gang. Den bygger sekvensen med én navngitt cue per punkt. Feiler importen, kan du lime inn kommandoene i kommandolinjen i stedet."
+      },
+      {
+        "q": "Hvilke versjoner av grandMA3 virker det med?",
+        "a": "Makroen er testet i grandMA3 onPC 2.5.1.0. Bruker du en annen versjon, test den i onPC før du bruker den på en forestilling."
+      },
+      {
+        "q": "Virker det med grandMA2?",
+        "a": "Nei. Makroen er laget for grandMA3."
+      },
+      {
+        "q": "Får cuene lys i seg?",
+        "a": "Nei. Cuene er tomme og har bare navn, nummer og eventuelt et notat med starttid og varighet. Programmeringen gjør du selv. Som standard tømmer makroen programmereren først (ClearAll), så ingenting lagres ved et uhell."
+      },
+      {
+        "q": "Hva skjer med cuenumrene?",
+        "a": "Cuenumrene følger # i kjøreplanen. En settliste kan deles i under-cuer (12.1, 12.2) med ett klikk, og punkter uten nummer får et nummer mellom naboene, for eksempel 12.5. Du kan også velge løpende nummerering 1, 2, 3."
+      },
+      {
+        "q": "Hva koster det?",
+        "a": "Det er gratis å prøve, uten konto."
+      }
+    ]
   },
   "steps": {
     "upload": "Last opp",
