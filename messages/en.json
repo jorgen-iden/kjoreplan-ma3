@@ -169,7 +169,7 @@
       },
       {
         "q": "Which grandMA3 versions does it work with?",
-        "a": "The macro is tested on most recent versions of grandMA3, and should in theory work on every version of grandMA3. If it doesn’t work on your version, we’d like to hear from you."
+        "a": "The macro is tested on most recent versions of grandMA3, and should in theory work on every version of grandMA3. If it doesn’t work on your version, we’d like to hear from you at hello@cuesetter.com."
       },
       {
         "q": "What happens to the cue numbers?",
@@ -179,7 +179,8 @@
         "q": "What does it cost?",
         "a": "It’s free to try, no account needed."
       }
-    ]
+    ],
+    "contact": "Questions or feedback: <mail>{email}</mail>"
   },
   "steps": {
     "upload": "Upload",
@@ -296,7 +297,7 @@
     "title": "Ready to export",
     "lead": "Sequence {sequence} · {cues, plural, one {# cue} other {# cues}} · {version}",
     "download": "Download macro (.zip)",
-    "verified": "Tested on most recent versions of grandMA3. If the macro doesn’t work on your version, we’d like to hear from you.",
+    "verified": "Tested on most recent versions of grandMA3. If the macro doesn’t work on your version, we’d like to hear from you at <mail>{email}</mail>.",
     "howTitle": "On the console",
     "how1": "Unzip to the root of a USB stick (the grandMA3 folder goes at the top).",
     "how2": "Insert the stick in the console.",

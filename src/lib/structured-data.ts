@@ -1,5 +1,5 @@
 import type { Locale } from '@/i18n/routing';
-import { localePath, SITE_NAME, SITE_URL } from './site';
+import { CONTACT_EMAIL, localePath, SITE_NAME, SITE_URL } from './site';
 
 export interface FaqItem {
   q: string;
@@ -13,7 +13,15 @@ export interface FaqItem {
  */
 export function frontPageJsonLd({ locale, name, description, faq }: { locale: Locale; name: string; description: string; faq: FaqItem[] }) {
   const url = `${SITE_URL}${localePath(locale, '/') === '/' ? '' : localePath(locale, '/')}`;
-  const org = { '@type': 'Organization', '@id': `${SITE_URL}/#org`, name: 'Arpeggio AS', url: SITE_URL, brand: { '@type': 'Brand', name: SITE_NAME } };
+  const org = {
+    '@type': 'Organization',
+    '@id': `${SITE_URL}/#org`,
+    name: 'Arpeggio AS',
+    url: SITE_URL,
+    email: CONTACT_EMAIL,
+    contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: CONTACT_EMAIL, availableLanguage: ['en', 'nb'] },
+    brand: { '@type': 'Brand', name: SITE_NAME },
+  };
   return {
     '@context': 'https://schema.org',
     '@graph': [

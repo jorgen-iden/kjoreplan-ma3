@@ -169,7 +169,7 @@
       },
       {
         "q": "Hvilke versjoner av grandMA3 virker det med?",
-        "a": "Makroen er testet på de fleste nyere versjoner av grandMA3, og skal i teorien fungere på alle versjoner av grandMA3. Opplever du at den ikke fungerer på din versjon, vil vi gjerne høre fra deg."
+        "a": "Makroen er testet på de fleste nyere versjoner av grandMA3, og skal i teorien fungere på alle versjoner av grandMA3. Opplever du at den ikke fungerer på din versjon, vil vi gjerne høre fra deg på hello@cuesetter.com."
       },
       {
         "q": "Hva skjer med cuenumrene?",
@@ -179,7 +179,8 @@
         "q": "Hva koster det?",
         "a": "Det er gratis å prøve, uten konto."
       }
-    ]
+    ],
+    "contact": "Spørsmål eller tilbakemeldinger: <mail>{email}</mail>"
   },
   "steps": {
     "upload": "Last opp",
@@ -296,7 +297,7 @@
     "title": "Klar til eksport",
     "lead": "Sekvens {sequence} · {cues, plural, one {# cue} other {# cuer}} · {version}",
     "download": "Last ned makro (.zip)",
-    "verified": "Testet på de fleste nyere versjoner av grandMA3. Opplever du at makroen ikke fungerer på din versjon, vil vi gjerne høre fra deg.",
+    "verified": "Testet på de fleste nyere versjoner av grandMA3. Opplever du at makroen ikke fungerer på din versjon, vil vi gjerne høre fra deg på <mail>{email}</mail>.",
     "howTitle": "På konsollen",
     "how1": "Pakk ut ZIP-en på roten av en minnepinne (mappen grandMA3 skal ligge øverst).",
     "how2": "Sett minnepinnen i konsollen.",
