@@ -110,6 +110,8 @@ Opptre som senior fullstack-utvikler og UI/UX-designer. Før en oppgave eller ko
 
 ### 4. SEO og metadata
 - **Metadata API:** `metadata` eller `generateMetadata()` per rute.
+- **Strukturerte data og AI-søk:** forsiden har JSON-LD (`src/lib/structured-data.ts`: Organization, WebSite, SoftwareApplication, FAQPage) og `/llms.txt` (`src/app/llms.txt/route.ts`). Begge bygges fra tekstene i `messages/`, så FAQ-en på siden, JSON-LD og llms.txt sier alltid det samme. Nye påstander der må være sanne (`docs/brand.md`, «Påstander»), og endres prisen, må `offers` endres.
+- **robots.txt** slipper AI-søkeroboter (GPTBot, ClaudeBot, PerplexityBot …) eksplisitt inn.
 - **Ikoner og OG:** favicon, app-ikoner og Open Graph (`og:title`, `og:image`) på rotnivå.
 
 ### 5. Kodekvalitet

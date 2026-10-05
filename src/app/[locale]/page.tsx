@@ -4,10 +4,13 @@ import { use } from 'react';
 import { HeroDemo, type DemoRow } from '@/components/features/landing/HeroDemo';
 import { ConsoleIllustration, type ConsoleCue } from '@/components/features/landing/ConsoleIllustration';
 import { FormatsVisual, NumbersVisual, PrivacyVisual, type NumberRow } from '@/components/features/landing/ProofVisuals';
+import { Faq } from '@/components/features/landing/Faq';
 import { Reveal } from '@/components/features/landing/Reveal';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { Card, LINK_PRIMARY } from '@/components/ui';
 import { Link } from '@/i18n/navigation';
+import type { Locale } from '@/i18n/routing';
+import { frontPageJsonLd, jsonLdScript, type FaqItem } from '@/lib/structured-data';
 
 const STEPS = ['upload', 'review', 'console'] as const;
 // The order is part of the brand platform (docs/brand.md): what it reads, privacy, what it does.
@@ -20,8 +23,12 @@ const H2 = 'text-3xl font-extrabold tracking-tight sm:text-4xl';
 const FADER_DELAYS = ['delay-200', 'delay-500', 'delay-800'];
 
 export default function Home({ params }: { params: Promise<{ locale: string }> }) {
-  setRequestLocale(use(params).locale);
+  const { locale } = use(params);
+  setRequestLocale(locale);
   const t = useTranslations('home');
+  const tMeta = useTranslations('meta');
+  const faq = t.raw('faq') as FaqItem[];
+  const jsonLd = frontPageJsonLd({ locale: locale as Locale, name: tMeta('title'), description: tMeta('description'), faq });
 
   const visuals = {
     formats: <FormatsVisual sequence={t('visuals.sequence')} />,
@@ -129,6 +136,13 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
           </div>
         </Reveal>
 
+        {/* FAQ: answers operators search for; the same items are in the JSON-LD below. */}
+        <Reveal as="section" className={`${CONTAINER} mt-28 sm:mt-40`}>
+          <p className={KICKER}>{t('faqKicker')}</p>
+          <h2 className={`${H2} mb-8`}>{t('faqTitle')}</h2>
+          <Faq items={faq} />
+        </Reveal>
+
         {/* Closing: the brand blue, the tagline and two ways in. */}
         <Reveal as="section" className={`${CONTAINER} mt-28 sm:mt-40`}>
           <div className="relative overflow-hidden rounded-3xl bg-accent px-6 py-16 text-center text-on-accent sm:py-20">
@@ -153,6 +167,7 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
         </Reveal>
 
         <p className={`${CONTAINER} mt-16 text-xs text-muted`}>{t('disclaimer')}</p>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }} />
       </main>
     </>
   );
