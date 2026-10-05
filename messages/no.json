@@ -172,10 +172,6 @@
         "a": "Makroen er testet på de fleste nyere versjoner av grandMA3, og skal i teorien fungere på alle versjoner av grandMA3. Opplever du at den ikke fungerer på din versjon, vil vi gjerne høre fra deg."
       },
       {
-        "q": "Virker det med grandMA2?",
-        "a": "Nei. Makroen er laget for grandMA3."
-      },
-      {
         "q": "Hva skjer med cuenumrene?",
         "a": "Cuenumrene følger # i kjøreplanen. En settliste kan deles i under-cuer (12.1, 12.2) med ett klikk, og punkter uten nummer får et nummer mellom naboene, for eksempel 12.5. Du kan også velge løpende nummerering 1, 2, 3."
       },
