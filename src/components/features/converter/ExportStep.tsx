@@ -10,6 +10,7 @@ import { buildZip, MACRO_DIR } from '@/lib/ma3/zip';
 import type { Settings } from '@/lib/settings';
 import { isValidSequence } from '@/lib/validation';
 import { Button, Card, cueGo, Notice, PageHeader } from '@/components/ui';
+import { CONTACT_EMAIL } from '@/lib/site';
 
 export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings }) {
   const t = useTranslations('export');
@@ -90,7 +91,16 @@ export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings
             {t('downloadError')}
           </Notice>
         )}
-        <Notice kind="info">{t('verified')}</Notice>
+        <Notice kind="info">
+          {t.rich('verified', {
+            email: CONTACT_EMAIL,
+            mail: (chunks) => (
+              <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold underline underline-offset-2">
+                {chunks}
+              </a>
+            ),
+          })}
+        </Notice>
       </Card>
 
       <div className="mt-5 grid gap-5 md:grid-cols-2">

@@ -1,5 +1,5 @@
 import en from '../../../messages/en.json';
-import { SITE_URL } from '@/lib/site';
+import { CONTACT_EMAIL, SITE_URL } from '@/lib/site';
 
 // /llms.txt: a plain-text summary for AI assistants and AI search (https://llmstxt.org).
 // Built from the same English copy as the site, so the two never drift apart.
@@ -18,6 +18,7 @@ Key facts:
 - Tested on most recent grandMA3 versions; should in theory work on every grandMA3 version. Not for grandMA2.
 - Cues are empty (names, numbers, optional note with start time and duration); the operator programs the lighting.
 - Free to try, no account needed.
+- Contact: ${CONTACT_EMAIL} (questions, feedback, grandMA3 versions that don’t work).
 - Not affiliated with MA Lighting. grandMA3 is a trademark of MA Lighting Technology GmbH.
 
 ## Pages

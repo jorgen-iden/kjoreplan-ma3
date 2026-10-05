@@ -1,5 +1,20 @@
 import type { FaqItem } from '@/lib/structured-data';
 
+const EMAIL = /([\w.+-]+@[\w-]+\.[\w.]+\w)/;
+
+/** Answer text with any email address as a mailto link. */
+function withLinks(text: string) {
+  return text.split(EMAIL).map((part, i) =>
+    i % 2 ? (
+      <a key={i} href={`mailto:${part}`} className="font-semibold text-ink underline underline-offset-2 hover:text-accent">
+        {part}
+      </a>
+    ) : (
+      part
+    ),
+  );
+}
+
 /**
  * Questions as native <details>, so they work without JavaScript and every answer is in the HTML
  * that search engines read. The same items feed the FAQPage JSON-LD.
@@ -15,7 +30,7 @@ export function Faq({ items }: { items: FaqItem[] }) {
               +
             </span>
           </summary>
-          <p className="max-w-3xl pb-5 pr-12 leading-relaxed text-muted">{f.a}</p>
+          <p className="max-w-3xl pb-5 pr-12 leading-relaxed text-muted">{withLinks(f.a)}</p>
         </details>
       ))}
     </div>

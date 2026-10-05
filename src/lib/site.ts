@@ -7,6 +7,8 @@ import { routing, type Locale } from '@/i18n/routing';
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? (process.env.NODE_ENV === 'production' ? 'https://cuesetter.com' : 'http://localhost:3000');
 export const SITE_NAME = 'CueSetter';
+/** Where users reach us (forwarded by Namecheap email forwarding). */
+export const CONTACT_EMAIL = 'hello@cuesetter.com';
 
 /** Path of a page in a given locale: English has no prefix, other languages do. */
 export function localePath(locale: Locale, path: string): string {
