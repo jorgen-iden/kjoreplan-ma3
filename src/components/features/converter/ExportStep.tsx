@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useId, useMemo, useRef, useState } from 'react';
+import { track } from '@vercel/analytics';
 import { findVersion } from '@/lib/config/versions';
 import type { Cue } from '@/lib/cues';
 import { buildCommandLine, buildCommands, buildMacroXml, prepareCues } from '@/lib/ma3/macro';
@@ -44,6 +45,9 @@ export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings
       a.click();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
       cueGo();
+      // Counts in Vercel Web Analytics (Custom Events). Only the number of cues and the console
+      // version are sent, never names, notes or anything else from the run sheet.
+      track('Macro downloaded', { cues: cues.length, version: version.label });
     } catch {
       setDownloadFailed(true);
     } finally {
@@ -56,6 +60,7 @@ export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings
       await navigator.clipboard.writeText(cmdLine);
       setCopy('copied');
       cueGo();
+      track('Command line copied', { cues: cues.length, version: version.label });
       setTimeout(() => setCopy('idle'), 1500);
     } catch {
       // Clipboard blocked (permissions, insecure context): select the text so the user can copy it.
