@@ -5,6 +5,80 @@ Siden eier hvert søkeord én side. To sider skal aldri konkurrere om samme søk
 
 **Volum er ikke målt ennå.** Prioriteten under bygger på kjøpsintensjon og hvor realistisk topp 4 er (sjekket mot dagens søkeresultater, oktober 2026). Verifiser med Google Search Console (Ytelse → Søk) etter 4–6 uker, og eventuelt Google Keyword Planner. Oppdater tabellene med faktiske tall og plassering.
 
+## Navnene på en kjøreplan
+
+Samme dokument har mange navn, avhengig av bransje (konsert, teater, TV, event) og land. Alle med ✅ brukes i søkeord, sidetekster og FAQ der det passer; ⚠️ betyr at ordet også betyr noe annet og må kombineres med «grandMA3», «lighting» eller «cue list»; ✖️ brukes ikke.
+
+### Engelsk
+| Navn | Hvor det brukes | Bruk |
+|---|---|---|
+| run sheet | Event, konsert, bedrift (UK/AU) | ✅ hovedord, ⚠️ også en visning på konsoller |
+| running order | Konsert, TV, festival (UK) | ✅ |
+| run of show (ROS) | Event og bedrift (US) | ✅ |
+| rundown | TV, kringkasting, livestream | ✅ |
+| show flow / show running order | Event, gallaer | ✅ |
+| production schedule / show schedule | Event, produksjon | ✅ |
+| event schedule / event timeline | Bedrift, konferanse | ✅ |
+| minute-by-minute (schedule) | Event, galla | ✅ |
+| cue sheet | Teater, lyd/lys | ⚠️ også musikkrettigheter (PRS/ASCAP) og lydcuelister |
+| cue-to-cue (Q2Q) | Teater | ⚠️ betyr også en prøvetype |
+| calling script / prompt book / prompt copy | Teater (inspisient) | ⚠️ inneholder mer enn kjøreplanen |
+| set list | Konsert (låtene) | ✅ som kilde til under-cuer |
+| segment list | TV | ✅ |
+| call sheet | Film/TV (oppmøteplan) | ✖️ annen betydning |
+| agenda / itinerary | Møter, reiser | ✖️ for generelt |
+
+### Norsk
+| Navn | Hvor det brukes | Bruk |
+|---|---|---|
+| kjøreplan | Konsert, event, TV | ✅ hovedord |
+| kjøreliste / kjøremanus | Event, TV | ✅ |
+| dreiebok | Event, TV, beredskap | ✅ ⚠️ også film/beredskapsplan |
+| programplan / program | Event, konsert | ✅ ⚠️ «program» er generelt |
+| minuttplan / minutt-for-minutt | Galla, event | ✅ |
+| showflyt / showplan | Event | ✅ |
+| regiplan / regimanus | TV, teater | ✅ |
+| inspisientmanus | Teater | ⚠️ |
+| fremdriftsplan / tidsplan / timeplan | Produksjon | ⚠️ ofte rigg og logistikk, ikke showet |
+| settliste / spilleliste | Konsert | ✅ som kilde til under-cuer |
+
+### Svensk og dansk
+| Navn | Språk | Bruk |
+|---|---|---|
+| körschema, körplan, körlista | sv | ✅ |
+| programschema, minutschema | sv | ✅ |
+| manus, regimanus | sv | ⚠️ |
+| køreplan | da | ✅ |
+| drejebog | da | ✅ |
+| programplan, minutplan | da | ✅ |
+
+### Tysk
+| Navn | Hvor det brukes | Bruk |
+|---|---|---|
+| Ablaufplan / Ablauf | Event, konsert | ✅ hovedord |
+| Regieplan / Regieablauf | Event, TV | ✅ |
+| Showablauf / Programmablauf | Event | ✅ |
+| Sendeablauf | TV | ✅ |
+| Regiebuch / Inspizientenbuch | Teater | ⚠️ |
+| Drehbuch (Veranstaltungsdrehbuch) | Event | ⚠️ også filmmanus |
+| Minutenplan | Galla | ✅ |
+| Setlist | Konsert | ✅ |
+
+### Andre språk (senere)
+| Navn | Språk |
+|---|---|
+| draaiboek, showdraaiboek | nederlandsk |
+| conducteur, déroulé, déroulé technique | fransk |
+| escaleta, guion técnico | spansk |
+| scaletta | italiensk |
+| ajolista, ohjelmarunko | finsk |
+
+### Slik bruker vi navnene
+1. **Forsiden** nevner de vanligste i hvert språk én gang i naturlig tekst («kjøreplan, kjøreliste eller dreiebok»), ikke som søkeordliste.
+2. **Format- og guidesider** bruker navnet målgruppen sin bruker i tittelen (f.eks. «Run of show to grandMA3» for US-event, «Running order to grandMA3» for UK-konsert).
+3. **FAQ** får spørsmålet «Hva om kjøreplanen heter noe annet?» med de vanligste navnene, så Google og AI-søk kobler synonymene til oss.
+4. **Parseren** gjenkjenner allerede kolonnenavn på norsk og engelsk; navnene her gjelder dokumentet, ikke kolonnene.
+
 ## Dagens konkurrenter i søkeresultatene
 
 | Hvem | Hva | Svakhet for brukeren vår |
