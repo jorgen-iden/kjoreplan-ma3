@@ -169,7 +169,7 @@
       },
       {
         "q": "Hvilke versjoner av grandMA3 virker det med?",
-        "a": "Makroen er testet i grandMA3 onPC 2.5.1.0. Bruker du en annen versjon, test den i onPC før du bruker den på en forestilling."
+        "a": "CueSetter er laget for å fungere med alle versjoner av grandMA3. Vi har ikke testet absolutt alle versjoner, så hvis noe ikke virker på din versjon, vil vi gjerne høre om det. Si fra hvilken versjon du bruker, så retter vi det."
       },
       {
         "q": "Virker det med grandMA2?",

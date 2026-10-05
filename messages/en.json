@@ -169,7 +169,7 @@
       },
       {
         "q": "Which grandMA3 versions does it work with?",
-        "a": "The macro is tested on grandMA3 onPC 2.5.1.0. If you use another version, test it in onPC before using it on a show."
+        "a": "CueSetter is made to work with all versions of grandMA3. We haven’t tested every single version, so if something doesn’t work on yours, we’d like to hear about it. Tell us which version you use, and we’ll fix it."
       },
       {
         "q": "Does it work with grandMA2?",
