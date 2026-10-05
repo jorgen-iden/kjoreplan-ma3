@@ -176,10 +176,6 @@
         "a": "Nei. Makroen er laget for grandMA3."
       },
       {
-        "q": "Får cuene lys i seg?",
-        "a": "Nei. Cuene er tomme og har bare navn, nummer og eventuelt et notat med starttid og varighet. Programmeringen gjør du selv. Som standard tømmer makroen programmereren først (ClearAll), så ingenting lagres ved et uhell."
-      },
-      {
         "q": "Hva skjer med cuenumrene?",
         "a": "Cuenumrene følger # i kjøreplanen. En settliste kan deles i under-cuer (12.1, 12.2) med ett klikk, og punkter uten nummer får et nummer mellom naboene, for eksempel 12.5. Du kan også velge løpende nummerering 1, 2, 3."
       },

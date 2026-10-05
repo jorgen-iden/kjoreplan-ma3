@@ -176,10 +176,6 @@
         "a": "No. The macro is made for grandMA3."
       },
       {
-        "q": "Do the cues contain any lighting?",
-        "a": "No. The cues are empty and only have a name, a number and optionally a note with start time and duration. You do the programming. By default the macro clears the programmer first (ClearAll), so nothing is stored by accident."
-      },
-      {
         "q": "What happens to the cue numbers?",
         "a": "Cue numbers follow the # in the run sheet. A set list can be split into sub-cues (12.1, 12.2) in one click, and items without a number get a number between their neighbours, for example 12.5. You can also choose running numbers 1, 2, 3."
       },
