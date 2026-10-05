@@ -10,6 +10,24 @@ export const SITE_NAME = 'CueSetter';
 /** Where users reach us (forwarded by Namecheap email forwarding). */
 export const CONTACT_EMAIL = 'hello@cuesetter.com';
 
+/**
+ * IndexNow key (https://www.indexnow.org): proves to Bing and other search engines that pings for
+ * cuesetter.com come from us. The same key is served at /<key>.txt (public/).
+ */
+export const INDEXNOW_KEY = '7dfcb76cf04eaf08144f631fba7bb9aa';
+
+/**
+ * Our profiles elsewhere (LinkedIn, YouTube …). Listed as sameAs in the Organization JSON-LD, so
+ * search engines and AI connect them to CueSetter. Add a URL here when a profile is created.
+ */
+export const SOCIAL_PROFILES: string[] = [];
+
+/**
+ * The demo video on YouTube, shown on the front page and described as a VideoObject for Google.
+ * Fill in when the video is published (docs/synlighet.md, step 2); null hides it.
+ */
+export const DEMO_VIDEO: { youtubeId: string; uploadDate: string; duration: string } | null = null;
+
 /** Path of a page in a given locale: English has no prefix, other languages do. */
 export function localePath(locale: Locale, path: string): string {
   const clean = path === '/' ? '' : path;

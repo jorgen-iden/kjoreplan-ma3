@@ -184,7 +184,10 @@
         "a": "It’s free to try, no account needed."
       }
     ],
-    "contact": "Questions or feedback: <mail>{email}</mail>"
+    "contact": "Questions or feedback: <mail>{email}</mail>",
+    "videoKicker": "See it in a minute",
+    "videoTitle": "From a PDF run sheet to a grandMA3 cue list",
+    "videoPlay": "Play the demo"
   },
   "steps": {
     "upload": "Upload",
@@ -531,5 +534,283 @@
     },
     "alsoKicker": "And on every format",
     "otherFormatsTitle": "Other formats"
+  },
+  "pages": {
+    "breadcrumbLabel": "Breadcrumb",
+    "toc": "On this page",
+    "cardTitle": "Run sheet to grandMA3 in a minute",
+    "cardText": "Upload a PDF, Word or Excel run sheet and get a macro that builds the cue list. Free to try.",
+    "footerLabel": "Guides and templates",
+    "download": {
+      "xlsx": "Excel template",
+      "docx": "Word template",
+      "button": "Download"
+    },
+    "template": {
+      "crumb": "Run sheet template",
+      "metaTitle": "Free run sheet template for Excel and Word – CueSetter",
+      "metaDescription": "Download a free run sheet template (Excel .xlsx and Word .docx) with #, Start, Duration, Title and Notes. No sign-up. Reads straight into a grandMA3 cue list.",
+      "kicker": "Free · Excel and Word",
+      "title": "Free run sheet template",
+      "lead": "A run sheet template for Excel and Word with the columns every department needs: #, Start, Duration, Title and Notes. Free, no sign-up – and it reads straight into a grandMA3 cue list.",
+      "linkLabel": "Run sheet template",
+      "sections": [
+        {
+          "h": "What’s in the template",
+          "p": [
+            "One row per item, with the columns sound, lighting, video and stage management all work from:"
+          ],
+          "list": [
+            "# – the item number everyone calls on intercom",
+            "Start – the clock time",
+            "Duration – in minutes",
+            "Title – what happens; a set list goes on its own lines, one song per line",
+            "Notes – for sound, lighting, video and stage"
+          ],
+          "after": [
+            "The show’s name, date, venue, stage manager and version number go at the top. Seven example rows show how it is filled in; replace them with your show."
+          ]
+        },
+        {
+          "h": "How to fill it in",
+          "steps": [
+            "Keep one row per item, in running order.",
+            "Give every item a number. If you add an item later, give it a number in between (12.5), so everyone’s numbers still match.",
+            "Put a set list in the title cell, one song per line under the act’s name.",
+            "Change the version number every time you send a new run sheet.",
+            "Send it as it is, or export it as PDF."
+          ]
+        },
+        {
+          "h": "From the template to grandMA3",
+          "p": [
+            "Lighting operators can drop the file straight into [CueSetter](/app). Every row becomes a named cue in a grandMA3 sequence, the cue numbers follow the # column, and the songs in a set list can be split into sub-cues in one click."
+          ],
+          "after": [
+            "Read more about [Excel run sheets](/excel-to-grandma3) and [Word run sheets](/word-to-grandma3) in CueSetter, or [what a run sheet is](/what-is-a-run-sheet)."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Is the run sheet template free?",
+          "a": "Yes. Download it and use it as you like, no sign-up and no account."
+        },
+        {
+          "q": "Can I use it in Google Sheets, Google Docs or Numbers?",
+          "a": "Yes. Open the .xlsx file in Google Sheets or Numbers, or the .docx file in Google Docs or Pages. To read it in CueSetter, download it again as .xlsx, .docx or PDF."
+        },
+        {
+          "q": "Can I add or rename columns?",
+          "a": "Yes. Extra columns are fine. Keep the # column and a column for the title (Title, Item or Program), and CueSetter finds them by their header."
+        }
+      ]
+    },
+    "whatIs": {
+      "crumb": "What is a run sheet?",
+      "metaTitle": "What is a run sheet? Meaning, other names and what it contains – CueSetter",
+      "metaDescription": "A run sheet is the minute-by-minute plan of a show or event. What it contains, its other names (running order, run of show, rundown, cue sheet) and how it becomes a lighting cue list.",
+      "kicker": "Explained",
+      "title": "What is a run sheet?",
+      "lead": "A run sheet is the minute-by-minute plan of a show or event: every item in order, with a number, start time, duration and what happens. Production writes it, and stage management, sound, lighting and video run the show from it.",
+      "linkLabel": "What is a run sheet?",
+      "sections": [
+        {
+          "h": "What a run sheet contains",
+          "p": [
+            "Most run sheets are a table with one row per item. The usual columns are:"
+          ],
+          "list": [
+            "# – the item number, used on intercom (“standby item 12”)",
+            "Start – the clock time, often with Duration or End",
+            "Title – what happens: a speech, a song, an award, an interval",
+            "Notes per department – sound, lighting, video, stage and presenters"
+          ],
+          "after": [
+            "At the top there is usually the show’s name, date, venue and a version number, because the run sheet changes right up until the doors open."
+          ]
+        },
+        {
+          "h": "Other names for a run sheet",
+          "p": [
+            "The same document has many names, depending on country and type of production:"
+          ],
+          "table": {
+            "head": [
+              "Name",
+              "Where it’s used"
+            ],
+            "rows": [
+              [
+                "Run sheet",
+                "Events, concerts, corporate shows (UK, Australia)"
+              ],
+              [
+                "Running order",
+                "Concerts, TV, festivals (UK)"
+              ],
+              [
+                "Run of show (ROS)",
+                "Corporate events and conferences (US)"
+              ],
+              [
+                "Rundown",
+                "TV, broadcast and livestreams"
+              ],
+              [
+                "Show flow / show running order",
+                "Events and galas"
+              ],
+              [
+                "Cue sheet",
+                "Theatre; also the music reporting form for broadcasters"
+              ],
+              [
+                "Kjøreplan, kjøreliste, dreiebok",
+                "Norwegian"
+              ],
+              [
+                "Körschema, körplan",
+                "Swedish"
+              ],
+              [
+                "Køreplan, drejebog",
+                "Danish"
+              ],
+              [
+                "Ablaufplan, Regieplan",
+                "German"
+              ],
+              [
+                "Draaiboek",
+                "Dutch"
+              ],
+              [
+                "Conducteur, déroulé",
+                "French"
+              ],
+              [
+                "Escaleta",
+                "Spanish"
+              ],
+              [
+                "Scaletta",
+                "Italian"
+              ]
+            ]
+          },
+          "after": [
+            "A set list – the songs in a concert – is often part of the run sheet. A call sheet is something else: it tells the crew when to arrive."
+          ]
+        },
+        {
+          "h": "Run sheet vs. cue list",
+          "p": [
+            "The run sheet is the plan for everyone. A cue list is the lighting operator’s version of it on the console: one cue for each moment the lighting changes, numbered and named so the operator can follow the stage manager’s calls.",
+            "On a grandMA3 the cue list is a sequence. Building it means typing every item from the run sheet into the console by hand – or letting [CueSetter](/) read the run sheet and make a macro that builds it."
+          ]
+        },
+        {
+          "h": "How to write a run sheet the lighting desk can use",
+          "list": [
+            "Give every item a number, and keep the numbers when items move. Use 12.5 for an item squeezed in.",
+            "One row per item, with the start time in its own column.",
+            "Put a set list on separate lines in the title cell, so the songs can become sub-cues.",
+            "Send it as Word, Excel or a PDF exported from them – not a scanned page.",
+            "Put a version number and the date at the top."
+          ],
+          "after": [
+            "Our [free run sheet template](/run-sheet-template) for Excel and Word follows these rules."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Who writes the run sheet?",
+          "a": "Usually the producer or the stage manager. It is sent to everyone working on the show and updated as the plan changes."
+        },
+        {
+          "q": "What is the difference between a run sheet and a cue list?",
+          "a": "The run sheet is the plan for the whole show. A cue list is a department’s version of it on their own equipment – for lighting, the sequence of cues on the console."
+        },
+        {
+          "q": "What is the difference between a run sheet and a call sheet?",
+          "a": "A run sheet describes the show, item by item. A call sheet tells the crew and performers when and where to arrive."
+        }
+      ]
+    },
+    "importMacro": {
+      "crumb": "Import a macro into grandMA3",
+      "metaTitle": "How to import a macro into grandMA3 (USB stick and onPC) – CueSetter",
+      "metaDescription": "Step by step: where to put the macro file on the USB stick, how to import it with Show Creator into the Macros pool on grandMA3 or onPC, and what to do if the import fails.",
+      "kicker": "Guide · grandMA3",
+      "title": "How to import a macro into grandMA3",
+      "lead": "Put the macro’s XML file in grandMA3/gma3_library/datapools/macros on a USB stick, open Show Creator on the console, choose Macros and the USB stick, and import it into a free slot in the Macros pool. Then run it once.",
+      "linkLabel": "Import a macro into grandMA3",
+      "sections": [
+        {
+          "h": "What you need",
+          "list": [
+            "A grandMA3 console, or grandMA3 onPC on a computer",
+            "The macro as an XML file",
+            "A USB stick"
+          ],
+          "after": [
+            "Macros made by [CueSetter](/app) come as a ZIP file with the folders already in place."
+          ]
+        },
+        {
+          "h": "Step by step",
+          "steps": [
+            "Put the XML file on the USB stick in the folder grandMA3/gma3_library/datapools/macros. With a ZIP from CueSetter, unzip it to the root of the stick: the grandMA3 folder goes at the top.",
+            "Insert the stick in the console, or in the computer running onPC.",
+            "Open Show Creator from the menu (on grandMA3 1.9 it is the Import/Export menu). Choose Macros, and the USB stick as the source.",
+            "Select the macro and import it into a free slot in the Macros pool.",
+            "Run the macro by tapping it in the Macros pool."
+          ]
+        },
+        {
+          "h": "If the import fails: use the command line",
+          "p": [
+            "A macro is a list of command lines, so the same result can be had by typing or pasting them into the command line. These are the commands a CueSetter macro uses, verified on grandMA3 onPC 2.5.1:"
+          ],
+          "code": "Store Sequence 101 Cue 1\nLabel Sequence 101 Cue 1 \"Doors open\"\nSet Sequence 101 Cue 1 Property \"Note\" \"Start 18:30, Duration 30\"\nStore Sequence 101 Cue 2\nLabel Sequence 101 Cue 2 \"Welcome by the host\"\nLabel Sequence 101 \"Spring concert\"",
+          "after": [
+            "Several commands can go on one line, separated by semicolons. CueSetter shows the whole line ready to copy on the export step."
+          ]
+        },
+        {
+          "h": "What a macro file looks like",
+          "p": [
+            "A grandMA3 macro file is XML with one MacroLine per command. DataVersion tells the console which software version the file was made for:"
+          ],
+          "code": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GMA3 DataVersion=\"2.5.1.0\">\n  <Macro Name=\"Spring concert\">\n    <MacroLine Command=\"Store Sequence 101 Cue 1\"/>\n    <MacroLine Command=\"Label Sequence 101 Cue 1 &quot;Doors open&quot;\"/>\n    <MacroLine Command=\"Label Sequence 101 &quot;Spring concert&quot;\"/>\n  </Macro>\n</GMA3>",
+          "after": [
+            "Quotes inside a command are written as &quot;, and the file must be saved as UTF-8."
+          ]
+        },
+        {
+          "h": "Make the macro from a run sheet",
+          "p": [
+            "Writing a macro for a long run sheet by hand takes as long as typing the run sheet into the console. [CueSetter](/app) reads the run sheet – [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3) or [Excel](/excel-to-grandma3) – and makes the macro for you, with one named cue per item and cue numbers that follow the run sheet."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Where do I put a macro file on the USB stick?",
+          "a": "In grandMA3/gma3_library/datapools/macros, counted from the root of the stick. The console looks for macros in that folder."
+        },
+        {
+          "q": "Can I import macros in grandMA3 onPC?",
+          "a": "Yes, the same way: insert the USB stick in the computer, open Show Creator, choose Macros and the stick, and import."
+        },
+        {
+          "q": "The macro doesn’t show up in Show Creator. What’s wrong?",
+          "a": "Usually the folder: check that the file is in grandMA3/gma3_library/datapools/macros and not in an extra folder from unzipping. If it still fails, paste the commands into the command line instead."
+        }
+      ]
+    },
+    "templatePreview": "The template"
   }
 }

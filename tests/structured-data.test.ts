@@ -45,3 +45,25 @@ describe('format pages', () => {
     expect(faq.mainEntity).toHaveLength(f.faq.length);
   });
 });
+
+describe('content pages', () => {
+  it('every content page has copy in both languages, with the same shape', async () => {
+    const { CONTENT_KEYS } = await import('../src/lib/content-pages');
+    for (const key of CONTENT_KEYS) {
+      const [e, n] = [en.pages[key], no.pages[key]];
+      expect(Object.keys(n).sort(), key).toEqual(Object.keys(e).sort());
+      expect(n.sections.length, `${key}.sections`).toBe(e.sections.length);
+      n.sections.forEach((s, i) => expect(Object.keys(s).sort(), `${key}.sections[${i}]`).toEqual(Object.keys(e.sections[i]).sort()));
+      expect(n.faq.length, `${key}.faq`).toBe(e.faq.length);
+    }
+  });
+
+  it('links in the copy point to pages that exist', async () => {
+    const { PUBLIC_PAGES } = await import('../src/lib/public-pages');
+    for (const m of [en, no]) {
+      const links = [...JSON.stringify(m.pages).matchAll(/\]\((\/[^)]*)\)/g)].map((x) => x[1]);
+      expect(links.length).toBeGreaterThan(0);
+      for (const l of links) expect(PUBLIC_PAGES, l).toContain(l);
+    }
+  });
+});

@@ -1,12 +1,10 @@
 import type { MetadataRoute } from 'next';
 import { routing } from '@/i18n/routing';
-import { FORMAT_SLUGS } from '@/lib/formats';
+import { PUBLIC_PAGES } from '@/lib/public-pages';
 import { alternates, SITE_URL } from '@/lib/site';
 
-const PAGES = ['/', '/app', ...FORMAT_SLUGS.map((s) => `/${s}`)];
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  return PAGES.map((path) => {
+  return PUBLIC_PAGES.map((path) => {
     const { canonical, languages } = alternates(routing.defaultLocale, path);
     return {
       url: `${SITE_URL}${canonical === '/' ? '' : canonical}`,

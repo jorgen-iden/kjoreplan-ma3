@@ -1,5 +1,5 @@
 import type { Locale } from '@/i18n/routing';
-import { CONTACT_EMAIL, localePath, SITE_NAME, SITE_URL } from './site';
+import { CONTACT_EMAIL, DEMO_VIDEO, localePath, SITE_NAME, SITE_URL, SOCIAL_PROFILES } from './site';
 
 export interface FaqItem {
   q: string;
@@ -21,6 +21,19 @@ export function frontPageJsonLd({ locale, name, description, faq }: { locale: Lo
     email: CONTACT_EMAIL,
     contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: CONTACT_EMAIL, availableLanguage: ['en', 'nb'] },
     brand: { '@type': 'Brand', name: SITE_NAME },
+    ...(SOCIAL_PROFILES.length ? { sameAs: SOCIAL_PROFILES } : {}),
+  };
+  const video = DEMO_VIDEO && {
+    '@type': 'VideoObject',
+    '@id': `${url}#video`,
+    name: name,
+    description,
+    thumbnailUrl: `https://i.ytimg.com/vi/${DEMO_VIDEO.youtubeId}/maxresdefault.jpg`,
+    uploadDate: DEMO_VIDEO.uploadDate,
+    duration: DEMO_VIDEO.duration,
+    embedUrl: `https://www.youtube-nocookie.com/embed/${DEMO_VIDEO.youtubeId}`,
+    contentUrl: `https://www.youtube.com/watch?v=${DEMO_VIDEO.youtubeId}`,
+    publisher: { '@id': org['@id'] },
   };
   return {
     '@context': 'https://schema.org',
@@ -47,6 +60,7 @@ export function frontPageJsonLd({ locale, name, description, faq }: { locale: Lo
         '@id': `${url}#faq`,
         mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
       },
+      ...(video ? [video] : []),
     ],
   };
 }
@@ -85,6 +99,31 @@ export function formatPageJsonLd({ locale, path, title, description, home, faq }
       },
     ],
   };
+}
+
+/** schema.org data for a content page (guide, definition, templates): the page, breadcrumb and FAQ. */
+export function contentPageJsonLd({
+  locale,
+  path,
+  type,
+  title,
+  description,
+  faq,
+}: {
+  locale: Locale;
+  path: string;
+  type: 'WebPage' | 'Article' | 'TechArticle';
+  title: string;
+  description: string;
+  faq: FaqItem[];
+}) {
+  const data = formatPageJsonLd({ locale, path, title, description, home: SITE_NAME, faq });
+  const [page, faqPage] = data['@graph'];
+  const article =
+    type === 'WebPage'
+      ? page
+      : { ...page, '@type': ['WebPage', type], headline: title, author: { '@id': `${SITE_URL}/#org` }, publisher: { '@id': `${SITE_URL}/#org` } };
+  return { ...data, '@graph': faq.length ? [article, faqPage] : [article] };
 }
 
 /** Serialises JSON-LD for a <script> tag; "<" is escaped so content can never close the tag. */
