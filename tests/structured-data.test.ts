@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import en from '../messages/en.json';
 import no from '../messages/no.json';
-import { frontPageJsonLd, jsonLdScript } from '../src/lib/structured-data';
+import { FORMAT_PAGES, FORMAT_SLUGS } from '../src/lib/formats';
+import { formatPageJsonLd, frontPageJsonLd, jsonLdScript } from '../src/lib/structured-data';
 
 describe('front page JSON-LD', () => {
   for (const [locale, m] of [['en', en], ['no', no]] as const) {
@@ -21,5 +22,26 @@ describe('front page JSON-LD', () => {
 
   it('can never close the script tag it is placed in', () => {
     expect(jsonLdScript({ a: '</script><script>alert(1)</script>' })).not.toContain('</script>');
+  });
+});
+
+describe('format pages', () => {
+  it('every format page has copy in both languages, with the same shape', () => {
+    for (const slug of FORMAT_SLUGS) {
+      const key = FORMAT_PAGES[slug].key;
+      for (const field of ['reads', 'steps', 'faq'] as const) {
+        expect(no.formats[key][field].length, `${key}.${field}`).toBe(en.formats[key][field].length);
+      }
+      expect(Object.keys(no.formats[key]).sort()).toEqual(Object.keys(en.formats[key]).sort());
+    }
+  });
+
+  it('JSON-LD has the page with its breadcrumb and every FAQ item', () => {
+    const f = en.formats.excel;
+    const data = formatPageJsonLd({ locale: 'no', path: '/excel-to-grandma3', title: f.title, description: f.metaDescription, home: 'CueSetter', faq: f.faq });
+    const [page, faq] = data['@graph'] as unknown as [{ url: string; breadcrumb: { itemListElement: unknown[] } }, { mainEntity: unknown[] }];
+    expect(page.url).toMatch(/\/no\/excel-to-grandma3$/);
+    expect(page.breadcrumb.itemListElement).toHaveLength(2);
+    expect(faq.mainEntity).toHaveLength(f.faq.length);
   });
 });
