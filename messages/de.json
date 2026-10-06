@@ -817,5 +817,33 @@
     "languages": "Sprache",
     "copyright": "© {year} CueSetter",
     "follow": "Folgen"
+  },
+  "feedback": {
+    "line": "Hat es auf deinem Pult funktioniert? Schreib uns an <mail>{email}</mail> – das hilft uns, CueSetter zu verbessern.",
+    "subject": "Feedback zu CueSetter",
+    "body": "Version: {version}\nCues: {cues}\n\n"
+  },
+  "changelog": {
+    "crumb": "Changelog",
+    "metaTitle": "Changelog – CueSetter",
+    "metaDescription": "Was sich in CueSetter geändert hat, dem Werkzeug, das aus einem Ablaufplan eine Cueliste in grandMA3 macht: neue Funktionen, Fixes und Sprachen, das Neueste zuerst.",
+    "kicker": "Neuigkeiten",
+    "title": "Changelog",
+    "lead": "Was in CueSetter neu ist, das Neueste zuerst.",
+    "linkLabel": "Changelog",
+    "feedback": "Fehlt dir etwas, oder funktioniert etwas auf deinem Pult nicht? Schreib an <mail>{email}</mail>."
+  },
+  "handoff": {
+    "kicker": "Für die Produktion",
+    "title": "Schick das an den Lichtoperator",
+    "text": "Nutzt du die Vorlage für deine Show? Schick dem Lichtoperator eine kurze Nachricht. Wer grandMA3 fährt, kann aus dem Ablaufplan eine benannte Cueliste am Pult machen.",
+    "attach": "Häng den Ablaufplan an, bevor du sendest.",
+    "email": "Per E-Mail senden",
+    "copy": "Text kopieren",
+    "copied": "Kopiert",
+    "copyFailed": "Automatisches Kopieren hat nicht geklappt. Markiere den Text und kopiere ihn von Hand.",
+    "preview": "Die Nachricht",
+    "subject": "Ablaufplan für grandMA3",
+    "body": "Hallo,\n\nim Anhang ist der Ablaufplan für die Show.\n\nWenn du grandMA3 fährst, kannst du ihn auf {appUrl} in eine benannte Cueliste umwandeln. Datei hochladen und ein Makro herunterladen, das die Sequenz mit einem Cue pro Punkt anlegt. Alles läuft im Browser, der Ablaufplan bleibt auf deinem Rechner.\n\nDie Vorlage dazu: {templateUrl}"
   }
 }

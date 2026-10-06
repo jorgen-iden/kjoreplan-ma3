@@ -12,6 +12,9 @@ import type { Locale } from '@/i18n/routing';
 import { CONTENT_PAGES, TEMPLATE_FILES, type ContentKey, type Section } from '@/lib/content-pages';
 import { TEMPLATES } from '@/lib/templates';
 import { contentPageJsonLd, jsonLdScript, type FaqItem } from '@/lib/structured-data';
+import { handoffMail } from '@/lib/mailto';
+import { localePath, SITE_URL } from '@/lib/site';
+import { SendToOperator, type SendToOperatorLabels } from './SendToOperator';
 import { TrackedDownload } from './TrackedDownload';
 
 const CONTAINER = 'mx-auto max-w-6xl px-5 sm:px-8';
@@ -135,6 +138,34 @@ function Downloads({ locale }: { locale: Locale }) {
 }
 
 /**
+ * The note producers send their lighting operator, on every template page: where the run sheet
+ * becomes a grandMA3 cue list (the converter) and the template page itself, in the page's language.
+ */
+function OperatorNote({ locale, path }: { locale: Locale; path: string }) {
+  const t = useTranslations('handoff');
+  const { subject, body, href } = handoffMail(
+    { subject: t.raw('subject') as string, body: t.raw('body') as string },
+    { appUrl: `${SITE_URL}${localePath(locale, '/app')}`, templateUrl: `${SITE_URL}${localePath(locale, path)}` },
+  );
+  const labels: SendToOperatorLabels = {
+    kicker: t('kicker'),
+    title: t('title'),
+    text: t('text'),
+    attach: t('attach'),
+    email: t('email'),
+    copy: t('copy'),
+    copied: t('copied'),
+    copyFailed: t('copyFailed'),
+    preview: t('preview'),
+  };
+  return (
+    <Reveal className={`${CONTAINER} mt-28 sm:mt-36`}>
+      <SendToOperator subject={subject} body={body} href={href} labels={labels} />
+    </Reveal>
+  );
+}
+
+/**
  * A content page: a direct answer first (what AI search quotes), then sections with a table of
  * contents and a CueSetter card beside them, an optional FAQ and the closing call to action.
  */
@@ -225,6 +256,8 @@ export function ArticlePage({ pageKey, locale }: { pageKey: ContentKey; locale: 
             </div>
           </aside>
         </div>
+
+        {template && <OperatorNote locale={locale} path={path} />}
 
         {faq.length > 0 && (
           <Reveal as="section" className={`${CONTAINER} mt-28 sm:mt-36`}>

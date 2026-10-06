@@ -11,6 +11,7 @@ import { buildZip, MACRO_DIR } from '@/lib/ma3/zip';
 import type { Settings } from '@/lib/settings';
 import { isValidSequence } from '@/lib/validation';
 import { Button, Card, cueGo, Notice, PageHeader } from '@/components/ui';
+import { feedbackMail, type MailCopy } from '@/lib/mailto';
 import { CONTACT_EMAIL } from '@/lib/site';
 
 export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings }) {
@@ -18,9 +19,11 @@ export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings
   const locale = useLocale();
   const tNote = useTranslations('note');
   const tSettings = useTranslations('settings');
+  const tFeedback = useTranslations('feedback');
   const seqValid = isValidSequence(settings.sequence);
   const [downloading, setDownloading] = useState(false);
   const [downloadFailed, setDownloadFailed] = useState(false);
+  const [downloaded, setDownloaded] = useState(false);
   const [copy, setCopy] = useState<'idle' | 'copied' | 'failed'>('idle');
   const cmdRef = useRef<HTMLTextAreaElement>(null);
   const cmdId = useId();
@@ -33,6 +36,8 @@ export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings
     [cues, settings, tNote],
   );
   const cmdLine = buildCommandLine(commands);
+  const feedbackCopy: MailCopy = { subject: tFeedback.raw('subject') as string, body: tFeedback.raw('body') as string };
+  const feedbackHref = feedbackMail(feedbackCopy, { to: CONTACT_EMAIL, version: version.label, cues: cues.length }).href;
 
   const download = async () => {
     setDownloading(true);
@@ -46,6 +51,7 @@ export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings
       a.click();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
       cueGo();
+      setDownloaded(true);
       // Counts in Vercel Web Analytics (Custom Events). Only the number of cues and the console
       // version are sent, never names, notes or anything else from the run sheet.
       track('Macro downloaded', { cues: cues.length, version: version.label });
@@ -86,6 +92,23 @@ export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings
         <p className="break-all font-mono text-xs text-muted">
           {MACRO_DIR}/{fileSlug}.xml
         </p>
+        {downloaded && (
+          // Asks for feedback once the macro is on its way to the console. The e-mail is prefilled with
+          // only the grandMA3 version and the number of cues, never anything from the run sheet.
+          <p className="animate-fade-in-up text-sm text-subtle">
+            {tFeedback.rich('line', {
+              email: CONTACT_EMAIL,
+              mail: (chunks) => (
+                <a
+                  href={feedbackHref}
+                  className="font-semibold text-accent underline decoration-accent/40 underline-offset-2 hover:decoration-accent"
+                >
+                  {chunks}
+                </a>
+              ),
+            })}
+          </p>
+        )}
         {downloadFailed && (
           <Notice
             kind="error"

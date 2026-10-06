@@ -1,4 +1,5 @@
 import en from '../../../messages/en.json';
+import { CHANGELOG, CHANGELOG_PATH } from '@/lib/changelog';
 import { CONTENT_KEYS, CONTENT_PAGES } from '@/lib/content-pages';
 import { FORMAT_PAGES, FORMAT_SLUGS } from '@/lib/formats';
 import { CONTACT_EMAIL, SITE_URL } from '@/lib/site';
@@ -36,6 +37,7 @@ Key facts:
 - [Converter](${SITE_URL}/app): upload a run sheet and download the grandMA3 macro
 ${formats}
 ${guides}
+- [${en.changelog.title}](${SITE_URL}${CHANGELOG_PATH}): ${en.changelog.lead} Latest: ${CHANGELOG[0].date}.
 
 ## FAQ
 
