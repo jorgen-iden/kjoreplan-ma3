@@ -21,11 +21,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default function AppPage({ params }: { params: Promise<{ locale: string }> }) {
   setRequestLocale(use(params).locale);
   // The converter is the only client component that reads texts itself; it gets just its namespaces.
-  const { steps, upload, columns, review, settings, export: exportTexts, note, errors } = use(getMessages());
+  const { steps, upload, columns, review, settings, export: exportTexts, note, errors, feedback } = use(getMessages());
   return (
     <>
       <SiteHeader />
-      <NextIntlClientProvider messages={{ steps, upload, columns, review, settings, export: exportTexts, note, errors }}>
+      <NextIntlClientProvider messages={{ steps, upload, columns, review, settings, export: exportTexts, note, errors, feedback }}>
         <Converter />
       </NextIntlClientProvider>
     </>
