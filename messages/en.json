@@ -819,6 +819,7 @@
     "sample": "Try the sample run sheet",
     "contact": "Contact",
     "languages": "Language",
-    "copyright": "© {year} CueSetter"
+    "copyright": "© {year} CueSetter",
+    "follow": "Follow"
   }
 }
