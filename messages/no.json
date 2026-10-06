@@ -1307,5 +1307,33 @@
     "languages": "Språk",
     "copyright": "© {year} CueSetter",
     "follow": "Følg oss"
+  },
+  "feedback": {
+    "line": "Virket det i konsollen? Si fra på <mail>{email}</mail> – det hjelper oss å gjøre CueSetter bedre.",
+    "subject": "Tilbakemelding på CueSetter",
+    "body": "Versjon: {version}\nCuer: {cues}\n\n"
+  },
+  "changelog": {
+    "crumb": "Endringslogg",
+    "metaTitle": "Endringslogg – CueSetter",
+    "metaDescription": "Hva som er endret i CueSetter, verktøyet som gjør en kjøreplan om til en cueliste i grandMA3: nye funksjoner, fikser og språk, nyeste først.",
+    "kicker": "Hva er nytt",
+    "title": "Endringslogg",
+    "lead": "Det som er lansert i CueSetter, nyeste først.",
+    "linkLabel": "Endringslogg",
+    "feedback": "Savner du noe, eller virker noe ikke i konsollen din? Skriv til <mail>{email}</mail>."
+  },
+  "handoff": {
+    "kicker": "For produsenter",
+    "title": "Send dette til lysoperatøren",
+    "text": "Bruker du malen til forestillingen? Send lysoperatøren en kort beskjed. Kjører de grandMA3, kan de gjøre kjøreplanen om til en navngitt cueliste i konsollen.",
+    "attach": "Legg ved kjøreplanen før du sender.",
+    "email": "Send på e-post",
+    "copy": "Kopier teksten",
+    "copied": "Kopiert",
+    "copyFailed": "Klarte ikke å kopiere automatisk. Merk teksten og kopier den selv.",
+    "preview": "Beskjeden",
+    "subject": "Kjøreplan til grandMA3",
+    "body": "Hei,\n\nKjøreplanen for forestillingen ligger vedlagt.\n\nKjører du grandMA3, kan du gjøre den om til en navngitt cueliste på {appUrl}. Last opp filen og last ned en makro som bygger sekvensen med én cue per punkt. Alt skjer i nettleseren, så kjøreplanen blir på maskinen din.\n\nMalen den er laget i: {templateUrl}"
   }
 }
