@@ -184,7 +184,6 @@
         "a": "Det er gratis å prøve, uten konto."
       }
     ],
-    "contact": "Spørsmål eller tilbakemeldinger: <mail>{email}</mail>",
     "videoKicker": "Se det på ett minutt",
     "videoTitle": "Fra kjøreplan i PDF til cueliste i grandMA3",
     "videoPlay": "Spill av demoen"
@@ -804,5 +803,15 @@
       ]
     },
     "templatePreview": "Malen"
+  },
+  "footer": {
+    "about": "Gjør kjøreplanen fra produksjonen om til en navngitt cueliste i grandMA3 på ett minutt. Alt skjer i nettleseren.",
+    "product": "CueSetter",
+    "converter": "Konverteren",
+    "sample": "Prøv med eksempel-kjøreplanen",
+    "contact": "Kontakt",
+    "languages": "Språk",
+    "copyright": "© {year} CueSetter",
+    "follow": "Følg oss"
   }
 }
