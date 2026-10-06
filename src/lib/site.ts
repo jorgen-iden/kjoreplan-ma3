@@ -20,7 +20,7 @@ export const INDEXNOW_KEY = '7dfcb76cf04eaf08144f631fba7bb9aa';
  * Our profiles elsewhere (LinkedIn, YouTube …). Listed as sameAs in the Organization JSON-LD, so
  * search engines and AI connect them to CueSetter. Add a URL here when a profile is created.
  */
-export const SOCIAL_PROFILES: string[] = [];
+export const SOCIAL_PROFILES: string[] = ['https://www.instagram.com/cuesetter/', 'https://www.tiktok.com/@cuesetter'];
 
 /**
  * The demo video on YouTube, shown on the front page and described as a VideoObject for Google.
