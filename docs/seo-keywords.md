@@ -85,7 +85,7 @@ Samme dokument har mange navn, avhengig av bransje (konsert, teater, TV, event) 
 |---|---|---|
 | MA Lighting (help.malighting.com) | Manualen: import, makroer, sekvenser | Forklarer kommandoer, løser ikke kjøreplanen |
 | Moving Light Assistant (manula.com) | Eksport av cuelister som XML til MA3 | Eget betalt program, krever data i MLA |
-| Timecode Creator (notion.site) | Timecode-sekvenser fra Reaper/CSV/utklippstavle | Bygget for timecode og lyd, ikke kjøreplaner |
+| Timecode Creator (GMA Toolbox, gmatoolbox.app) | Timecode-sekvenser fra Reaper/CSV/utklippstavle | Bygget for timecode og lyd, ikke kjøreplaner |
 | Export CueList for gma3 (App Store) | Cueliste fra MIDI/CSV/Reaper | Bare macOS, krever strukturerte data |
 | Cuepoints (super.site) | Import til grandMA3 fra eget verktøy | Eget økosystem |
 
@@ -113,37 +113,50 @@ Mulighet for topp 4: **Høy** = lite relevant konkurranse. **Middels** = MA-manu
 | Ablaufplan grandMA3 Cueliste | de | Verktøy | B (når /de finnes) | Høy |
 | CueSetter / cuesetter | alle | Merke | A | Høy |
 
-### 2. Format inn (sider: /excel-to-grandma3, /pdf-to-grandma3, /word-to-grandma3)
+### 2. Format inn (sider: /excel-to-grandma3, /pdf-to-grandma3, /word-to-grandma3, /csv-to-grandma3)
 
-| Søkeord | Språk | Intensjon | Prioritet | Mulighet |
-|---|---|---|---|---|
+| Søkeord | Språk | Intensjon | Prioritet | Mulighet | Side |
+|---|---|---|---|---|---|
 | grandMA3 import cue list from Excel | en | Verktøy/hvordan | A | Middels |
 | Excel to grandMA3 / spreadsheet to grandMA3 cues | en | Verktøy | A | Middels |
-| CSV to grandMA3 cue list | en | Verktøy | B | Middels |
+| CSV to grandMA3 cue list | en | Verktøy | B | Middels | ✅ `/csv-to-grandma3` (innholdsside: CSV åpnes i regneark og lagres som .xlsx eller limes inn) |
 | PDF run sheet to grandMA3 | en | Verktøy | A | Høy |
 | Word run of show to grandMA3 | en | Verktøy | B | Høy |
 | importere cueliste fra Excel grandMA3 | no | Verktøy | B | Høy |
 
 ### 3. Hvordan-guider (sider: /guides/…)
 
-| Søkeord | Språk | Intensjon | Prioritet | Mulighet |
-|---|---|---|---|---|
-| grandMA3 import macro (USB / onPC) | en | Hvordan | B | Middels |
-| grandMA3 label cues / name cues quickly | en | Hvordan | B | Middels |
+| Søkeord | Språk | Intensjon | Prioritet | Mulighet | Side |
+|---|---|---|---|---|---|
+| grandMA3 import macro (USB / onPC) | en | Hvordan | B | Middels | ✅ `/guides/import-macro-grandma3` |
+| grandMA3 label cues / name cues quickly | en | Hvordan | B | Middels | ✅ `/guides/label-cues-grandma3` |
 | grandMA3 store empty cues | en | Hvordan | C | Middels |
 | grandMA3 macro XML format | en | Hvordan | C | Middels |
-| grandMA3 insert cue between cues (decimal cue numbers) | en | Hvordan | C | Middels |
-| grandMA3 sub cues from set list | en | Hvordan | C | Høy |
-| importere makro grandMA3 | no | Hvordan | B | Høy |
+| grandMA3 insert cue between cues (decimal cue numbers) | en | Hvordan | C | Middels | ✅ `/guides/sub-cues-grandma3` |
+| grandMA3 sub cues from set list | en | Hvordan | C | Høy | ✅ `/guides/sub-cues-grandma3` |
+| importere makro grandMA3 | no | Hvordan | B | Høy | ✅ `/no/guides/import-macro-grandma3` |
 
-### 4. Alternativer (side: /alternatives eller seksjon)
+### 4. Alternativer (side: /alternatives) ✅
 
-| Søkeord | Språk | Intensjon | Prioritet | Mulighet |
-|---|---|---|---|---|
-| Timecode Creator alternative (for run sheets) | en | Sammenligning | C | Middels |
-| Export CueList for gma3 alternative (Windows/web) | en | Sammenligning | C | Høy |
+| Søkeord | Språk | Intensjon | Prioritet | Mulighet | Side |
+|---|---|---|---|---|---|
+| Timecode Creator alternative (for run sheets) | en | Sammenligning | C | Middels | ✅ `/alternatives` |
+| Export CueList for gma3 alternative (Windows/web) | en | Sammenligning | C | Høy | ✅ `/alternatives` |
 
 Sammenligninger skal være saklige og sanne: hva hvert verktøy er laget for, og når CueSetter passer bedre. Aldri konkurrentenes logoer eller påstander vi ikke kan dokumentere.
+`/alternatives` bygger bare på konkurrentenes egne sider (kildelisten nederst på siden), sjekket 6. oktober 2026. Sjekk kildene på nytt og oppdater datoen i teksten (en, no, de) minst hvert halvår, og når priser endres. Merk: Timecode Creator ligger nå i GMA Toolbox (gmatoolbox.app), ikke på notion.site; GMA Toolbox har også en Macro Generator (tabell → makro med egne maler) som er nærmere CueSetter enn timecode-verktøyene.
+
+### 5. Maler (sider: /run-sheet-template, /run-of-show-template, /running-order-template) ✅
+
+| Søkeord | Språk | Intensjon | Prioritet | Mulighet | Side |
+|---|---|---|---|---|---|
+| run sheet template | en | Mal | B | Middels | ✅ `/run-sheet-template` |
+| run of show template (US) | en | Mal | B | Middels | ✅ `/run-of-show-template` |
+| running order template (UK) | en | Mal | B | Middels | ✅ `/running-order-template` |
+| mal kjøreplan | no | Mal | B | Høy | ✅ `/no/run-sheet-template` |
+| Ablaufplan Vorlage | de | Mal | B | Middels | ✅ `/de/run-sheet-template` |
+
+Samme malfiler på alle tre sidene, men egen tittel, innledning, tips og FAQ (en test sjekker at setninger ikke er kopiert ord for ord fra /run-sheet-template). På norsk og tysk forklarer sidene de engelske navnene.
 
 ### Søk vi ikke går etter
 - «run sheet», «cue list», «cue sheet» alene: for generiske, og «run sheet» betyr også en visning på konsollen.

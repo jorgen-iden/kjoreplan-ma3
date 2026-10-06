@@ -2,7 +2,8 @@ import { useTranslations } from 'next-intl';
 import type { ReactNode } from 'react';
 import { Link } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
-import { CONTENT_KEYS, CONTENT_PAGES } from '@/lib/content-pages';
+import { CHANGELOG_PATH } from '@/lib/changelog';
+import { CONTENT_PAGES, contentKeysIn } from '@/lib/content-pages';
 import { FORMAT_PAGES, FORMAT_SLUGS } from '@/lib/formats';
 import { logoMarkSvg } from '@/lib/logo';
 import { CONTACT_EMAIL, SOCIAL_PROFILES } from '@/lib/site';
@@ -32,9 +33,10 @@ export function SiteFooter() {
   const th = useTranslations('home');
   const tf = useTranslations('formats');
   const tp = useTranslations('pages');
+  const tc = useTranslations('changelog');
   return (
     <footer className="border-t border-line bg-card">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-12 px-5 py-16 sm:px-8 lg:grid-cols-[minmax(0,1.6fr)_repeat(3,minmax(0,1fr))] lg:gap-10">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-12 px-5 py-16 sm:px-8 lg:grid-cols-[minmax(0,1.4fr)_repeat(4,minmax(0,1fr))] lg:gap-10">
         <div className="col-span-2 lg:col-span-1 lg:pr-8">
           <Link href="/" aria-label="CueSetter" className="inline-flex items-center gap-2.5 text-ink no-underline">
             {logoMarkSvg(28)}
@@ -70,10 +72,7 @@ export function SiteFooter() {
               </Link>
             </li>
           ))}
-        </Column>
-
-        <Column title={tp('footerLabel')}>
-          {CONTENT_KEYS.map((key) => (
+          {contentKeysIn('formats').map((key) => (
             <li key={key}>
               <Link href={CONTENT_PAGES[key].path} className={LINK}>
                 {tp(`${key}.linkLabel`)}
@@ -82,7 +81,19 @@ export function SiteFooter() {
           ))}
         </Column>
 
-        <div className="col-span-2 grid grid-cols-2 gap-x-6 lg:col-span-1 lg:block lg:space-y-10">
+        {(['guides', 'templates'] as const).map((group) => (
+          <Column key={group} title={tp(`footer.${group}`)}>
+            {contentKeysIn(group).map((key) => (
+              <li key={key}>
+                <Link href={CONTENT_PAGES[key].path} className={LINK}>
+                  {tp(`${key}.linkLabel`)}
+                </Link>
+              </li>
+            ))}
+          </Column>
+        ))}
+
+        <div className="space-y-10">
           <Column title={t('product')}>
             <li>
               <Link href="/app" className={LINK}>
@@ -92,6 +103,11 @@ export function SiteFooter() {
             <li>
               <Link href={{ pathname: '/app', query: { sample: '1' } }} className={LINK}>
                 {t('sample')}
+              </Link>
+            </li>
+            <li>
+              <Link href={CHANGELOG_PATH} className={LINK}>
+                {tc('linkLabel')}
               </Link>
             </li>
           </Column>

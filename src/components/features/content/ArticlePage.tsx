@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 import type { ReactNode } from 'react';
 import { Faq } from '@/components/features/landing/Faq';
-import { HeroDemo } from '@/components/features/landing/HeroDemo';
+import { HeroDemo, type DemoRow } from '@/components/features/landing/HeroDemo';
 import { FileIcon } from '@/components/features/landing/ProofVisuals';
 import { Reveal } from '@/components/features/landing/Reveal';
 import { SiteFooter } from '@/components/layout/SiteFooter';
@@ -9,9 +9,12 @@ import { SiteHeader } from '@/components/layout/SiteHeader';
 import { logoMarkSvg } from '@/lib/logo';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
-import { CONTENT_PAGES, TEMPLATE_FILES, type ContentKey, type Section } from '@/lib/content-pages';
+import { contentPage, TEMPLATE_FILES, type ContentKey, type Section } from '@/lib/content-pages';
 import { TEMPLATES } from '@/lib/templates';
 import { contentPageJsonLd, jsonLdScript, type FaqItem } from '@/lib/structured-data';
+import { handoffMail } from '@/lib/mailto';
+import { localePath, SITE_URL } from '@/lib/site';
+import { SendToOperator, type SendToOperatorLabels } from './SendToOperator';
 import { TrackedDownload } from './TrackedDownload';
 
 const CONTAINER = 'mx-auto max-w-6xl px-5 sm:px-8';
@@ -109,7 +112,7 @@ function Downloads({ locale }: { locale: Locale }) {
   const t = useTranslations('pages');
   const file = TEMPLATE_FILES[locale] ?? TEMPLATE_FILES.en;
   return (
-    <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:max-w-md">
+    <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:max-w-md">
       {(['xlsx', 'docx'] as const).map((ext) => (
         <li key={ext}>
           <TrackedDownload
@@ -135,6 +138,34 @@ function Downloads({ locale }: { locale: Locale }) {
 }
 
 /**
+ * The note producers send their lighting operator, on every template page: where the run sheet
+ * becomes a grandMA3 cue list (the converter) and the template page itself, in the page's language.
+ */
+function OperatorNote({ locale, path }: { locale: Locale; path: string }) {
+  const t = useTranslations('handoff');
+  const { subject, body, href } = handoffMail(
+    { subject: t.raw('subject') as string, body: t.raw('body') as string },
+    { appUrl: `${SITE_URL}${localePath(locale, '/app')}`, templateUrl: `${SITE_URL}${localePath(locale, path)}` },
+  );
+  const labels: SendToOperatorLabels = {
+    kicker: t('kicker'),
+    title: t('title'),
+    text: t('text'),
+    attach: t('attach'),
+    email: t('email'),
+    copy: t('copy'),
+    copied: t('copied'),
+    copyFailed: t('copyFailed'),
+    preview: t('preview'),
+  };
+  return (
+    <Reveal className={`${CONTAINER} mt-28 sm:mt-36`}>
+      <SendToOperator subject={subject} body={body} href={href} labels={labels} />
+    </Reveal>
+  );
+}
+
+/**
  * A content page: a direct answer first (what AI search quotes), then sections with a table of
  * contents and a CueSetter card beside them, an optional FAQ and the closing call to action.
  */
@@ -144,15 +175,15 @@ export function ArticlePage({ pageKey, locale }: { pageKey: ContentKey; locale: 
   const th = useTranslations('home');
   const sections = t.raw('sections') as Section[];
   const faq = (t.has('faq') ? t.raw('faq') : []) as FaqItem[];
-  const { path, type } = CONTENT_PAGES[pageKey];
-  const template = pageKey === 'template' ? (TEMPLATES[locale as keyof typeof TEMPLATES] ?? TEMPLATES.en) : null;
+  const { path, type, hero, icon } = contentPage(pageKey);
+  const template = hero === 'template' ? (TEMPLATES[locale as keyof typeof TEMPLATES] ?? TEMPLATES.en) : null;
   const jsonLd = contentPageJsonLd({ locale, path, type, title: t('title'), description: t('metaDescription'), faq });
 
   return (
     <>
       <SiteHeader />
       <main id="main" className="overflow-x-clip pb-24">
-        <section className={`${CONTAINER} relative pt-10 sm:pt-16 ${template ? 'grid items-center gap-12 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)]' : ''}`}>
+        <section className={`${CONTAINER} relative pt-10 sm:pt-16 ${hero ? 'grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)]' : ''}`}>
           <div aria-hidden="true" className="pointer-events-none absolute -top-20 right-0 -z-10 h-80 w-[40rem] rounded-full bg-accent/10 blur-3xl" />
           <div>
             <nav aria-label={tp('breadcrumbLabel')} className="animate-rise mb-6 text-sm text-muted">
@@ -162,7 +193,14 @@ export function ArticlePage({ pageKey, locale }: { pageKey: ContentKey; locale: 
               <span aria-hidden="true"> / </span>
               <span>{t('crumb')}</span>
             </nav>
-            <p className="animate-rise mb-4 font-mono text-sm font-semibold text-accent">{t('kicker')}</p>
+            {icon ? (
+              <div className="animate-rise mb-4 flex items-center gap-3">
+                <FileIcon type={icon} size={28} />
+                <p className="font-mono text-sm font-semibold text-accent">{t('kicker')}</p>
+              </div>
+            ) : (
+              <p className="animate-rise mb-4 font-mono text-sm font-semibold text-accent">{t('kicker')}</p>
+            )}
             <h1 className="animate-rise animate-delay-100 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight sm:text-6xl">{t('title')}</h1>
             <p className="animate-rise animate-delay-200 mt-6 max-w-3xl text-xl leading-relaxed text-muted">{rich(t('lead'))}</p>
             {template && <Downloads locale={locale} />}
@@ -184,9 +222,25 @@ export function ArticlePage({ pageKey, locale }: { pageKey: ContentKey; locale: 
               />
             </div>
           )}
+          {hero === 'paste' && (
+            /* Rows copied from a spreadsheet and pasted as text: the same plain table, becoming a cue list. */
+            <div className="animate-entry animate-delay-300 relative">
+              <HeroDemo
+                rows={th.raw('demo.rows') as DemoRow[]}
+                labels={{
+                  file: t('heroFile'),
+                  sequence: th('demo.sequence'),
+                  columns: { n: th('demo.columns.n'), time: th('demo.columns.time'), title: th('demo.columns.title'), extra: th('demo.columns.extra') },
+                  go: th('demo.go'),
+                  from: t('heroFrom'),
+                  to: th('demo.to'),
+                }}
+              />
+            </div>
+          )}
         </section>
 
-        <div className={`${CONTAINER} mt-20 grid gap-16 lg:grid-cols-[minmax(0,1fr)_18rem]`}>
+        <div className={`${CONTAINER} mt-20 grid grid-cols-1 gap-16 lg:grid-cols-[minmax(0,1fr)_18rem]`}>
           <article className="max-w-3xl space-y-16">
             {sections.map((s, i) => (
               <Reveal as="section" key={s.h}>
@@ -225,6 +279,8 @@ export function ArticlePage({ pageKey, locale }: { pageKey: ContentKey; locale: 
             </div>
           </aside>
         </div>
+
+        {template && <OperatorNote locale={locale} path={path} />}
 
         {faq.length > 0 && (
           <Reveal as="section" className={`${CONTAINER} mt-28 sm:mt-36`}>
