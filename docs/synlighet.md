@@ -36,7 +36,8 @@ Status: ✅ ferdig · 🟡 klart, venter på eieren · ⬜ ikke startet
 
 ## 3. Gratis maler ✅
 
-`/run-sheet-template` med Excel- og Word-maler (en og no). Nedlastinger telles i Vercel som `Template downloaded`.
+`/run-sheet-template` med Excel- og Word-maler (en, no og de). Nedlastinger telles i Vercel som `Template downloaded`.
+✅ Variantene `/run-of-show-template` (US) og `/running-order-template` (UK) bruker de samme filene, med egen tekst og FAQ. Malforhåndsvisning og nedlasting styres av `hero: 'template'` i `src/lib/content-pages.ts`.
 Innholdet ligger i `src/lib/templates.ts`; kjør `npm run templates` etter endringer.
 
 ## 4. «Hva er en kjøreplan?» ✅
@@ -79,7 +80,12 @@ Post selv, fra egen konto, ett sted om gangen med noen dagers mellomrom. Svar p�
 
 - ✅ `/guides/import-macro-grandma3` (en og no): hvor filen skal ligge, Show Creator, kommandolinjen som reserve, hvordan makrofilen ser ut.
 - 🟡 Skjermbilder fra onPC (Show Creator med Macros valgt, Macros-poolen etter import) gjør guiden sterkere. Send dem, så legger Claude dem inn.
-- ⬜ Neste guider: «Navngi cuer raskt i grandMA3», «Desimal-cuer og under-cuer i grandMA3».
+- ✅ `/guides/label-cues-grandma3` (en, no, de): Label-kommandoen, mange navn på én linje med semikolon, 40 tegn, Note-feltet.
+- ✅ `/guides/sub-cues-grandma3` (en, no, de): desimal-cuer, legge inn en cue mellom to, hvordan CueSetter nummererer (følg #, løpende, .1 .2, 12.5).
+- ✅ `/csv-to-grandma3` (en, no, de): CSV åpnes i et regneark og lagres som .xlsx eller limes inn (CueSetter leser ikke .csv direkte).
+- ✅ `/alternatives` (en, no, de): saklig sammenligning med Timecode Creator, Moving Light Assistant og Export CueList for gma3, med kilder og dato. Sjekk kildene hvert halvår.
+- ✅ Formatsidene lenker til guidene og malen, og guidene lenker til formatsidene og hverandre.
+- 🟡 Skjermbilder fra onPC av Label-kommandoen og en sekvens med 12.5 og 12.1 gjør de nye guidene sterkere.
 
 ## 7. Tysk (`/de`)
 

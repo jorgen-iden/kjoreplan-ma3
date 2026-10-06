@@ -336,7 +336,7 @@
     "loading": "Laster …"
   },
   "formats": {
-    "footerLabel": "Formater for kjøreplaner",
+    "footerLabel": "Formater",
     "breadcrumbLabel": "Brødsmulesti",
     "readsKicker": "Hva den leser",
     "stepsKicker": "Slik virker det",
@@ -532,14 +532,18 @@
       "scanned": "Skannet"
     },
     "alsoKicker": "Og i alle formater",
-    "otherFormatsTitle": "Andre formater"
+    "otherFormatsTitle": "Andre formater",
+    "guidesTitle": "Guider og maler"
   },
   "pages": {
     "breadcrumbLabel": "Brødsmulesti",
     "toc": "På denne siden",
     "cardTitle": "Kjøreplan til grandMA3 på ett minutt",
     "cardText": "Last opp en kjøreplan i PDF, Word eller Excel og få en makro som bygger cuelisten. Gratis å prøve.",
-    "footerLabel": "Guider og maler",
+    "footer": {
+      "guides": "Guider",
+      "templates": "Maler"
+    },
     "download": {
       "xlsx": "Excel-mal",
       "docx": "Word-mal",
@@ -586,7 +590,8 @@
             "Lysoperatøren kan slippe filen rett inn i [CueSetter](/app). Hver rad blir en navngitt cue i en grandMA3-sekvens, cuenumrene følger #-kolonnen, og låtene i en settliste kan deles i under-cuer med ett klikk."
           ],
           "after": [
-            "Les mer om [kjøreplaner i Excel](/excel-to-grandma3) og [kjøreplaner i Word](/word-to-grandma3) i CueSetter, eller om [hva en kjøreplan er](/what-is-a-run-sheet)."
+            "Les mer om [kjøreplaner i Excel](/excel-to-grandma3) og [kjøreplaner i Word](/word-to-grandma3) i CueSetter, eller om [hva en kjøreplan er](/what-is-a-run-sheet).",
+            "Den samme malen ligger også på sidene for [run of show](/run-of-show-template) og [running order](/running-order-template), med tips til arrangementer og konserter."
           ]
         }
       ],
@@ -691,7 +696,8 @@
             ]
           },
           "after": [
-            "En settliste – låtene på en konsert – er ofte en del av kjøreplanen. En call sheet (oppmøteliste) er noe annet: den forteller crewet når de skal møte."
+            "En settliste – låtene på en konsert – er ofte en del av kjøreplanen. En call sheet (oppmøteliste) er noe annet: den forteller crewet når de skal møte.",
+            "Gratis maler under to av disse navnene: [mal for run of show](/run-of-show-template) og [mal for running order](/running-order-template)."
           ]
         },
         {
@@ -783,7 +789,8 @@
         {
           "h": "Lag makroen fra kjøreplanen",
           "p": [
-            "Å skrive en makro for en lang kjøreplan for hånd tar like lang tid som å taste kjøreplanen inn i konsollen. [CueSetter](/app) leser kjøreplanen – [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3) eller [Excel](/excel-to-grandma3) – og lager makroen for deg, med én navngitt cue per punkt og cuenumre som følger kjøreplanen."
+            "Å skrive en makro for en lang kjøreplan for hånd tar like lang tid som å taste kjøreplanen inn i konsollen. [CueSetter](/app) leser kjøreplanen – [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3) eller [Excel](/excel-to-grandma3) – og lager makroen for deg, med én navngitt cue per punkt og cuenumre som følger kjøreplanen.",
+            "Navngir du cuene for hånd i stedet? Se [slik navngir du cuer i grandMA3](/guides/label-cues-grandma3)."
           ]
         }
       ],
@@ -802,7 +809,494 @@
         }
       ]
     },
-    "templatePreview": "Malen"
+    "templatePreview": "Malen",
+    "csv": {
+      "crumb": "CSV til grandMA3",
+      "metaTitle": "Kjøreplan i CSV til cueliste i grandMA3 – CueSetter",
+      "metaDescription": "Slik får du en kjøreplan eller cueliste i CSV inn i grandMA3: åpne CSV-filen i Excel, Google Regneark eller Numbers, og lagre den som .xlsx eller lim inn radene i CueSetter. Du får en makro som bygger en navngitt cueliste.",
+      "kicker": "CSV → grandMA3",
+      "title": "Kjøreplan i CSV til cueliste i grandMA3",
+      "lead": "CueSetter åpner ikke .csv-filer direkte, men en CSV er bare ett steg unna. Åpne den i Excel, Google Regneark eller Numbers, og lagre den som .xlsx og last opp den, eller kopier radene med overskriften og lim dem inn i CueSetter. Uansett får du en grandMA3-makro med én navngitt cue per rad.",
+      "linkLabel": "CSV til grandMA3",
+      "heroFile": "Limt inn fra regnearket",
+      "heroFrom": "Rader kopiert fra Excel, Google Regneark eller Numbers",
+      "sections": [
+        {
+          "h": "To veier inn",
+          "p": [
+            "En CSV-fil er ren tekst: én linje per rad, med cellene skilt av komma eller semikolon. CueSetter leser Excel-filer og tekst kopiert fra et regneark, så regnearkprogrammet tar seg av CSV-delen:"
+          ],
+          "list": [
+            "Lagre som .xlsx: åpne CSV-filen, lagre eller last den ned som Excel-arbeidsbok (.xlsx) og last den opp i [CueSetter](/app). Best når du får nye versjoner av filen.",
+            "Kopier og lim inn: åpne CSV-filen, merk radene med overskriftsraden, kopier, og lim dem inn i feltet «Eller lim inn tekst» i CueSetter. Raskest når det er en engangsjobb."
+          ],
+          "after": [
+            "Begge gir samme resultat: kolonnene finnes ut fra overskriftsraden, og hver rad blir en cue."
+          ]
+        },
+        {
+          "h": "Steg for steg",
+          "steps": [
+            "Åpne CSV-filen i Excel, Google Regneark eller Numbers. Havner alt i én kolonne, bruk programmets import eller «tekst til kolonner» og velg skilletegnet filen bruker (komma eller semikolon).",
+            "Sjekk at det finnes en overskriftsrad, med ord som #, Start, Tid, Varighet, Tittel eller Punkt.",
+            "Lagre som .xlsx (i Google Regneark: Fil → Last ned → Microsoft Excel; i Numbers: Arkiv → Eksporter til → Excel), eller merk radene med overskriften og kopier dem.",
+            "Last opp .xlsx-filen, eller lim inn radene, i [CueSetter](/app). Sjekk kolonnene og cuene.",
+            "Last ned makroen og [importer den på konsollen](/guides/import-macro-grandma3). Kjør den én gang, så er sekvensen bygget."
+          ]
+        },
+        {
+          "h": "Hvorfor ikke lime inn selve CSV-teksten?",
+          "p": [
+            "Når du kopierer celler fra et regneark, kommer de ut skilt med tabulator, og CueSetter leser tabulatorskilt tekst med en overskriftsrad kolonne for kolonne. Råteksten i en CSV-fil har komma i stedet for tabulator, så den leses linje for linje, som en kjøreplan skrevet som «18:30 Dørene åpner». Det fungerer for enkle lister, men kolonnene forsvinner. Kopier fra regnearket, ikke fra et tekstprogram."
+          ]
+        },
+        {
+          "h": "Dette leser CueSetter i radene",
+          "list": [
+            "Overskriftsraden kan stå under en tittel eller inforader; CueSetter leter i de første 20 radene.",
+            "Nummer, starttid, varighet og tittel finnes ut fra overskriften. Andre kolonner, som notater, vises, men brukes ikke.",
+            "En rad uten nummer eller tid fortsetter punktet over, så en settliste over flere rader blir én cue, klar til å [deles i under-cuer](/guides/sub-cues-grandma3).",
+            "Cuenumrene følger #-kolonnen. Rader uten nummer får et nummer mellom naboene."
+          ],
+          "after": [
+            "Mer om regneark i [Excel til grandMA3](/excel-to-grandma3). Skal du lage kjøreplanen fra bunnen? Start med den [gratis malen for kjøreplan](/run-sheet-template)."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Kan CueSetter importere en CSV-fil?",
+          "a": "Ikke direkte. Åpne CSV-filen i Excel, Google Regneark eller Numbers og lagre den som .xlsx, eller kopier radene med overskriftsraden og lim dem inn i CueSetter som tekst."
+        },
+        {
+          "q": "CSV-filen kommer fra et kjøreplanverktøy. Virker det?",
+          "a": "Har den en overskriftsrad og én rad per punkt, ja. Åpne den i et regneark først, sjekk at kolonnene er delt riktig, og lagre som .xlsx eller kopier og lim inn."
+        },
+        {
+          "q": "Lastes filen opp til en server?",
+          "a": "Nei. Filer og innlimt tekst leses i nettleseren på din egen maskin og sendes aldri til oss eller noen annen server."
+        }
+      ]
+    },
+    "labelCues": {
+      "crumb": "Navngi cuer i grandMA3",
+      "metaTitle": "Slik navngir du cuer raskt i grandMA3 (Label) – CueSetter",
+      "metaDescription": "Label-kommandoen for cuer og sekvenser i grandMA3, hvordan du navngir mange cuer på én gang fra kommandolinjen med semikolon, hva du må passe på i navnene, og hvordan du navngir en hel cueliste fra kjøreplanen.",
+      "kicker": "Guide · grandMA3",
+      "title": "Slik navngir du cuer raskt i grandMA3",
+      "lead": "Bruk Label-kommandoen: Label Sequence 101 Cue 1 \"Dørene åpner\" gir cue 1 et navn, og Label Sequence 101 \"Vårkonsert\" gir sekvensen et navn. For å navngi mange cuer på én gang setter du kommandoene på én linje, skilt med semikolon, og limer linjen inn i kommandolinjen.",
+      "linkLabel": "Navngi cuer i grandMA3",
+      "sections": [
+        {
+          "h": "Label-kommandoen",
+          "p": [
+            "Label gir et objekt et navn. For en cue oppgir du sekvensen, cuenummeret og navnet i doble anførselstegn; for selve sekvensen sløyfer du cuen:"
+          ],
+          "code": "Label Sequence 101 Cue 1 \"Dørene åpner\"\nLabel Sequence 101 Cue 2 \"Velkommen ved programleder\"\nLabel Sequence 101 Cue 2.5 \"Prisutdeling\"\nLabel Sequence 101 \"Vårkonsert\"",
+          "after": [
+            "Dette er de samme kommandoene en makro fra CueSetter bruker, bekreftet på grandMA3 onPC 2.5.1. Desimal-cuer som 2.5 fungerer på samme måte; se [under-cuer og desimal-cuer](/guides/sub-cues-grandma3)."
+          ]
+        },
+        {
+          "h": "Navngi mange cuer på én gang",
+          "p": [
+            "Flere kommandoer kan stå på én linje, skilt med semikolon. Skriv linjene i et tekstprogram eller et regneark, slå dem sammen, og lim hele linjen inn i kommandolinjen:"
+          ],
+          "code": "Label Sequence 101 Cue 1 \"Dørene åpner\"; Label Sequence 101 Cue 2 \"Velkommen ved programleder\"; Label Sequence 101 Cue 3 \"Fjordbyen Brass\"",
+          "after": [
+            "Finnes ikke cuene ennå, lagrer du hver av dem før du navngir den: Store Sequence 101 Cue 1; Label Sequence 101 Cue 1 \"Dørene åpner\". Tøm programmeren først (ClearAll), så lagres cuene tomme. Finnes cuene allerede, holder det med Label-kommandoene."
+          ]
+        },
+        {
+          "h": "Dette må du passe på i navnene",
+          "list": [
+            "Doble anførselstegn avslutter navnet, så et navn kan ikke inneholde dem. CueSetter bytter dem ut med apostrof.",
+            "Semikolon skiller kommandoer på kommandolinjen. CueSetter bytter det ut med komma.",
+            "CueSetter holder navnene på maks 40 tegn og markerer dem som blir forkortet, så du kan skrive dem om før du laster ned.",
+            "Vil du ha klokkeslettet i navnet? CueSetter kan skrive «18:30 Dørene åpner» i stedet for «Dørene åpner» (Cue-navn: Klokkeslett + tittel)."
+          ]
+        },
+        {
+          "h": "Legg detaljene i Note-feltet",
+          "p": [
+            "Et cuenavn bør være kort nok til å leses på konsollen. Resten kan stå i cuens Note-felt:"
+          ],
+          "code": "Set Sequence 101 Cue 1 Property \"Note\" \"Start 18:30, Varighet 30\"",
+          "after": [
+            "CueSetter kan fylle Note-feltet med starttid og varighet, og med resten av tittelcellen (settliste, detaljer), opptil 250 tegn."
+          ]
+        },
+        {
+          "h": "Navngi en hel cueliste fra kjøreplanen",
+          "p": [
+            "Å skrive 40 Label-kommandoer tar like lang tid som å taste inn 40 navn på konsollen. [CueSetter](/app) leser kjøreplanen – [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3), [Excel](/excel-to-grandma3) eller [CSV via et regneark](/csv-to-grandma3) – og skriver Store- og Label-kommandoene for deg: som en makro du [importerer fra minnepinne](/guides/import-macro-grandma3), eller som én linje til kommandolinjen."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Hvordan gir jeg en cue nytt navn i grandMA3?",
+          "a": "Bruk Label med sekvens og cuenummer og det nye navnet i doble anførselstegn, for eksempel Label Sequence 101 Cue 3 \"Hovedakt\"."
+        },
+        {
+          "q": "Kan jeg navngi flere cuer på én gang?",
+          "a": "Ja. Sett Label-kommandoene på én linje, skilt med semikolon, og lim linjen inn i kommandolinjen. CueSetter lager den linjen fra en kjøreplan."
+        },
+        {
+          "q": "Hvorfor blir noen cuenavn forkortet?",
+          "a": "CueSetter holder cuenavn på maks 40 tegn. Lengre navn markeres i gjennomgangen, så du kan korte dem ned selv, og resten av teksten kan legges i Note-feltet."
+        }
+      ]
+    },
+    "subCues": {
+      "crumb": "Under-cuer i grandMA3",
+      "metaTitle": "Under-cuer og desimal-cuer i grandMA3 – CueSetter",
+      "metaDescription": "Slik virker desimal-cuer (12.1, 12.5) i grandMA3, slik legger du en cue mellom to andre med nummeret, og slik nummererer CueSetter cuene fra kjøreplanen: følg #, del en settliste i .1 .2, fyll hull med 12.5.",
+      "kicker": "Guide · grandMA3",
+      "title": "Under-cuer og desimal-cuer i grandMA3",
+      "lead": "Cuenumre i grandMA3 kan ha desimaler, så 12.5 ligger mellom cue 12 og cue 13, og 12.1, 12.2 følger rett etter 12. Bruk dem til et punkt som kommer inn sent, eller til låtene i en settliste, så blir numrene alle andre bruker stående.",
+      "linkLabel": "Under-cuer og desimal-cuer",
+      "sections": [
+        {
+          "h": "Hvorfor desimal-cuer",
+          "p": [
+            "På intercom roper inspisienten opp kjøreplanens numre: «standby 12». Er lyscuen for punkt 12 også cue 12, trenger ingen å oversette. Kommer det inn et punkt mellom 12 og 13, blir det 12.5 – i kjøreplanen og i sekvensen – og alle andre numre blir stående.",
+            "Under-cuer fungerer på samme måte. Et konsertpunkt med settliste blir cue 12 for artisten og 12.1, 12.2, 12.3 for låtene."
+          ]
+        },
+        {
+          "h": "Legg en cue mellom to andre",
+          "p": [
+            "En cue plasseres etter nummeret sitt, så gi den et nummer mellom naboene:"
+          ],
+          "code": "Store Sequence 101 Cue 12.5\nLabel Sequence 101 Cue 12.5 \"Prisutdeling\"",
+          "after": [
+            "Dette er kommandoene en makro fra CueSetter bruker for en desimal-cue, bekreftet på grandMA3 onPC 2.5.1. Cuen havner mellom 12 og 13, og cue 13 og utover beholder numrene sine. For å navngi cuer raskt, se [slik navngir du cuer i grandMA3](/guides/label-cues-grandma3)."
+          ]
+        },
+        {
+          "h": "Slik nummererer CueSetter cuene",
+          "table": {
+            "head": [
+              "Kjøreplan",
+              "Cuenumre"
+            ],
+            "rows": [
+              [
+                "#-kolonne 1, 2, 3 …",
+                "1, 2, 3 – # følges (standard)"
+              ],
+              [
+                "Punkt 12 med tre låter, delt i under-cuer",
+                "12, 12.1, 12.2, 12.3"
+              ],
+              [
+                "Flere enn ni låter",
+                "12.01, 12.02 … 12.12, så rekkefølgen holder"
+              ],
+              [
+                "Ett punkt uten # mellom 28 og 29",
+                "28.5"
+              ],
+              [
+                "To punkter uten # mellom 28 og 29",
+                "28.333, 28.667"
+              ],
+              [
+                "Ett punkt uten # mellom 1 og 3",
+                "2"
+              ],
+              [
+                "«12,5» med desimalkomma",
+                "12.5"
+              ],
+              [
+                "# mangler overalt, eller øker ikke",
+                "1, 2, 3 … (løpende)"
+              ]
+            ]
+          },
+          "after": [
+            "Hull fylles med hele tall når det er plass, ellers med desimaler fordelt jevnt mellom naboene, med maks tre desimaler. Gjennomgangen forteller hvor mange cuer som fikk et nummer imellom."
+          ]
+        },
+        {
+          "h": "Følg kjøreplanen, eller nummerer 1, 2, 3",
+          "list": [
+            "Følg kjøreplanens # (standard): cuenumrene er punktnumrene, så inspisientens opprop stemmer med konsollen.",
+            "Løpende 1, 2, 3: hvert punkt får neste hele tall, uansett hva kjøreplanen sier. Under-cuer får fortsatt .1, .2.",
+            "Kan ikke #-kolonnen brukes – mangler, er ikke tall eller øker ikke – nummererer CueSetter 1, 2, 3 og sier fra i gjennomgangen."
+          ]
+        },
+        {
+          "h": "Del en settliste i under-cuer",
+          "steps": [
+            "Skriv settlisten i tittelcellen i kjøreplanen, én låt per linje under navnet på artisten. [Malen for running order](/running-order-template) er laget for det.",
+            "Last opp kjøreplanen i [CueSetter](/app). Artisten blir én cue, og låtene ligger som notat til den.",
+            "Trykk Del opp på cuen i gjennomgangen. Hver låt blir en under-cue: 12.1, 12.2, 12.3.",
+            "Last ned makroen og [importer den på konsollen](/guides/import-macro-grandma3)."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Hvordan legger jeg inn en cue mellom to cuer i grandMA3?",
+          "a": "Lagre den med et nummer mellom de to, for eksempel Store Sequence 101 Cue 12.5 mellom cue 12 og 13. De andre cuene beholder numrene sine."
+        },
+        {
+          "q": "Hva skjer med punkter i kjøreplanen som mangler nummer?",
+          "a": "Med «Følg kjøreplanens #» gir CueSetter dem et nummer mellom naboene: et helt tall når det er plass, ellers en desimal som 12.5. Resten beholder #."
+        },
+        {
+          "q": "Hvorfor er cuene nummerert 1, 2, 3 og ikke som i kjøreplanen?",
+          "a": "Enten er «Løpende 1, 2, 3» valgt i innstillingene, eller så kunne ikke #-kolonnen brukes fordi numre mangler, er ugyldige eller ikke øker. Gjennomgangen sier hvilken av delene."
+        }
+      ]
+    },
+    "alternatives": {
+      "crumb": "Alternativer",
+      "metaTitle": "CueSetter vs. Timecode Creator, Moving Light Assistant og Export CueList for gma3",
+      "metaDescription": "En saklig sammenligning av CueSetter, Timecode Creator (GMA Toolbox), Moving Light Assistant og Export CueList for gma3: hva hvert verktøy er laget for, hva det leser, plattform og pris slik de selv oppgir.",
+      "kicker": "Sammenligning",
+      "title": "CueSetter vs. Timecode Creator, Moving Light Assistant og Export CueList for gma3",
+      "lead": "De løser forskjellige oppgaver. Timecode Creator og Export CueList for gma3 bygger timecode-sekvenser for grandMA fra markører i Reaper-, MIDI- eller CSV-filer. Moving Light Assistant dokumenterer riggen og programmeringen av movinglys. CueSetter gjør kjøreplanen fra produksjonen – PDF, Word eller Excel – om til en navngitt cueliste i grandMA3, i nettleseren.",
+      "linkLabel": "CueSetter vs. alternativer",
+      "sections": [
+        {
+          "h": "Kort fortalt",
+          "p": [
+            "Hva hvert verktøy sier om seg selv på egne sider, sjekket 6. oktober 2026. Priser og funksjoner endrer seg; følg kildene nederst for oppdatert informasjon."
+          ],
+          "table": {
+            "head": [
+              "Verktøy",
+              "Laget for",
+              "Leser",
+              "Plattform",
+              "Pris, slik oppgitt"
+            ],
+            "rows": [
+              [
+                "CueSetter",
+                "Å gjøre en kjøreplan om til en navngitt cueliste i grandMA3",
+                "PDF med tekst, Word (.docx), Excel (.xlsx), innlimt tekst",
+                "Nettleser, ingenting å installere",
+                "Gratis å prøve, uten konto"
+              ],
+              [
+                "Timecode Creator (del av GMA Toolbox)",
+                "Timecode-sekvenser for grandMA2 og grandMA3 fra markører",
+                "Reaper-prosjekter (.rpp), CSV-filer med markører, utklippstavlen fra Excel og lignende",
+                "Program for Windows 10+ og macOS 12+",
+                "Gratis demomodus som lukker seg etter omtrent 10 minutter; lisens til ordinær pris eller betal hva du vil"
+              ],
+              [
+                "Moving Light Assistant",
+                "Dokumentasjon av movinglysrigg og programmering: patch, hjullaster, presets, cuer med bilder",
+                "Data eksportert fra konsoller",
+                "Program for macOS og Windows",
+                "Listepriser: Student £23.49, Personal £594.15, Institutional £1,201.22; Reader gratis"
+              ],
+              [
+                "Export CueList for gma3",
+                "Cuelister med triggertider i grandMA3 fra markører i DAW, over OSC",
+                "MIDI-filer (Pro Tools, Logic Pro, Cubase), CSV-filer, Reaper-prosjekter",
+                "Bare Mac, macOS 12 eller nyere (Mac App Store)",
+                "Gratis med kjøp i appen: fullversjon $14.99, eller $1.99 per måned, $2.99 for tre måneder, $8.99 per år"
+              ]
+            ]
+          }
+        },
+        {
+          "h": "Timecode Creator (GMA Toolbox)",
+          "p": [
+            "Timecode Creator er ett av verktøyene i GMA Toolbox av Matthias Schöffmann. Siden beskriver det som et verktøy som gjør «Reaper project files or CSV marker files into timecoded sequences for grandMA consoles»: hver markør blir en cue på markørens tid, med fadetider, follow-cuer og knappetriggere fra subtracks. Resultatet lagres som makro og timecode til konsollen, eller sendes rett dit.",
+            "GMA Toolbox har også en Macro Generator som bygger grandMA-makroer fra en tabell, med maler du skriver selv. Det er et generelt verktøy: du bestemmer hvilke kommandoer hver rad blir til."
+          ]
+        },
+        {
+          "h": "Moving Light Assistant",
+          "p": [
+            "Moving Light Assistant fra Andrew Voller Lighting Design er dokumentasjonsprogramvare: riggdata, gobo- og fargehjul, presets og cuelister med bilder og notater, importert fra konsollen. Nettstedet nevner grandMA2 blant konsollene det importerer fra, beskriver grandMA3-støtten i versjon 1.4.1 som grunnleggende og forbedret, og sier at full grandMA3-støtte er planlagt i neste store versjon. Lisenser selges gjennom City Theatrical."
+          ]
+        },
+        {
+          "h": "Export CueList for gma3",
+          "p": [
+            "Export CueList for gma3 fra OF COURSE (Maciej Hofstede) er en Mac-app i App Store. Den eksporterer cuelister fra MIDI-filer, CSV-filer eller Reaper-prosjekter til grandMA3 over en OSC-tilkobling, med sekvens- og executornummer, triggertider og fader. Beskrivelsen er skrevet for operatører som ellers fyller inn hver Trig Time for hånd."
+          ]
+        },
+        {
+          "h": "Når CueSetter passer bedre",
+          "list": [
+            "Utgangspunktet er kjøreplanen fra produksjonen – en PDF, et Word-dokument eller en Excel-fil – ikke markører i et lydprosjekt.",
+            "Du vil ha én navngitt cue per punkt, nummerert som kjøreplanen, med settlister som under-cuer, og programmerer lyset selv.",
+            "Du kan eller vil ikke installere programvare: det kjører i nettleseren på Windows, Mac eller Linux, og filen lastes aldri opp.",
+            "Du jobber på grandMA3. CueSetter lager makroer for grandMA3, ikke grandMA2."
+          ],
+          "after": [
+            "Prøv med din egen fil i [CueSetter](/app), eller les hvordan den leser kjøreplaner i [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3) og [Excel](/excel-to-grandma3)."
+          ]
+        },
+        {
+          "h": "Når et annet verktøy passer bedre",
+          "list": [
+            "Showet går på timecode og cuene er markert i Reaper eller en DAW: Timecode Creator og Export CueList for gma3 er laget for det. CueSetter lager ikke timecode, triggertider eller fader.",
+            "Du trenger dokumentasjon av riggen og programmeringen: Moving Light Assistant.",
+            "Du vil lage makroer for patch, presets eller andre jobber fra egne kommandomaler: Macro Generator i GMA Toolbox."
+          ]
+        },
+        {
+          "h": "Kilder",
+          "p": [
+            "Sjekket 6. oktober 2026. Produktnavnene tilhører eierne sine; CueSetter er ikke tilknyttet noen av dem."
+          ],
+          "list": [
+            "[GMA Toolbox: Timecode Creator](https://www.gmatoolbox.app/tools/timecode-creator/)",
+            "[GMA Toolbox: Macro Generator](https://www.gmatoolbox.app/tools/macro-generator/)",
+            "[GMA Toolbox: Getting started](https://www.gmatoolbox.app/getting-started/)",
+            "[GMA Toolbox: Pricing](https://www.gmatoolbox.app/pricing/)",
+            "[Moving Light Assistant: About](https://www.movinglightassistant.com/?page_id=2)",
+            "[Moving Light Assistant: versjon 1.4.1](https://www.movinglightassistant.com/)",
+            "[Moving Light Assistant: Purchase](https://www.movinglightassistant.com/?page_id=7)",
+            "[Export CueList for gma3 i Mac App Store](https://apps.apple.com/us/app/export-cuelist-for-gma3/id1518496291?mt=12)"
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Er CueSetter et timecode-verktøy?",
+          "a": "Nei. CueSetter bygger en sekvens med én navngitt, tom cue per punkt i kjøreplanen. Den setter ikke triggertider, fader eller timecode."
+        },
+        {
+          "q": "Virker CueSetter med grandMA2?",
+          "a": "Nei. Makroen er laget for grandMA3 og testet på de fleste nyere grandMA3-versjoner."
+        },
+        {
+          "q": "Må jeg installere noe?",
+          "a": "Nei. CueSetter kjører i nettleseren, og kjøreplanen leses på din egen maskin og lastes aldri opp."
+        }
+      ]
+    },
+    "runOfShow": {
+      "crumb": "Mal for run of show",
+      "metaTitle": "Gratis mal for run of show (Excel og Word) – CueSetter",
+      "metaDescription": "Last ned en gratis mal for run of show (ROS) – kjøreplanen for arrangementer og konferanser – i Excel .xlsx og Word .docx. Ingen registrering, og klar til å bli en cueliste i grandMA3.",
+      "kicker": "Gratis · Excel og Word",
+      "title": "Gratis mal for run of show",
+      "lead": "Run of show (ROS) er det amerikanske navnet på kjøreplanen, vanlig på bedriftsarrangementer, konferanser og gallaer. Malen har én rad per programpost med nummer, starttid, varighet, tittel og notater til hver avdeling. Gratis, uten registrering, og klar for lysbordet.",
+      "linkLabel": "Mal for run of show",
+      "sections": [
+        {
+          "h": "Dette trenger en run of show",
+          "p": [
+            "En run of show er planen hele crewet kjører arrangementet etter. Vår har kolonnene som betyr noe på showdagen:"
+          ],
+          "list": [
+            "# – nummeret på programposten, som brukes på intercom",
+            "Start – klokkeslettet posten begynner",
+            "Varighet – i minutter, så det er lett å se når noe drar ut",
+            "Tittel – posten: innslipp, åpningsvideo, hovedinnlegg, panel, prisutdeling, pause",
+            "Notater – mikrofoner, avspilling, lys, sceneskift"
+          ],
+          "after": [
+            "Malen her har norske kolonnenavn. Trenger du den på engelsk til en internasjonal produksjon, velger du English i språkvelgeren øverst. Run of show, kjøreplan og running order er samme dokument med forskjellige navn; se [hva en kjøreplan er](/what-is-a-run-sheet)."
+          ]
+        },
+        {
+          "h": "Tips til arrangement og konferanse",
+          "steps": [
+            "Gi hver post et nummer, også innslipp, pauser og utgang. Det er øyeblikk der lyset også endrer seg.",
+            "Sett hver taler eller pris på en egen rad, så får hver sin cue.",
+            "Kommer det inn en post sent, gi den et nummer mellom naboene (4.5) i stedet for å nummerere om resten.",
+            "Endre versjonsnummeret øverst hver gang du sender den ut, og skriv hva som er endret.",
+            "Send den som Excel, Word eller en PDF eksportert fra dem – ikke en skannet side."
+          ]
+        },
+        {
+          "h": "Fra run of show til lyscuer",
+          "p": [
+            "Lysoperatøren kan slippe filen inn i [CueSetter](/app) og få en grandMA3-makro som bygger én navngitt cue per post, nummerert som i run of show. Det virker likt med en run of show som ikke er laget fra denne malen, så lenge den er en [PDF](/pdf-to-grandma3)-, [Word](/word-to-grandma3)- eller [Excel](/excel-to-grandma3)-fil."
+          ],
+          "after": [
+            "Jobber du med konsert eller TV i stedet? [Malen for running order](/running-order-template) forklarer settlister og under-cuer."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Hva er en run of show?",
+          "a": "Minutt-for-minutt-planen for et arrangement: hver post i rekkefølge, med starttid, varighet og hva som skjer. Det er det vanlige navnet i USA på det vi kaller en kjøreplan."
+        },
+        {
+          "q": "Hva bør en run of show inneholde?",
+          "a": "Minst nummer, starttid, varighet og tittel for hver post, og notater til avdelingene som skal gjøre noe. Sett navnet på arrangementet, dato, sted og et versjonsnummer øverst."
+        },
+        {
+          "q": "Er malen gratis?",
+          "a": "Ja. Last ned Excel- eller Word-filen og bruk den som du vil, uten registrering og uten konto."
+        }
+      ]
+    },
+    "runningOrder": {
+      "crumb": "Mal for running order",
+      "metaTitle": "Gratis mal for running order til konsert og arrangement (Excel, Word) – CueSetter",
+      "metaDescription": "Last ned en gratis mal for running order – kjøreplanen for konserter og TV – i Excel .xlsx og Word .docx, med plass til settlister. Ingen registrering. I CueSetter blir hver settliste under-cuer i grandMA3.",
+      "kicker": "Gratis · Excel og Word",
+      "title": "Gratis mal for running order",
+      "lead": "Running order er det britiske navnet på kjøreplanen, mye brukt på konserter, festivaler og TV. Malen gir hver artist eller post en rad med nummer, starttid, varighet og tittel, og settlisten står i samme celle, én låt per linje. Gratis, uten registrering.",
+      "linkLabel": "Mal for running order",
+      "sections": [
+        {
+          "h": "Bygget rundt settlisten",
+          "p": [
+            "I en konsert-running order betyr låtene like mye som artistene. Malen holder dem sammen:"
+          ],
+          "list": [
+            "Én rad per artist eller post, med # for nummeret som ropes opp på intercom",
+            "Start og varighet, så rigging mellom artister og slutt-tid er synlig",
+            "Artistens navn på første linje i tittelcellen, og låtene på linjene under",
+            "Notater til lyd, lys, video og scene"
+          ],
+          "after": [
+            "Malen her har norske kolonnenavn; velg English i språkvelgeren øverst for en engelsk versjon. Flere navn på samme dokument står i [hva en kjøreplan er](/what-is-a-run-sheet)."
+          ]
+        },
+        {
+          "h": "Slik skriver du en running order crewet kan følge",
+          "steps": [
+            "Nummerer hver post, også rigging mellom artister og pausen.",
+            "Skriv låtene under artisten, én per linje, i den rekkefølgen de spilles.",
+            "Kommer det inn en post, gi den et nummer mellom naboene (6.5), så numrene på alles ark fortsatt stemmer.",
+            "Sett forestillingen, dato, sted og et versjonsnummer øverst, og endre versjonen hver gang.",
+            "Send Excel- eller Word-filen, eller en PDF eksportert fra den."
+          ]
+        },
+        {
+          "h": "Fra running order til grandMA3",
+          "p": [
+            "Last opp running order i [CueSetter](/app): hver post blir en navngitt cue i en grandMA3-sekvens, nummerert som i running order. Trykk Del opp på en artist, så blir hver låt en under-cue – 6.1, 6.2, 6.3. [Under-cuer og desimal-cuer](/guides/sub-cues-grandma3) forklarer nummereringen."
+          ],
+          "after": [
+            "Planlegger du en konferanse eller et bedriftsarrangement? [Malen for run of show](/run-of-show-template) har tips om programposter og talere."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Hva er en running order?",
+          "a": "Rekkefølgen i et show, post for post, med tider: artister, låter, taler og rigging. Det er det vanlige britiske navnet på en kjøreplan, særlig på konserter og TV."
+        },
+        {
+          "q": "Hva er forskjellen på running order og settliste?",
+          "a": "En settliste er låtene én artist spiller. En running order er hele showet, og inneholder ofte settlisten til hver artist."
+        },
+        {
+          "q": "Er malen gratis?",
+          "a": "Ja. Last ned Excel- eller Word-filen og bruk den som du vil, uten registrering og uten konto."
+        }
+      ]
+    }
   },
   "footer": {
     "about": "Gjør kjøreplanen fra produksjonen om til en navngitt cueliste i grandMA3 på ett minutt. Alt skjer i nettleseren.",

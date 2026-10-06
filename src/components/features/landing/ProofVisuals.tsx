@@ -8,7 +8,7 @@ import { logoMarkSvg } from '@/lib/logo';
 
 const PANEL = 'relative flex h-48 flex-col justify-center overflow-hidden rounded-xl bg-console p-5 font-mono text-xs text-console-ink';
 
-const FILE_COLOR = { pdf: 'fill-file-pdf', docx: 'fill-file-docx', xlsx: 'fill-file-xlsx', zip: 'fill-console-accent' } as const;
+const FILE_COLOR = { pdf: 'fill-file-pdf', docx: 'fill-file-docx', xlsx: 'fill-file-xlsx', csv: 'fill-file-csv', zip: 'fill-console-accent' } as const;
 export type FileType = keyof typeof FILE_COLOR;
 
 /**

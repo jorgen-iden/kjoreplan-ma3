@@ -19,6 +19,21 @@ export const CHANGELOG: ChangelogEntry[] = [
   {
     date: '2026-10-06',
     en: {
+      title: 'Two new guides, CSV, alternatives and more templates',
+      text: 'Guides to naming cues and to sub-cues and decimal cue numbers in grandMA3, a page on CSV run sheets, a comparison with other grandMA3 tools, and run of show and running order templates.',
+    },
+    no: {
+      title: 'To nye guider, CSV, alternativer og flere maler',
+      text: 'Guider til å navngi cuer og til under-cuer og desimal-cuer i grandMA3, en side om kjøreplaner i CSV, en sammenligning med andre grandMA3-verktøy, og maler for run of show og running order.',
+    },
+    de: {
+      title: 'Zwei neue Anleitungen, CSV, Alternativen und mehr Vorlagen',
+      text: 'Anleitungen zum Benennen von Cues und zu Sub-Cues und Dezimal-Cues in grandMA3, eine Seite zu Ablaufplänen als CSV, ein Vergleich mit anderen grandMA3-Tools sowie Vorlagen für Run of Show und Running Order.',
+    },
+  },
+  {
+    date: '2026-10-06',
+    en: {
       title: 'Changelog, feedback and a note for the lighting operator',
       text: 'This page. After a download, a short line asks whether the macro worked on your console. The run sheet template has a ready-made message producers can send to their lighting operator.',
     },

@@ -30,6 +30,8 @@
   --color-file-pdf: #e5484d;
   --color-file-docx: #3e7bfa;
   --color-file-xlsx: #22a861;
+  /* CSV is plain text, not one vendor's format: a neutral slate. */
+  --color-file-csv: #66707d;
   --font-sans: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
