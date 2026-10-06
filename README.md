@@ -35,6 +35,25 @@ Appen kjører på **Vercel** med domenet **cuesetter.com**.
 
 Merk: Vercels gratisplan (Hobby) er kun for ikke-kommersiell bruk. Oppgrader til Pro før du tar betalt.
 
+## Nedlastingslogg
+
+CueSetter teller selv hver gang noen laster ned en ferdig makro-ZIP, slik at tallene kan leses uten Vercel Pro. Hendelsen «Macro downloaded» i Vercel Analytics sendes fortsatt i tillegg.
+
+**Hva som logges:** tidspunkt (og dagen, etter norsk tid), antall cuer, grandMA3-versjonen og språket på siden (en/no/de). Ingenting annet.
+
+**Hva som aldri logges:** navn, titler, notater, filnavn eller annet innhold fra kjøreplanen, IP-adresser (heller ikke hashet) eller nettleserinfo (user agent). Kjøreplanen forlater fortsatt aldri maskinen. API-et avviser alle andre felter enn de fire over. Skal noe nytt logges, må påstanden i `docs/brand.md` («Påstander») vurderes først.
+
+**Slik virker det:** etter nedlastingen sender nettleseren `{cues, version, locale}` til `POST /api/downloads` med `sendBeacon`. Ruten validerer med Zod og godtar bare forespørsler fra cuesetter.com i produksjon. Den øker tellere i Upstash Redis (`downloads:total`, `downloads:day:ÅÅÅÅ-MM-DD`, `downloads:version:<id>`, `downloads:locale:<språk>`) og legger en linje i `downloads:log` (de siste 5000 beholdes). Uten database er loggingen en stille no-op, og nedlastingen venter aldri på den eller feiler på grunn av den. Koden ligger i `src/lib/downloads.ts`, `src/lib/redis.ts` og `src/app/api/downloads/route.ts`.
+
+**Slå det på i Vercel:**
+
+1. Åpne prosjektet i Vercel, gå til *Storage* (eller *Marketplace*) og legg til **Upstash Redis** med gratisnivået.
+2. Koble databasen til prosjektet (alle miljøer eller bare Production). Det setter `KV_REST_API_URL` og `KV_REST_API_TOKEN`. En database laget direkte hos Upstash virker også, med `UPSTASH_REDIS_REST_URL` og `UPSTASH_REDIS_REST_TOKEN`.
+3. Under *Settings → Environment Variables*: legg til `STATS_TOKEN` med en lang, tilfeldig verdi (for eksempel fra `openssl rand -hex 32`).
+4. Deploy på nytt, så variablene tas i bruk.
+
+**Les tallene:** gå til `https://cuesetter.com/stats?token=<STATS_TOKEN>`. Siden viser totalen, hver dag de siste 30 dagene, fordeling på versjon og språk, og de siste 50 nedlastingene. Uten riktig token svarer siden 404. Den er ikke lenket, ikke i sitemap, har `noindex` og er stengt i robots.txt. Del ikke lenken, siden tokenet står i den.
+
 ## Slik virker det
 
 1. **Last opp** PDF (dra og slipp eller filvelger), eller lim inn tekst.
