@@ -184,7 +184,6 @@
         "a": "It’s free to try, no account needed."
       }
     ],
-    "contact": "Questions or feedback: <mail>{email}</mail>",
     "videoKicker": "See it in a minute",
     "videoTitle": "From a PDF run sheet to a grandMA3 cue list",
     "videoPlay": "Play the demo"
@@ -337,7 +336,7 @@
     "loading": "Loading …"
   },
   "formats": {
-    "footerLabel": "Run sheet formats",
+    "footerLabel": "Formats",
     "breadcrumbLabel": "Breadcrumb",
     "readsKicker": "What it reads",
     "stepsKicker": "How it works",
@@ -1306,5 +1305,15 @@
         }
       ]
     }
+  },
+  "footer": {
+    "about": "Turns the run sheet from production into a named grandMA3 cue list in a minute. Everything runs in your browser.",
+    "product": "CueSetter",
+    "converter": "Converter",
+    "sample": "Try the sample run sheet",
+    "contact": "Contact",
+    "languages": "Language",
+    "copyright": "© {year} CueSetter",
+    "follow": "Follow"
   }
 }

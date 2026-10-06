@@ -4,8 +4,8 @@ import { routing } from './i18n/routing';
 export default createMiddleware(routing);
 
 export const config = {
-  // Everything except API routes, Next internals, generated images (share images at
+  // Everything except API routes, the internal /stats page (no locale), Next internals, generated images (share images at
   // /<locale>/opengraph-image so crawlers get no redirect, and the root /apple-icon) and files with
   // an extension.
-  matcher: '/((?!api|_next|_vercel|[a-z]{2}/opengraph-image|apple-icon|.*\\..*).*)',
+  matcher: '/((?!api|stats|_next|_vercel|[a-z]{2}/opengraph-image|apple-icon|.*\\..*).*)',
 };

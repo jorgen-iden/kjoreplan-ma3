@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useId, useMemo, useRef, useState } from 'react';
 import { track } from '@vercel/analytics';
 import { findVersion } from '@/lib/config/versions';
@@ -15,6 +15,7 @@ import { CONTACT_EMAIL } from '@/lib/site';
 
 export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings }) {
   const t = useTranslations('export');
+  const locale = useLocale();
   const tNote = useTranslations('note');
   const tSettings = useTranslations('settings');
   const seqValid = isValidSequence(settings.sequence);
@@ -48,6 +49,7 @@ export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings
       // Counts in Vercel Web Analytics (Custom Events). Only the number of cues and the console
       // version are sent, never names, notes or anything else from the run sheet.
       track('Macro downloaded', { cues: cues.length, version: version.label });
+      logDownload({ cues: cues.length, version: version.label, locale });
     } catch {
       setDownloadFailed(true);
     } finally {
@@ -144,4 +146,21 @@ export function ExportStep({ cues, settings }: { cues: Cue[]; settings: Settings
       </div>
     </section>
   );
+}
+
+/**
+ * Our own download counter (POST /api/downloads), readable at /stats without Vercel Pro. Sends
+ * only the number of cues, the version label and the UI locale, never run sheet content.
+ * Fire-and-forget: errors are swallowed so the download never depends on it.
+ */
+function logDownload(event: { cues: number; version: string; locale: string }) {
+  try {
+    const body = JSON.stringify(event);
+    const sent = typeof navigator.sendBeacon === 'function' && navigator.sendBeacon('/api/downloads', new Blob([body], { type: 'application/json' }));
+    if (!sent) {
+      void fetch('/api/downloads', { method: 'POST', body, headers: { 'Content-Type': 'application/json' }, keepalive: true }).catch(() => {});
+    }
+  } catch {
+    // Logging is optional.
+  }
 }
