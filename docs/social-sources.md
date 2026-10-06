@@ -24,3 +24,7 @@ Klipp merket «Mixkit Restricted License» (bare personlig bruk) er ikke brukt.
 | 41315 | Experienced drummer performing on stage with lights. | Free | https://mixkit.co/free-stock-video/experienced-drummer-performing-on-stage-with-lights-41315/ |
 
 Lisensen er sjekket per klipp (feltet copyrightNotice på klippets side) 6. oktober 2026.
+
+## Split-screen-videoer (`public/social/split/`)
+
+Øvre halvdel er Mixkit-klipp 4188 og 485 (Free License, se tabellen over). Nedre halvdel (kabelkaos og dimmerrack) er tegnet av oss i HTML/SVG.
