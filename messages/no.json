@@ -811,7 +811,8 @@
     "sample": "Prøv med eksempel-kjøreplanen",
     "contact": "Kontakt",
     "languages": "Språk",
-    "copyright": "© {year} CueSetter"
+    "copyright": "© {year} CueSetter",
+    "follow": "Følg oss"
   },
   "feedback": {
     "line": "Virket det i konsollen? Si fra på <mail>{email}</mail> – det hjelper oss å gjøre CueSetter bedre.",

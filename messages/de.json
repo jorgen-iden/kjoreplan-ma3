@@ -815,7 +815,8 @@
     "sample": "Beispiel-Ablaufplan testen",
     "contact": "Kontakt",
     "languages": "Sprache",
-    "copyright": "© {year} CueSetter"
+    "copyright": "© {year} CueSetter",
+    "follow": "Folgen"
   },
   "feedback": {
     "line": "Hat es auf deinem Pult funktioniert? Schreib uns an <mail>{email}</mail> – das hilft uns, CueSetter zu verbessern.",

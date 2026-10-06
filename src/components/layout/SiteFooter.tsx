@@ -6,8 +6,10 @@ import { CHANGELOG_PATH } from '@/lib/changelog';
 import { CONTENT_KEYS, CONTENT_PAGES } from '@/lib/content-pages';
 import { FORMAT_PAGES, FORMAT_SLUGS } from '@/lib/formats';
 import { logoMarkSvg } from '@/lib/logo';
-import { CONTACT_EMAIL } from '@/lib/site';
+import { CONTACT_EMAIL, SOCIAL_PROFILES } from '@/lib/site';
 
+/** Display names for our profiles, by host. */
+const PROFILE_NAMES: Record<string, string> = { 'www.instagram.com': 'Instagram', 'www.tiktok.com': 'TikTok', 'www.youtube.com': 'YouTube', 'www.linkedin.com': 'LinkedIn' };
 const LANGUAGE_NAMES: Record<Locale, string> = { en: 'English', no: 'Norsk', de: 'Deutsch' };
 const HEADING = 'mb-4 font-mono text-xs font-semibold uppercase tracking-wider text-muted';
 const LINK = 'text-subtle no-underline transition-colors hover:text-accent';
@@ -46,6 +48,20 @@ export function SiteFooter() {
           <a href={`mailto:${CONTACT_EMAIL}`} className="text-sm font-semibold text-ink underline decoration-line underline-offset-4 hover:text-accent hover:decoration-accent">
             {CONTACT_EMAIL}
           </a>
+          {SOCIAL_PROFILES.length > 0 && (
+            <>
+              <p className={`${HEADING} mt-8 mb-2`}>{t('follow')}</p>
+              <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                {SOCIAL_PROFILES.map((url) => (
+                  <li key={url}>
+                    <a href={url} rel="me noopener" target="_blank" className={LINK}>
+                      {PROFILE_NAMES[new URL(url).host] ?? new URL(url).host}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
         </div>
 
         <Column title={tf('footerLabel')}>

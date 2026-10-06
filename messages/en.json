@@ -819,7 +819,8 @@
     "sample": "Try the sample run sheet",
     "contact": "Contact",
     "languages": "Language",
-    "copyright": "© {year} CueSetter"
+    "copyright": "© {year} CueSetter",
+    "follow": "Follow"
   },
   "feedback": {
     "line": "Did it work on your console? Tell us at <mail>{email}</mail> – it helps us improve.",
