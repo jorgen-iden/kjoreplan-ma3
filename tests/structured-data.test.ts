@@ -49,23 +49,62 @@ describe('format pages', () => {
 });
 
 describe('content pages', () => {
-  it('every content page has copy in both languages, with the same shape', async () => {
+  it('every content page has copy in every language, with the same shape', async () => {
     const { CONTENT_KEYS } = await import('../src/lib/content-pages');
     for (const key of CONTENT_KEYS) {
-      const [e, n] = [en.pages[key], no.pages[key]];
-      expect(Object.keys(n).sort(), key).toEqual(Object.keys(e).sort());
-      expect(n.sections.length, `${key}.sections`).toBe(e.sections.length);
-      n.sections.forEach((s, i) => expect(Object.keys(s).sort(), `${key}.sections[${i}]`).toEqual(Object.keys(e.sections[i]).sort()));
-      expect(n.faq.length, `${key}.faq`).toBe(e.faq.length);
+      const e = en.pages[key];
+      expect(e, `en.pages.${key}`).toBeDefined();
+      for (const [name, m] of [['no', no], ['de', de]] as const) {
+        const n = m.pages[key];
+        expect(n, `${name}.pages.${key}`).toBeDefined();
+        expect(Object.keys(n).sort(), `${name}: ${key}`).toEqual(Object.keys(e).sort());
+        expect(n.sections.length, `${name}: ${key}.sections`).toBe(e.sections.length);
+        n.sections.forEach((s, i) => expect(Object.keys(s).sort(), `${name}: ${key}.sections[${i}]`).toEqual(Object.keys(e.sections[i]).sort()));
+        expect(n.faq.length, `${name}: ${key}.faq`).toBe(e.faq.length);
+      }
+      for (const field of ['crumb', 'metaTitle', 'metaDescription', 'kicker', 'title', 'lead', 'linkLabel'] as const) {
+        for (const m of [en, no, de]) expect(m.pages[key][field], `${key}.${field}`).toBeTruthy();
+      }
     }
   });
 
-  it('links in the copy point to pages that exist', async () => {
+  it('pages with a paste preview have its captions', async () => {
+    const { CONTENT_KEYS, CONTENT_PAGES } = await import('../src/lib/content-pages');
+    for (const key of CONTENT_KEYS.filter((k) => (CONTENT_PAGES[k] as { hero?: string }).hero === 'paste')) {
+      for (const m of [en, no, de]) {
+        const page = m.pages[key] as Record<string, unknown>;
+        expect(page.heroFile, key).toBeTruthy();
+        expect(page.heroFrom, key).toBeTruthy();
+      }
+    }
+  });
+
+  it('links in the copy point to pages that exist, in every language', async () => {
     const { PUBLIC_PAGES } = await import('../src/lib/public-pages');
-    for (const m of [en, no]) {
-      const links = [...JSON.stringify(m.pages).matchAll(/\]\((\/[^)]*)\)/g)].map((x) => x[1]);
+    for (const m of [en, no, de]) {
+      const links = [...JSON.stringify({ pages: m.pages, formats: m.formats }).matchAll(/\]\((\/[^)]*)\)/g)].map((x) => x[1]);
       expect(links.length).toBeGreaterThan(0);
       for (const l of links) expect(PUBLIC_PAGES, l).toContain(l);
+    }
+  });
+
+  it('every page has its own path and its own title', async () => {
+    const { PUBLIC_PAGES } = await import('../src/lib/public-pages');
+    const { CONTENT_KEYS } = await import('../src/lib/content-pages');
+    expect(new Set(PUBLIC_PAGES).size).toBe(PUBLIC_PAGES.length);
+    for (const m of [en, no, de]) {
+      const titles = CONTENT_KEYS.map((k) => m.pages[k].metaTitle);
+      expect(new Set(titles).size).toBe(titles.length);
+    }
+  });
+
+  it('the template variants don’t copy the run sheet template word for word', () => {
+    for (const m of [en, no, de]) {
+      const base = new Set(JSON.stringify(m.pages.template).match(/[^.!?"]{40,}[.!?]/g) ?? []);
+      for (const key of ['runOfShow', 'runningOrder'] as const) {
+        const shared = (JSON.stringify(m.pages[key]).match(/[^.!?"]{40,}[.!?]/g) ?? []).filter((s) => base.has(s));
+        expect(shared, key).toEqual([]);
+      }
     }
   });
 });

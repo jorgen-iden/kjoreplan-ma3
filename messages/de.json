@@ -533,14 +533,18 @@
           "a": "Nein. Die Datei wird im Browser auf deinem eigenen Computer gelesen und nie an uns oder einen anderen Server geschickt."
         }
       ]
-    }
+    },
+    "guidesTitle": "Anleitungen und Vorlagen"
   },
   "pages": {
     "breadcrumbLabel": "Brotkrümelnavigation",
     "toc": "Auf dieser Seite",
     "cardTitle": "Ablaufplan zur grandMA3 in einer Minute",
     "cardText": "Lade einen Ablaufplan als PDF, Word oder Excel hoch und erhalte ein Makro, das die Cueliste anlegt. Kostenlos testen.",
-    "footerLabel": "Anleitungen und Vorlagen",
+    "footer": {
+      "guides": "Anleitungen",
+      "templates": "Vorlagen"
+    },
     "templatePreview": "Die Vorlage",
     "download": {
       "xlsx": "Excel-Vorlage",
@@ -588,7 +592,8 @@
             "Lichtoperatoren können die Datei direkt in [CueSetter](/app) ablegen. Jede Zeile wird ein benannter Cue in einer grandMA3-Sequenz, die Cue-Nummern folgen der #-Spalte, und die Songs einer Setlist lassen sich mit einem Klick in Sub-Cues aufteilen."
           ],
           "after": [
-            "Mehr über [Ablaufpläne in Excel](/excel-to-grandma3) und [Ablaufpläne in Word](/word-to-grandma3) in CueSetter, oder [was ein Ablaufplan ist](/what-is-a-run-sheet)."
+            "Mehr über [Ablaufpläne in Excel](/excel-to-grandma3) und [Ablaufpläne in Word](/word-to-grandma3) in CueSetter, oder [was ein Ablaufplan ist](/what-is-a-run-sheet).",
+            "Dieselbe Vorlage gibt es auch auf den Seiten [Run of Show](/run-of-show-template) und [Running Order](/running-order-template), mit Tipps für Events und Konzerte."
           ]
         }
       ],
@@ -697,7 +702,8 @@
             ]
           },
           "after": [
-            "Eine Setlist – die Songs eines Konzerts – ist oft Teil des Ablaufplans. Ein Dispo (Call Sheet) ist etwas anderes: Er sagt der Crew, wann sie da sein muss."
+            "Eine Setlist – die Songs eines Konzerts – ist oft Teil des Ablaufplans. Ein Dispo (Call Sheet) ist etwas anderes: Er sagt der Crew, wann sie da sein muss.",
+            "Kostenlose Vorlagen unter zwei dieser Namen: [Run-of-Show-Vorlage](/run-of-show-template) und [Running-Order-Vorlage](/running-order-template)."
           ]
         },
         {
@@ -789,7 +795,8 @@
         {
           "h": "Das Makro aus dem Ablaufplan erstellen",
           "p": [
-            "Ein Makro für einen langen Ablaufplan von Hand zu schreiben dauert so lange, wie den Ablaufplan ins Pult zu tippen. [CueSetter](/app) liest den Ablaufplan – [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3) oder [Excel](/excel-to-grandma3) – und erstellt das Makro für dich, mit einem benannten Cue pro Programmpunkt und Cue-Nummern, die dem Ablaufplan folgen."
+            "Ein Makro für einen langen Ablaufplan von Hand zu schreiben dauert so lange, wie den Ablaufplan ins Pult zu tippen. [CueSetter](/app) liest den Ablaufplan – [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3) oder [Excel](/excel-to-grandma3) – und erstellt das Makro für dich, mit einem benannten Cue pro Programmpunkt und Cue-Nummern, die dem Ablaufplan folgen.",
+            "Du benennst Cues lieber von Hand? Siehe [Cues in grandMA3 benennen](/guides/label-cues-grandma3)."
           ]
         }
       ],
@@ -805,6 +812,493 @@
         {
           "q": "Das Makro erscheint nicht im Show Creator. Was ist falsch?",
           "a": "Meist der Ordner: Prüfe, ob die Datei in grandMA3/gma3_library/datapools/macros liegt und nicht in einem zusätzlichen Ordner vom Entpacken. Klappt es immer noch nicht, füge die Befehle stattdessen in die Kommandozeile ein."
+        }
+      ]
+    },
+    "csv": {
+      "crumb": "CSV zu grandMA3",
+      "metaTitle": "Ablaufplan als CSV zur grandMA3-Cueliste – CueSetter",
+      "metaDescription": "So bringst du einen Ablaufplan oder eine Cueliste als CSV in die grandMA3: Öffne die CSV in Excel, Google Tabellen oder Numbers, speichere sie als .xlsx oder füge die Zeilen in CueSetter ein. Du bekommst ein Makro, das eine benannte Cueliste anlegt.",
+      "kicker": "CSV → grandMA3",
+      "title": "Ablaufplan als CSV zur grandMA3-Cueliste",
+      "lead": "CueSetter öffnet .csv-Dateien nicht direkt, aber eine CSV ist nur einen Schritt entfernt. Öffne sie in Excel, Google Tabellen oder Numbers und speichere sie als .xlsx zum Hochladen, oder kopiere die Zeilen mit der Kopfzeile und füge sie in CueSetter ein. So oder so bekommst du ein grandMA3-Makro mit einem benannten Cue pro Zeile.",
+      "linkLabel": "CSV zu grandMA3",
+      "heroFile": "Aus der Tabelle eingefügt",
+      "heroFrom": "Zeilen aus Excel, Google Tabellen oder Numbers kopiert",
+      "sections": [
+        {
+          "h": "Zwei Wege",
+          "p": [
+            "Eine CSV-Datei ist reiner Text: eine Zeile pro Tabellenzeile, die Zellen durch Komma oder Semikolon getrennt. CueSetter liest Excel-Dateien und Text, der aus einer Tabelle kopiert wurde. Den CSV-Teil übernimmt also das Tabellenprogramm:"
+          ],
+          "list": [
+            "Als .xlsx speichern: Öffne die CSV, speichere oder lade sie als Excel-Arbeitsmappe (.xlsx) herunter und lade sie in [CueSetter](/app) hoch. Am besten, wenn du neue Versionen der Datei bekommst.",
+            "Kopieren und einfügen: Öffne die CSV, markiere die Zeilen samt Kopfzeile, kopiere sie und füge sie in CueSetter in das Feld „Oder Text einfügen“ ein. Am schnellsten für einen einmaligen Job."
+          ],
+          "after": [
+            "Beides führt zum selben Ergebnis: Die Spalten werden anhand der Kopfzeile erkannt, und jede Zeile wird ein Cue."
+          ]
+        },
+        {
+          "h": "Schritt für Schritt",
+          "steps": [
+            "Öffne die CSV in Excel, Google Tabellen oder Numbers. Landet alles in einer Spalte, nutze den Import oder „Text in Spalten“ des Programms und wähle das Trennzeichen der Datei (Komma oder Semikolon).",
+            "Prüfe, ob es eine Kopfzeile gibt, mit Wörtern wie #, Start, Uhrzeit, Dauer, Titel oder Programmpunkt.",
+            "Speichere als .xlsx (in Google Tabellen: Datei → Herunterladen → Microsoft Excel; in Numbers: Ablage → Exportieren → Excel), oder markiere die Zeilen mit der Kopfzeile und kopiere sie.",
+            "Lade die .xlsx-Datei hoch oder füge die Zeilen ein, in [CueSetter](/app). Prüfe Spalten und Cues.",
+            "Lade das Makro herunter und [importiere es am Pult](/guides/import-macro-grandma3). Führe es einmal aus, und die Sequenz ist angelegt."
+          ]
+        },
+        {
+          "h": "Warum nicht den CSV-Text selbst einfügen?",
+          "p": [
+            "Wenn du Zellen aus einer Tabelle kopierst, sind sie durch Tabulatoren getrennt, und CueSetter liest tabulatorgetrennten Text mit Kopfzeile Spalte für Spalte. Der rohe Text einer CSV-Datei hat Kommas statt Tabulatoren und wird deshalb Zeile für Zeile gelesen, wie ein Ablaufplan in der Form „18:30 Einlass“. Für einfache Listen klappt das, aber die Spalten gehen verloren. Kopiere aus der Tabelle, nicht aus einem Texteditor."
+          ]
+        },
+        {
+          "h": "Was CueSetter in den Zeilen liest",
+          "list": [
+            "Die Kopfzeile darf unter einem Titel oder Infozeilen stehen; gesucht wird in den ersten 20 Zeilen.",
+            "Nummer, Startzeit, Dauer und Titel werden anhand der Kopfzeile erkannt. Andere Spalten, etwa Notizen, werden angezeigt, aber nicht verwendet.",
+            "Eine Zeile ohne Nummer oder Uhrzeit setzt den Punkt darüber fort. Eine Setlist über mehrere Zeilen bleibt so ein Cue, bereit zum [Aufteilen in Sub-Cues](/guides/sub-cues-grandma3).",
+            "Die Cue-Nummern folgen der #-Spalte. Zeilen ohne Nummer bekommen eine Nummer zwischen ihren Nachbarn."
+          ],
+          "after": [
+            "Mehr über Tabellen unter [Excel zur grandMA3](/excel-to-grandma3). Du schreibst den Ablaufplan neu? Starte mit der [kostenlosen Ablaufplan-Vorlage](/run-sheet-template)."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Kann CueSetter eine CSV-Datei importieren?",
+          "a": "Nicht direkt. Öffne die CSV in Excel, Google Tabellen oder Numbers und speichere sie als .xlsx, oder kopiere die Zeilen samt Kopfzeile und füge sie in CueSetter als Text ein."
+        },
+        {
+          "q": "Meine CSV kommt aus einem Ablauf-Tool. Klappt das?",
+          "a": "Wenn sie eine Kopfzeile und eine Zeile pro Programmpunkt hat, ja. Öffne sie zuerst in einer Tabelle, prüfe, ob die Spalten richtig getrennt sind, und speichere als .xlsx oder kopiere und füge ein."
+        },
+        {
+          "q": "Wird die Datei auf einen Server hochgeladen?",
+          "a": "Nein. Dateien und eingefügter Text werden in deinem Browser auf deinem eigenen Computer gelesen und nie an uns oder einen anderen Server geschickt."
+        }
+      ]
+    },
+    "labelCues": {
+      "crumb": "Cues in grandMA3 benennen",
+      "metaTitle": "Cues in grandMA3 schnell benennen (Label) – CueSetter",
+      "metaDescription": "Der Label-Befehl für Cues und Sequenzen in grandMA3, wie du viele Cues auf einmal über die Kommandozeile mit Semikolons benennst, worauf du bei Namen achten musst und wie du eine ganze Cueliste aus dem Ablaufplan benennst.",
+      "kicker": "Anleitung · grandMA3",
+      "title": "So benennst du Cues in grandMA3 schnell",
+      "lead": "Mit dem Label-Befehl: Label Sequence 101 Cue 1 \"Einlass\" benennt Cue 1, und Label Sequence 101 \"Frühjahrskonzert\" benennt die Sequenz. Um viele Cues auf einmal zu benennen, schreibst du die Befehle in eine Zeile, getrennt durch Semikolons, und fügst sie in die Kommandozeile ein.",
+      "linkLabel": "Cues in grandMA3 benennen",
+      "sections": [
+        {
+          "h": "Der Label-Befehl",
+          "p": [
+            "Label gibt einem Objekt einen Namen. Für einen Cue gibst du Sequenz, Cue-Nummer und den Namen in doppelten Anführungszeichen an; für die Sequenz selbst lässt du den Cue weg:"
+          ],
+          "code": "Label Sequence 101 Cue 1 \"Einlass\"\nLabel Sequence 101 Cue 2 \"Begrüßung durch die Moderation\"\nLabel Sequence 101 Cue 2.5 \"Preisverleihung\"\nLabel Sequence 101 \"Frühjahrskonzert\"",
+          "after": [
+            "Das sind dieselben Befehle, die ein Makro aus CueSetter verwendet, bestätigt auf grandMA3 onPC 2.5.1. Cue-Nummern mit Dezimalstelle wie 2.5 funktionieren genauso; siehe [Sub-Cues und Dezimal-Cues](/guides/sub-cues-grandma3)."
+          ]
+        },
+        {
+          "h": "Viele Cues auf einmal benennen",
+          "p": [
+            "Mehrere Befehle können in einer Zeile stehen, getrennt durch Semikolons. Schreib die Zeilen in einem Texteditor oder einer Tabelle, füge sie zusammen und setz die ganze Zeile in die Kommandozeile ein:"
+          ],
+          "code": "Label Sequence 101 Cue 1 \"Einlass\"; Label Sequence 101 Cue 2 \"Begrüßung durch die Moderation\"; Label Sequence 101 Cue 3 \"Fjordbyen Brass\"",
+          "after": [
+            "Gibt es die Cues noch nicht, speicherst du jeden, bevor du ihn benennst: Store Sequence 101 Cue 1; Label Sequence 101 Cue 1 \"Einlass\". Leere vorher den Programmer (ClearAll), damit die Cues leer gespeichert werden. Gibt es die Cues schon, reichen die Label-Befehle."
+          ]
+        },
+        {
+          "h": "Worauf du bei Namen achten musst",
+          "list": [
+            "Doppelte Anführungszeichen beenden den Namen, ein Name kann sie also nicht enthalten. CueSetter ersetzt sie durch einen Apostroph.",
+            "Semikolons trennen Befehle in der Kommandozeile. CueSetter ersetzt sie durch ein Komma.",
+            "CueSetter hält Namen auf höchstens 40 Zeichen und markiert die, die gekürzt werden, damit du sie vor dem Download umschreiben kannst.",
+            "Die Uhrzeit im Namen? CueSetter kann „18:30 Einlass“ statt „Einlass“ schreiben (Cue-Namen: Zeit + Titel)."
+          ]
+        },
+        {
+          "h": "Details ins Note-Feld",
+          "p": [
+            "Ein Cue-Name sollte kurz genug sein, um ihn am Pult zu lesen. Der Rest kann in die Note-Eigenschaft des Cues:"
+          ],
+          "code": "Set Sequence 101 Cue 1 Property \"Note\" \"Start 18:30, Dauer 30\"",
+          "after": [
+            "CueSetter kann das Note-Feld mit Startzeit und Dauer füllen, und mit dem Rest der Titelzelle (Setlist, Details), bis zu 250 Zeichen."
+          ]
+        },
+        {
+          "h": "Eine ganze Cueliste aus dem Ablaufplan benennen",
+          "p": [
+            "40 Label-Befehle zu tippen dauert so lange wie 40 Namen am Pult. [CueSetter](/app) liest den Ablaufplan – [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3), [Excel](/excel-to-grandma3) oder [CSV über eine Tabelle](/csv-to-grandma3) – und schreibt die Store- und Label-Befehle für dich: als Makro zum [Import vom USB-Stick](/guides/import-macro-grandma3) oder als eine Zeile für die Kommandozeile."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wie benenne ich einen Cue in grandMA3 um?",
+          "a": "Mit Label, Sequenz und Cue-Nummer und dem neuen Namen in doppelten Anführungszeichen, zum Beispiel Label Sequence 101 Cue 3 \"Hauptact\"."
+        },
+        {
+          "q": "Kann ich mehrere Cues auf einmal benennen?",
+          "a": "Ja. Schreib die Label-Befehle in eine Zeile, getrennt durch Semikolons, und füge die Zeile in die Kommandozeile ein. CueSetter erstellt diese Zeile aus einem Ablaufplan."
+        },
+        {
+          "q": "Warum werden manche Cue-Namen gekürzt?",
+          "a": "CueSetter hält Cue-Namen auf höchstens 40 Zeichen. Längere Namen werden im Schritt Prüfen markiert, damit du sie selbst kürzen kannst, und der Rest des Textes kann ins Note-Feld."
+        }
+      ]
+    },
+    "subCues": {
+      "crumb": "Sub-Cues in grandMA3",
+      "metaTitle": "Sub-Cues und Dezimal-Cues in grandMA3 – CueSetter",
+      "metaDescription": "Wie Cue-Nummern mit Dezimalstelle (12.1, 12.5) in grandMA3 funktionieren, wie du einen Cue über die Nummer zwischen zwei andere setzt und wie CueSetter Cues aus dem Ablaufplan nummeriert: # folgen, Setlist in .1 .2 aufteilen, Lücken mit 12.5 füllen.",
+      "kicker": "Anleitung · grandMA3",
+      "title": "Sub-Cues und Dezimal-Cues in grandMA3",
+      "lead": "Cue-Nummern in grandMA3 können Dezimalstellen haben: 12.5 liegt zwischen Cue 12 und Cue 13, und 12.1, 12.2 folgen direkt auf 12. Nutze sie für einen Punkt, der spät dazukommt, oder für die Songs einer Setlist, und die Nummern, mit denen alle anderen arbeiten, bleiben gleich.",
+      "linkLabel": "Sub-Cues und Dezimal-Cues",
+      "sections": [
+        {
+          "h": "Warum Dezimal-Cues",
+          "p": [
+            "Auf dem Intercom ruft die Inspizienz die Nummern aus dem Ablaufplan: „Standby 12“. Ist der Lichtcue für Punkt 12 auch Cue 12, muss niemand umrechnen. Kommt ein Punkt zwischen 12 und 13 dazu, wird er 12.5 – im Ablaufplan und in der Sequenz – und alle anderen Nummern bleiben, wo sie sind.",
+            "Sub-Cues funktionieren genauso. Ein Konzertpunkt mit Setlist wird Cue 12 für den Act und 12.1, 12.2, 12.3 für die Songs."
+          ]
+        },
+        {
+          "h": "Einen Cue zwischen zwei andere setzen",
+          "p": [
+            "Ein Cue steht dort, wo seine Nummer ihn hinstellt. Gib ihm also eine Nummer zwischen den Nachbarn:"
+          ],
+          "code": "Store Sequence 101 Cue 12.5\nLabel Sequence 101 Cue 12.5 \"Preisverleihung\"",
+          "after": [
+            "Das sind die Befehle, die ein Makro aus CueSetter für einen Dezimal-Cue verwendet, bestätigt auf grandMA3 onPC 2.5.1. Der Cue landet zwischen 12 und 13, und ab Cue 13 behalten alle ihre Nummern. Cues schnell benennen: siehe [Cues in grandMA3 benennen](/guides/label-cues-grandma3)."
+          ]
+        },
+        {
+          "h": "So nummeriert CueSetter die Cues",
+          "table": {
+            "head": [
+              "Ablaufplan",
+              "Cue-Nummern"
+            ],
+            "rows": [
+              [
+                "#-Spalte 1, 2, 3 …",
+                "1, 2, 3 – der # wird gefolgt (Standard)"
+              ],
+              [
+                "Punkt 12 mit drei Songs, in Sub-Cues aufgeteilt",
+                "12, 12.1, 12.2, 12.3"
+              ],
+              [
+                "Mehr als neun Songs",
+                "12.01, 12.02 … 12.12, damit die Reihenfolge stimmt"
+              ],
+              [
+                "Ein Punkt ohne # zwischen 28 und 29",
+                "28.5"
+              ],
+              [
+                "Zwei Punkte ohne # zwischen 28 und 29",
+                "28.333, 28.667"
+              ],
+              [
+                "Ein Punkt ohne # zwischen 1 und 3",
+                "2"
+              ],
+              [
+                "„12,5“ mit Dezimalkomma",
+                "12.5"
+              ],
+              [
+                "# fehlt überall oder steigt nicht",
+                "1, 2, 3 … (fortlaufend)"
+              ]
+            ]
+          },
+          "after": [
+            "Lücken werden mit ganzen Zahlen gefüllt, wenn Platz ist, sonst mit Dezimalstellen gleichmäßig zwischen den Nachbarn, höchstens drei Nachkommastellen. Der Schritt Prüfen sagt dir, wie viele Cues eine Nummer dazwischen bekommen haben."
+          ]
+        },
+        {
+          "h": "Dem Ablaufplan folgen oder 1, 2, 3 nummerieren",
+          "list": [
+            "Der # im Ablaufplan folgen (Standard): Die Cue-Nummern sind die Nummern der Programmpunkte, die Ansagen der Inspizienz passen also zum Pult.",
+            "Fortlaufend 1, 2, 3: Jeder Punkt bekommt die nächste ganze Zahl, egal was im Ablaufplan steht. Sub-Cues bekommen weiter .1, .2.",
+            "Lässt sich die #-Spalte nicht verwenden – fehlt, ist keine Zahl oder steigt nicht –, nummeriert CueSetter 1, 2, 3 und sagt das im Schritt Prüfen."
+          ]
+        },
+        {
+          "h": "Eine Setlist in Sub-Cues aufteilen",
+          "steps": [
+            "Schreib die Setlist in die Titelzelle des Ablaufplans, ein Song pro Zeile unter dem Namen des Acts. Die [Running-Order-Vorlage](/running-order-template) ist dafür angelegt.",
+            "Lade den Ablaufplan in [CueSetter](/app) hoch. Der Act wird ein Cue, die Songs bleiben als seine Notiz erhalten.",
+            "Drück im Schritt Prüfen bei diesem Cue auf Aufteilen. Jeder Song wird ein Sub-Cue: 12.1, 12.2, 12.3.",
+            "Lade das Makro herunter und [importiere es am Pult](/guides/import-macro-grandma3)."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wie füge ich in grandMA3 einen Cue zwischen zwei Cues ein?",
+          "a": "Speichere ihn mit einer Nummer zwischen den beiden, zum Beispiel Store Sequence 101 Cue 12.5 zwischen Cue 12 und 13. Die anderen Cues behalten ihre Nummern."
+        },
+        {
+          "q": "Was passiert mit Punkten im Ablaufplan ohne Nummer?",
+          "a": "Mit „Der # im Ablaufplan folgen“ gibt CueSetter ihnen eine Nummer zwischen den Nachbarn: eine ganze Zahl, wenn Platz ist, sonst eine Dezimalzahl wie 12.5. Der Rest behält seinen #."
+        },
+        {
+          "q": "Warum sind meine Cues 1, 2, 3 nummeriert und nicht wie im Ablaufplan?",
+          "a": "Entweder ist in den Einstellungen „Fortlaufend 1, 2, 3“ gewählt, oder die #-Spalte ließ sich nicht verwenden, weil Nummern fehlen, ungültig sind oder nicht steigen. Der Schritt Prüfen sagt, was davon zutrifft."
+        }
+      ]
+    },
+    "alternatives": {
+      "crumb": "Alternativen",
+      "metaTitle": "CueSetter vs. Timecode Creator, Moving Light Assistant und Export CueList for gma3",
+      "metaDescription": "Ein sachlicher Vergleich von CueSetter, Timecode Creator (GMA Toolbox), Moving Light Assistant und Export CueList for gma3: wofür jedes Tool gemacht ist, was es liest, Plattform und Preis laut eigener Seiten.",
+      "kicker": "Vergleich",
+      "title": "CueSetter vs. Timecode Creator, Moving Light Assistant und Export CueList for gma3",
+      "lead": "Sie lösen verschiedene Aufgaben. Timecode Creator und Export CueList for gma3 erzeugen Timecode-Sequenzen für grandMA aus Markern in Reaper-, MIDI- oder CSV-Dateien. Moving Light Assistant dokumentiert Moving-Light-Rigs und ihre Programmierung. CueSetter macht aus dem Ablaufplan der Produktion – PDF, Word oder Excel – eine benannte grandMA3-Cueliste, im Browser.",
+      "linkLabel": "CueSetter vs. Alternativen",
+      "sections": [
+        {
+          "h": "Auf einen Blick",
+          "p": [
+            "Was jedes Tool auf seinen eigenen Seiten über sich sagt, geprüft am 6. Oktober 2026. Preise und Funktionen ändern sich; die Quellen unten zeigen den aktuellen Stand."
+          ],
+          "table": {
+            "head": [
+              "Tool",
+              "Gemacht für",
+              "Liest",
+              "Plattform",
+              "Preis laut Anbieter"
+            ],
+            "rows": [
+              [
+                "CueSetter",
+                "Aus einem Ablaufplan eine benannte grandMA3-Cueliste machen",
+                "PDF mit Text, Word (.docx), Excel (.xlsx), eingefügter Text",
+                "Webbrowser, keine Installation",
+                "Kostenlos testen, ohne Konto"
+              ],
+              [
+                "Timecode Creator (Teil der GMA Toolbox)",
+                "Timecode-Sequenzen für grandMA2 und grandMA3 aus Markern",
+                "Reaper-Projekte (.rpp), CSV-Markerdateien, Zwischenablage aus Excel und ähnlichen Programmen",
+                "Programm für Windows 10+ und macOS 12+",
+                "Kostenloser Demo-Modus, der sich nach etwa 10 Minuten schließt; Lizenz zum regulären Preis oder Pay what you want"
+              ],
+              [
+                "Moving Light Assistant",
+                "Dokumentation von Moving-Light-Rigs und Programmierung: Patch, Radbestückung, Presets, Cues mit Fotos",
+                "Vom Pult exportierte Daten",
+                "Programm für macOS und Windows",
+                "Listenpreise: Student £23.49, Personal £594.15, Institutional £1,201.22; Reader kostenlos"
+              ],
+              [
+                "Export CueList for gma3",
+                "grandMA3-Cuelisten mit Trigger-Zeiten aus DAW-Markern, über OSC",
+                "MIDI-Dateien (Pro Tools, Logic Pro, Cubase), CSV-Dateien, Reaper-Projekte",
+                "Nur Mac, macOS 12 oder neuer (Mac App Store)",
+                "Kostenlos mit In-App-Käufen: Vollversion $14.99, oder $1.99 pro Monat, $2.99 für drei Monate, $8.99 pro Jahr"
+              ]
+            ]
+          }
+        },
+        {
+          "h": "Timecode Creator (GMA Toolbox)",
+          "p": [
+            "Timecode Creator ist eines der Tools der GMA Toolbox von Matthias Schöffmann. Die Seite beschreibt es so: „Turn Reaper project files or CSV marker files into timecoded sequences for grandMA consoles“. Jeder Marker wird ein Cue zur Zeit des Markers, mit Fade-Zeiten, Follow-Cues und Tasten-Triggern aus Subtracks. Das Ergebnis wird als Makro und Timecode fürs Pult gespeichert oder direkt dorthin geschickt.",
+            "Die GMA Toolbox hat außerdem einen Macro Generator, der grandMA-Makros aus einer Tabelle baut, mit Vorlagen, die du selbst schreibst. Ein allgemeines Werkzeug: Du legst fest, welche Befehle aus jeder Zeile werden."
+          ]
+        },
+        {
+          "h": "Moving Light Assistant",
+          "p": [
+            "Moving Light Assistant von Andrew Voller Lighting Design ist Dokumentationssoftware: Rig-Daten, Gobo- und Farbradbestückung, Presets und Cuelisten mit Fotos und Notizen, importiert vom Pult. Die Website nennt grandMA2 unter den Pulten, von denen importiert wird, beschreibt die grandMA3-Unterstützung in Version 1.4.1 als grundlegend und verbessert und kündigt volle grandMA3-Unterstützung für die nächste große Version an. Lizenzen gibt es über City Theatrical."
+          ]
+        },
+        {
+          "h": "Export CueList for gma3",
+          "p": [
+            "Export CueList for gma3 von OF COURSE (Maciej Hofstede) ist eine Mac-App im App Store. Sie exportiert Cuelisten aus MIDI-Dateien, CSV-Dateien oder Reaper-Projekten über eine OSC-Verbindung zur grandMA3, mit Sequenz- und Executor-Nummern, Trigger-Zeiten und Fades. Die Beschreibung richtet sich an Operator, die sonst jede Trig Time von Hand eintragen."
+          ]
+        },
+        {
+          "h": "Wann CueSetter besser passt",
+          "list": [
+            "Ausgangspunkt ist der Ablaufplan der Produktion – ein PDF, ein Word-Dokument oder eine Excel-Datei –, nicht Marker in einem Audioprojekt.",
+            "Du willst einen benannten Cue pro Programmpunkt, nummeriert wie der Ablaufplan, mit Setlists als Sub-Cues, und programmierst das Licht selbst.",
+            "Du kannst oder willst nichts installieren: Es läuft im Browser unter Windows, Mac oder Linux, und die Datei wird nie hochgeladen.",
+            "Du arbeitest auf grandMA3. CueSetter erstellt Makros für grandMA3, nicht für grandMA2."
+          ],
+          "after": [
+            "Probier es mit deiner eigenen Datei in [CueSetter](/app), oder lies, wie es Ablaufpläne als [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3) und [Excel](/excel-to-grandma3) liest."
+          ]
+        },
+        {
+          "h": "Wann ein anderes Tool besser passt",
+          "list": [
+            "Die Show läuft auf Timecode und die Cues sind in Reaper oder einer DAW markiert: Dafür sind Timecode Creator und Export CueList for gma3 gemacht. CueSetter erzeugt keinen Timecode, keine Trigger-Zeiten und keine Fades.",
+            "Du brauchst Dokumentation für Rig und Programmierung: Moving Light Assistant.",
+            "Du willst Makros für Patch, Presets oder andere Aufgaben aus eigenen Befehlsvorlagen: der Macro Generator der GMA Toolbox."
+          ]
+        },
+        {
+          "h": "Quellen",
+          "p": [
+            "Geprüft am 6. Oktober 2026. Die Produktnamen gehören ihren Eigentümern; CueSetter ist mit keinem von ihnen verbunden."
+          ],
+          "list": [
+            "[GMA Toolbox: Timecode Creator](https://www.gmatoolbox.app/tools/timecode-creator/)",
+            "[GMA Toolbox: Macro Generator](https://www.gmatoolbox.app/tools/macro-generator/)",
+            "[GMA Toolbox: Getting started](https://www.gmatoolbox.app/getting-started/)",
+            "[GMA Toolbox: Pricing](https://www.gmatoolbox.app/pricing/)",
+            "[Moving Light Assistant: About](https://www.movinglightassistant.com/?page_id=2)",
+            "[Moving Light Assistant: Version 1.4.1](https://www.movinglightassistant.com/)",
+            "[Moving Light Assistant: Purchase](https://www.movinglightassistant.com/?page_id=7)",
+            "[Export CueList for gma3 im Mac App Store](https://apps.apple.com/us/app/export-cuelist-for-gma3/id1518496291?mt=12)"
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Ist CueSetter ein Timecode-Tool?",
+          "a": "Nein. CueSetter legt eine Sequenz mit einem benannten, leeren Cue pro Programmpunkt im Ablaufplan an. Trigger-Zeiten, Fades oder Timecode setzt es nicht."
+        },
+        {
+          "q": "Funktioniert CueSetter mit grandMA2?",
+          "a": "Nein. Das Makro ist für grandMA3 gemacht und auf den meisten neueren grandMA3-Versionen getestet."
+        },
+        {
+          "q": "Muss ich etwas installieren?",
+          "a": "Nein. CueSetter läuft im Browser, und der Ablaufplan wird auf deinem eigenen Computer gelesen, nie hochgeladen."
+        }
+      ]
+    },
+    "runOfShow": {
+      "crumb": "Run-of-Show-Vorlage",
+      "metaTitle": "Kostenlose Run-of-Show-Vorlage (Excel und Word) – CueSetter",
+      "metaDescription": "Lade eine kostenlose Run-of-Show-Vorlage (ROS) für Events und Konferenzen herunter, als Excel .xlsx und Word .docx. Ohne Anmeldung und bereit, eine grandMA3-Cueliste zu werden.",
+      "kicker": "Kostenlos · Excel und Word",
+      "title": "Kostenlose Run-of-Show-Vorlage",
+      "lead": "Run of Show (ROS) ist der amerikanische Name für den Ablaufplan, üblich bei Firmenevents, Konferenzen und Galas. Die Vorlage hat eine Zeile pro Programmpunkt mit Nummer, Startzeit, Dauer, Titel und Notizen für jedes Gewerk. Kostenlos, ohne Anmeldung und bereit fürs Lichtpult.",
+      "linkLabel": "Run-of-Show-Vorlage",
+      "sections": [
+        {
+          "h": "Was eine Run of Show braucht",
+          "p": [
+            "Die Run of Show ist der Plan, nach dem die ganze Crew das Event fährt. Unsere hat die Spalten, die am Showtag zählen:"
+          ],
+          "list": [
+            "# – die Nummer des Programmpunkts, die auf dem Intercom angesagt wird",
+            "Start – die Uhrzeit, zu der der Punkt beginnt",
+            "Dauer – in Minuten, damit Überziehen sofort auffällt",
+            "Titel – der Punkt: Einlass, Opening-Video, Keynote, Panel, Preisverleihung, Pause",
+            "Notizen – Mikrofone, Zuspieler, Licht, Umbauten"
+          ],
+          "after": [
+            "Die Vorlage hier hat deutsche Spaltennamen. Brauchst du sie auf Englisch für eine internationale Produktion, wähl oben in der Sprachauswahl English. Run of Show, Ablaufplan und Running Order sind dasselbe Dokument unter verschiedenen Namen; siehe [was ein Ablaufplan ist](/what-is-a-run-sheet)."
+          ]
+        },
+        {
+          "h": "Tipps für Event und Konferenz",
+          "steps": [
+            "Gib jedem Programmpunkt eine Nummer, auch Einlass, Pausen und Auslass. Auch dort ändert sich das Licht.",
+            "Setz jeden Redner und jeden Preis in eine eigene Zeile, dann bekommt jeder einen eigenen Cue.",
+            "Kommt ein Punkt spät dazu, gib ihm eine Nummer zwischen den Nachbarn (4.5), statt den Rest neu zu nummerieren.",
+            "Ändere oben die Versionsnummer bei jedem Versand und schreib dazu, was sich geändert hat.",
+            "Verschick sie als Excel, Word oder als daraus exportiertes PDF – nicht als Scan."
+          ]
+        },
+        {
+          "h": "Von der Run of Show zu Lichtcues",
+          "p": [
+            "Der Lichtoperator kann die Datei in [CueSetter](/app) ablegen und bekommt ein grandMA3-Makro, das einen benannten Cue pro Programmpunkt anlegt, nummeriert wie die Run of Show. Das klappt genauso mit einer Run of Show, die nicht aus dieser Vorlage stammt, solange sie eine [PDF](/pdf-to-grandma3)-, [Word](/word-to-grandma3)- oder [Excel](/excel-to-grandma3)-Datei ist."
+          ],
+          "after": [
+            "Du arbeitest an einem Konzert oder einer TV-Show? Die [Running-Order-Vorlage](/running-order-template) erklärt Setlists und Sub-Cues."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Was ist eine Run of Show?",
+          "a": "Der minutengenaue Plan eines Events: jeder Programmpunkt in Reihenfolge, mit Startzeit, Dauer und Inhalt. In den USA ist es der übliche Name für das, was hier Ablaufplan oder Regieplan heißt."
+        },
+        {
+          "q": "Was gehört in eine Run of Show?",
+          "a": "Mindestens Nummer, Startzeit, Dauer und Titel für jeden Programmpunkt, dazu Notizen für die Gewerke, die etwas tun müssen. Oben stehen Name des Events, Datum, Ort und eine Versionsnummer."
+        },
+        {
+          "q": "Ist die Vorlage kostenlos?",
+          "a": "Ja. Lade die Excel- oder Word-Datei herunter und nutze sie, wie du willst, ohne Anmeldung und ohne Konto."
+        }
+      ]
+    },
+    "runningOrder": {
+      "crumb": "Running-Order-Vorlage",
+      "metaTitle": "Kostenlose Running-Order-Vorlage für Konzerte und Events (Excel, Word) – CueSetter",
+      "metaDescription": "Lade eine kostenlose Running-Order-Vorlage herunter, als Excel .xlsx und Word .docx, mit Platz für Setlists. Ohne Anmeldung. In CueSetter wird jede Setlist zu grandMA3-Sub-Cues.",
+      "kicker": "Kostenlos · Excel und Word",
+      "title": "Kostenlose Running-Order-Vorlage",
+      "lead": "Running Order ist der britische Name für den Ablaufplan, verbreitet bei Konzerten, Festivals und im Fernsehen. Die Vorlage gibt jedem Act oder Programmpunkt eine Zeile mit Nummer, Startzeit, Dauer und Titel, und die Setlist steht in derselben Zelle, ein Song pro Zeile. Kostenlos, ohne Anmeldung.",
+      "linkLabel": "Running-Order-Vorlage",
+      "sections": [
+        {
+          "h": "Um die Setlist herum gebaut",
+          "p": [
+            "In der Running Order eines Konzerts zählen die Songs so viel wie die Acts. Die Vorlage hält beides zusammen:"
+          ],
+          "list": [
+            "Eine Zeile pro Act oder Programmpunkt, mit # für die Nummer, die auf dem Intercom angesagt wird",
+            "Start und Dauer, damit Umbauten und Sperrstunde sichtbar sind",
+            "Der Name des Acts in der ersten Zeile der Titelzelle, die Songs in den Zeilen darunter",
+            "Notizen für Ton, Licht, Video und Bühne"
+          ],
+          "after": [
+            "Die Vorlage hier hat deutsche Spaltennamen; für eine englische Version wähl oben in der Sprachauswahl English. Weitere Namen für dasselbe Dokument stehen unter [was ein Ablaufplan ist](/what-is-a-run-sheet)."
+          ]
+        },
+        {
+          "h": "So schreibst du eine Running Order, der die Crew folgen kann",
+          "steps": [
+            "Nummeriere jeden Punkt, auch Umbauten und die Pause.",
+            "Schreib die Songs unter den Act, einen pro Zeile, in der Reihenfolge, in der sie gespielt werden.",
+            "Kommt ein Punkt dazu, gib ihm eine Nummer zwischen den Nachbarn (6.5), damit die Nummern auf allen Zetteln weiter stimmen.",
+            "Setz Show, Datum, Ort und eine Versionsnummer nach oben und ändere die Version jedes Mal.",
+            "Verschick die Excel- oder Word-Datei oder ein daraus exportiertes PDF."
+          ]
+        },
+        {
+          "h": "Von der Running Order zur grandMA3",
+          "p": [
+            "Lade die Running Order in [CueSetter](/app) hoch: Jeder Punkt wird ein benannter Cue in einer grandMA3-Sequenz, nummeriert wie die Running Order. Drück bei einem Act auf Aufteilen, und jeder Song wird ein Sub-Cue – 6.1, 6.2, 6.3. [Sub-Cues und Dezimal-Cues](/guides/sub-cues-grandma3) erklärt die Nummerierung."
+          ],
+          "after": [
+            "Du planst eine Konferenz oder ein Firmenevent? Die [Run-of-Show-Vorlage](/run-of-show-template) hat Tipps zu Programmpunkten und Rednern."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Was ist eine Running Order?",
+          "a": "Die Reihenfolge einer Show, Punkt für Punkt, mit Zeiten: Acts, Songs, Reden und Umbauten. Im Vereinigten Königreich ist es der übliche Name für den Ablaufplan, vor allem bei Konzerten und im Fernsehen."
+        },
+        {
+          "q": "Was ist der Unterschied zwischen Running Order und Setlist?",
+          "a": "Eine Setlist sind die Songs, die ein Act spielt. Eine Running Order ist die ganze Show und enthält oft die Setlist jedes Acts."
+        },
+        {
+          "q": "Ist die Vorlage kostenlos?",
+          "a": "Ja. Lade die Excel- oder Word-Datei herunter und nutze sie, wie du willst, ohne Anmeldung und ohne Konto."
         }
       ]
     }

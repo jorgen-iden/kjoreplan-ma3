@@ -533,14 +533,18 @@
       "scanned": "Scanned"
     },
     "alsoKicker": "And on every format",
-    "otherFormatsTitle": "Other formats"
+    "otherFormatsTitle": "Other formats",
+    "guidesTitle": "Guides and templates"
   },
   "pages": {
     "breadcrumbLabel": "Breadcrumb",
     "toc": "On this page",
     "cardTitle": "Run sheet to grandMA3 in a minute",
     "cardText": "Upload a PDF, Word or Excel run sheet and get a macro that builds the cue list. Free to try.",
-    "footerLabel": "Guides and templates",
+    "footer": {
+      "guides": "Guides",
+      "templates": "Templates"
+    },
     "download": {
       "xlsx": "Excel template",
       "docx": "Word template",
@@ -587,7 +591,8 @@
             "Lighting operators can drop the file straight into [CueSetter](/app). Every row becomes a named cue in a grandMA3 sequence, the cue numbers follow the # column, and the songs in a set list can be split into sub-cues in one click."
           ],
           "after": [
-            "Read more about [Excel run sheets](/excel-to-grandma3) and [Word run sheets](/word-to-grandma3) in CueSetter, or [what a run sheet is](/what-is-a-run-sheet)."
+            "Read more about [Excel run sheets](/excel-to-grandma3) and [Word run sheets](/word-to-grandma3) in CueSetter, or [what a run sheet is](/what-is-a-run-sheet).",
+            "The same template is also on our [run of show](/run-of-show-template) and [running order](/running-order-template) pages, with tips for events and for concerts."
           ]
         }
       ],
@@ -700,7 +705,8 @@
             ]
           },
           "after": [
-            "A set list – the songs in a concert – is often part of the run sheet. A call sheet is something else: it tells the crew when to arrive."
+            "A set list – the songs in a concert – is often part of the run sheet. A call sheet is something else: it tells the crew when to arrive.",
+            "Free templates under two of these names: [run of show template](/run-of-show-template) and [running order template](/running-order-template)."
           ]
         },
         {
@@ -792,7 +798,8 @@
         {
           "h": "Make the macro from a run sheet",
           "p": [
-            "Writing a macro for a long run sheet by hand takes as long as typing the run sheet into the console. [CueSetter](/app) reads the run sheet – [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3) or [Excel](/excel-to-grandma3) – and makes the macro for you, with one named cue per item and cue numbers that follow the run sheet."
+            "Writing a macro for a long run sheet by hand takes as long as typing the run sheet into the console. [CueSetter](/app) reads the run sheet – [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3) or [Excel](/excel-to-grandma3) – and makes the macro for you, with one named cue per item and cue numbers that follow the run sheet.",
+            "Naming cues by hand instead? See [how to label cues in grandMA3](/guides/label-cues-grandma3)."
           ]
         }
       ],
@@ -811,6 +818,493 @@
         }
       ]
     },
-    "templatePreview": "The template"
+    "templatePreview": "The template",
+    "csv": {
+      "crumb": "CSV to grandMA3",
+      "metaTitle": "CSV run sheet to grandMA3 cue list – CueSetter",
+      "metaDescription": "How to get a CSV run sheet or cue list into grandMA3: open the CSV in Excel, Google Sheets or Numbers, then save it as .xlsx or paste the rows into CueSetter. You get a macro that builds a named cue list.",
+      "kicker": "CSV → grandMA3",
+      "title": "CSV run sheet to grandMA3 cue list",
+      "lead": "CueSetter doesn’t open .csv files directly, but a CSV is one step away. Open it in Excel, Google Sheets or Numbers, then either save it as .xlsx and upload that, or copy the rows with the header and paste them into CueSetter. Either way you get a grandMA3 macro with one named cue per row.",
+      "linkLabel": "CSV to grandMA3",
+      "heroFile": "Pasted from the spreadsheet",
+      "heroFrom": "Rows copied from Excel, Google Sheets or Numbers",
+      "sections": [
+        {
+          "h": "Two ways in",
+          "p": [
+            "A CSV file is plain text: one line per row, with the cells separated by commas or semicolons. CueSetter reads Excel files and text copied from a spreadsheet, so the spreadsheet program does the CSV part:"
+          ],
+          "list": [
+            "Save as .xlsx: open the CSV, save or download it as an Excel workbook (.xlsx) and upload it to [CueSetter](/app). Best when you will get new versions of the file.",
+            "Copy and paste: open the CSV, select the rows including the header row, copy, and paste them into the “Or paste text” box in CueSetter. Quickest for a one-off."
+          ],
+          "after": [
+            "Both give the same result: the columns are found from the header row, and every row becomes a cue."
+          ]
+        },
+        {
+          "h": "Step by step",
+          "steps": [
+            "Open the CSV in Excel, Google Sheets or Numbers. If everything lands in one column, use the program’s import or text-to-columns tool and choose the separator the file uses (comma or semicolon).",
+            "Check that there is a header row, with words like #, Start, Time, Duration, Title or Item.",
+            "Save it as .xlsx (in Google Sheets: File → Download → Microsoft Excel; in Numbers: File → Export To → Excel), or select the rows with the header and copy them.",
+            "Upload the .xlsx file, or paste the rows, in [CueSetter](/app). Check the columns and cues.",
+            "Download the macro and [import it on the console](/guides/import-macro-grandma3). Run it once, and the sequence is built."
+          ]
+        },
+        {
+          "h": "Why not paste the CSV text itself?",
+          "p": [
+            "When you copy cells from a spreadsheet, they come out separated by tabs, and CueSetter reads tab-separated text with a header row column by column. The raw text of a CSV file has commas instead of tabs, so it would be read line by line, like a run sheet written as “18:30 Doors open”. That works for simple lists, but the columns are lost. Copy from the spreadsheet, not from a text editor."
+          ]
+        },
+        {
+          "h": "What CueSetter reads in the rows",
+          "list": [
+            "The header row can be below a title or info rows; it is looked for in the first 20 rows.",
+            "Number, start time, duration and title are found from the header. Other columns, like notes, are shown but not used.",
+            "A row without a number or time continues the item above, so a set list over several rows stays one cue, ready to [split into sub-cues](/guides/sub-cues-grandma3).",
+            "Cue numbers follow the # column. Rows without a number get one between their neighbours."
+          ],
+          "after": [
+            "More about spreadsheets in [Excel to grandMA3](/excel-to-grandma3). Making the run sheet from scratch? Start from the [free run sheet template](/run-sheet-template)."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Can CueSetter import a CSV file?",
+          "a": "Not directly. Open the CSV in Excel, Google Sheets or Numbers and save it as .xlsx, or copy the rows with the header row and paste them into CueSetter as text."
+        },
+        {
+          "q": "My CSV comes from a rundown or event tool. Will it work?",
+          "a": "If it has a header row and one row per item, yes. Open it in a spreadsheet first, check that the columns are split correctly, then save as .xlsx or copy and paste."
+        },
+        {
+          "q": "Is the file uploaded to a server?",
+          "a": "No. Files and pasted text are read in your browser on your own computer and are never sent to us or any other server."
+        }
+      ]
+    },
+    "labelCues": {
+      "crumb": "Label cues in grandMA3",
+      "metaTitle": "How to name (label) cues fast in grandMA3 – CueSetter",
+      "metaDescription": "The Label command for cues and sequences in grandMA3, how to name many cues at once from the command line with semicolons, what to watch for in names, and how to label a whole cue list from a run sheet.",
+      "kicker": "Guide · grandMA3",
+      "title": "How to name (label) cues fast in grandMA3",
+      "lead": "Use the Label command: Label Sequence 101 Cue 1 \"Doors open\" names cue 1, and Label Sequence 101 \"Spring concert\" names the sequence. To name many cues at once, put the commands on one line separated by semicolons and paste it into the command line.",
+      "linkLabel": "Label cues in grandMA3",
+      "sections": [
+        {
+          "h": "The Label command",
+          "p": [
+            "Label gives an object a name. For a cue you give the sequence, the cue number and the name in double quotes; for the sequence itself, leave out the cue:"
+          ],
+          "code": "Label Sequence 101 Cue 1 \"Doors open\"\nLabel Sequence 101 Cue 2 \"Welcome by the host\"\nLabel Sequence 101 Cue 2.5 \"Award\"\nLabel Sequence 101 \"Spring concert\"",
+          "after": [
+            "These are the same commands a CueSetter macro uses, verified on grandMA3 onPC 2.5.1. Decimal cue numbers like 2.5 work the same way; see [sub-cues and decimal cue numbers](/guides/sub-cues-grandma3)."
+          ]
+        },
+        {
+          "h": "Name many cues in one go",
+          "p": [
+            "Several commands can go on one line, separated by semicolons. Write the lines in a text editor or a spreadsheet, join them, and paste the whole line into the command line:"
+          ],
+          "code": "Label Sequence 101 Cue 1 \"Doors open\"; Label Sequence 101 Cue 2 \"Welcome by the host\"; Label Sequence 101 Cue 3 \"Fjordbyen Brass\"",
+          "after": [
+            "If the cues don’t exist yet, store each one before you label it: Store Sequence 101 Cue 1; Label Sequence 101 Cue 1 \"Doors open\". Clear the programmer first (ClearAll) so the cues are stored empty. If the cues already exist, the Label commands are enough."
+          ]
+        },
+        {
+          "h": "What to watch for in names",
+          "list": [
+            "Double quotes end the name, so a name can’t contain them. CueSetter replaces them with an apostrophe.",
+            "Semicolons separate commands on the command line. CueSetter replaces them with a comma.",
+            "CueSetter keeps names to 40 characters and marks the ones it will shorten, so you can rewrite them before you download.",
+            "Want the time in the name? CueSetter can write “18:30 Doors open” instead of “Doors open” (Cue names: Time + title)."
+          ]
+        },
+        {
+          "h": "Put the details in the Note field",
+          "p": [
+            "A cue name should be short enough to read on the console. The rest can go in the cue’s Note property:"
+          ],
+          "code": "Set Sequence 101 Cue 1 Property \"Note\" \"Start 18:30, Duration 30\"",
+          "after": [
+            "CueSetter can fill the Note field with the start time and duration, and with the rest of the title cell (a set list, details), up to 250 characters."
+          ]
+        },
+        {
+          "h": "Label a whole cue list from the run sheet",
+          "p": [
+            "Typing 40 Label commands takes as long as typing 40 names on the console. [CueSetter](/app) reads the run sheet – [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3), [Excel](/excel-to-grandma3) or [CSV via a spreadsheet](/csv-to-grandma3) – and writes the Store and Label commands for you: as a macro to [import from a USB stick](/guides/import-macro-grandma3), or as one line to paste into the command line."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "How do I rename a cue in grandMA3?",
+          "a": "Use Label with the sequence and cue number and the new name in double quotes, for example Label Sequence 101 Cue 3 \"Main act\"."
+        },
+        {
+          "q": "Can I name several cues at once?",
+          "a": "Yes. Put the Label commands on one line separated by semicolons and paste the line into the command line. CueSetter makes that line from a run sheet."
+        },
+        {
+          "q": "Why are some of my cue names shortened?",
+          "a": "CueSetter keeps cue names to 40 characters. Names that are longer are marked in the review step, so you can shorten them yourself, and the rest of the text can go in the Note field."
+        }
+      ]
+    },
+    "subCues": {
+      "crumb": "Sub-cues in grandMA3",
+      "metaTitle": "Sub-cues and decimal cue numbers in grandMA3 – CueSetter",
+      "metaDescription": "How decimal cue numbers (12.1, 12.5) work in grandMA3, how to put a cue between two others by number, and how CueSetter numbers cues from a run sheet: follow the #, split a set list into .1 .2, fill gaps with 12.5.",
+      "kicker": "Guide · grandMA3",
+      "title": "Sub-cues and decimal cue numbers in grandMA3",
+      "lead": "grandMA3 cue numbers can have decimals, so 12.5 sits between cue 12 and cue 13 and 12.1, 12.2 follow straight after 12. Use them for an item added late, or for the songs in a set list, and the numbers everyone else uses stay the same.",
+      "linkLabel": "Sub-cues and decimal cues",
+      "sections": [
+        {
+          "h": "Why decimal cue numbers",
+          "p": [
+            "On intercom the stage manager calls the run sheet’s numbers: “standby 12”. If the lighting cue for item 12 is also cue 12, nobody has to translate. When an item is squeezed in between 12 and 13, it becomes 12.5 – in the run sheet and in the sequence – and every other number stays where it was.",
+            "Sub-cues work the same way. A concert item with a set list becomes cue 12 for the act and 12.1, 12.2, 12.3 for the songs."
+          ]
+        },
+        {
+          "h": "Put a cue between two others",
+          "p": [
+            "A cue is placed by its number, so give it a number between its neighbours:"
+          ],
+          "code": "Store Sequence 101 Cue 12.5\nLabel Sequence 101 Cue 12.5 \"Award\"",
+          "after": [
+            "These are the commands a CueSetter macro uses for a decimal cue, verified on grandMA3 onPC 2.5.1. The cue lands between 12 and 13, and cues 13 onwards keep their numbers. To name cues quickly, see [how to label cues in grandMA3](/guides/label-cues-grandma3)."
+          ]
+        },
+        {
+          "h": "How CueSetter numbers the cues",
+          "table": {
+            "head": [
+              "Run sheet",
+              "Cue numbers"
+            ],
+            "rows": [
+              [
+                "# column 1, 2, 3 …",
+                "1, 2, 3 – the # is followed (default)"
+              ],
+              [
+                "Item 12 with three songs, split into sub-cues",
+                "12, 12.1, 12.2, 12.3"
+              ],
+              [
+                "More than nine songs",
+                "12.01, 12.02 … 12.12, so they stay in order"
+              ],
+              [
+                "One item without a # between 28 and 29",
+                "28.5"
+              ],
+              [
+                "Two items without a # between 28 and 29",
+                "28.333, 28.667"
+              ],
+              [
+                "One item without a # between 1 and 3",
+                "2"
+              ],
+              [
+                "“12,5” with a decimal comma",
+                "12.5"
+              ],
+              [
+                "# missing everywhere, or not increasing",
+                "1, 2, 3 … (running numbers)"
+              ]
+            ]
+          },
+          "after": [
+            "Gaps are filled with whole numbers when there is room, otherwise with decimals spread evenly between the neighbours, at most three decimal places. The review step tells you how many cues got an in-between number."
+          ]
+        },
+        {
+          "h": "Follow the run sheet, or number 1, 2, 3",
+          "list": [
+            "Follow the run sheet’s # (default): the cue numbers are the item numbers, so the stage manager’s calls match the console.",
+            "Running 1, 2, 3: every item gets the next whole number, whatever the run sheet says. Sub-cues still get .1, .2.",
+            "If the # column can’t be used – missing, not a number, or not increasing – CueSetter numbers 1, 2, 3 and says so in the review."
+          ]
+        },
+        {
+          "h": "Split a set list into sub-cues",
+          "steps": [
+            "Write the set list in the title cell of the run sheet, one song per line under the act’s name. Our [running order template](/running-order-template) is set up for that.",
+            "Upload the run sheet to [CueSetter](/app). The act becomes one cue, and the songs are kept as its note.",
+            "Press Split on that cue in the review. Each song becomes a sub-cue: 12.1, 12.2, 12.3.",
+            "Download the macro and [import it on the console](/guides/import-macro-grandma3)."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "How do I insert a cue between two cues in grandMA3?",
+          "a": "Store it with a number between the two, for example Store Sequence 101 Cue 12.5 between cues 12 and 13. The other cues keep their numbers."
+        },
+        {
+          "q": "What happens to items in my run sheet that have no number?",
+          "a": "With “Follow the run sheet’s #”, CueSetter gives them a number between their neighbours: a whole number when there is room, otherwise a decimal like 12.5. The rest keep their #."
+        },
+        {
+          "q": "Why are my cues numbered 1, 2, 3 and not like the run sheet?",
+          "a": "Either Running 1, 2, 3 is chosen in the settings, or the # column couldn’t be used because numbers are missing, invalid or not increasing. The review step says which."
+        }
+      ]
+    },
+    "alternatives": {
+      "crumb": "Alternatives",
+      "metaTitle": "CueSetter vs. Timecode Creator, Moving Light Assistant and Export CueList for gma3",
+      "metaDescription": "A factual comparison of CueSetter, Timecode Creator (GMA Toolbox), Moving Light Assistant and Export CueList for gma3: what each is built for, input, platform and price as stated on their own pages.",
+      "kicker": "Comparison",
+      "title": "CueSetter vs. Timecode Creator, Moving Light Assistant and Export CueList for gma3",
+      "lead": "They solve different problems. Timecode Creator and Export CueList for gma3 build timecoded grandMA sequences from markers in Reaper, MIDI or CSV files. Moving Light Assistant documents moving light rigs and their programming. CueSetter turns the run sheet from production – PDF, Word or Excel – into a named grandMA3 cue list, in the browser.",
+      "linkLabel": "CueSetter vs. alternatives",
+      "sections": [
+        {
+          "h": "At a glance",
+          "p": [
+            "What each tool says about itself on its own pages, checked on 6 October 2026. Prices and features change; follow the sources at the bottom for the current state."
+          ],
+          "table": {
+            "head": [
+              "Tool",
+              "Built for",
+              "Input",
+              "Platform",
+              "Price, as stated"
+            ],
+            "rows": [
+              [
+                "CueSetter",
+                "Turning a run sheet into a named grandMA3 cue list",
+                "PDF with text, Word (.docx), Excel (.xlsx), pasted text",
+                "Web browser, nothing to install",
+                "Free to try, no account"
+              ],
+              [
+                "Timecode Creator (part of GMA Toolbox)",
+                "Timecoded sequences for grandMA2 and grandMA3 from markers",
+                "Reaper projects (.rpp), CSV marker files, clipboard from Excel and similar programs",
+                "App for Windows 10+ and macOS 12+",
+                "Free demo mode that closes after about 10 minutes; licence at a regular price or pay what you want"
+              ],
+              [
+                "Moving Light Assistant",
+                "Documenting moving light rigs and programming: patch, wheel loads, presets, cues with photos",
+                "Data exported from consoles",
+                "App for macOS and Windows",
+                "List prices: Student £23.49, Personal £594.15, Institutional £1,201.22; Reader free"
+              ],
+              [
+                "Export CueList for gma3",
+                "grandMA3 cue lists with trigger times from DAW markers, over OSC",
+                "MIDI files (Pro Tools, Logic Pro, Cubase), CSV files, Reaper projects",
+                "Mac only, macOS 12 or later (Mac App Store)",
+                "Free with in-app purchases: full version $14.99, or $1.99 a month, $2.99 for three months, $8.99 a year"
+              ]
+            ]
+          }
+        },
+        {
+          "h": "Timecode Creator (GMA Toolbox)",
+          "p": [
+            "Timecode Creator is one of the tools in GMA Toolbox by Matthias Schöffmann. Its page describes it as turning “Reaper project files or CSV marker files into timecoded sequences for grandMA consoles”: every marker becomes a cue at the marker’s time, with fade times, follow-cues and button triggers from subtracks. The result is saved as a macro and timecode for the console, or sent straight to it.",
+            "GMA Toolbox also has a Macro Generator that builds grandMA macros from a table, using templates you write yourself. It is a general tool: you decide which commands each row becomes."
+          ]
+        },
+        {
+          "h": "Moving Light Assistant",
+          "p": [
+            "Moving Light Assistant by Andrew Voller Lighting Design is documentation software: rig data, gobo and colour wheel loads, presets and cue lists with photos and notes, imported from the console. Its site lists grandMA2 among the consoles it imports from, describes grandMA3 support in version 1.4.1 as basic and improved, and says full grandMA3 support is planned for the next major release. Licences are sold through City Theatrical."
+          ]
+        },
+        {
+          "h": "Export CueList for gma3",
+          "p": [
+            "Export CueList for gma3 by OF COURSE (Maciej Hofstede) is a Mac app on the App Store. It exports cue lists from MIDI files, CSV files or Reaper projects to grandMA3 over an OSC connection, including sequence and executor numbers, trigger times and fades. Its description is written for operators who otherwise fill in every Trig Time by hand."
+          ]
+        },
+        {
+          "h": "When CueSetter fits better",
+          "list": [
+            "The starting point is the run sheet from production – a PDF, a Word document or an Excel file – not markers in an audio project.",
+            "You want one named cue per item, numbered like the run sheet, with set lists as sub-cues, and you will program the looks yourself.",
+            "You can’t or won’t install software: it runs in the browser on Windows, Mac or Linux, and the file is never uploaded.",
+            "You work on grandMA3. CueSetter makes grandMA3 macros, not grandMA2."
+          ],
+          "after": [
+            "See it with your own file in [CueSetter](/app), or read how it handles [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3) and [Excel](/excel-to-grandma3) run sheets."
+          ]
+        },
+        {
+          "h": "When another tool fits better",
+          "list": [
+            "The show runs on timecode and the cues are marked in Reaper or a DAW: Timecode Creator or Export CueList for gma3 are built for that. CueSetter makes no timecode, trigger times or fades.",
+            "You need paperwork for the rig and the programming: Moving Light Assistant.",
+            "You want macros for patch, presets or other jobs from your own command templates: GMA Toolbox’s Macro Generator."
+          ]
+        },
+        {
+          "h": "Sources",
+          "p": [
+            "Checked on 6 October 2026. Product names belong to their owners; CueSetter is not affiliated with any of them."
+          ],
+          "list": [
+            "[GMA Toolbox: Timecode Creator](https://www.gmatoolbox.app/tools/timecode-creator/)",
+            "[GMA Toolbox: Macro Generator](https://www.gmatoolbox.app/tools/macro-generator/)",
+            "[GMA Toolbox: Getting started](https://www.gmatoolbox.app/getting-started/)",
+            "[GMA Toolbox: Pricing](https://www.gmatoolbox.app/pricing/)",
+            "[Moving Light Assistant: About](https://www.movinglightassistant.com/?page_id=2)",
+            "[Moving Light Assistant: v1.4.1 release notes](https://www.movinglightassistant.com/)",
+            "[Moving Light Assistant: Purchase](https://www.movinglightassistant.com/?page_id=7)",
+            "[Export CueList for gma3 on the Mac App Store](https://apps.apple.com/us/app/export-cuelist-for-gma3/id1518496291?mt=12)"
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Is CueSetter a timecode tool?",
+          "a": "No. CueSetter builds a sequence with one named, empty cue per item in the run sheet. It sets no trigger times, fades or timecode."
+        },
+        {
+          "q": "Does CueSetter work with grandMA2?",
+          "a": "No. The macro is made for grandMA3 and tested on most recent grandMA3 versions."
+        },
+        {
+          "q": "Do I need to install anything?",
+          "a": "No. CueSetter runs in the browser, and the run sheet is read on your own computer, never uploaded."
+        }
+      ]
+    },
+    "runOfShow": {
+      "crumb": "Run of show template",
+      "metaTitle": "Free run of show template (Excel and Word) – CueSetter",
+      "metaDescription": "Download a free run of show (ROS) template for events and conferences, in Excel .xlsx and Word .docx: #, Start, Duration, Title and Notes. No sign-up, and ready to become a grandMA3 cue list.",
+      "kicker": "Free · Excel and Word",
+      "title": "Free run of show template",
+      "lead": "A run of show (ROS) template for corporate events, conferences and galas, in Excel and Word. One row per segment with number, start time, duration, title and notes for every department. Free, no sign-up, and ready for the lighting desk.",
+      "linkLabel": "Run of show template",
+      "sections": [
+        {
+          "h": "What a run of show needs",
+          "p": [
+            "A run of show is the schedule the whole crew calls the event from. Ours has the columns that matter on show day:"
+          ],
+          "list": [
+            "# – the segment number the show caller uses",
+            "Start – the clock time the segment begins",
+            "Duration – in minutes, so overruns are easy to spot",
+            "Title – the segment: walk-in, opening video, keynote, panel, award, break",
+            "Notes – mics, playback, lighting, stage changes"
+          ],
+          "after": [
+            "The file is called run-sheet-template: run of show, run sheet and running order are the same document with different names. See [what a run sheet is](/what-is-a-run-sheet) for the full list."
+          ]
+        },
+        {
+          "h": "Tips for an event or conference",
+          "steps": [
+            "Give every segment a number, including walk-in, breaks and walk-out. They are moments the lighting changes too.",
+            "Put each speaker or award on its own row, so each gets its own cue.",
+            "When a segment is added late, number it between its neighbours (4.5) instead of renumbering the rest.",
+            "Change the version number at the top every time you send it out, and say what changed.",
+            "Send it as Excel, Word or a PDF exported from them – not a scan."
+          ]
+        },
+        {
+          "h": "From run of show to lighting cues",
+          "p": [
+            "The lighting operator can drop the file into [CueSetter](/app) and get a grandMA3 macro that builds one named cue per segment, numbered like the run of show. It works the same with a run of show you didn’t make from this template, as long as it is a [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3) or [Excel](/excel-to-grandma3) file."
+          ],
+          "after": [
+            "Working on a concert or a TV show instead? The [running order template](/running-order-template) explains set lists and sub-cues."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "What is a run of show?",
+          "a": "The minute-by-minute schedule of an event: every segment in order, with start time, duration and what happens. In the US it is the usual name for what the UK calls a run sheet or running order."
+        },
+        {
+          "q": "What should a run of show include?",
+          "a": "At least a number, start time, duration and title for every segment, plus notes for the departments that act on it. Put the event name, date, venue and a version number at the top."
+        },
+        {
+          "q": "Is the run of show template free?",
+          "a": "Yes. Download the Excel or Word file and use it as you like, with no sign-up and no account."
+        }
+      ]
+    },
+    "runningOrder": {
+      "crumb": "Running order template",
+      "metaTitle": "Free running order template for concerts and events (Excel, Word) – CueSetter",
+      "metaDescription": "Download a free running order template in Excel .xlsx and Word .docx, with room for set lists. #, Start, Duration, Title and Notes. No sign-up. In CueSetter, each set list becomes grandMA3 sub-cues.",
+      "kicker": "Free · Excel and Word",
+      "title": "Free running order template",
+      "lead": "A running order template for concerts, festivals and live TV, in Excel and Word. Each act or item gets a row with number, start time, duration and title, and the set list goes in the same cell, one song per line. Free, no sign-up.",
+      "linkLabel": "Running order template",
+      "sections": [
+        {
+          "h": "Built around the set list",
+          "p": [
+            "In a concert running order the songs matter as much as the acts. The template keeps both together:"
+          ],
+          "list": [
+            "One row per act or item, with # for the number called on intercom",
+            "Start and duration, so changeovers and curfew are visible",
+            "The act’s name on the first line of the title cell, and its songs on the lines below",
+            "Notes for sound, lighting, video and stage"
+          ],
+          "after": [
+            "The file is called run-sheet-template; in the UK the same document is often called the running order. More names in [what a run sheet is](/what-is-a-run-sheet)."
+          ]
+        },
+        {
+          "h": "How to write a running order the crew can follow",
+          "steps": [
+            "Number every item, including changeovers and the interval.",
+            "Write the songs under the act, one per line, in the order they are played.",
+            "When an item is added, give it a number between its neighbours (6.5), so the numbers on everyone’s paper still match.",
+            "Put the show, date, venue and a version number at the top, and change the version every time.",
+            "Send the Excel or Word file, or a PDF exported from it."
+          ]
+        },
+        {
+          "h": "From running order to grandMA3",
+          "p": [
+            "Upload the running order to [CueSetter](/app): every item becomes a named cue in a grandMA3 sequence, numbered like the running order. Press Split on an act and each song becomes a sub-cue – 6.1, 6.2, 6.3. [Sub-cues and decimal cue numbers](/guides/sub-cues-grandma3) explains the numbering."
+          ],
+          "after": [
+            "Planning a conference or corporate event? The [run of show template](/run-of-show-template) has tips for segments and speakers."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "What is a running order?",
+          "a": "The order of a show, item by item, with times: acts, songs, speeches and changeovers. It is the usual UK name for a run sheet, especially in concerts and TV."
+        },
+        {
+          "q": "What is the difference between a running order and a set list?",
+          "a": "A set list is the songs one act plays. A running order is the whole show, and often includes each act’s set list."
+        },
+        {
+          "q": "Is the running order template free?",
+          "a": "Yes. Download the Excel or Word file and use it as you like, with no sign-up and no account."
+        }
+      ]
+    }
   }
 }

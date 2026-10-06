@@ -5,7 +5,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
 import { HeroDemo, type DemoRow } from '@/components/features/landing/HeroDemo';
 import { FormatAnatomy, type AnatomyLabels } from '@/components/features/landing/FormatAnatomy';
-import { FileIcon, NumbersVisual, PrivacyVisual, type NumberRow } from '@/components/features/landing/ProofVisuals';
+import { FileIcon, NumbersVisual, PrivacyVisual, type FileType, type NumberRow } from '@/components/features/landing/ProofVisuals';
 import { Faq } from '@/components/features/landing/Faq';
 import { Reveal } from '@/components/features/landing/Reveal';
 import { StepsBand } from '@/components/features/landing/StepsBand';
@@ -14,6 +14,7 @@ import { SiteHeader } from '@/components/layout/SiteHeader';
 import { Card, LINK_PRIMARY } from '@/components/ui';
 import { Link } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
+import { CONTENT_PAGES, contentKeysIn, contentPage, type ContentKey } from '@/lib/content-pages';
 import { FORMAT_PAGES, FORMAT_SLUGS, isFormatSlug, type FormatSlug } from '@/lib/formats';
 import { alternates, ogImages } from '@/lib/site';
 import { formatPageJsonLd, jsonLdScript, type FaqItem } from '@/lib/structured-data';
@@ -40,6 +41,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 const CONTAINER = 'mx-auto max-w-6xl px-5 sm:px-8';
+/** Guides and templates linked from every format page. */
+const RELATED_GUIDES: ContentKey[] = ['importMacro', 'labelCues', 'subCues', 'template'];
 const KICKER = 'mb-3 font-mono text-sm font-semibold text-accent';
 const H2 = 'text-3xl font-extrabold tracking-tight sm:text-4xl';
 
@@ -65,7 +68,12 @@ export default function FormatPage({ params }: { params: Params }) {
   const steps = t.raw('steps') as Point[];
   const rows = th.raw('demo.rows') as DemoRow[];
   const anatomy = { ...(tf.raw('anatomy') as Omit<AnatomyLabels, 'columns'>), columns: th.raw('demo.columns') as AnatomyLabels['columns'] };
-  const others = FORMAT_SLUGS.filter((s): s is FormatSlug => s !== format);
+  const tp = useTranslations('pages');
+  // The other formats, CSV (a content page: it is read through Excel or pasted text) among them.
+  const others = [
+    ...FORMAT_SLUGS.filter((s): s is FormatSlug => s !== format).map((s) => ({ href: `/${s}`, icon: FORMAT_PAGES[s].file as FileType | undefined, label: tf(`${FORMAT_PAGES[s].key}.linkLabel`) })),
+    ...contentKeysIn('formats').map((k) => ({ href: CONTENT_PAGES[k].path, icon: contentPage(k).icon, label: tp(`${k}.linkLabel`) })),
+  ];
   const jsonLd = formatPageJsonLd({
     locale: locale as Locale,
     path: `/${format}`,
@@ -199,17 +207,27 @@ export default function FormatPage({ params }: { params: Params }) {
                 {th('ctaSample')}
               </Link>
             </div>
-            <div className="relative mx-auto mt-12 max-w-xl border-t border-on-accent/25 pt-8">
+            <div className="relative mx-auto mt-12 max-w-3xl border-t border-on-accent/25 pt-8">
               <p className="mb-4 text-sm font-semibold opacity-80">{tf('otherFormatsTitle')}</p>
-              <ul className="grid gap-3 sm:grid-cols-2">
-                {others.map((s) => (
-                  <li key={s}>
+              <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {others.map((o) => (
+                  <li key={o.href}>
                     <Link
-                      href={`/${s}`}
+                      href={o.href}
                       className="flex items-center gap-3 rounded-2xl bg-on-accent/10 px-4 py-3 text-left font-semibold text-on-accent no-underline ring-1 ring-on-accent/25 transition duration-200 hover:-translate-y-0.5 hover:bg-on-accent/15 hover:ring-on-accent/50"
                     >
-                      <FileIcon type={FORMAT_PAGES[s].file} size={26} />
-                      <span>{tf(`${FORMAT_PAGES[s].key}.linkLabel`)} →</span>
+                      {o.icon && <FileIcon type={o.icon} size={26} />}
+                      <span>{o.label} →</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <p className="mb-3 mt-8 text-sm font-semibold opacity-80">{tf('guidesTitle')}</p>
+              <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm">
+                {RELATED_GUIDES.map((k) => (
+                  <li key={k}>
+                    <Link href={CONTENT_PAGES[k].path} className="font-semibold text-on-accent underline decoration-on-accent/40 underline-offset-2 hover:decoration-on-accent">
+                      {tp(`${k}.linkLabel`)}
                     </Link>
                   </li>
                 ))}
