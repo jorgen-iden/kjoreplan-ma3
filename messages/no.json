@@ -184,7 +184,10 @@
         "a": "Det er gratis å prøve, uten konto."
       }
     ],
-    "contact": "Spørsmål eller tilbakemeldinger: <mail>{email}</mail>"
+    "contact": "Spørsmål eller tilbakemeldinger: <mail>{email}</mail>",
+    "videoKicker": "Se det på ett minutt",
+    "videoTitle": "Fra kjøreplan i PDF til cueliste i grandMA3",
+    "videoPlay": "Spill av demoen"
   },
   "steps": {
     "upload": "Last opp",
@@ -531,5 +534,275 @@
     },
     "alsoKicker": "Og i alle formater",
     "otherFormatsTitle": "Andre formater"
+  },
+  "pages": {
+    "breadcrumbLabel": "Brødsmulesti",
+    "toc": "På denne siden",
+    "cardTitle": "Kjøreplan til grandMA3 på ett minutt",
+    "cardText": "Last opp en kjøreplan i PDF, Word eller Excel og få en makro som bygger cuelisten. Gratis å prøve.",
+    "footerLabel": "Guider og maler",
+    "download": {
+      "xlsx": "Excel-mal",
+      "docx": "Word-mal",
+      "button": "Last ned"
+    },
+    "template": {
+      "crumb": "Mal for kjøreplan",
+      "metaTitle": "Gratis mal for kjøreplan i Excel og Word – CueSetter",
+      "metaDescription": "Last ned en gratis mal for kjøreplan (Excel .xlsx og Word .docx) med #, Start, Varighet, Tittel og Notater. Ingen registrering. Kan leses rett inn som cueliste i grandMA3.",
+      "kicker": "Gratis · Excel og Word",
+      "title": "Gratis mal for kjøreplan",
+      "lead": "En mal for kjøreplan i Excel og Word med kolonnene alle avdelinger trenger: #, Start, Varighet, Tittel og Notater. Gratis, uten registrering – og den kan leses rett inn som cueliste i grandMA3.",
+      "linkLabel": "Mal for kjøreplan",
+      "sections": [
+        {
+          "h": "Dette er med i malen",
+          "p": [
+            "Én rad per punkt, med kolonnene lyd, lys, video og inspisient jobber ut fra:"
+          ],
+          "list": [
+            "# – punktnummeret alle bruker på intercom",
+            "Start – klokkeslettet",
+            "Varighet – i minutter",
+            "Tittel – hva som skjer; en settliste står på egne linjer, én låt per linje",
+            "Notater – til lyd, lys, video og scene"
+          ],
+          "after": [
+            "Navnet på forestillingen, dato, sted, inspisient og versjonsnummer står øverst. Sju eksempelrader viser hvordan den fylles ut; bytt dem ut med din forestilling."
+          ]
+        },
+        {
+          "h": "Slik fyller du den ut",
+          "steps": [
+            "Ha én rad per punkt, i riktig rekkefølge.",
+            "Gi hvert punkt et nummer. Kommer det inn et punkt senere, gi det et nummer imellom (12.5), så alles numre fortsatt stemmer.",
+            "Skriv en settliste i tittelcellen, én låt per linje under navnet på artisten.",
+            "Endre versjonsnummeret hver gang du sender en ny kjøreplan.",
+            "Send den som den er, eller eksporter som PDF."
+          ]
+        },
+        {
+          "h": "Fra malen til grandMA3",
+          "p": [
+            "Lysoperatøren kan slippe filen rett inn i [CueSetter](/app). Hver rad blir en navngitt cue i en grandMA3-sekvens, cuenumrene følger #-kolonnen, og låtene i en settliste kan deles i under-cuer med ett klikk."
+          ],
+          "after": [
+            "Les mer om [kjøreplaner i Excel](/excel-to-grandma3) og [kjøreplaner i Word](/word-to-grandma3) i CueSetter, eller om [hva en kjøreplan er](/what-is-a-run-sheet)."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Er malen for kjøreplan gratis?",
+          "a": "Ja. Last den ned og bruk den som du vil, uten registrering og uten konto."
+        },
+        {
+          "q": "Kan jeg bruke den i Google Regneark, Google Dokumenter eller Numbers?",
+          "a": "Ja. Åpne .xlsx-filen i Google Regneark eller Numbers, eller .docx-filen i Google Dokumenter eller Pages. For å lese den i CueSetter laster du den ned igjen som .xlsx, .docx eller PDF."
+        },
+        {
+          "q": "Kan jeg legge til eller gi nytt navn til kolonner?",
+          "a": "Ja. Ekstra kolonner går fint. Behold #-kolonnen og en kolonne for tittelen (Tittel, Program eller Punkt), så finner CueSetter dem ut fra overskriften."
+        }
+      ]
+    },
+    "whatIs": {
+      "crumb": "Hva er en kjøreplan?",
+      "metaTitle": "Hva er en kjøreplan? Betydning, andre navn og innhold – CueSetter",
+      "metaDescription": "En kjøreplan er minutt-for-minutt-planen for en forestilling eller et arrangement. Hva den inneholder, andre navn (kjøreliste, dreiebok, run sheet, running order) og hvordan den blir en cueliste for lys.",
+      "kicker": "Forklart",
+      "title": "Hva er en kjøreplan?",
+      "lead": "En kjøreplan er minutt-for-minutt-planen for en forestilling eller et arrangement: hvert punkt i rekkefølge, med nummer, starttid, varighet og hva som skjer. Produksjonen skriver den, og inspisient, lyd, lys og video kjører forestillingen etter den.",
+      "linkLabel": "Hva er en kjøreplan?",
+      "sections": [
+        {
+          "h": "Dette står i en kjøreplan",
+          "p": [
+            "De fleste kjøreplaner er en tabell med én rad per punkt. Vanlige kolonner er:"
+          ],
+          "list": [
+            "# – punktnummeret, som brukes på intercom («standby punkt 12»)",
+            "Start – klokkeslettet, ofte med varighet eller sluttid",
+            "Tittel – hva som skjer: en tale, en låt, en utdeling, en pause",
+            "Notater per avdeling – lyd, lys, video, scene og programledere"
+          ],
+          "after": [
+            "Øverst står som regel navnet på forestillingen, dato, sted og et versjonsnummer, fordi kjøreplanen endrer seg helt til dørene åpner."
+          ]
+        },
+        {
+          "h": "Andre navn på en kjøreplan",
+          "p": [
+            "Samme dokument har mange navn, avhengig av land og type produksjon:"
+          ],
+          "table": {
+            "head": [
+              "Navn",
+              "Hvor det brukes"
+            ],
+            "rows": [
+              [
+                "Kjøreplan",
+                "Konsert, event og TV – det vanligste norske ordet"
+              ],
+              [
+                "Kjøreliste, kjøremanus",
+                "Event og TV"
+              ],
+              [
+                "Dreiebok",
+                "Event og TV (også brukt om beredskapsplaner)"
+              ],
+              [
+                "Programplan, minuttplan",
+                "Event, gallaer og konferanser"
+              ],
+              [
+                "Regiplan, regimanus",
+                "TV og teater"
+              ],
+              [
+                "Run sheet, running order",
+                "Engelsk (Storbritannia, Australia)"
+              ],
+              [
+                "Run of show (ROS), rundown",
+                "Engelsk (USA, TV og kringkasting)"
+              ],
+              [
+                "Körschema",
+                "Svensk"
+              ],
+              [
+                "Drejebog, køreplan",
+                "Dansk"
+              ],
+              [
+                "Ablaufplan, Regieplan",
+                "Tysk"
+              ],
+              [
+                "Draaiboek",
+                "Nederlandsk"
+              ],
+              [
+                "Conducteur",
+                "Fransk"
+              ]
+            ]
+          },
+          "after": [
+            "En settliste – låtene på en konsert – er ofte en del av kjøreplanen. En call sheet (oppmøteliste) er noe annet: den forteller crewet når de skal møte."
+          ]
+        },
+        {
+          "h": "Kjøreplan og cueliste",
+          "p": [
+            "Kjøreplanen er planen for alle. En cueliste er lysoperatørens versjon av den på konsollen: én cue for hvert øyeblikk lyset endrer seg, nummerert og navngitt så operatøren kan følge inspisientens kall.",
+            "På en grandMA3 er cuelisten en sekvens. Å bygge den betyr å taste inn hvert punkt fra kjøreplanen for hånd – eller la [CueSetter](/) lese kjøreplanen og lage en makro som bygger den."
+          ]
+        },
+        {
+          "h": "Slik skriver du en kjøreplan lysbordet kan bruke",
+          "list": [
+            "Gi hvert punkt et nummer, og behold numrene når punkter flyttes. Bruk 12.5 for et punkt som kommer inn imellom.",
+            "Én rad per punkt, med starttiden i egen kolonne.",
+            "Skriv en settliste på egne linjer i tittelcellen, så låtene kan bli under-cuer.",
+            "Send den som Word, Excel eller en PDF eksportert fra dem – ikke en skannet side.",
+            "Skriv versjonsnummer og dato øverst."
+          ],
+          "after": [
+            "Vår [gratis mal for kjøreplan](/run-sheet-template) i Excel og Word følger disse reglene."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Hvem skriver kjøreplanen?",
+          "a": "Som regel produsenten eller inspisienten. Den sendes til alle som jobber med forestillingen, og oppdateres når planen endrer seg."
+        },
+        {
+          "q": "Hva er forskjellen på en kjøreplan og en cueliste?",
+          "a": "Kjøreplanen er planen for hele forestillingen. En cueliste er en avdelings versjon av den på eget utstyr – for lys er det sekvensen av cuer på konsollen."
+        },
+        {
+          "q": "Hva er forskjellen på en kjøreplan og en dreiebok?",
+          "a": "Ofte ingen: mange bruker ordene om det samme. Dreiebok brukes også om større planer for et helt arrangement, med rigg, logistikk og beredskap."
+        }
+      ]
+    },
+    "importMacro": {
+      "crumb": "Importere makro i grandMA3",
+      "metaTitle": "Slik importerer du en makro i grandMA3 (minnepinne og onPC) – CueSetter",
+      "metaDescription": "Steg for steg: hvor makrofilen skal ligge på minnepinnen, hvordan du importerer den med Show Creator til Macros-poolen på grandMA3 eller onPC, og hva du gjør hvis importen feiler.",
+      "kicker": "Guide · grandMA3",
+      "title": "Slik importerer du en makro i grandMA3",
+      "lead": "Legg makroens XML-fil i grandMA3/gma3_library/datapools/macros på en minnepinne, åpne Show Creator på konsollen, velg Macros og minnepinnen, og importer den til en ledig plass i Macros-poolen. Kjør den deretter én gang.",
+      "linkLabel": "Importere makro i grandMA3",
+      "sections": [
+        {
+          "h": "Dette trenger du",
+          "list": [
+            "En grandMA3-konsoll, eller grandMA3 onPC på en datamaskin",
+            "Makroen som XML-fil",
+            "En minnepinne"
+          ],
+          "after": [
+            "Makroer fra [CueSetter](/app) kommer som en ZIP-fil der mappene allerede er på plass."
+          ]
+        },
+        {
+          "h": "Steg for steg",
+          "steps": [
+            "Legg XML-filen på minnepinnen i mappen grandMA3/gma3_library/datapools/macros. Med en ZIP fra CueSetter pakker du den ut på roten av minnepinnen: grandMA3-mappen skal ligge øverst.",
+            "Sett minnepinnen i konsollen, eller i maskinen som kjører onPC.",
+            "Åpne Show Creator fra menyen (på grandMA3 1.9 er det Import/Export-menyen). Velg Macros, og minnepinnen som kilde.",
+            "Velg makroen og importer den til en ledig plass i Macros-poolen.",
+            "Kjør makroen ved å trykke på den i Macros-poolen."
+          ]
+        },
+        {
+          "h": "Hvis importen feiler: bruk kommandolinjen",
+          "p": [
+            "En makro er en liste med kommandolinjer, så du får samme resultat ved å skrive eller lime dem inn i kommandolinjen. Dette er kommandoene en makro fra CueSetter bruker, bekreftet på grandMA3 onPC 2.5.1:"
+          ],
+          "code": "Store Sequence 101 Cue 1\nLabel Sequence 101 Cue 1 \"Dørene åpner\"\nSet Sequence 101 Cue 1 Property \"Note\" \"Start 18:30, Varighet 30\"\nStore Sequence 101 Cue 2\nLabel Sequence 101 Cue 2 \"Velkommen ved programleder\"\nLabel Sequence 101 \"Vårkonsert\"",
+          "after": [
+            "Flere kommandoer kan stå på én linje, skilt med semikolon. CueSetter viser hele linjen klar til å kopiere i eksportsteget."
+          ]
+        },
+        {
+          "h": "Slik ser en makrofil ut",
+          "p": [
+            "En makrofil for grandMA3 er XML med én MacroLine per kommando. DataVersion forteller konsollen hvilken programvareversjon filen er laget for:"
+          ],
+          "code": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GMA3 DataVersion=\"2.5.1.0\">\n  <Macro Name=\"Vårkonsert\">\n    <MacroLine Command=\"Store Sequence 101 Cue 1\"/>\n    <MacroLine Command=\"Label Sequence 101 Cue 1 &quot;Dørene åpner&quot;\"/>\n    <MacroLine Command=\"Label Sequence 101 &quot;Vårkonsert&quot;\"/>\n  </Macro>\n</GMA3>",
+          "after": [
+            "Anførselstegn inne i en kommando skrives som &quot;, og filen må lagres som UTF-8."
+          ]
+        },
+        {
+          "h": "Lag makroen fra kjøreplanen",
+          "p": [
+            "Å skrive en makro for en lang kjøreplan for hånd tar like lang tid som å taste kjøreplanen inn i konsollen. [CueSetter](/app) leser kjøreplanen – [PDF](/pdf-to-grandma3), [Word](/word-to-grandma3) eller [Excel](/excel-to-grandma3) – og lager makroen for deg, med én navngitt cue per punkt og cuenumre som følger kjøreplanen."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Hvor skal makrofilen ligge på minnepinnen?",
+          "a": "I grandMA3/gma3_library/datapools/macros, regnet fra roten av minnepinnen. Konsollen ser etter makroer i den mappen."
+        },
+        {
+          "q": "Kan jeg importere makroer i grandMA3 onPC?",
+          "a": "Ja, på samme måte: sett minnepinnen i maskinen, åpne Show Creator, velg Macros og minnepinnen, og importer."
+        },
+        {
+          "q": "Makroen vises ikke i Show Creator. Hva er galt?",
+          "a": "Som regel mappen: sjekk at filen ligger i grandMA3/gma3_library/datapools/macros og ikke i en ekstra mappe fra utpakkingen. Virker det fortsatt ikke, lim inn kommandoene i kommandolinjen i stedet."
+        }
+      ]
+    },
+    "templatePreview": "Malen"
   }
 }

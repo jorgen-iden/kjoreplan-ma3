@@ -1,4 +1,5 @@
 import en from '../../../messages/en.json';
+import { CONTENT_KEYS, CONTENT_PAGES } from '@/lib/content-pages';
 import { FORMAT_PAGES, FORMAT_SLUGS } from '@/lib/formats';
 import { CONTACT_EMAIL, SITE_URL } from '@/lib/site';
 
@@ -12,6 +13,7 @@ export function GET() {
     const f = en.formats[FORMAT_PAGES[s].key];
     return `- [${f.title}](${SITE_URL}/${s}): ${f.metaDescription}`;
   }).join('\n');
+  const guides = CONTENT_KEYS.map((k) => `- [${en.pages[k].title}](${SITE_URL}${CONTENT_PAGES[k].path}): ${en.pages[k].metaDescription}`).join('\n');
   const body = `# CueSetter
 
 > ${en.meta.description}
@@ -32,6 +34,7 @@ Key facts:
 - [CueSetter (Norsk)](${SITE_URL}/no): the same in Norwegian
 - [Converter](${SITE_URL}/app): upload a run sheet and download the grandMA3 macro
 ${formats}
+${guides}
 
 ## FAQ
 

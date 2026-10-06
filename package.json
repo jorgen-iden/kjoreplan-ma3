@@ -11,7 +11,9 @@
     "typecheck": "tsc --noEmit",
     "sample": "tsx scripts/make-sample-pdf.ts",
     "postinstall": "node scripts/copy-pdf-worker.mjs",
-    "fixture:expect": "tsx scripts/fixture-expect.ts"
+    "fixture:expect": "tsx scripts/fixture-expect.ts",
+    "templates": "tsx scripts/make-templates.ts",
+    "postbuild": "tsx scripts/indexnow.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

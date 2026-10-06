@@ -3,6 +3,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
 import { HeroDemo, type DemoRow } from '@/components/features/landing/HeroDemo';
 import { FormatsVisual, NumbersVisual, PrivacyVisual, type NumberRow } from '@/components/features/landing/ProofVisuals';
+import { DemoVideo } from '@/components/features/landing/DemoVideo';
 import { Faq } from '@/components/features/landing/Faq';
 import { Reveal } from '@/components/features/landing/Reveal';
 import { StepsBand } from '@/components/features/landing/StepsBand';
@@ -11,6 +12,7 @@ import { SiteHeader } from '@/components/layout/SiteHeader';
 import { Card, LINK_PRIMARY } from '@/components/ui';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
+import { DEMO_VIDEO } from '@/lib/site';
 import { frontPageJsonLd, jsonLdScript, type FaqItem } from '@/lib/structured-data';
 
 const STEPS = ['upload', 'review', 'console'] as const;
@@ -70,6 +72,15 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
             />
           </div>
         </section>
+
+        {/* Demo video, once it is published (DEMO_VIDEO in src/lib/site.ts). */}
+        {DEMO_VIDEO && (
+          <Reveal as="section" className={`${CONTAINER} mt-28 sm:mt-40`}>
+            <p className={KICKER}>{t('videoKicker')}</p>
+            <h2 className={`${H2} mb-10 max-w-2xl`}>{t('videoTitle')}</h2>
+            <DemoVideo youtubeId={DEMO_VIDEO.youtubeId} title={t('videoTitle')} play={t('videoPlay')} />
+          </Reveal>
+        )}
 
         {/* Proofs: each one shows the product in a small console picture. */}
         <Reveal as="section" className={`${CONTAINER} mt-28 sm:mt-40`}>
