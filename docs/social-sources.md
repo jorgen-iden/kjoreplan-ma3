@@ -27,4 +27,4 @@ Lisensen er sjekket per klipp (feltet copyrightNotice på klippets side) 6. okto
 
 ## Split-screen-videoer (`public/social/split/`)
 
-Øvre halvdel er Mixkit-klipp 4188 og 485 (Free License, se tabellen over). Nedre halvdel (kabelkaos og dimmerrack) er tegnet av oss i HTML/SVG.
+Øvre halvdel er Mixkit-klipp 4188, 485 og 4026 (Free License, se tabellen over). Nedre halvdel (kabelkaos og dimmerrack) er tegnet av oss i HTML/SVG.
