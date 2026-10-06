@@ -155,9 +155,9 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
           </div>
         </Reveal>
 
-        <SiteFooter className={`${CONTAINER} mt-16`} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }} />
       </main>
+      <SiteFooter />
     </>
   );
 }

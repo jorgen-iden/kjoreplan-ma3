@@ -256,9 +256,9 @@ export function ArticlePage({ pageKey, locale }: { pageKey: ContentKey; locale: 
           </div>
         </Reveal>
 
-        <SiteFooter className={`${CONTAINER} mt-16`} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }} />
       </main>
+      <SiteFooter />
     </>
   );
 }

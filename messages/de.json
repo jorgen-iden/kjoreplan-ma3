@@ -154,7 +154,6 @@
     "storyQuote": "Jeder Programmpunkt musste von Hand ins Pult getippt werden, während das Licht wartete.",
     "faqKicker": "Fragen",
     "faqTitle": "Häufige Fragen",
-    "contact": "Fragen oder Feedback: <mail>{email}</mail>",
     "videoKicker": "In einer Minute gesehen",
     "videoTitle": "Vom PDF-Ablaufplan zur grandMA3-Cueliste",
     "videoPlay": "Demo abspielen",
@@ -808,5 +807,14 @@
         }
       ]
     }
+  },
+  "footer": {
+    "about": "Macht aus dem Ablaufplan der Produktion in einer Minute eine benannte Cueliste in grandMA3. Alles läuft in deinem Browser.",
+    "product": "CueSetter",
+    "converter": "Konverter",
+    "sample": "Beispiel-Ablaufplan testen",
+    "contact": "Kontakt",
+    "languages": "Sprache",
+    "copyright": "© {year} CueSetter"
   }
 }

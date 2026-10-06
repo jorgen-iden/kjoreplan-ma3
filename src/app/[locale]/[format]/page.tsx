@@ -218,9 +218,9 @@ export default function FormatPage({ params }: { params: Params }) {
           </div>
         </Reveal>
 
-        <SiteFooter className={`${CONTAINER} mt-16`} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }} />
       </main>
+      <SiteFooter />
     </>
   );
 }
