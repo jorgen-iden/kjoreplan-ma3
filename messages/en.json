@@ -820,5 +820,33 @@
     "contact": "Contact",
     "languages": "Language",
     "copyright": "© {year} CueSetter"
+  },
+  "feedback": {
+    "line": "Did it work on your console? Tell us at <mail>{email}</mail> – it helps us improve.",
+    "subject": "CueSetter feedback",
+    "body": "Version: {version}\nCues: {cues}\n\n"
+  },
+  "changelog": {
+    "crumb": "Changelog",
+    "metaTitle": "Changelog – CueSetter",
+    "metaDescription": "What has changed in CueSetter, the tool that turns a run sheet into a grandMA3 cue list: new features, fixes and languages, newest first.",
+    "kicker": "What’s new",
+    "title": "Changelog",
+    "lead": "What has shipped in CueSetter, newest first.",
+    "linkLabel": "Changelog",
+    "feedback": "Missing something, or does something not work on your console? Write to <mail>{email}</mail>."
+  },
+  "handoff": {
+    "kicker": "For producers",
+    "title": "Send this to your lighting operator",
+    "text": "Using the template for your show? Send the lighting operator a short note. If they run grandMA3, they can turn the run sheet into a named cue list on the console.",
+    "attach": "Attach the run sheet before you send it.",
+    "email": "Send by e-mail",
+    "copy": "Copy text",
+    "copied": "Copied",
+    "copyFailed": "Couldn’t copy automatically. Select the text and copy it by hand.",
+    "preview": "The message",
+    "subject": "Run sheet for grandMA3",
+    "body": "Hi,\n\nThe run sheet for the show is attached.\n\nIf you run grandMA3, you can turn it into a named cue list at {appUrl}. Upload the file and download a macro that builds the sequence with one cue per item. It runs in the browser, so the run sheet stays on your machine.\n\nThe template it is made from: {templateUrl}"
   }
 }

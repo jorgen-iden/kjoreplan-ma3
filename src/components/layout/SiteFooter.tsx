@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl';
 import type { ReactNode } from 'react';
 import { Link } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
+import { CHANGELOG_PATH } from '@/lib/changelog';
 import { CONTENT_KEYS, CONTENT_PAGES } from '@/lib/content-pages';
 import { FORMAT_PAGES, FORMAT_SLUGS } from '@/lib/formats';
 import { logoMarkSvg } from '@/lib/logo';
@@ -30,6 +31,7 @@ export function SiteFooter() {
   const th = useTranslations('home');
   const tf = useTranslations('formats');
   const tp = useTranslations('pages');
+  const tc = useTranslations('changelog');
   return (
     <footer className="border-t border-line bg-card">
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-12 px-5 py-16 sm:px-8 lg:grid-cols-[minmax(0,1.6fr)_repeat(3,minmax(0,1fr))] lg:gap-10">
@@ -76,6 +78,11 @@ export function SiteFooter() {
             <li>
               <Link href={{ pathname: '/app', query: { sample: '1' } }} className={LINK}>
                 {t('sample')}
+              </Link>
+            </li>
+            <li>
+              <Link href={CHANGELOG_PATH} className={LINK}>
+                {tc('linkLabel')}
               </Link>
             </li>
           </Column>
