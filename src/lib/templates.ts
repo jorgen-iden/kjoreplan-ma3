@@ -11,7 +11,7 @@ export interface Template {
   rows: [string, string, number, string, string][];
 }
 
-export const TEMPLATES: Record<'en' | 'no', Template> = {
+export const TEMPLATES: Record<'en' | 'no' | 'de', Template> = {
   en: {
     file: 'run-sheet-template',
     title: 'Run sheet – Name of the show',
@@ -40,6 +40,21 @@ export const TEMPLATES: Record<'en' | 'no', Template> = {
       ['5', '19:35', 20, 'Pause', ''],
       ['6', '19:55', 30, 'Hovedakt', ''],
       ['7', '20:25', 5, 'Takk for i kveld', 'Utgangsmusikk'],
+    ],
+  },
+  de: {
+    file: 'ablaufplan-vorlage',
+    title: 'Ablaufplan – Name der Show',
+    info: 'Datum: · Ort: · Inspizienz: · Version 1',
+    headers: ['#', 'Start', 'Dauer', 'Titel', 'Notizen'],
+    rows: [
+      ['1', '18:30', 30, 'Einlass', 'Einlassmusik, Saallicht'],
+      ['2', '19:00', 5, 'Begrüßung durch die Moderation', 'Rednerpult, links'],
+      ['3', '19:05', 20, 'Band\nSong 1\nSong 2\nSong 3', 'Setlist: ein Song pro Zeile'],
+      ['4', '19:25', 10, 'Gespräch mit dem Gast', 'Zwei Stühle'],
+      ['5', '19:35', 20, 'Pause', ''],
+      ['6', '19:55', 30, 'Hauptact', ''],
+      ['7', '20:25', 5, 'Dank und gute Nacht', 'Auslassmusik'],
     ],
   },
 };

@@ -125,3 +125,17 @@ describe('importOffice: errors', () => {
     expect(err.problem).toBe('unreadable');
   });
 });
+
+describe('German run sheets (Ablaufplan)', () => {
+  it('finds the columns from German headers', async () => {
+    const { parseGrid } = await import('../src/lib/parse/grid');
+    const table = parseGrid([
+      ['Ablaufplan Frühjahrskonzert'],
+      ['Nr.', 'Uhrzeit', 'Dauer', 'Programmpunkt', 'Bemerkung'],
+      ['1', '18:30', '30', 'Einlass', ''],
+      ['2', '19:00', '5', 'Begrüßung', 'Rednerpult'],
+    ]);
+    expect(table?.columns.map((c) => c.guess)).toEqual(['number', 'start', 'duration', 'title', 'other']);
+    expect(table?.title).toBe('Ablaufplan Frühjahrskonzert');
+  });
+});

@@ -28,6 +28,11 @@ export const SOCIAL_PROFILES: string[] = [];
  */
 export const DEMO_VIDEO: { youtubeId: string; uploadDate: string; duration: string } | null = null;
 
+/** BCP 47 language tag for a locale: Norwegian is written Bokmål (nb). */
+export function languageTag(locale: Locale): string {
+  return locale === 'no' ? 'nb' : locale;
+}
+
 /** Path of a page in a given locale: English has no prefix, other languages do. */
 export function localePath(locale: Locale, path: string): string {
   const clean = path === '/' ? '' : path;
@@ -39,7 +44,7 @@ export function alternates(locale: Locale, path: string) {
   return {
     canonical: localePath(locale, path),
     languages: {
-      ...Object.fromEntries(routing.locales.map((l) => [l === 'no' ? 'nb' : l, localePath(l, path)])),
+      ...Object.fromEntries(routing.locales.map((l) => [languageTag(l), localePath(l, path)])),
       'x-default': localePath(routing.defaultLocale, path),
     },
   };

@@ -20,7 +20,7 @@ npm start          # kjør produksjonsbygget
 npm run sample     # skriver fixtures/eksempel-kjoreplan.pdf (syntetisk kjøreplan)
 ```
 
-Engelsk ligger på `/` og `/app`, norsk på `/no` og `/no/app`.
+Engelsk ligger på `/` og `/app`, norsk på `/no` og `/no/app`, tysk på `/de` og `/de/app`.
 
 ## Deploy
 

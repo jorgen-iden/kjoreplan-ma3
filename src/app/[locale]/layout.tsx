@@ -6,7 +6,9 @@ import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
-import { alternates, ogImages, SITE_NAME, SITE_URL } from '@/lib/site';
+import { alternates, languageTag, ogImages, SITE_NAME, SITE_URL } from '@/lib/site';
+
+const OG_LOCALES: Record<Locale, string> = { en: 'en_US', no: 'nb_NO', de: 'de_DE' };
 import { THEME_INIT_SCRIPT } from '@/lib/theme';
 import '../globals.css';
 
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       siteName: SITE_NAME,
       title: t('title'),
       description: t('description'),
-      locale: locale === 'no' ? 'nb_NO' : 'en_US',
+      locale: OG_LOCALES[locale as Locale] ?? 'en_US',
       images: ogImages(locale as Locale),
     },
     twitter: { card: 'summary_large_image', title: t('title'), description: t('description') },
@@ -61,7 +63,7 @@ export default async function LocaleLayout({
 
   return (
     // suppressHydrationWarning: the theme script may set data-theme on <html> before React loads.
-    <html lang={locale === 'no' ? 'nb' : locale} className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
+    <html lang={languageTag(locale as Locale)} className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>

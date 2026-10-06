@@ -18,7 +18,7 @@ export function GET() {
 
 > ${en.meta.description}
 
-CueSetter is a web tool for lighting operators on grandMA3 consoles. It reads the run sheet from production (PDF with text, Word .docx or Excel .xlsx, or pasted text), finds the columns for number, start time, duration and title, and creates a grandMA3 macro (XML in a ZIP). Run once on the console, the macro builds a sequence with one empty, named cue per item, in the right order, with cue numbers that follow the run sheet. It is made by Arpeggio AS (Norway), in English and Norwegian.
+CueSetter is a web tool for lighting operators on grandMA3 consoles. It reads the run sheet from production (PDF with text, Word .docx or Excel .xlsx, or pasted text), finds the columns for number, start time, duration and title, and creates a grandMA3 macro (XML in a ZIP). Run once on the console, the macro builds a sequence with one empty, named cue per item, in the right order, with cue numbers that follow the run sheet. It is made by Arpeggio AS (Norway), in English, Norwegian and German.
 
 Key facts:
 - Runs entirely in the browser. Run sheets are never uploaded to a server.
@@ -32,6 +32,7 @@ Key facts:
 
 - [CueSetter (English)](${SITE_URL}/): what it does and how it works
 - [CueSetter (Norsk)](${SITE_URL}/no): the same in Norwegian
+- [CueSetter (Deutsch)](${SITE_URL}/de): the same in German (Ablaufplan zur grandMA3-Cueliste)
 - [Converter](${SITE_URL}/app): upload a run sheet and download the grandMA3 macro
 ${formats}
 ${guides}

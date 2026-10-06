@@ -1,5 +1,6 @@
 import type { Locale } from '@/i18n/routing';
-import { CONTACT_EMAIL, DEMO_VIDEO, localePath, SITE_NAME, SITE_URL, SOCIAL_PROFILES } from './site';
+import { routing } from '@/i18n/routing';
+import { CONTACT_EMAIL, DEMO_VIDEO, languageTag, localePath, SITE_NAME, SITE_URL, SOCIAL_PROFILES } from './site';
 
 export interface FaqItem {
   q: string;
@@ -19,7 +20,7 @@ export function frontPageJsonLd({ locale, name, description, faq }: { locale: Lo
     name: 'Arpeggio AS',
     url: SITE_URL,
     email: CONTACT_EMAIL,
-    contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: CONTACT_EMAIL, availableLanguage: ['en', 'nb'] },
+    contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: CONTACT_EMAIL, availableLanguage: routing.locales.map(languageTag) },
     brand: { '@type': 'Brand', name: SITE_NAME },
     ...(SOCIAL_PROFILES.length ? { sameAs: SOCIAL_PROFILES } : {}),
   };
@@ -39,7 +40,7 @@ export function frontPageJsonLd({ locale, name, description, faq }: { locale: Lo
     '@context': 'https://schema.org',
     '@graph': [
       org,
-      { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, url: SITE_URL, name: SITE_NAME, inLanguage: ['en', 'nb'], publisher: { '@id': org['@id'] } },
+      { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, url: SITE_URL, name: SITE_NAME, inLanguage: routing.locales.map(languageTag), publisher: { '@id': org['@id'] } },
       {
         '@type': 'SoftwareApplication',
         '@id': `${SITE_URL}/#app`,
@@ -50,7 +51,7 @@ export function frontPageJsonLd({ locale, name, description, faq }: { locale: Lo
         applicationCategory: 'UtilitiesApplication',
         applicationSubCategory: 'Lighting console tools',
         operatingSystem: 'Web browser',
-        inLanguage: locale === 'no' ? 'nb' : 'en',
+        inLanguage: languageTag(locale),
         featureList: ['PDF, Word (.docx) and Excel (.xlsx) run sheets', 'grandMA3 macro (XML in ZIP)', 'Runs in the browser, no upload'],
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', description: 'Free to try' },
         publisher: { '@id': org['@id'] },
@@ -81,7 +82,7 @@ export function formatPageJsonLd({ locale, path, title, description, home, faq }
         url,
         name: title,
         description,
-        inLanguage: locale === 'no' ? 'nb' : 'en',
+        inLanguage: languageTag(locale),
         isPartOf: { '@id': `${SITE_URL}/#website` },
         about: { '@id': `${SITE_URL}/#app` },
         breadcrumb: {
